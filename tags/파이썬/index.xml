@@ -30,9 +30,7 @@
 &lt;h3 id=&#34;행벡터와-열벡터&#34;&gt;행벡터와 열벡터&lt;/h3&gt;
 &lt;p&gt;행렬은 숫자가 2차원 형태로 늘어선 것이다.&lt;/p&gt;
 &lt;p&gt;열벡터(열 행렬) $m × 1$ 행렬은 $m$ 원소들의 단일 열벡터이다.&lt;/p&gt;
-&lt;p&gt;$$
-\mathbf{x}=\begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_m \end{bmatrix}
-$$&lt;/p&gt;
+&lt;p&gt;$\mathbf{x}=\begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_m \end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;행벡터(행 행렬) 1 × m 행렬은 그 원소들 m의 단일 행벡터이다.&lt;/p&gt;
 &lt;h3 id=&#34;전치-행렬&#34;&gt;전치 행렬&lt;/h3&gt;
 &lt;p&gt;$\mathbf{x}=\begin{bmatrix} x_1 &amp;amp; x_2 &amp;amp; \dots &amp;amp; x_m \end{bmatrix}$&lt;/p&gt;
@@ -48,9 +46,7 @@ $$&lt;/p&gt;
 &lt;p&gt;앞 행렬의 열의 수와 뒷 행렬의 행의 수가 같을 때만 정의된다.&lt;/p&gt;
 &lt;p&gt;행렬의 크기는 $(앞 행렬의 행의 수) \times (뒤 행렬의 열의 수)$ 이다.&lt;/p&gt;
 &lt;p&gt;두 행렬 $A, B$가 각각 $m\times n, n\times r$ 행렬일 때,&lt;/p&gt;
-&lt;p&gt;$$
-A=\begin{pmatrix}a_{11} &amp;amp; a_{12} &amp;amp; \cdots &amp;amp; a_{1n} \\ {\color{blue}a_{21}} &amp;amp; {\color{blue}a_{22}} &amp;amp; {\color{blue}\cdots} &amp;amp; {\color{blue}a_{2n}} \\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ a_{m1} &amp;amp; a_{m2} &amp;amp; \cdots &amp;amp; a_{mn}\end{pmatrix}, B=\begin{pmatrix}{\color{red}b_{11}} &amp;amp; b_{12} &amp;amp; \cdots &amp;amp; b_{1r} \\ {\color{red}b_{21}} &amp;amp; b_{22} &amp;amp; \cdots &amp;amp; b_{2r} \\ {\color{red}\vdots} &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ {\color{red}b_{n1}} &amp;amp; b_{n2} &amp;amp; \cdots &amp;amp; b_{nr}\end{pmatrix}
-$$&lt;/p&gt;
+&lt;p&gt;$A=\begin{pmatrix}a_{11} &amp;amp; a_{12} &amp;amp; \cdots &amp;amp; a_{1n} \\ {\color{blue}a_{21}} &amp;amp; {\color{blue}a_{22}} &amp;amp; {\color{blue}\cdots} &amp;amp; {\color{blue}a_{2n}} \\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ a_{m1} &amp;amp; a_{m2} &amp;amp; \cdots &amp;amp; a_{mn}\end{pmatrix}, B=\begin{pmatrix}{\color{red}b_{11}} &amp;amp; b_{12} &amp;amp; \cdots &amp;amp; b_{1r} \\ {\color{red}b_{21}} &amp;amp; b_{22} &amp;amp; \cdots &amp;amp; b_{2r} \\ {\color{red}\vdots} &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ {\color{red}b_{n1}} &amp;amp; b_{n2} &amp;amp; \cdots &amp;amp; b_{nr}\end{pmatrix}$&lt;/p&gt;
 &lt;p&gt;이라고 하면 행렬의 곱 $AB$는 $m\times r$ 행렬이며,&lt;/p&gt;
 &lt;p&gt;$AB=\begin{pmatrix}\sum_k a_{1k}b_{k1} &amp;amp; \sum_k a_{1k}b_{k2} &amp;amp; \cdots &amp;amp; \sum_k a_{1k}b_{kr} \\ {\color{#C0C}\sum_k a_{2k}b_{k1}} &amp;amp; \sum_k a_{2k}b_{k2} &amp;amp; \cdots &amp;amp; \sum_k a_{2k}b_{kr} \\ \vdots &amp;amp; \vdots &amp;amp; \ddots &amp;amp; \vdots \\ \sum_k a_{mk}b_{k1} &amp;amp; \sum_k a_{mk}b_{k2} &amp;amp; \cdots &amp;amp; \sum_k a_{mk}b_{kr}\end{pmatrix}$&lt;/p&gt;
 &lt;p&gt;이다. (단, $k=1,2,&amp;hellip;,n$)&lt;/p&gt;
