@@ -31,6 +31,9 @@
 &lt;p&gt;행렬은 숫자가 2차원 형태로 늘어선 것이다.&lt;/p&gt;
 &lt;p&gt;열벡터(열 행렬) $m × 1$ 행렬은 $m$ 원소들의 단일 열벡터이다.&lt;/p&gt;
 &lt;p&gt;$$
+\mathbf{x}=\begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_m \end{bmatrix}
+$$&lt;/p&gt;
+&lt;p&gt;$$
 \mathbf{x}=\begin{bmatrix} x_1 \ x_2 \ \vdots \ x_m \end{bmatrix}
 $$&lt;/p&gt;
 &lt;p&gt;행벡터(행 행렬) 1 × m 행렬은 그 원소들 m의 단일 행벡터이다.&lt;/p&gt;
