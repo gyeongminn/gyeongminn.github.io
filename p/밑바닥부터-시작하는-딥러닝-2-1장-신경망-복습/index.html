@@ -427,15 +427,15 @@
 <h3 id="행벡터와-열벡터">행벡터와 열벡터</h3>
 <p>행렬은 숫자가 2차원 형태로 늘어선 것이다.</p>
 <p>열벡터(열 행렬) $m × 1$ 행렬은 $m$ 원소들의 단일 열벡터이다.</p>
-<p>$(\mathbf{x}=\begin{bmatrix} x_1 \ x_2 \ \vdots \ x_m \end{bmatrix})$</p>
+<p>$\mathbf{x}=\begin{bmatrix} x_1 \ x_2 \ \vdots \ x_m \end{bmatrix}$</p>
 <p>행벡터(행 행렬) 1 × m 행렬은 그 원소들 m의 단일 행벡터이다.</p>
 <h3 id="전치-행렬">전치 행렬</h3>
-<p>$(\mathbf{x}=\begin{bmatrix} x_1 &amp; x_2 &amp; \dots &amp; x_m \end{bmatrix})$</p>
+<p>$\mathbf{x}=\begin{bmatrix} x_1 &amp; x_2 &amp; \dots &amp; x_m \end{bmatrix}$</p>
 <p>행벡터의 전치행렬(윗첨자 T로 표기)은 열벡터이고, 마찬가지로 열벡터의 전치 행렬은 행 벡터이다.</p>
-<p>$(\begin{bmatrix} x_1 &amp; x_2 &amp; \dots &amp; x_m \end{bmatrix}^\intercal = \begin{bmatrix} x_1 \ x_2 \ \vdots \ x_m \end{bmatrix})$</p>
+<p>$\begin{bmatrix} x_1 &amp; x_2 &amp; \dots &amp; x_m \end{bmatrix}^\intercal = \begin{bmatrix} x_1 \ x_2 \ \vdots \ x_m \end{bmatrix}$</p>
 <h3 id="행렬의-내적">행렬의 내적</h3>
 <p>벡터의 내적은 두 벡터에서 대응하는 원소들의 곱을 모두 더한 것이다.</p>
-<p>$(\mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \dots + x_ny_n)$</p>
+<p>$\mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \dots + x_ny_n$</p>
 <h3 id="벡터의-곱셈">벡터의 곱셈</h3>
 <blockquote>
 <p>행렬의 곱셈은 일반적인 곱셈과 다르다. 일종의 함수로 이해하는 것이 좋다.</p>
@@ -443,10 +443,10 @@
 <p>앞 행렬의 열의 수와 뒷 행렬의 행의 수가 같을 때만 정의된다.</p>
 <p>행렬의 크기는 $(앞 행렬의 행의 수) \times (뒤 행렬의 열의 수)$ 이다.</p>
 <p>두 행렬 $A, B$가 각각 $m\times n, n\times r$ 행렬일 때,</p>
-<p>$(A=\begin{pmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \ {\color{blue}a_{21}} &amp; {\color{blue}a_{22}} &amp; {\color{blue}\cdots} &amp; {\color{blue}a_{2n}} \ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}\end{pmatrix}, B=\begin{pmatrix}{\color{red}b_{11}} &amp; b_{12} &amp; \cdots &amp; b_{1r} \ {\color{red}b_{21}} &amp; b_{22} &amp; \cdots &amp; b_{2r} \ {\color{red}\vdots} &amp; \vdots &amp; \ddots &amp; \vdots \ {\color{red}b_{n1}} &amp; b_{n2} &amp; \cdots &amp; b_{nr}\end{pmatrix})$</p>
+<p>$A=\begin{pmatrix}a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \ {\color{blue}a_{21}} &amp; {\color{blue}a_{22}} &amp; {\color{blue}\cdots} &amp; {\color{blue}a_{2n}} \ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \ a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn}\end{pmatrix}, B=\begin{pmatrix}{\color{red}b_{11}} &amp; b_{12} &amp; \cdots &amp; b_{1r} \ {\color{red}b_{21}} &amp; b_{22} &amp; \cdots &amp; b_{2r} \ {\color{red}\vdots} &amp; \vdots &amp; \ddots &amp; \vdots \ {\color{red}b_{n1}} &amp; b_{n2} &amp; \cdots &amp; b_{nr}\end{pmatrix}$</p>
 <p>이라고 하면 행렬의 곱 $AB$는 $m\times r$ 행렬이며,</p>
-<p>$(AB=\begin{pmatrix}\sum_k a_{1k}b_{k1} &amp; \sum_k a_{1k}b_{k2} &amp; \cdots &amp; \sum_k a_{1k}b_{kr} \ {\color{#C0C}\sum_k a_{2k}b_{k1}} &amp; \sum_k a_{2k}b_{k2} &amp; \cdots &amp; \sum_k a_{2k}b_{kr} \ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \ \sum_k a_{mk}b_{k1} &amp; \sum_k a_{mk}b_{k2} &amp; \cdots &amp; \sum_k a_{mk}b_{kr}\end{pmatrix})$</p>
-<p>이다. (단, $(k=1,2,&hellip;,n)$)</p>
+<p>$AB=\begin{pmatrix}\sum_k a_{1k}b_{k1} &amp; \sum_k a_{1k}b_{k2} &amp; \cdots &amp; \sum_k a_{1k}b_{kr} \ {\color{#C0C}\sum_k a_{2k}b_{k1}} &amp; \sum_k a_{2k}b_{k2} &amp; \cdots &amp; \sum_k a_{2k}b_{kr} \ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \ \sum_k a_{mk}b_{k1} &amp; \sum_k a_{mk}b_{k2} &amp; \cdots &amp; \sum_k a_{mk}b_{kr}\end{pmatrix}$</p>
+<p>이다. (단, $k=1,2,&hellip;,n$)</p>
 <blockquote>
 <p>항상 행렬을 다룰땐 <strong>형상</strong>에 주의해야 한다.</p>
 </blockquote>
