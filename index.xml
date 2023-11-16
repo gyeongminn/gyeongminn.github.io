@@ -160,7 +160,6 @@
     &lt;/iframe&gt;
 &lt;/div&gt;
 
-&lt;hr&gt;
 &lt;h1 id=&#34;사용법&#34;&gt;사용법&lt;/h1&gt;
 &lt;p&gt;D, F, J, K 키를 사용하여 노트를 입력합니다.&lt;/p&gt;
 &lt;p&gt;정확하게 노트를 입력하면 Excellent, 조금 느리게 입력하면 Good 판정이 됩니다.&lt;/p&gt;
@@ -185,7 +184,6 @@
 화면이 새로고침 되는 딜레이를 확인할 수 있습니다.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;설명&#34;&gt;설명&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;
