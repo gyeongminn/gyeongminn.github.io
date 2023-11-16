@@ -8,12 +8,12 @@
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
         <lastBuildDate>Wed, 15 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>C언어로 만드는 리듬게임</title>
-        <link>https://gyeongminn.github.io/p/c%EC%96%B8%EC%96%B4%EB%A1%9C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%A6%AC%EB%93%AC%EA%B2%8C%EC%9E%84/</link>
+        <title>C언어로 만든 리듬게임</title>
+        <link>https://gyeongminn.github.io/p/c%EC%96%B8%EC%96%B4%EB%A1%9C-%EB%A7%8C%EB%93%A0-%EB%A6%AC%EB%93%AC%EA%B2%8C%EC%9E%84/</link>
         <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/c%EC%96%B8%EC%96%B4%EB%A1%9C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%A6%AC%EB%93%AC%EA%B2%8C%EC%9E%84/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/p/c%EC%96%B8%EC%96%B4%EB%A1%9C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%A6%AC%EB%93%AC%EA%B2%8C%EC%9E%84/image.png" alt="Featured image of post C언어로 만드는 리듬게임" /&gt;&lt;h1 id=&#34;소개&#34;&gt;소개&lt;/h1&gt;
+        <guid>https://gyeongminn.github.io/p/c%EC%96%B8%EC%96%B4%EB%A1%9C-%EB%A7%8C%EB%93%A0-%EB%A6%AC%EB%93%AC%EA%B2%8C%EC%9E%84/</guid>
+        <description>&lt;img src="https://gyeongminn.github.io/p/c%EC%96%B8%EC%96%B4%EB%A1%9C-%EB%A7%8C%EB%93%A0-%EB%A6%AC%EB%93%AC%EA%B2%8C%EC%9E%84/image.png" alt="Featured image of post C언어로 만든 리듬게임" /&gt;&lt;h1 id=&#34;c언어로-만든-리듬게임&#34;&gt;C언어로 만든 리듬게임&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;1학년 텀프로젝트 과제로 만들었던 리듬게임입니다.&lt;/p&gt;
 &lt;/blockquote&gt;
