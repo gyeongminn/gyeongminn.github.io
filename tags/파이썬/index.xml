@@ -48,8 +48,8 @@ $$&lt;/p&gt;
 \mathbf{A} =
 \begin{pmatrix}
 2 &amp;amp; 4 \\ 7 &amp;amp; 3
-\end{pmatrix} =&lt;/p&gt;
-&lt;p&gt;\begin{bmatrix}
+\end{pmatrix} =
+\begin{bmatrix}
 2 &amp;amp; 4 \\ 7 &amp;amp; 3
 \end{bmatrix}
 $$&lt;/p&gt;
