@@ -2,6 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://gyeongminn.github.io/about/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongminn.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongminn.github.io/"
+                />
+  </url><url>
+    <loc>https://gyeongminn.github.io/page/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://gyeongminn.github.io/categories/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -13,19 +32,6 @@
                 rel="alternate"
                 hreflang="ko"
                 href="https://gyeongminn.github.io/categories/"
-                />
-  </url><url>
-    <loc>https://gyeongminn.github.io/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://gyeongminn.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://gyeongminn.github.io/"
                 />
   </url><url>
     <loc>https://gyeongminn.github.io/post/</loc>
@@ -70,12 +76,6 @@
   </url><url>
     <loc>https://gyeongminn.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gyeongminn.github.io/page/</loc>
-    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gyeongminn.github.io/about/</loc>
-    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/c/c&#43;&#43;/</loc>
   </url><url>
