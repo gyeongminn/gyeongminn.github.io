@@ -3,6 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gyeongminn.github.io/en/categories/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -14,7 +15,21 @@
                 href="https://gyeongminn.github.io/en/categories/"
                 />
   </url><url>
+    <loc>https://gyeongminn.github.io/en/p/rhythm-game-in-c/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongminn.github.io/p/rhythm-game-in-c/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongminn.github.io/en/p/rhythm-game-in-c/"
+                />
+  </url><url>
     <loc>https://gyeongminn.github.io/en/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -26,7 +41,27 @@
                 href="https://gyeongminn.github.io/en/"
                 />
   </url><url>
+    <loc>https://gyeongminn.github.io/en/post/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongminn.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongminn.github.io/en/post/"
+                />
+  </url><url>
+    <loc>https://gyeongminn.github.io/en/tags/project/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/en/categories/project/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://gyeongminn.github.io/en/tags/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -36,6 +71,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://gyeongminn.github.io/en/tags/"
+                />
+  </url><url>
+    <loc>https://gyeongminn.github.io/en/tags/c/c&#43;&#43;/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongminn.github.io/tags/c/c&#43;&#43;/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongminn.github.io/en/tags/c/c&#43;&#43;/"
                 />
   </url>
 </urlset>

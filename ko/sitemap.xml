@@ -2,27 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gyeongminn.github.io/about/</loc>
-    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gyeongminn.github.io/</loc>
-    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://gyeongminn.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://gyeongminn.github.io/"
-                />
-  </url><url>
-    <loc>https://gyeongminn.github.io/page/</loc>
-    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gyeongminn.github.io/categories/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -34,11 +15,34 @@
                 href="https://gyeongminn.github.io/categories/"
                 />
   </url><url>
+    <loc>https://gyeongminn.github.io/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongminn.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongminn.github.io/"
+                />
+  </url><url>
     <loc>https://gyeongminn.github.io/post/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongminn.github.io/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongminn.github.io/post/"
+                />
   </url><url>
     <loc>https://gyeongminn.github.io/tags/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -50,29 +54,45 @@
                 href="https://gyeongminn.github.io/tags/"
                 />
   </url><url>
-    <loc>https://gyeongminn.github.io/p/basic-linear-algebra/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gyeongminn.github.io/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/tags/%EC%8B%A0%EA%B2%BD%EB%A7%9D/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/p/neural-network/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</loc>
+    <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/about/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/page/</loc>
+    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gyeongminn.github.io/p/basic-linear-algebra/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%EC%88%98%ED%95%99/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gyeongminn.github.io/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gyeongminn.github.io/tags/%EC%8B%A0%EA%B2%BD%EB%A7%9D/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gyeongminn.github.io/p/neural-network/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gyeongminn.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</loc>
-    <lastmod>2023-11-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gyeongminn.github.io/p/rhythm-game-in-c/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongminn.github.io/en/p/rhythm-game-in-c/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongminn.github.io/p/rhythm-game-in-c/"
+                />
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
@@ -84,6 +104,16 @@
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/c/c&#43;&#43;/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongminn.github.io/en/tags/c/c&#43;&#43;/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongminn.github.io/tags/c/c&#43;&#43;/"
+                />
   </url><url>
     <loc>https://gyeongminn.github.io/links/</loc>
   </url><url>

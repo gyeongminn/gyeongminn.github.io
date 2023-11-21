@@ -6,6 +6,15 @@
         <description>Recent content in Categories on Gyeongmin&#39;s Dev Blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>Gyeongmin Lee</copyright><atom:link href="https://gyeongminn.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
+        <copyright>Gyeongmin Lee</copyright>
+        <lastBuildDate>Wed, 15 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Project</title>
+        <link>https://gyeongminn.github.io/en/categories/project/</link>
+        <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongminn.github.io/en/categories/project/</guid>
+        <description></description>
+        </item>
+        
     </channel>
 </rss>
