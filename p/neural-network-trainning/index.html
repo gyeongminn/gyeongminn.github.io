@@ -318,12 +318,14 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#손실-함수">손실 함수</a></li>
-    <li><a href="#softmax">Softmax</a></li>
-    <li><a href="#cross-entropy-error">Cross Entropy Error</a></li>
-    <li><a href="#신경망-예제">신경망 예제</a></li>
+    <li><a href="#손실-함수-loss-function">손실 함수 (Loss Function)</a></li>
+    <li><a href="#소프트맥스-softmax">소프트맥스 (Softmax)</a></li>
+    <li><a href="#교차-엔트로피-오차-cross-entropy-error">교차 엔트로피 오차 (Cross Entropy Error)</a></li>
     <li><a href="#행렬의-미분">행렬의 미분</a></li>
-    <li><a href="#연쇄-법칙">연쇄 법칙</a></li>
+    <li><a href="#연쇄-법칙-chain-rule">연쇄 법칙 (chain-rule)</a></li>
+    <li><a href="#가중치-갱신">가중치 갱신</a></li>
+    <li><a href="#확률적경사하강법-stochastic-gradient-descent">확률적경사하강법 (Stochastic Gradient Descent)</a></li>
+    <li><a href="#신경망-예제">신경망 예제</a></li>
     <li><a href="#sigmoid의-역전파-구현">Sigmoid의 역전파 구현</a></li>
     <li><a href="#affine의-역전파-구현">Affine의 역전파 구현</a></li>
   </ol>
@@ -408,23 +410,23 @@ if (!doNotTrack) {
 </blockquote>
 <h1 id="신경망의-학습">신경망의 학습</h1>
 <blockquote>
-<p>학습되지 않은 신경망은 좋은 추론을 할 수 없다. 학습을 먼저 수행하고, 학습된 매개변수를 이용해 추론을 수행해야 한다.</p>
+<p>학습되지 않은 신경망은 좋은 추론을 할 수 없다. 따라서 학습을 먼저 수행하고, 학습된 매개변수를 이용해 추론을 수행해야 한다.</p>
 </blockquote>
-<h2 id="손실-함수">손실 함수</h2>
+<h2 id="손실-함수-loss-function">손실 함수 (Loss Function)</h2>
 <blockquote>
 <p>신경망 학습에는 학습이 얼마나 잘 되고 있는지를 알기 위한 척도가 필요하다.</p>
 </blockquote>
 <p><strong>손실</strong>이란 신경망이 예측한 결과를 비교하여 예측이 얼마나 나쁜가를 산출한 <strong>스칼라 값</strong>으로, 성능을 나타내는 척도이다.</p>
 <p>이것을 구하는 것이 바로 <strong>손실 함수</strong>이다.</p>
-<p>우리는 Softmax와 Cross Entropy Error를 통해 손실 함수를 구현할 것이다. 구현에 앞서 두 함수를 알아보자.</p>
-<h2 id="softmax">Softmax</h2>
+<p>우리는 소프트맥스와 교차 엔트로피 오차를 통해 손실 함수를 구현할 것이다.</p>
+<h2 id="소프트맥스-softmax">소프트맥스 (Softmax)</h2>
 <p>$$
 p_k = \frac{\exp{(s_k)}}{\sum_{k=1}^{n}{\exp{(s_k)}}} \quad for \ k=1,2,\dots,k
 \tag{1}
 $$</p>
-<p>[식 1]에서 Softmax 함수의 출력의 각 원소 $p_k$는 $0 \leq p_k \leq 1,\space p_k \in \mathbb{R}$ 이다.</p>
-<p>따라서 Softmax의 출력은 <strong>확률</strong>로 해석할 수 있다. 우리는 이것을 Cross Entropy Error에 입력할 것이다.</p>
-<h2 id="cross-entropy-error">Cross Entropy Error</h2>
+<p>[식 1]에서 소프트맥스 함수의 출력의 각 원소 $p_k$는 $0 \leq p_k \leq 1,\space p_k \in \mathbb{R}$ 이다.</p>
+<p>따라서 소프트맥스의 출력은 <strong>확률</strong>로 해석할 수 있다. 우리는 이것을 교차 엔트로피 오차에 입력할 것이다.</p>
+<h2 id="교차-엔트로피-오차-cross-entropy-error">교차 엔트로피 오차 (Cross Entropy Error)</h2>
 <p>$$
 Loss = - \sum_{k}t_k \log{p_k}
 \tag{2}
@@ -433,7 +435,7 @@ $$</p>
 <blockquote>
 <p>one-hot vector는 단 하나의 원소만 1 이고 그 외에는 0인 벡터이다.</p>
 </blockquote>
-<p>미니 배치를 고려하면 Cross Entropy Error의 식은 아래와 같이 바뀌게 된다.</p>
+<p>미니 배치를 고려하면 교차 엔트로피 오차의 식은 아래와 같이 바뀌게 된다.</p>
 <p>$$
 Loss = - \frac{1}{N} \sum_{n} \sum_{k}t_{nk} \log{p_{nk}}
 \tag{3}
@@ -441,18 +443,6 @@ $$</p>
 <p>[식 3]에서 $N$은 미니 배치의 개수, $t_{nk}$는 $n$번째 데이터의 $k$차원째의 값,
 $p_{nk}$는 신경망의 출력, $t_{nk}$는 정답 레이블이다.</p>
 <p>이는 N으로 나눠서 1 개당의 <strong>평균 손실 함수</strong>를 구하는 것이다. 미니배치의 크기에 관계없이 항상 일관된 척도를 얻을 수 있다.</p>
-<h2 id="신경망-예제">신경망 예제</h2>
-<p>이전 포스팅에서 설계한 신경망에 Softmax 레이어와 Cross Entropy Error 레이어를 새로 추가해 보자.</p>
-<pre class="mermaid">graph LR
-    X==> A[Affine]
-    A==> B[Sigmoid]
-    B==> C[Affine]
-    C==>D[Softmax]
-    T==>E
-    D==>E[Cross Entropy Error]
-    E==>F[L]
-  </pre>
-  <p>$\textbf{x}$는 입력 데이터, $\textbf{t}$는 정답 레이블. $L$은 손실을 나타냅니다.</p>
 <h2 id="행렬의-미분">행렬의 미분</h2>
 <blockquote>
 <p>신경망 학습의 목표는 손실을 최소화하는 매개변수를 찾는 것이다. 이때 중요한 것이 바로 미분과 기울기이다.</p>
@@ -482,9 +472,9 @@ $$</p>
 <p>$\mathbf{W}$가 $m \times n$ 행렬이라면, $L = g(\mathbf{W})$ 함수의 기울기는 [식 5] 같이 쓸 수 있다.</p>
 <p>여기서 중요한 점은 $\mathbf{W}$와 $\frac{\partial L}{\partial \mathbf{x}}$의 형상이 같다는 것이다. 이 성질을 이용하면 매개변수 갱신과 연쇄 법칙을 쉽게
 구현할 수 있다.</p>
-<h2 id="연쇄-법칙">연쇄 법칙</h2>
+<h2 id="연쇄-법칙-chain-rule">연쇄 법칙 (chain-rule)</h2>
 <blockquote>
-<p>우리는 신경망의 학습을 위해 각 매개변수에 대한 손실의 기울기를 구해 매개변수를 갱신할 것이다. 신경망의 기울기는 back-propagation (오차역전파법)을 통해 구할 수 있으며, 이 때 필요한 것이 chain-rule (연쇄 법칙)이다.</p>
+<p>우리는 신경망의 학습을 위해 각 매개변수에 대한 손실의 기울기를 구해 매개변수를 갱신할 것이다. 신경망의 기울기는 오차역전파법 (back-propagation)을 통해 구할 수 있으며, 이 때 필요한 것이 연쇄 법칙이다.</p>
 </blockquote>
 <p>$y=f(x)$와 $z=g(y)$라는 두 함수가 있을 때, $z=g(f(x))$이다.</p>
 <p>$$
@@ -493,11 +483,58 @@ $$</p>
 $$</p>
 <p>$x$에 대한 $z$의 미분은 [식 6]과 같이 $y=f(x)$의 미분과 $z=g(y)$의 미분을 곱해 구할 수 있다. 이것이 바로 연쇄 법칙이다.</p>
 <p>즉, 함수가 아무리 복잡하더라도 개별 함수들의 미분을 통해 효율적인 계산을 할 수 있다는 것이다.</p>
+<h2 id="가중치-갱신">가중치 갱신</h2>
+<p>신경망의 학습은 다음 순서로 수행된다.</p>
+<pre class="mermaid">graph LR
+    a((미니배치))-->b((기울기 계산))-->c((매개변수 갱신))-->a
+  </pre>
+  <p>우선 미니배치에서 데이터를 선택하고, 이어서 오차역전파법으로 가중치의 기울기를 얻는다. 이 기울기는 현재의 가중치 매개변수에서 손실을 가장 크게 하는 방향을 가리킨다. 따라서 매개변수를 그 기울기와 반대 방향으로 갱신하면 손실을 줄일 수 있다. 이것이 바로 <strong>경사하강법</strong>이다.</p>
+<h2 id="확률적경사하강법-stochastic-gradient-descent">확률적경사하강법 (Stochastic Gradient Descent)</h2>
+<p>무작위로 선택된 데이터(미니배치)에 대한 기울기를 이용하여, 현재의 가중치를 기울기 방향으로 일정한 거리만큼 갱신한다.</p>
+<p>$$
+W \gets {W} - \eta {\frac{\partial {L}}{\partial {W}}}
+\tag{7}
+$$</p>
+<p>[식 7]에서 갱신하는 가중치 매개변수는 $\mathbf{W}$
+이고, $\mathbf{W}$에 대한 손실 함수의 기울기는 $\frac{\partial {L}}{\partial {W}}$이다. $\eta$는 학습률 (learning rate)을 나타내고, 0.01이나 0.001 같은 값을 미리 정해서 사용한다.</p>
+<p>이것을 파이썬으로 구현하면 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SGD</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>  <span class="c1"># 학습률</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">grads</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="신경망-예제">신경망 예제</h2>
+<p>이전 포스팅에서 설계한 신경망에 Softmax 레이어와 Cross Entropy Error 레이어를 새로 추가해 보자.</p>
+<pre class="mermaid">graph LR
+    X==> A[Affine]
+    A==> B[Sigmoid]
+    B==> C[Affine]
+    C==>D[Softmax]
+    T==>E
+    D==>E[Cross Entropy Error]
+    E==>F[L]
+  </pre>
+  <p>$\textbf{x}$는 입력 데이터, $\textbf{t}$는 정답 레이블. $L$은 손실을 나타낸다.</p>
 <h2 id="sigmoid의-역전파-구현">Sigmoid의 역전파 구현</h2>
-<p>Sigmoid의 수식은 $y=\frac{1}{1+\exp{-x}}$이다. 그 미분은 아래 [식 7]과 같다.</p>
+<p>Sigmoid의 수식은 $y=\frac{1}{1+\exp{(-x)}}$이다. 그 미분은 아래 [식 7]과 같다.</p>
 <p>$$
 \frac{\partial y}{\partial x} = y(1-y)
-\tag{7}
+\tag{8}
 $$</p>
 <p>이를 파이썬으로 구현하면 아래와 같다.</p>
 <div class="highlight"><div class="chroma">
@@ -525,8 +562,135 @@ $$</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="affine의-역전파-구현">Affine의 역전파 구현</h2>
-<p>작성중..</p>
-
+<p>Affine의 역전파는 MatMul 노드와 Repeat 노드의 역전파를 수행하면 구할 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Affine</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">W</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span> 
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">xz</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span> 
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dout</span><span class="p">)</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">doutz</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">dout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">db</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">grads</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">dW</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">grads</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">dx</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Sigmoid와 Affine 레이어의 back-propagation을 구현했으니, 이제 <code>TwoLayerNet</code> 클래스를 완성해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">TwoLayerNet</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">I</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">O</span> <span class="o">=</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">W1</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W2</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">O</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">b2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">O</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Affine</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">b1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Sigmoid</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Affine</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">b2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">loss_layer</span> <span class="o">=</span> <span class="n">SoftmaxWithLoss</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">+=</span> <span class="n">layer</span><span class="o">.</span><span class="n">params</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">+=</span> <span class="n">layer</span><span class="o">.</span><span class="n">grads</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">loss</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dout</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_layer</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">dout</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">dout</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
