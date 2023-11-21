@@ -600,6 +600,11 @@ $$</p>
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: true });
+    if (document.documentElement.dataset.scheme == 'dark') {
+      mermaid.initialize({theme: 'dark'})
+    } else {
+      mermaid.initialize({theme: 'light'})
+    }
   </script>
 
 
