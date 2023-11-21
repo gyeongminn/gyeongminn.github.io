@@ -432,6 +432,7 @@ if (!doNotTrack) {
 <p>입력층의 데이터를 $\textbf{x}$, 가중치는 $\textbf{W}$, 편향은 $\textbf{b}$로 나타내면 은닉층의 뉴런 $\textbf{h}$는 다음과 같이 나타낼 수 있다.</p>
 <p>$$
 \textbf{h} = \textbf{x} \textbf{W} + \textbf{b}
+\tag{1}
 $$</p>
 <h2 id="sigmoid-활성화-함수">Sigmoid 활성화 함수</h2>
 <blockquote>
@@ -456,6 +457,7 @@ $$</p>
 식은 아래와 같다.</p>
 <p>$$
 \sigma(x)=\frac{1}{1+\exp(-x)}
+\tag{2}
 $$</p>
 <p>이를 파이썬으로 구현하면 다음과 같다.</p>
 <div class="highlight"><div class="chroma">
