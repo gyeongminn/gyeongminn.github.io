@@ -521,13 +521,13 @@ $$</p>
 </div><h2 id="신경망-예제">신경망 예제</h2>
 <p>이전 포스팅에서 설계한 신경망에 Softmax 레이어와 Cross Entropy Error 레이어를 새로 추가해 보자.</p>
 <pre class="mermaid">graph LR
-    X==> A[Affine]
-    A==> B[Sigmoid]
-    B==> C[Affine]
-    C==>D[Softmax]
-    T==>E
-    D==>E[Cross Entropy Error]
-    E==>F[L]
+    x(x)==> A(Affine)
+    A==> B(Sigmoid)
+    B==> C(Affine)
+    C==>D(Softmax)
+    t(t)==>E
+    D==>E(Cross Entropy Error)
+    E==>F(L)
   </pre>
   <p>$\textbf{x}$는 입력 데이터, $\textbf{t}$는 정답 레이블. $L$은 손실을 나타낸다.</p>
 <h2 id="sigmoid의-역전파-구현">Sigmoid의 역전파 구현</h2>
