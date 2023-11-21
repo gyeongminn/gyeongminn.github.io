@@ -363,10 +363,10 @@ $$&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;입력 $\textbf{x}$가 Affine 계층 Sigmoid 계층 Affine 계층을 차례로 거쳐 점수인 $\textbf{s}$를 출력하는 신경망을 만들어 보자.&lt;/p&gt;
 &lt;pre class=&#34;mermaid&#34;&gt;graph LR
-    X--&gt; A[Affine]
-    A--&gt; B[Sigmoid]
-    B--&gt; C[Affine]
-    C--&gt; S[S]
+    X==&gt; A[Affine]
+    A==&gt; B[Sigmoid]
+    B==&gt; C[Affine]
+    C==&gt; S[S]
   &lt;/pre&gt;
   &lt;p&gt;이 신경망을 파이썬으로 구현하면 아래와 같다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
