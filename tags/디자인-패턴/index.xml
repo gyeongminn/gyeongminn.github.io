@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>디자인 패턴 on Gyeongmin의 개발 블로그</title>
+        <link>https://gyeongminn.github.io/tags/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4/</link>
+        <description>Recent content in 디자인 패턴 on Gyeongmin의 개발 블로그</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ko</language>
+        <copyright>Gyeongmin Lee</copyright>
+        <lastBuildDate>Sun, 26 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/tags/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>추상팩토리 패턴</title>
+        <link>https://gyeongminn.github.io/p/abstract-factory-pattern/</link>
+        <pubDate>Sun, 26 Nov 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongminn.github.io/p/abstract-factory-pattern/</guid>
+        <description>&lt;h1 id=&#34;추상-팩토리-패턴&#34;&gt;추상 팩토리 패턴&lt;/h1&gt;
+&lt;p&gt;추상 팩토리 패턴이란 무엇일까요? 이 패턴은 객체 생성을 캡슐화하는 디자인 패턴 중 하나입니다. 즉, 객체를 생성하는 방법을 서브클래스에 위임하는 것이 아니라, 별도의 객체(팩토리)에 위임하는 것입니다. 이렇게 하면, 객체 생성을 변경하거나 확장하기 쉽고, 코드의 결합도를 낮출 수 있습니다.&lt;/p&gt;
+&lt;p&gt;추상 팩토리 패턴의 구조는 다음과 같습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;추상 팩토리(Abstract Factory): 추상적인 팩토리 인터페이스로, 구체적인 팩토리가 구현해야 하는 메서드를 정의합니다. 이 메서드들은 서로 관련된 제품들을 생성하는 역할을 합니다.&lt;/li&gt;
+&lt;li&gt;구체 팩토리(Concrete Factory): 추상 팩토리 인터페이스를 구현하는 클래스로, 실제로 제품 객체를 생성하는 역할을 합니다. 각 구체 팩토리는 특정 제품군을 생성합니다.&lt;/li&gt;
+&lt;li&gt;추상 제품(Abstract Product): 추상적인 제품 인터페이스로, 구체적인 제품이 구현해야 하는 메서드를 정의합니다.&lt;/li&gt;
+&lt;li&gt;구체 제품(Concrete Product): 추상 제품 인터페이스를 구현하는 클래스로, 실제로 사용되는 제품 객체입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예를 들어, GUI 애플리케이션에서 다양한 테마를 적용할 수 있도록 하려면, 다음과 같은 방식으로 추상 팩토리 패턴을 사용할 수 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GUIFactory: 추상 팩토리 인터페이스로, Button과 Checkbox 같은 GUI 요소들을 생성하는 메서드를 정의합니다.&lt;/li&gt;
+&lt;li&gt;WindowsFactory: GUIFactory 인터페이스를 구현하는 클래스로, Windows 스타일의 Button과 Checkbox 객체를 생성합니다.&lt;/li&gt;
+&lt;li&gt;MacOSFactory: GUIFactory 인터페이스를 구현하는 클래스로, MacOS 스타일의 Button과 Checkbox 객체를 생성합니다.&lt;/li&gt;
+&lt;li&gt;LinuxFactory: GUIFactory 인터페이스를 구현하는 클래스로, Linux 스타일의 Button과 Checkbox 객체를 생성합니다.&lt;/li&gt;
+&lt;li&gt;Button: 추상 제품 인터페이스로, 버튼의 공통적인 기능을 정의합니다.&lt;/li&gt;
+&lt;li&gt;WindowsButton: Button 인터페이스를 구현하는 클래스로, Windows 스타일의 버튼입니다.&lt;/li&gt;
+&lt;li&gt;MacOSButton: Button 인터페이스를 구현하는 클래스로, MacOS 스타일의 버튼입니다.&lt;/li&gt;
+&lt;li&gt;LinuxButton: Button 인터페이스를 구현하는 클래스로, Linux 스타일의 버튼입니다.&lt;/li&gt;
+&lt;li&gt;Checkbox: 추상 제품 인터페이스로, 체크박스의 공통적인 기능을 정의합니다.&lt;/li&gt;
+&lt;li&gt;WindowsCheckbox: Checkbox 인터페이스를 구현하는 클래스로, Windows 스타일의 체크박스입니다.&lt;/li&gt;
+&lt;li&gt;MacOSCheckbox: Checkbox 인터페이스를 구현하는 클래스로, MacOS 스타일의 체크박스입니다.&lt;/li&gt;
+&lt;li&gt;LinuxCheckbox: Checkbox 인터페이스를 구현하는 클래스로, Linux 스타일의 체크박스입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이렇게 하면, 애플리케이션에서는 GUIFactory 인터페이스만 사용하면 되고, 특정 테마에 종속되지 않습니다. 또한, 새로운 테마가 추가되더라도 기존 코드를 수정할 필요가 없고, 새로운 구체 팩토리와 구체 제품만 추가하면 됩니다.&lt;/p&gt;
+&lt;p&gt;추상 팩토리 패턴은 다음과 같은 장점을 가집니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;객체 생성을 캡슐화하여, 코드의 결합도를 낮춥니다.&lt;/li&gt;
+&lt;li&gt;객체 생성을 변경하거나 확장하기 쉽습니다.&lt;/li&gt;
+&lt;li&gt;제품군을 일관성 있게 관리할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;하지만, 다음과 같은 단점도 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;인터페이스가 많아지고, 복잡해질 수 있습니다.&lt;/li&gt;
+&lt;li&gt;새로운 종류의 제품이 추가되면, 모든 팩토리와 제품 클래스를 수정해야 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;추상 팩토리 패턴은 객체 생성에 관련된 디자인 패턴 중 하나로, 서로 관련된 제품들을 일관성 있게 생성할 수 있는 방법을 제공합니다. 이 패턴은 객체 생성을 캡슐화하고, 코드의 결합도를 낮추며, 객체 생성을 변경하거나 확장하기 쉽게 만듭니다. 하지만, 인터페이스가 많아지고 복잡해질 수 있으며, 새로운 종류의 제품이 추가되면 모든 클래스를 수정해야 하는 단점도 있습니다. 이 패턴은 GUI 애플리케이션에서 다양한 테마를 적용할 수 있도록 하는 등의 상황에서 유용하게 사용될 수 있습니다.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
