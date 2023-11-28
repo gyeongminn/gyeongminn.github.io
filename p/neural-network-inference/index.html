@@ -439,21 +439,13 @@ $$</p>
 <p>완전연결계층에 의한 변환은 선형 변환이다. 여기에 비선형 효과를 부여하는 것이 바로 <strong>활성화 함수</strong>이다. 이를 통해 신경망의 표현력을 높일 수 있다.</p>
 </blockquote>
 <p>가장 대표적인 활성화 함수인 Sigmoid를 알아보자.</p>
-<p><img src="/p/neural-network-inference/image-1.png"
-	width="1017"
-	height="808"
-	srcset="/p/neural-network-inference/image-1_hu1b6b6abc5bb9ccfb8a6085306da22ec8_33993_480x0_resize_box_3.png 480w, /p/neural-network-inference/image-1_hu1b6b6abc5bb9ccfb8a6085306da22ec8_33993_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="Sigmoid 곡선"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="125"
-		data-flex-basis="302px"
-	
-></p>
-<p>시그모이드 함수는 S자와 유사한 완만한 곡선을 가진다.
+<pre class="mermaid">xychart-beta
+    title "Sigmoid"
+    y-axis 0 --> 1
+    x-axis [-5, "-4.5", -4, "-3.5", -3, "-2.5", -2, "-1.5", -1, "-0.5", 0, "0.5", 1, "1.5", 2, "2.5", 3, "3.5", 4, "4.5", 5]
+    line [0.0066928509242848554, 0.01098694263059318, 0.01798620996209156, 0.02931223075135632, 0.04742587317756678, 0.07585818002124355, 0.11920292202211755, 0.18242552380635635, 0.2689414213699951, 0.3775406687981454, 0.5, 0.6224593312018546, 0.7310585786300049, 0.8175744761936437, 0.8807970779778823, 0.9241418199787566, 0.9525741268224334, 0.9706877692486436, 0.9820137900379085, 0.9890130573694068, 0.9933071490757153]
+  </pre>
+  <p>시그모이드 함수는 S자와 유사한 완만한 곡선을 가진다.
 식은 아래와 같다.</p>
 <p>$$
 \sigma(x)=\frac{1}{1+\exp(-x)}
@@ -674,6 +666,25 @@ $$</p>
     <h2 class="section-title">관련 글</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/word-distributed-representation/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/../images/deep-learning-from-scratch.jpeg" loading="lazy" data-key="word-distributed-representation" data-hash="/../images/deep-learning-from-scratch.jpeg"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">단어의 분산 표현</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="has-image">
