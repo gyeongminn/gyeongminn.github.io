@@ -453,14 +453,14 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;동시 발생 행렬&lt;/strong&gt;은 두 단어가 동시에 발생한 빈도를 측정한다. 하지만 이것만으로는 부족하다. &amp;rsquo;the&amp;rsquo;, &amp;rsquo;this&amp;rsquo;처럼 &lt;strong&gt;고빈도 단어&lt;/strong&gt; 의 경우를 생각해 보자.&lt;/p&gt;
 &lt;p&gt;&amp;lsquo;drive&amp;rsquo;, &amp;rsquo;the&amp;rsquo; 중에 &amp;lsquo;car&amp;rsquo;와 더  유사한 단어는 무엇인가? 모두 &amp;lsquo;drive&amp;rsquo;와 유사한 단어로 &amp;lsquo;car&amp;rsquo;를 고를 것이다.&lt;/p&gt;
 &lt;p&gt;하지만 동시 발생 빈도는 &amp;rsquo;the&amp;rsquo;가 압도적으로 높을 것이다. 동시 발생 행렬에서는 &amp;rsquo;the&amp;rsquo; 자체가 문서에서 &lt;strong&gt;더 많이 등장&lt;/strong&gt;하기에, 더 높은 유사성을 갖는다고 잘못 평가할 수 있다.&lt;/p&gt;
-&lt;p&gt;이 문제를 해결하기 위해 &lt;strong&gt;점별 상호정보량&lt;/strong&gt;(PMI, Pointwise Mutual information) 이라는 척도를 사용할 것이다.&lt;/p&gt;
+&lt;p&gt;이 문제를 해결하기 위해 &lt;strong&gt;점별 상호정보량&lt;/strong&gt;(PMI, Pointwise Mutual Information) 이라는 척도를 사용할 것이다.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;PMI&lt;/strong&gt;는 확률 변수 $x$와 $y$에 대해 다음과 같은 식으로 정의된다.&lt;/p&gt;
 &lt;p&gt;$$
 \tag{2}
 \text{PMI}(x,y)=\log_2\frac{P(x,y)}{P(x)P(y)}
 $$&lt;/p&gt;
 &lt;p&gt;[식 2]에서 $P(x)$는 $x$가 일어날 확률, $P(y)$는 $y$가 일어날 확률, $P(x,y)$는 $x, y$가 동시에 일어날 확률이다. PMI가 높을 수록 관련성이 높다는 의미이다.&lt;/p&gt;
-&lt;p&gt;자연어 처리에서 $P(x)$는 말뭉치에서 $x$라는 단어가 등장할 확률이다. 예를 들어, 단어 100,000개의 말뭉치에서 &amp;rsquo;the&amp;rsquo;라는 단어가 100번 등장했다면, $P(`the&amp;rsquo;) = 0.0001$이다.&lt;/p&gt;
+&lt;p&gt;자연어 처리에서 $P(x)$는 말뭉치에서 $x$라는 단어가 등장할 확률이다. 예를 들어, 단어 100,000개의 말뭉치에서 &amp;rsquo;the&amp;rsquo;라는 단어가 100번 등장했다면, $P(`\text{the}&amp;rsquo;) = 0.0001$이다.&lt;/p&gt;
 &lt;p&gt;하지만 PMI도 문제가 있다. 동시 발생 횟수가 0이라면 PMI는 $-\infty$가 된다.&lt;/p&gt;
 &lt;p&gt;따라서 &lt;strong&gt;PPMI&lt;/strong&gt;(Positive PMI) 라는 척도를 쓴다. 이는 다음과 같다.&lt;/p&gt;
 &lt;p&gt;$$
