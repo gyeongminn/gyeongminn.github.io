@@ -319,7 +319,28 @@ if (!doNotTrack) {
             <nav id="TableOfContents">
   <ol>
     <li><a href="#자연어-처리와-단어의-의미">자연어 처리와 단어의 의미</a></li>
-    <li><a href="#시소러스">시소러스</a></li>
+    <li><a href="#시소러스">시소러스</a>
+      <ol>
+        <li><a href="#wordnet">WordNet</a></li>
+        <li><a href="#문제점">문제점</a></li>
+      </ol>
+    </li>
+    <li><a href="#통계-기반-기법">통계 기반 기법</a>
+      <ol>
+        <li><a href="#말뭉치-전처리">말뭉치 전처리</a></li>
+        <li><a href="#분포-가설과-분산-표현">분포 가설과 분산 표현</a></li>
+        <li><a href="#동시-행렬-발생">동시 행렬 발생</a></li>
+        <li><a href="#벡터간-유사도">벡터간 유사도</a></li>
+        <li><a href="#유사-단어의-랭킹">유사 단어의 랭킹</a></li>
+      </ol>
+    </li>
+    <li><a href="#통계-기반-기법의-개선">통계 기반 기법의 개선</a>
+      <ol>
+        <li><a href="#상호정보량">상호정보량</a></li>
+        <li><a href="#차원-축소">차원 축소</a></li>
+        <li><a href="#ptb-데이터셋-평가">PTB 데이터셋 평가</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -409,10 +430,671 @@ if (!doNotTrack) {
 </blockquote>
 <p>사람이 직접 단어의 의미를 정의하는 방식으로, 쉽게 말해 &lsquo;유의어 사전&rsquo;이다.</p>
 <p>car, auto, automobile은 모두 자동차를 나타낸다. 시소러스에서는 이러한 유의어/동의어를 한 그룹으로 분류되어 있다.</p>
-<p>또한 단어 간의 상위/하위, 전체/부분 등 세세한 관계까지 정의하기도 한다.</p>
-<pre class="mermaid">tree
+<pre class="mermaid">graph LR
+car~~~auto~~~automobile
   </pre>
-  
+  <p>또한 단어 간의 상위/하위, 전체/부분 등 세세한 관계까지 정의하기도 한다.</p>
+<pre class="mermaid">flowchart TD
+    a[object] --> b[mortor vehicle]
+    b --> d[go-cart]
+    b --> c[car]
+    b --> e[truck]
+    c --> f[suv]
+    c --> g[compact]
+    c --> h[hatch-back]
+  </pre>
+  <h3 id="wordnet">WordNet</h3>
+<p>1985년 구축된 WordNet은 자연어 처리 분야에서 가장 유명한 시소러스이다.</p>
+<p>WordNet을 사용하면 유의어를 얻거나, 단어 네트워크를 사용해 단어 간의 유사도를 구할 수 있다.</p>
+<h3 id="문제점">문제점</h3>
+<p>사람이 수작업으로 라벨링 해야하기에 여러 단점이 존재한다.</p>
+<ul>
+<li>
+<p>시대 변화에 대응하기 어렵다.</p>
+<ul>
+<li>단어의 의미는 시간이 지남에 따라 변하기도 하고, 새로운 단어가 생기기도 한다.</li>
+</ul>
+</li>
+<li>
+<p>비용이 많이 든다.</p>
+<ul>
+<li>영어 단어만 해도 1000만개가 넘으며, 이는 높은 인적 비용을 요구한다.</li>
+</ul>
+</li>
+<li>
+<p>단어 간의 미묘한 차이를 표현할 수 없다.</p>
+<ul>
+<li>예를 들어 빈티지와 레트로의 경우 의미는 같지만, 용법은 다르다. 시소러스는 이러한 차이를 표현할 수 없다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="통계-기반-기법">통계 기반 기법</h2>
+<p>통계 기반 기법을 사용하기 위해 우리는 말뭉치(corpus)를 이용할 것이다.</p>
+<p>말뭉치란 자연어처리 연구나 어플리케이션을 위해 수집된 대량의 텍스트 데이터로, 대표적인 말뭉치는 위키백과, 구글뉴스, 셰익스피어의 소설 등이 있다.</p>
+<h3 id="말뭉치-전처리">말뭉치 전처리</h3>
+<p>작은 말뭉치를 전처리하는 과정을 살펴보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;You say goodbye and I say hello.&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>  <span class="c1"># 모두 소문자로 변환</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39; .&#39;</span><span class="p">)</span>  <span class="c1"># &#39;.&#39;을 &#39; .&#39;으로 변환</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">text</span> 
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;you say goodbye and i say hello .&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>모든 단어를 소문자로 변환하고, 단어의 마지막 점을 띄워줬다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>  <span class="c1"># 공백을 기준으로 나눔</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">words</span> 
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="s1">&#39;say&#39;</span><span class="p">,</span> <span class="s1">&#39;goodbye&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;say&#39;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>공백을 기준으로 나눠, 리스트에 담았다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">word_to_id</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">id_to_word</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>     <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word_to_id</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>         <span class="n">new_id</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_to_id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>         <span class="n">word_to_id</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_id</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>         <span class="n">id_to_word</span><span class="p">[</span><span class="n">new_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">word</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>word_to_id</code> 의 경우 key가 단어, value는 id이다. <code>id_to_word</code>는 그 반대이다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">id_to_word</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;say&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;goodbye&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;.&#39;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">word_to_id</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="s1">&#39;you&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;say&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;goodbye&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>마지막으로 단어 목록을 단어 ID 목록으로 변환하면 된다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">corpus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">word_to_id</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">corpus</span>
+</span></span><span class="line"><span class="cl"><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이렇게 범주형 변수를 숫자로 바꾸는 것을 <strong>원 핫 인코딩(one-hot encodeing)</strong> 이라고 한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39; .&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">word_to_id</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">id_to_word</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word_to_id</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">new_id</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_to_id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">word_to_id</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_id</span>
+</span></span><span class="line"><span class="cl">            <span class="n">id_to_word</span><span class="p">[</span><span class="n">new_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">word</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">corpus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">word_to_id</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">corpus</span><span class="p">,</span> <span class="n">word_to_id</span><span class="p">,</span> <span class="n">id_to_word</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="분포-가설과-분산-표현">분포 가설과 분산 표현</h3>
+<blockquote>
+<p>비슷한 위치에서 등장한 단어는 비슷한 의미를 가지지 않을까?</p>
+</blockquote>
+<p>&ldquo;단어의 의미는 주변 단어에 의해 형성된다.&rdquo; 라는 것을 <strong>분포 가설</strong>이라고 한다.</p>
+<p>단어 자체에는 의미가 없고, 그 단어가 사용 된 맥락이 의미를 형성한다는 것이다. 여기서 맥락이란 특정 단어를 중심에 둔 그 주변 단어를 말한다.</p>
+<p>좌우 모든 단어를 고려하며 계산하면 컴퓨팅 비용이 너무 많이 들기에, 우리는 특정 크기만큼만 고려할 것이다. 즉, 슬라이딩 윈도우를 적용할 것이다. &lsquo;맥락의 크기&rsquo;는 슬라이딩 윈도우의 사이즈와 같다.</p>
+<p><strong>분산 표현</strong> 이란 <strong>분포 가설에 기반해 주변 단어의 분포를 기준으로 단어의 벡터 표현을 결정하는 것</strong> 이다.</p>
+<h3 id="동시-행렬-발생">동시 행렬 발생</h3>
+<p>분포 가설에 기초해 단어를 벡터로 나타내 보자.</p>
+<p>가장 간단한 방법은 한 단어에 주목하여, 주변에 어떤 단어가 몇 번 등장했는지 계산하는 것이다. 이는 통계 기반 기법(statistical based)이라고 한다.</p>
+<blockquote>
+<p>{&lsquo;you&rsquo;: 0, &lsquo;say&rsquo;: 1, &lsquo;goodbye&rsquo;: 2, &lsquo;and&rsquo;: 3, &lsquo;i&rsquo;: 4, &lsquo;hello&rsquo;: 5, &lsquo;.&rsquo;: 6}</p>
+</blockquote>
+<p>예를 들어, &lsquo;<U>you</U> <strong>say</strong> <U>goodbye</U> and <U>i</U> <strong>say</strong> <U>hello</U> .&rsquo; 에서 &lsquo;say&rsquo;를 기준으로 살펴보자.</p>
+<p>&lsquo;say&rsquo; 좌우로 &lsquo;you&rsquo;, &lsquo;goodbye&rsquo;, &lsquo;i&rsquo;, &lsquo;hello&rsquo; 가 있다.</p>
+<p>이는 벡터 &lsquo;[1, 0, 1, 0, 1, 1, 0]&rsquo; 으로 표현 할 수 있을 것이다.</p>
+<p>이것을 모든 단어에 대해 적용시킨다면 아래와 같은 테이블을 얻을 수 있을 것이다.</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">you</th>
+<th style="text-align:center">say</th>
+<th style="text-align:center">goodbye</th>
+<th style="text-align:center">and</th>
+<th style="text-align:center">i</th>
+<th style="text-align:center">hello</th>
+<th style="text-align:center">.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">you</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">say</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">goodbye</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">and</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">hello</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>이것을 <strong>동시 발생 행렬</strong> 이라고 한다.</p>
+<p>동시 발생 행렬을 만드는 코드는 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_co_matrix</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">corpus_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">co_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">corpus</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">left_idx</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">-</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">            <span class="n">right_idx</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">+</span> <span class="n">i</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">left_idx</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">left_word_id</span> <span class="o">=</span> <span class="n">corpus</span><span class="p">[</span><span class="n">left_idx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                <span class="n">co_matrix</span><span class="p">[</span><span class="n">word_id</span><span class="p">,</span> <span class="n">left_word_id</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">right_idx</span> <span class="o">&lt;</span> <span class="n">corpus_size</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">right_word_id</span> <span class="o">=</span> <span class="n">corpus</span><span class="p">[</span><span class="n">right_idx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                <span class="n">co_matrix</span><span class="p">[</span><span class="n">word_id</span><span class="p">,</span> <span class="n">right_word_id</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">co_matrix</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="벡터간-유사도">벡터간 유사도</h3>
+<p>앞서 구한 행렬을 통해 벡터 간의 유사도를 구한다면 단어 간의 유사도를 구할 수 있을 것이다.</p>
+<p>벡터의 유사도를 측정하는 대표적인 방법으로는 벡터의 내적이나 유클리드 거리, 코사인 유사도가 있다. 이 중, 우리는 코사인 유사도를 사용할 것이다.</p>
+<p>$$
+\tag{1}
+\text{similarity}(A, B)=\frac{A⋅B}{||A||\ ||B||}=\frac{\sum_{i=1}^{n}{A_{i}B_{i}}}{\sqrt{\sum_{i=1}^{n}(A_{i})^2}\sqrt{\sum_{i=1}^{n}(B_{i})^2}}
+$$</p>
+<p>[식 1]의 분자에는 벡터의 내적이, 분모에는 각 벡터의 노름(norm)이 등장한다. 노름은 벡터의 크기를 나타낸 것으로, 여기선 L2 노름을 계산한다.</p>
+<blockquote>
+<p>코사인 유사도는 두 벡터가 가르키는 방향이 얼마나 유사한지를 나타낸다. 방향이 같으면 1, 반대면 -1이다.</p>
+</blockquote>
+<p>파이썬 코드로는 아래와 같이 나타낼 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">cos_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>  <span class="c1"># x의 정규화</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>  <span class="c1"># y의 정규화</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>0으로 나누어 오류가 나는 일이 없도록 $10^{-8}$ 이라는 작은 값을 더해주는 것을 볼 수 있다.</p>
+<h3 id="유사-단어의-랭킹">유사 단어의 랭킹</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">most_similar</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">word_to_id</span><span class="p">,</span> <span class="n">id_to_word</span><span class="p">,</span> <span class="n">word_matrix</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">query</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word_to_id</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> is not found&#39;</span> <span class="o">%</span> <span class="n">query</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[query] &#39;</span> <span class="o">+</span> <span class="n">query</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">query_id</span> <span class="o">=</span> <span class="n">word_to_id</span><span class="p">[</span><span class="n">query</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">query_vec</span> <span class="o">=</span> <span class="n">word_matrix</span><span class="p">[</span><span class="n">query_id</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">id_to_word</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">similarity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">similarity</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cos_similarity</span><span class="p">(</span><span class="n">word_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">query_vec</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">similarity</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">id_to_word</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">query</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; </span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">id_to_word</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">similarity</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;=</span> <span class="n">top</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>위 코드로 &lsquo;you&rsquo; 와 유사한 단어를 찾아보자.</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">goodbye</td>
+<td>0.7071067691154799</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td>0.7071067691154799</td>
+</tr>
+<tr>
+<td style="text-align:center">hello</td>
+<td>0.7071067691154799</td>
+</tr>
+<tr>
+<td style="text-align:center">say</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td style="text-align:center">and</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table></div>
+<p>&lsquo;goodbye&rsquo;, &lsquo;i&rsquo;, &lsquo;hello&rsquo;의 경우 &lsquo;say&rsquo;나 &lsquo;and&rsquo;에 비해 유사하다고 볼 수 있다.</p>
+<h2 id="통계-기반-기법의-개선">통계 기반 기법의 개선</h2>
+<h3 id="상호정보량">상호정보량</h3>
+<blockquote>
+<p>발생 횟수는 좋은 특징이 아니다</p>
+</blockquote>
+<p><strong>동시 발생 행렬</strong>은 두 단어가 동시에 발생한 빈도를 측정한다. 하지만 이것만으로는 부족하다. &rsquo;the&rsquo;, &rsquo;this&rsquo;처럼 <strong>고빈도 단어</strong> 의 경우를 생각해 보자.</p>
+<p>&lsquo;drive&rsquo;, &rsquo;the&rsquo; 중에 &lsquo;car&rsquo;와 더  유사한 단어는 무엇인가? 모두 &lsquo;drive&rsquo;와 유사한 단어로 &lsquo;car&rsquo;를 고를 것이다.</p>
+<p>하지만 동시 발생 빈도는 &rsquo;the&rsquo;가 압도적으로 높을 것이다. 동시 발생 행렬에서는 &rsquo;the&rsquo; 자체가 문서에서 <strong>더 많이 등장</strong>하기에, 더 높은 유사성을 갖는다고 잘못 평가할 수 있다.</p>
+<p>이 문제를 해결하기 위해 <strong>점별 상호정보량</strong>(PMI, Pointwise Mutual information) 이라는 척도를 사용할 것이다.</p>
+<p><strong>PMI</strong>는 확률 변수 $x$와 $y$에 대해 다음과 같은 식으로 정의된다.</p>
+<p>$$
+\tag{2}
+\text{PMI}(x,y)=\log_2\frac{P(x,y)}{P(x)P(y)}
+$$</p>
+<p>[식 2]에서 $P(x)$는 $x$가 일어날 확률, $P(y)$는 $y$가 일어날 확률, $P(x,y)$는 $x, y$가 동시에 일어날 확률이다. PMI가 높을 수록 관련성이 높다는 의미이다.</p>
+<p>자연어 처리에서 $P(x)$는 말뭉치에서 $x$라는 단어가 등장할 확률이다. 예를 들어, 단어 100,000개의 말뭉치에서 &rsquo;the&rsquo;라는 단어가 100번 등장했다면, $P(`the&rsquo;) = 0.0001$이다.</p>
+<p>하지만 PMI도 문제가 있다. 동시 발생 횟수가 0이라면 PMI는 $-\infty$가 된다.</p>
+<p>따라서 <strong>PPMI</strong>(Positive PMI) 라는 척도를 쓴다. 이는 다음과 같다.</p>
+<p>$$
+\tag{3}
+\text{PPMI}(x, y) = \max(0, \text{PMI}(x,y))
+$$</p>
+<p>[식 3]에서는 PMI가 음수면 0으로 취급한다.</p>
+<p>이제 PPMI를 파이썬으로 구현해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">ppmi</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pmi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span> <span class="o">/</span> <span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pmi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">M</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이제 동시 발생 행렬을 PPMI로 변환해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;You say goodbye and I say hello.&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">corpus</span><span class="p">,</span> <span class="n">word_to_id</span><span class="p">,</span> <span class="n">id_to_word</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_to_id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">C</span> <span class="o">=</span> <span class="n">create_co_matrix</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">W</span> <span class="o">=</span> <span class="n">ppmi</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 유효 자릿수를 세 자리로 표시</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;동시발생 행렬&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PPMI&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>위 코드를 실행시킨 결과는 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">동시발생 행렬
+</span></span><span class="line"><span class="cl">[[0 1 0 0 0 0 0]
+</span></span><span class="line"><span class="cl"> [1 0 1 0 1 1 0]
+</span></span><span class="line"><span class="cl"> [0 1 0 1 0 0 0]
+</span></span><span class="line"><span class="cl"> [0 0 1 0 1 0 0]
+</span></span><span class="line"><span class="cl"> [0 1 0 1 0 0 0]
+</span></span><span class="line"><span class="cl"> [0 1 0 0 0 0 1]
+</span></span><span class="line"><span class="cl"> [0 0 0 0 0 1 0]]
+</span></span><span class="line"><span class="cl">--------------------------------------------------
+</span></span><span class="line"><span class="cl">PPMI
+</span></span><span class="line"><span class="cl">[[0.    1.807 0.    0.    0.    0.    0.   ]
+</span></span><span class="line"><span class="cl"> [1.807 0.    0.807 0.    0.807 0.807 0.   ]
+</span></span><span class="line"><span class="cl"> [0.    0.807 0.    1.807 0.    0.    0.   ]
+</span></span><span class="line"><span class="cl"> [0.    0.    1.807 0.    1.807 0.    0.   ]
+</span></span><span class="line"><span class="cl"> [0.    0.807 0.    1.807 0.    0.    0.   ]
+</span></span><span class="line"><span class="cl"> [0.    0.807 0.    0.    0.    0.    2.807]
+</span></span><span class="line"><span class="cl"> [0.    0.    0.    0.    0.    2.807 0.   ]]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이제 더 좋은 단어 벡터를 얻었다.</p>
+<p>하지만 아직 문제점이 있다. 벡터의 크기가 너무 크다는 것이다. 단어의 개수가 10만개라면, 벡터의 차운 수도 10만이 된다.</p>
+<p>또한, 대부분 0으로 구성된 희소행렬(Sparse Matrix)이다.</p>
+<p>이는 매우 비효율적이고, 노이즈에 취약하다.</p>
+<h3 id="차원-축소">차원 축소</h3>
+<p>차원 축소는 중요한 정보는 최대한 유지하되, 벡터의 차원을 줄이는 것이다. 특잇값 분해를 적용해보자.</p>
+<p>특잇값 분해에 대한 자세한 설명은 여기를 참고하자. <a class="link" href="https://pasus.tistory.com/15"  target="_blank" rel="noopener"
+    >https://pasus.tistory.com/15</a></p>
+<p>특잇값 분해를 사용한 파이썬 코드는 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;You say goodbye and I say hello.&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">corpus</span><span class="p">,</span> <span class="n">word_to_id</span><span class="p">,</span> <span class="n">id_to_word</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">id_to_word</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">C</span> <span class="o">=</span> <span class="n">create_co_matrix</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">W</span> <span class="o">=</span> <span class="n">ppmi</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># SVD</span>
+</span></span><span class="line"><span class="cl"><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 유효 자릿수를 세 자리로 표시</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 플롯</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">word_id</span> <span class="ow">in</span> <span class="n">word_to_id</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">word_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="n">word_id</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/word-distributed-representation/myplot.png"
+	width="640"
+	height="480"
+	srcset="/p/word-distributed-representation/myplot_huf803c14a96123a2f3e5d87800bfe075b_11535_480x0_resize_box_3.png 480w, /p/word-distributed-representation/myplot_huf803c14a96123a2f3e5d87800bfe075b_11535_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Alt text"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p>위 코드는 동시발생 행렬에 SVD를 적용한 후 각 단어를 2차원 벡터로 변환한 것을 시각화 한 것이다.</p>
+<h3 id="ptb-데이터셋-평가">PTB 데이터셋 평가</h3>
+<p>이번에는 많은 양의 데이터를 처리해야 하므로, sklearn의 고속 SVD를 사용하자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">ptb</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.utils.extmath</span> <span class="kn">import</span> <span class="n">randomized_svd</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">window_size</span> <span class="o">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="n">wordvec_size</span> <span class="o">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">corpus</span><span class="p">,</span> <span class="n">word_to_id</span><span class="p">,</span> <span class="n">id_to_word</span> <span class="o">=</span> <span class="n">ptb</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;train&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_to_id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">C</span> <span class="o">=</span> <span class="n">create_co_matrix</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">W</span> <span class="o">=</span> <span class="n">ppmi</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="n">wordvec_size</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">word_vecs</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="n">wordvec_size</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">querys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;toyota&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">querys</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">most_similar</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">word_to_id</span><span class="p">,</span> <span class="n">id_to_word</span><span class="p">,</span> <span class="n">word_vecs</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이제 드디어 단어의 의미를 벡터로 잘 인코딩했다.</p>
+<p>말뭉치를 사용해 맥락에 속한 단어의 등장 횟수를 센 후 PPMI 행렬로 변환하고, 다시 SVD를 이용해 차원을 감소시킴으로써 더 좋은 단어 벡터를 얻어냈다.</p>
+<p>이것이 단어의 분산 표현이고, 각 단어는 고정 길이의 밀집벡터로 표현되었다.</p>
+<blockquote>
+<p>단어의 벡터 공간에서는 의미가 가까운 단어는 그 거리도 가깝다.</p>
+</blockquote>
+
 </section>
 
 
