@@ -1058,7 +1058,6 @@ $$</p>
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dataset</span> <span class="kn">import</span> <span class="n">ptb</span>
@@ -1071,7 +1070,6 @@ $$</p>
 </span></span><span class="line"><span class="cl"><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_to_id</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">C</span> <span class="o">=</span> <span class="n">create_co_matrix</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">W</span> <span class="o">=</span> <span class="n">ppmi</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="n">wordvec_size</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
