@@ -866,13 +866,13 @@ $$</p>
 $$</p>
 <p>[식 2]에서 $P(x)$는 $x$가 일어날 확률, $P(y)$는 $y$가 일어날 확률, $P(x,y)$는 $x, y$가 동시에 일어날 확률이다. PMI가 높을 수록 관련성이 높다는 의미이다.</p>
 <p>자연어 처리에서 $P(x)$는 말뭉치에서 $x$라는 단어가 등장할 확률이다. 예를 들어, 단어 100,000개의 말뭉치에서 &rsquo;the&rsquo;라는 단어가 100번 등장했다면, $P(`\text{the}&rsquo;) = 0.0001$이다.</p>
-<p>하지만 PMI도 문제가 있다. 동시 발생 횟수가 0이라면 PMI는 $-\infty$가 된다.</p>
+<p>하지만 PMI도 문제가 있다. 동시 발생 횟수가 0이라면 PMI 값은 $-\infty$가 된다.</p>
 <p>따라서 <strong>PPMI</strong>(Positive PMI) 라는 척도를 쓴다. 이는 다음과 같다.</p>
 <p>$$
 \tag{3}
 \text{PPMI}(x, y) = \max(0, \text{PMI}(x,y))
 $$</p>
-<p>[식 3]에서는 PMI가 음수면 0으로 취급한다.</p>
+<p>[식 3]을 보면, PPMI는 PMI값이 음수면 0으로 취급한다는 것을 확인할 수 있다.</p>
 <p>이제 PPMI를 파이썬으로 구현해 보자.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
