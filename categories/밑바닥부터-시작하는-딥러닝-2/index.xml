@@ -24,7 +24,7 @@
 &lt;p&gt;단어의 의미를 나타내는 가장 Naive한 방법&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;사람이 직접 단어의 의미를 정의하는 방식으로, 쉽게 말해 &amp;lsquo;유의어 사전&amp;rsquo;이다.&lt;/p&gt;
-&lt;p&gt;car, auto, automobile은 모두 자동차를 나타낸다. 시소러스에서는 이러한 유의어/동의어를 한 그룹으로 분류되어 있다.&lt;/p&gt;
+&lt;p&gt;car, auto, automobile은 모두 자동차를 나타낸다. 시소러스에서는 이러한 유의어/동의어를 한 그룹으로 분류한다.&lt;/p&gt;
 &lt;pre class=&#34;mermaid&#34;&gt;graph LR
 car~~~auto~~~automobile
   &lt;/pre&gt;
