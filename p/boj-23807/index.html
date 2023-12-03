@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='백준 20437번 문자열 게임 2 C&#43;&#43; 풀이'>
-<title>BOJ 20437: 문자열 게임 2 (C&#43;&#43;)</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='백준 23807번 두 단계 최단 경로 3 Python 풀이'>
+<title>BOJ 23807: 두 단계 최단 경로 3 (Python)</title>
 
-<link rel='canonical' href='https://gyeongminn.github.io/p/boj-20437/'>
+<link rel='canonical' href='https://gyeongminn.github.io/p/boj-23807/'>
 
-<link rel="stylesheet" href="/scss/style.min.8ebc38c19386f64c0eab3b3947f73b017ad52e8c028dd5718411693ad841d818.css"><meta property='og:title' content='BOJ 20437: 문자열 게임 2 (C&#43;&#43;)'>
-<meta property='og:description' content='백준 20437번 문자열 게임 2 C&#43;&#43; 풀이'>
-<meta property='og:url' content='https://gyeongminn.github.io/p/boj-20437/'>
+<link rel="stylesheet" href="/scss/style.min.8ebc38c19386f64c0eab3b3947f73b017ad52e8c028dd5718411693ad841d818.css"><meta property='og:title' content='BOJ 23807: 두 단계 최단 경로 3 (Python)'>
+<meta property='og:description' content='백준 23807번 두 단계 최단 경로 3 Python 풀이'>
+<meta property='og:url' content='https://gyeongminn.github.io/p/boj-23807/'>
 <meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='알고리즘' /><meta property='article:tag' content='C&#43;&#43;' /><meta property='og:image' content='https://gyeongminn.github.io/images/boj.png' />
-<meta name="twitter:title" content="BOJ 20437: 문자열 게임 2 (C&#43;&#43;)">
-<meta name="twitter:description" content="백준 20437번 문자열 게임 2 C&#43;&#43; 풀이"><meta name="twitter:card" content="summary_large_image">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='알고리즘' /><meta property='article:tag' content='파이썬' /><meta property='og:image' content='https://gyeongminn.github.io/images/boj.png' />
+<meta name="twitter:title" content="BOJ 23807: 두 단계 최단 경로 3 (Python)">
+<meta name="twitter:description" content="백준 23807번 두 단계 최단 경로 3 Python 풀이"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gyeongminn.github.io/images/boj.png' />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBG63ZJRZM"></script>
 <script>
@@ -323,14 +323,9 @@ if (!doNotTrack) {
     <li><a href="#문제">문제</a></li>
     <li><a href="#입력">입력</a></li>
     <li><a href="#출력">출력</a></li>
-    <li><a href="#풀이">풀이</a>
-      <ol>
-        <li><a href="#인덱스-전처리">인덱스 전처리</a></li>
-        <li><a href="#슬라이딩-윈도우-적용">슬라이딩 윈도우 적용</a></li>
-        <li><a href="#정답-출력">정답 출력</a></li>
-      </ol>
-    </li>
+    <li><a href="#풀이">풀이</a></li>
     <li><a href="#소스-코드">소스 코드</a></li>
+    <li><a href="#후기">후기</a></li>
   </ol>
 </nav>
         </div>
@@ -345,9 +340,9 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/boj-20437/">
+            <a href="/p/boj-23807/">
                 
-                    <img src="/../images/boj.png" loading="lazy" alt="Featured image of post BOJ 20437: 문자열 게임 2 (C&#43;&#43;)" />
+                    <img src="/../images/boj.png" loading="lazy" alt="Featured image of post BOJ 23807: 두 단계 최단 경로 3 (Python)" />
                 
             </a>
         </div>
@@ -366,12 +361,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/boj-20437/">BOJ 20437: 문자열 게임 2 (C&#43;&#43;)</a>
+            <a href="/p/boj-23807/">BOJ 23807: 두 단계 최단 경로 3 (Python)</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            백준 20437번 문자열 게임 2 C&#43;&#43; 풀이
+            백준 23807번 두 단계 최단 경로 3 Python 풀이
         </h3>
         
     </div>
@@ -394,151 +389,30 @@ if (!doNotTrack) {
     >https://www.acmicpc.net/problem/20437</a></p>
 </blockquote>
 <h2 id="문제">문제</h2>
-<p>작년에 이어 새로운 문자열 게임이 있다. 게임의 진행 방식은 아래와 같다.</p>
-<ol>
-<li>
-<p>알파벳 소문자로 이루어진 문자열 $W$가 주어진다.</p>
-</li>
-<li>
-<p>양의 정수 $K$가 주어진다.</p>
-</li>
-<li>
-<p>어떤 문자를 정확히 $K$개를 포함하는 가장 짧은 연속 문자열의 길이를 구한다.</p>
-</li>
-<li>
-<p>어떤 문자를 정확히 $K$개를 포함하고, 문자열의 첫 번째와 마지막 글자가 해당 문자로 같은 가장 긴 연속 문자열의 길이를 구한다.</p>
-</li>
-</ol>
-<p>위와 같은 방식으로 게임을 $T$회 진행한다.</p>
+<p>서준이는 아빠로부터 생일선물로 세계 지도를 받아서 매우 기뻤다. 세계 지도에서 최단 경로를 찾는 프로그램을 개발해서 아빠께 감사의 마음을 전달하려고 한다. 세계 지도는 도시를 정점으로 갖고 도시 간의 도로를 간선으로 갖는 무방향성 그래프이며(undirected graph), 도로의 길이가 간선의 가중치이다. 출발 정점 $X$에서 출발해서 $P$개의 중간 정점 중 적어도 세 개의 정점을 반드시 거친 후 도착 정점 $Z$에 도달하는 최단 거리를 구해서 우리 서준이를 도와주자.</p>
 <h2 id="입력">입력</h2>
-<p>문자열 게임의 수 $T$가 주어진다. $(1 ≤ T ≤ 100)$</p>
-<p>다음 줄부터 2개의 줄 동안 문자열 $W$와 정수 $K$가 주어진다. $(1 ≤ K ≤ |W| ≤ 10,000) $</p>
+<p>첫째 줄에 정점의 수 $N(10 \leq N \leq 100,000)$, 간선의 수 $M(10 \leq M \leq 300,000)$이 주어진다.</p>
+<p>다음 $M$개 줄에 간선 정보 $u, v, w$가 주어지며 도시 $u$와 도시 $v$ 사이의 가중치가 정수 $w$인 양방향 도로를 나타낸다. $(1 \leq u, v \leq N, u ≠ v, 1 \leq w \leq 1,000,000)$</p>
+<p>다음 줄에 $X Z$가 주어진다. $(1 \leq X, Z \leq N, X \neq Z)$</p>
+<p>다음 줄에 $P$가 주어진다. $(3 \leq P \leq \min(100, N - 3))$</p>
+<p>다음 줄에 $P$개의 서로 다른 중간 정점 $Y(1 \leq Y \leq N, X ≠ Y ≠ Z)$가 빈칸을 사이에 두고 주어진다.</p>
 <h2 id="출력">출력</h2>
-<p>$T$개의 줄 동안 문자열 게임의 3번과 4번에서 구한 연속 문자열의 길이를 공백을 사이에 두고 출력한다.</p>
-<p>만약 만족하는 연속 문자열이 없을 시 -1을 출력한다.</p>
+<p>출발 정점 $X$에서 출발해서 $P$개의 중간 정점 중 적어도 세 개의 정점을 반드시 거친 후 도착 정점 $Z$에 도달하는 최단 거리를 출력한다. 도착 정점 Z에 도착할 수 없는 경우 $-1$을 출력한다.</p>
 <hr>
 <h2 id="풀이">풀이</h2>
-<h3 id="인덱스-전처리">인덱스 전처리</h3>
-<p>문자별로 인덱스를 전처리한다. 예를 들어, 문자열이 <code>apple</code> 이라면 아래와 같이 저장하면 된다.</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th style="text-align:center">char</th>
-<th style="text-align:center">index</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">a</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">p</td>
-<td style="text-align:center">1, 2</td>
-</tr>
-<tr>
-<td style="text-align:center">l</td>
-<td style="text-align:center">3</td>
-</tr>
-<tr>
-<td style="text-align:center">e</td>
-<td style="text-align:center">4</td>
-</tr>
-</tbody>
-</table></div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">v</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="sc">&#39;z&#39;</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">v</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="슬라이딩-윈도우-적용">슬라이딩 윈도우 적용</h3>
-<p>인덱스들은 자연스럽게 정렬이 되어 있을 것이다.</p>
-<p>길이가 K인 슬라이딩 윈도우를 적용한다.
-<code>a</code>부터 <code>z</code>까지 인덱스가 저장된 벡터를 보면서, <strong>문자가 K인 범위의 길이</strong>를 구해주자.
-<code>start</code>는 0부터 시작하고, <code>end</code>는 k-1 부터 시작하면 된다.</p>
-<p><strong>문자가 K개 나오는 범위의 길이</strong>는 <code>인덱스[end] - 인덱스[start] + 1</code> 로 구할 수 있다.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;z&#39;</span><span class="p">;</span> <span class="o">++</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">v</span><span class="p">[</span><span class="n">c</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">end</span><span class="p">,</span> <span class="o">++</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">end</span><span class="p">]</span> <span class="o">-</span> <span class="n">v</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>아래와 같이 <code>Range-based for loop</code>을 사용해도 된다.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">indexes</span> <span class="p">:</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">indexes</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">end</span><span class="p">,</span> <span class="o">++</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">indexes</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">-</span> <span class="n">indexes</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="정답-출력">정답 출력</h3>
-<p>최대값과 최소값을 구한 후 출력해 주자.
-이 때, <code>min_len</code>이 <code>INT_MAX</code>라는 것은 값을 찾지 못했다는 뜻이므로 -1을 출력한다.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">min_len</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">max_len</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">indexes</span> <span class="p">:</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">indexes</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">end</span><span class="p">,</span> <span class="o">++</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">indexes</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">-</span> <span class="n">indexes</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">min_len</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">min_len</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">max_len</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max_len</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">min_len</span> <span class="o">==</span> <span class="n">INT_MAX</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">min_len</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span> <span class="o">&lt;&lt;</span> <span class="n">max_len</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="소스-코드">소스 코드</h2>
+<p>브루트포스 + 다익스트라 문제이다.</p>
+<p>$X - A - B - C - Z$ 로 가는 최단 거리를 찾아야 한다.</p>
+<p>우선순위 큐를 활용한 <strong>다익스트라의 시간복잡도는 $O(E\log{V})$이다</strong>.
+중간 정점은 최대 100개가 주어지며, 이 중 3개를 선택해야 하므로 경우의 수가 최대 ${}_{100}{\rm P}_3$ 이다.
+모든 경우에서 다익스트라를 돌리면 당연히 <strong>시간초과</strong>가 난다.</p>
+<p><strong>$X$와 중간 정점들을 기준으로 다익스트라를 먼저 돌리고, 그 결과들을 활용해 모든 경우 중 최소 거리를 구해 주면 된다.</strong></p>
+<p>다익스트라를 <strong>최대 101번</strong> 돌리고, ${}_{100}{\rm P}_3 = 970,200$이다.
+종합하여 시간 복잡도를 계산해 보면 $300,000\times\log{100,000} \times 101 + 970,200 = 152,470,200$ 가 나온다.</p>
+<p>이 문제의 시간 제한은 6초이다. 바로 통과할 줄 알았다. 하지만 우리의 파이썬은 생각보다 느리다.</p>
+<p>python3 말고 pypy3로 제출해야 한다.
+다익스트라 결과를 저장할 <code>dist</code>를 리스트가 아닌 딕셔너리로 구현하고, <code>min()</code> 함수 대신 직접 if문으로 최소값을 찾는 등 최적화를 조금 진행해 주어야 겨우 풀린다.</p>
+<p>마지막에 결과값이 <code>INF</code>일 땐 -1로 출력하는 것을 잊지 말자.</p>
+<h2 id="소스-코드">소스 코드</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -578,48 +452,80 @@ if (!doNotTrack) {
 </span><span class="lnt">35
 </span><span class="lnt">36
 </span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">heapq</span> <span class="kn">import</span> <span class="n">heappop</span><span class="p">,</span> <span class="n">heappush</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">v</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="sc">&#39;z&#39;</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">v</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]].</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">min_len</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">max_len</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">indexes</span> <span class="p">:</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">end</span> <span class="o">&lt;</span> <span class="n">indexes</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">end</span><span class="p">,</span> <span class="o">++</span><span class="n">start</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">length</span> <span class="o">=</span> <span class="n">indexes</span><span class="p">[</span><span class="n">end</span><span class="p">]</span> <span class="o">-</span> <span class="n">indexes</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="n">min_len</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">min_len</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">max_len</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">max_len</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">min_len</span> <span class="o">==</span> <span class="n">INT_MAX</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">min_len</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span> <span class="o">&lt;&lt;</span> <span class="n">max_len</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">input</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span>
+</span></span><span class="line"><span class="cl"><span class="n">INF</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">t</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">t</span><span class="o">--</span><span class="p">)</span> <span class="n">solve</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">INF</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dist</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">queue</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">path_len</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">heappop</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">path_len</span> <span class="o">==</span> <span class="n">dist</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">edge_len</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">edge_len</span> <span class="o">+</span> <span class="n">path_len</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">w</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">dist</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">edge_len</span> <span class="o">+</span> <span class="n">path_len</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">heappush</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="p">(</span><span class="n">edge_len</span> <span class="o">+</span> <span class="n">path_len</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">dist</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="n">graph</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="n">graph</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">x</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="n">mid</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dist</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">mid</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dist</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dist</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">result</span> <span class="o">=</span> <span class="n">INF</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">total</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">a</span><span class="p">]</span> <span class="o">+</span> <span class="n">dist</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">+</span> <span class="n">dist</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="n">dist</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">z</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">result</span> <span class="o">&gt;</span> <span class="n">total</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">total</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">result</span> <span class="o">==</span> <span class="n">INF</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">result</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="후기">후기</h2>
+<p>파이썬 기준 시간 제한이 정말 빡빡한 문제였다. 이 문제를 파이썬으로 풀어본 사람이 없길래 파이썬으로 풀어 봤다.</p>
+<p><img src="/p/boj-23807/image.png"
+	width="2334"
+	height="492"
+	srcset="/p/boj-23807/image_hu6275cfec8ca0287ac9343170595d77f4_101850_480x0_resize_box_3.png 480w, /p/boj-23807/image_hu6275cfec8ca0287ac9343170595d77f4_101850_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="474"
+		data-flex-basis="1138px"
+	
+></p>
+
 </section>
 
 
@@ -630,7 +536,7 @@ if (!doNotTrack) {
         
             <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a>
         
-            <a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>
+            <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
         
     </section>
 
@@ -688,25 +594,6 @@ if (!doNotTrack) {
             
                 
 <article class="has-image">
-    <a href="/p/boj-1331/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/../images/boj.png" loading="lazy" data-key="boj-1331" data-hash="/../images/boj.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">BOJ 1331: 나이트 투어 (C&#43;&#43;)</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
     <a href="/p/abc-300/">
         
         
@@ -726,18 +613,37 @@ if (!doNotTrack) {
             
                 
 <article class="has-image">
-    <a href="/p/boj-23807/">
+    <a href="/p/boj-1331/">
         
         
             <div class="article-image">
                 
-                    <img src="/../images/boj.png" loading="lazy" data-key="boj-23807" data-hash="/../images/boj.png"/>
+                    <img src="/../images/boj.png" loading="lazy" data-key="boj-1331" data-hash="/../images/boj.png"/>
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">BOJ 23807: 두 단계 최단 경로 3 (Python)</h2>
+            <h2 class="article-title">BOJ 1331: 나이트 투어 (C&#43;&#43;)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/boj-20437/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/../images/boj.png" loading="lazy" data-key="boj-20437" data-hash="/../images/boj.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">BOJ 20437: 문자열 게임 2 (C&#43;&#43;)</h2>
         </div>
     </a>
 </article>
