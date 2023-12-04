@@ -4,9 +4,13 @@
   <url>
     <loc>https://gyeongminn.github.io/tags/c&#43;&#43;/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/categories/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -20,6 +24,8 @@
   </url><url>
     <loc>https://gyeongminn.github.io/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -33,6 +39,8 @@
   </url><url>
     <loc>https://gyeongminn.github.io/post/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -46,6 +54,8 @@
   </url><url>
     <loc>https://gyeongminn.github.io/tags/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -59,81 +69,133 @@
   </url><url>
     <loc>https://gyeongminn.github.io/p/prime-number-and-divisors/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/boj-1331/</loc>
     <lastmod>2023-11-30T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
     <lastmod>2023-11-30T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/word-distributed-representation/</loc>
     <lastmod>2023-11-27T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</loc>
     <lastmod>2023-11-27T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</loc>
     <lastmod>2023-11-27T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</loc>
     <lastmod>2023-11-27T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/neural-network-trainning/</loc>
     <lastmod>2023-11-21T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/neural-network-inference/</loc>
     <lastmod>2023-11-20T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/about/</loc>
     <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/archives/</loc>
     <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/page/</loc>
     <lastmod>2023-11-17T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/basic-linear-algebra/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%EC%88%98%ED%95%99/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/boj-20437/</loc>
     <lastmod>2023-07-07T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/abc-300/</loc>
     <lastmod>2023-04-30T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/boj-23807/</loc>
     <lastmod>2023-04-21T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/boj-16935/</loc>
     <lastmod>2023-02-06T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/python/</loc>
     <lastmod>2023-02-06T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/boj-14620/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/boj-9461/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/boj-1011/</loc>
     <lastmod>2022-06-30T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/p/rhythm-game-in-c/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -147,11 +209,17 @@
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/categories/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/c/c&#43;&#43;/</loc>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -164,7 +232,11 @@
                 />
   </url><url>
     <loc>https://gyeongminn.github.io/links/</loc>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/search/</loc>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
