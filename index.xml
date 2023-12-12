@@ -1701,32 +1701,32 @@ $$&lt;/p&gt;
 &lt;h3 align=&#34;left&#34;&gt;Connect with me&lt;/h3&gt;
 &lt;p align=&#34;left&#34;&gt;
     &lt;a href=&#34;mailto:gyeongmin@hansung.ac.kr&#34; target=&#34;_blank&#34;&gt;
-        &lt;img src=&#34;https://user-images.githubusercontent.com/97784561/224553914-07f9fac0-2c71-4599-bc03-abcd08cd3304.png&#34; alt=&#34;Velog&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
+        &lt;img src=&#34;https://user-images.githubusercontent.com/97784561/224553914-07f9fac0-2c71-4599-bc03-abcd08cd3304.png&#34; alt=&#34;Velog&#34; height=&#34;40&#34; width=&#34;40&#34;/&gt;
     &lt;/a&gt;
     &amp;nbsp;
     &lt;a href=&#34;https://instagram.com/gyeongminx&#34; target=&#34;_blank&#34;&gt;
-        &lt;img src=&#34;https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg&#34; alt=&#34;Instagram&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
+        &lt;img src=&#34;https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg&#34; alt=&#34;Instagram&#34; height=&#34;40&#34; width=&#34;40&#34;/&gt;
     &lt;/a&gt;
     &amp;nbsp;
     &lt;a href=&#34;https://www.linkedin.com/in/gyeongmin-lee-865448256/&#34; target=&#34;_blank&#34;&gt;
-        &lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg&#34; alt=&#34;Linkedin&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
+        &lt;img src=&#34;https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg&#34; alt=&#34;Linkedin&#34; height=&#34;40&#34; width=&#34;40&#34;/&gt;
     &lt;/a&gt;
     &amp;nbsp;
     &lt;a href=&#34;https://github.com/gyeongminn&#34; target=&#34;_blank&#34;&gt;
-        &lt;img src=&#34;https://gyeongminn.github.io/logo.ico/github-white.svg&#34; alt=&#34;GitHub&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
+        &lt;img id=&#34;githubIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/github-white.svg&#34; alt=&#34;GitHub&#34; height=&#34;40&#34; width=&#34;40&#34;/&gt;
     &lt;/a&gt;
-    &lt;script&gt;
-        if (document.documentElement.dataset.scheme == &#39;dark&#39;) {
-            &lt;a href=&#34;https://github.com/gyeongminn&#34; target=&#34;_blank&#34;&gt;
-                &lt;img src=&#34;https://gyeongminn.github.io/logo.ico/github-white.svg&#34; alt=&#34;GitHub&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
-            &lt;/a&gt;
-        } else {
-            &lt;a href=&#34;https://github.com/gyeongminn&#34; target=&#34;_blank&#34;&gt;
-                &lt;img src=&#34;https://gyeongminn.github.io/logo.ico/github-black.svg&#34; alt=&#34;GitHub&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
-            &lt;/a&gt;
-        }
-    &lt;/script&gt;
 &lt;/p&gt;
+&lt;script&gt;
+    function updateIcons() {
+        var githubIcon = document.getElementById(&#39;githubIcon&#39;);
+        if (document.documentElement.dataset.scheme == &#39;dark&#39;) {
+            githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-white.svg&#39;;
+        } else {
+            githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-black.svg&#39;;
+        }
+    }
+    updateIcons();
+&lt;/script&gt;
 &lt;h3 align=&#34;left&#34;&gt;테크 스택&lt;/h3&gt;
 &lt;p align=&#34;left&#34;&gt;
     &lt;a href=&#34;https://www.cprogramming.com/&#34; target=&#34;_blank&#34; rel=&#34;noreferrer&#34;&gt;
@@ -1739,7 +1739,7 @@ $$&lt;/p&gt;
         &lt;img src=&#34;https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg&#34; alt=&#34;csharp&#34; width=&#34;42&#34; height=&#34;42&#34;/&gt;
     &lt;/a&gt;
     &lt;a href=&#34;https://www.python.org&#34; target=&#34;_blank&#34; rel=&#34;noreferrer&#34;&gt;
-        &lt;img src=&#34;https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg&#34; alt=&#34;python&#34; width=&#34;42&#34; height=&#34;42&#34;/&gt;
+        &lt;img src=&#34;https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg&#34; alt=&#34;python&#34; width=&#34;45&#34; height=&#34;45&#34;/&gt;
     &lt;/a&gt;
     &lt;a href=&#34;https://www.java.com&#34; target=&#34;_blank&#34; rel=&#34;noreferrer&#34;&gt;
         &lt;img src=&#34;https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg&#34; alt=&#34;java&#34; width=&#34;42&#34; height=&#34;42&#34;/&gt;
