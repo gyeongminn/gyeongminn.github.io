@@ -1785,7 +1785,7 @@ $$&lt;/p&gt;
             githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-white.svg&#39;;
             blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/white.svg&#39;;
         } else {
-            githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-white.svg&#39;;
+            githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-dark.svg&#39;;
             blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/black.svg&#39;;
         }
     }
