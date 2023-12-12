@@ -1710,11 +1710,11 @@ $$&lt;/p&gt;
     &lt;/a&gt;
     &amp;nbsp;
     &lt;a href=&#34;https://github.com/gyeongminn&#34; target=&#34;_blank&#34;&gt;
-        &lt;img id=&#34;githubIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/github-white.svg&#34; alt=&#34;GitHub&#34; height=&#34;40&#34; width=&#34;40&#34;/&gt;
+        &lt;img id=&#34;githubIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/github-light.svg&#34; alt=&#34;GitHub&#34; height=&#34;40&#34; width=&#34;40&#34;/&gt;
     &lt;/a&gt;
     &amp;nbsp;
     &lt;a href=&#34;https://gyeongminn.github.io&#34; target=&#34;_blank&#34;&gt;
-        &lt;img id=&#34;blogIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/white.svg&#34; alt=&#34;DevBlog&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
+        &lt;img id=&#34;blogIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/blog-light.svg&#34; alt=&#34;DevBlog&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
     &lt;/a&gt;
 &lt;/p&gt;
 &lt;h3 align=&#34;left&#34;&gt;기술 스택&lt;/h3&gt;
@@ -1782,11 +1782,11 @@ $$&lt;/p&gt;
         var githubIcon = document.getElementById(&#39;githubIcon&#39;);
         var blogIcon = document.getElementById(&#39;blogIcon&#39;);
         if (document.documentElement.dataset.scheme == &#39;dark&#39;) {
-            githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-white.svg&#39;;
-            blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/white.svg&#39;;
+            githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-light.svg&#39;;
+            blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/blog-white.svg&#39;;
         } else {
             githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-dark.svg&#39;;
-            blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/black.svg&#39;;
+            blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/blog-dark.svg&#39;;
         }
     }
     updateIcons();
