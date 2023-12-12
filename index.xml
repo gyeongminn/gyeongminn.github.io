@@ -1785,7 +1785,7 @@ $$&lt;/p&gt;
     function updateIcons() {
         var githubIcon = document.getElementById(&#39;githubIcon&#39;);
         var blogIcon = document.getElementById(&#39;blogIcon&#39;);
-        var cvIcon = document.getElementById(&#39;blogIcon&#39;);
+        var cvIcon = document.getElementById(&#39;cvIcon&#39;);
         if (document.documentElement.dataset.scheme == &#39;dark&#39;) {
             githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-light.svg&#39;;
             blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/blog-light.svg&#39;;
