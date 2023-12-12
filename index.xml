@@ -1709,16 +1709,16 @@ $$&lt;/p&gt;
         &lt;img src=&#34;https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg&#34; alt=&#34;Linkedin&#34; height=&#34;40&#34; width=&#34;40&#34;/&gt;
     &lt;/a&gt;
     &amp;nbsp;
+    &lt;a href=&#34;https://gyeongminn.github.io&#34; target=&#34;_blank&#34;&gt;
+        &lt;img id=&#34;cvIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/cv-light.svg&#34; alt=&#34;CV&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
+    &lt;/a&gt;
+    &amp;nbsp;
     &lt;a href=&#34;https://github.com/gyeongminn&#34; target=&#34;_blank&#34;&gt;
         &lt;img id=&#34;githubIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/github-light.svg&#34; alt=&#34;GitHub&#34; height=&#34;40&#34; width=&#34;40&#34;/&gt;
     &lt;/a&gt;
     &amp;nbsp;
     &lt;a href=&#34;https://gyeongminn.github.io&#34; target=&#34;_blank&#34;&gt;
         &lt;img id=&#34;blogIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/blog-light.svg&#34; alt=&#34;DevBlog&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
-    &lt;/a&gt;
-    &amp;nbsp;
-    &lt;a href=&#34;https://gyeongminn.github.io&#34; target=&#34;_blank&#34;&gt;
-        &lt;img id=&#34;cvIcon&#34; src=&#34;https://gyeongminn.github.io/logo.ico/cv-light.svg&#34; alt=&#34;CV&#34; height=&#34;36&#34; width=&#34;36&#34;/&gt;
     &lt;/a&gt;
 &lt;/p&gt;
 &lt;h3 align=&#34;left&#34;&gt;기술 스택&lt;/h3&gt;
@@ -1789,11 +1789,11 @@ $$&lt;/p&gt;
         if (document.documentElement.dataset.scheme == &#39;dark&#39;) {
             githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-light.svg&#39;;
             blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/blog-light.svg&#39;;
-            blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/cv-light.svg&#39;;
+            cvIcon.src = &#39;https://gyeongminn.github.io/logo.ico/cv-light.svg&#39;;
         } else {
             githubIcon.src = &#39;https://gyeongminn.github.io/logo.ico/github-dark.svg&#39;;
             blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/blog-dark.svg&#39;;
-            blogIcon.src = &#39;https://gyeongminn.github.io/logo.ico/cv-dark.svg&#39;;
+            cvIcon.src = &#39;https://gyeongminn.github.io/logo.ico/cv-dark.svg&#39;;
         }
     }
     updateIcons();
