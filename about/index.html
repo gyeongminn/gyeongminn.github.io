@@ -442,12 +442,15 @@ if (!doNotTrack) {
     function updateIcons() {
         var githubIcon = document.getElementById('githubIcon');
         var blogIcon = document.getElementById('blogIcon');
+        var cvIcon = document.getElementById('blogIcon');
         if (document.documentElement.dataset.scheme == 'dark') {
             githubIcon.src = 'https://gyeongminn.github.io/logo.ico/github-light.svg';
-            blogIcon.src = 'https://gyeongminn.github.io/logo.ico/blog-white.svg';
+            blogIcon.src = 'https://gyeongminn.github.io/logo.ico/blog-light.svg';
+            blogIcon.src = 'https://gyeongminn.github.io/logo.ico/cv-light.svg';
         } else {
             githubIcon.src = 'https://gyeongminn.github.io/logo.ico/github-dark.svg';
             blogIcon.src = 'https://gyeongminn.github.io/logo.ico/blog-dark.svg';
+            blogIcon.src = 'https://gyeongminn.github.io/logo.ico/cv-dark.svg';
         }
     }
     updateIcons();
