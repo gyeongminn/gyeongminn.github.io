@@ -13,7 +13,18 @@
         <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/p/prime-number-and-divisors/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
+        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;script async src=&#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061&#34;
+     crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+&lt;ins class=&#34;adsbygoogle&#34;
+     style=&#34;display:block; text-align:center;&#34;
+     data-ad-layout=&#34;in-article&#34;
+     data-ad-format=&#34;fluid&#34;
+     data-ad-client=&#34;ca-pub-2100464285092061&#34;
+     data-ad-slot=&#34;5684787547&#34;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
+&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;소수는 영어로 prime 이라고 한다. 또한, $p$가 소수일 때 $p^k$를 prime power 라고 한다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -351,18 +362,7 @@ $\frac{N}{d}$도 $1$이 아닌 $N$의 약수이므로, $d \leq\frac{N}{d}$ 이�
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;script async src=&#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061&#34;
-     crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
-&lt;ins class=&#34;adsbygoogle&#34;
-     style=&#34;display:block; text-align:center;&#34;
-     data-ad-layout=&#34;in-article&#34;
-     data-ad-format=&#34;fluid&#34;
-     data-ad-client=&#34;ca-pub-2100464285092061&#34;
-     data-ad-slot=&#34;5684787547&#34;&gt;&lt;/ins&gt;
-&lt;script&gt;
-     (adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;
-&lt;h2 id=&#34;번외-알고리즘&#34;&gt;번외 알고리즘&lt;/h2&gt;
+&lt;/div&gt;&lt;h2 id=&#34;번외-알고리즘&#34;&gt;번외 알고리즘&lt;/h2&gt;
 &lt;p&gt;정수론 파트에는 어렵지만 재미있는 알고리즘들이 많다. 굳이 알 필요는 없지만, 번외로 준비해 봤다.&lt;/p&gt;
 &lt;h3 id=&#34;폴라드-로-소인수분해&#34;&gt;폴라드 로 소인수분해&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;int&lt;/code&gt; 범위 까지는 괜찮은데, &lt;code&gt;long long&lt;/code&gt; 범위의 수를 위 소인수분해 알고리즘으로 계산하면 TLE가 난다.&lt;/p&gt;
@@ -521,7 +521,18 @@ $\frac{N}{d}$도 $1$이 아닌 $N$의 약수이므로, $d \leq\frac{N}{d}$ 이�
         <pubDate>Mon, 27 Nov 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/p/word-distributed-representation/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 단어의 분산 표현" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 단어의 분산 표현" /&gt;&lt;script async src=&#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061&#34;
+     crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+&lt;ins class=&#34;adsbygoogle&#34;
+     style=&#34;display:block; text-align:center;&#34;
+     data-ad-layout=&#34;in-article&#34;
+     data-ad-format=&#34;fluid&#34;
+     data-ad-client=&#34;ca-pub-2100464285092061&#34;
+     data-ad-slot=&#34;5684787547&#34;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
+&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;자연어-처리와-단어의-의미&#34;&gt;자연어 처리와 단어의 의미&lt;/h2&gt;
@@ -1535,7 +1546,18 @@ $$&lt;/p&gt;
         <pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/p/neural-network-trainning/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 신경망의 학습" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 신경망의 학습" /&gt;&lt;script async src=&#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061&#34;
+     crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+&lt;ins class=&#34;adsbygoogle&#34;
+     style=&#34;display:block; text-align:center;&#34;
+     data-ad-layout=&#34;in-article&#34;
+     data-ad-format=&#34;fluid&#34;
+     data-ad-client=&#34;ca-pub-2100464285092061&#34;
+     data-ad-slot=&#34;5684787547&#34;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
+&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;신경망의-학습&#34;&gt;신경망의 학습&lt;/h1&gt;
@@ -1829,7 +1851,18 @@ $$&lt;/p&gt;
         <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/p/neural-network-inference/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 신경망의 추론" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 신경망의 추론" /&gt;&lt;script async src=&#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061&#34;
+     crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+&lt;ins class=&#34;adsbygoogle&#34;
+     style=&#34;display:block; text-align:center;&#34;
+     data-ad-layout=&#34;in-article&#34;
+     data-ad-format=&#34;fluid&#34;
+     data-ad-client=&#34;ca-pub-2100464285092061&#34;
+     data-ad-slot=&#34;5684787547&#34;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
+&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;신경망의-추론&#34;&gt;신경망의 추론&lt;/h1&gt;
@@ -2153,7 +2186,18 @@ $$&lt;/p&gt;
         <pubDate>Wed, 15 Nov 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/p/basic-linear-algebra/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 기초 선형대수 - 스칼라, 벡터, 행렬" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 기초 선형대수 - 스칼라, 벡터, 행렬" /&gt;&lt;script async src=&#34;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061&#34;
+     crossorigin=&#34;anonymous&#34;&gt;&lt;/script&gt;
+&lt;ins class=&#34;adsbygoogle&#34;
+     style=&#34;display:block; text-align:center;&#34;
+     data-ad-layout=&#34;in-article&#34;
+     data-ad-format=&#34;fluid&#34;
+     data-ad-client=&#34;ca-pub-2100464285092061&#34;
+     data-ad-slot=&#34;5684787547&#34;&gt;&lt;/ins&gt;
+&lt;script&gt;
+     (adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;
+&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;기초-선형대수&#34;&gt;기초 선형대수&lt;/h1&gt;
