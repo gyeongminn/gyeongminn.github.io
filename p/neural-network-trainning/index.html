@@ -6,11 +6,11 @@
 
 <link rel='canonical' href='https://gyeongminn.github.io/p/neural-network-trainning/'>
 
-<link rel="stylesheet" href="/scss/style.min.24ef1cc321916467896e8c70c10c0ad7b98c2a8df14298032fb637216e397f50.css"><meta property='og:title' content='신경망의 학습'>
+<link rel="stylesheet" href="/scss/style.min.aba46326a34f573c720e209d228cd0be5fbcd2a026b2bf8bac768ab384eb792f.css"><meta property='og:title' content='신경망의 학습'>
 <meta property='og:description' content='신경망의 학습과정에서 손실 함수, 행렬 미분, 오차역전파법에 대한 설명과 구현'>
 <meta property='og:url' content='https://gyeongminn.github.io/p/neural-network-trainning/'>
 <meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='딥러닝' /><meta property='article:tag' content='파이썬' /><meta property='article:published_time' content='2023-11-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-22T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='딥러닝' /><meta property='article:tag' content='파이썬' /><meta property='article:published_time' content='2023-11-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-11-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg' />
 <meta name="twitter:title" content="신경망의 학습">
 <meta name="twitter:description" content="신경망의 학습과정에서 손실 함수, 행렬 미분, 오차역전파법에 대한 설명과 구현"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg' />
@@ -324,13 +324,16 @@ if (!doNotTrack) {
             <nav id="TableOfContents">
   <ol>
     <li><a href="#손실-함수">손실 함수</a></li>
-    <li><a href="#softmax">Softmax</a></li>
-    <li><a href="#cross-entropy-error">Cross Entropy Error</a></li>
-    <li><a href="#신경망-예제">신경망 예제</a></li>
+    <li><a href="#소프트맥스">소프트맥스</a></li>
+    <li><a href="#교차-엔트로피-오차">교차 엔트로피 오차</a></li>
     <li><a href="#행렬의-미분">행렬의 미분</a></li>
     <li><a href="#연쇄-법칙">연쇄 법칙</a></li>
+    <li><a href="#가중치-갱신">가중치 갱신</a></li>
+    <li><a href="#확률적경사하강법">확률적경사하강법</a></li>
+    <li><a href="#신경망-예제">신경망 예제</a></li>
     <li><a href="#sigmoid의-역전파-구현">Sigmoid의 역전파 구현</a></li>
     <li><a href="#affine의-역전파-구현">Affine의 역전파 구현</a></li>
+    <li><a href="#twolayernet-구현">TwoLayerNet 구현</a></li>
   </ol>
 </nav>
         </div>
@@ -392,7 +395,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Nov 21, 2023</time>
+                <time class="article-time--published">Nov 22, 2023</time>
             </div>
         
 
@@ -413,7 +416,7 @@ if (!doNotTrack) {
 </blockquote>
 <h1 id="신경망의-학습">신경망의 학습</h1>
 <blockquote>
-<p>학습되지 않은 신경망은 좋은 추론을 할 수 없다. 학습을 먼저 수행하고, 학습된 매개변수를 이용해 추론을 수행해야 한다.</p>
+<p>학습되지 않은 신경망은 좋은 추론을 할 수 없다. 따라서 학습을 먼저 수행하고, 학습된 매개변수를 이용해 추론을 수행해야 한다.</p>
 </blockquote>
 <h2 id="손실-함수">손실 함수</h2>
 <blockquote>
@@ -421,24 +424,24 @@ if (!doNotTrack) {
 </blockquote>
 <p><strong>손실</strong>이란 신경망이 예측한 결과를 비교하여 예측이 얼마나 나쁜가를 산출한 <strong>스칼라 값</strong>으로, 성능을 나타내는 척도이다.</p>
 <p>이것을 구하는 것이 바로 <strong>손실 함수</strong>이다.</p>
-<p>우리는 Softmax와 Cross Entropy Error를 통해 손실 함수를 구현할 것이다. 구현에 앞서 두 함수를 알아보자.</p>
-<h2 id="softmax">Softmax</h2>
+<p>우리는 소프트맥스와 교차 엔트로피 오차를 통해 손실 함수를 구현할 것이다.</p>
+<h2 id="소프트맥스">소프트맥스</h2>
 <p>$$
 p_k = \frac{\exp{(s_k)}}{\sum_{k=1}^{n}{\exp{(s_k)}}} \quad for \ k=1,2,\dots,k
 \tag{1}
 $$</p>
-<p>[식 1]에서 Softmax 함수의 출력의 각 원소 $p_k$는 $0 \leq p_k \leq 1,\space p_k \in \mathbb{R}$ 이다.</p>
-<p>따라서 Softmax의 출력은 <strong>확률</strong>로 해석할 수 있다. 우리는 이것을 Cross Entropy Error에 입력할 것이다.</p>
-<h2 id="cross-entropy-error">Cross Entropy Error</h2>
+<p>[식 1]에서 소프트맥스 함수의 출력의 각 원소 $p_k$는 $0 \leq p_k \leq 1,\space p_k \in \mathbb{R}$ 이다.</p>
+<p>따라서 소프트맥스의 출력은 <strong>확률</strong>로 해석할 수 있다. 우리는 이것을 교차 엔트로피 오차에 입력할 것이다.</p>
+<h2 id="교차-엔트로피-오차">교차 엔트로피 오차</h2>
 <p>$$
 Loss = - \sum_{k}t_k \log{p_k}
 \tag{2}
 $$</p>
 <p>[식 2]에서 $t_k$는 $k$번째 클래스의 정답 레이블이다. $t = \begin{bmatrix} 0, 1, 1 \end{bmatrix}$ 과 같이 one-hot vector로 표기한다.</p>
 <blockquote>
-<p>참고: one-hot vector는 단 하나의 원소만 1 이고 그 외에는 0인 벡터이다.</p>
+<p>one-hot vector는 단 하나의 원소만 1 이고 그 외에는 0인 벡터이다.</p>
 </blockquote>
-<p>미니 배치를 고려하면 Cross Entropy Error의 식은 아래와 같이 바뀌게 된다.</p>
+<p>미니 배치를 고려하면 교차 엔트로피 오차의 식은 아래와 같이 바뀌게 된다.</p>
 <p>$$
 Loss = - \frac{1}{N} \sum_{n} \sum_{k}t_{nk} \log{p_{nk}}
 \tag{3}
@@ -446,18 +449,6 @@ $$</p>
 <p>[식 3]에서 $N$은 미니 배치의 개수, $t_{nk}$는 $n$번째 데이터의 $k$차원째의 값,
 $p_{nk}$는 신경망의 출력, $t_{nk}$는 정답 레이블이다.</p>
 <p>이는 N으로 나눠서 1 개당의 <strong>평균 손실 함수</strong>를 구하는 것이다. 미니배치의 크기에 관계없이 항상 일관된 척도를 얻을 수 있다.</p>
-<h2 id="신경망-예제">신경망 예제</h2>
-<p>이전 포스팅에서 설계한 신경망에 Softmax 레이어와 Cross Entropy Error 레이어를 새로 추가해 보자.</p>
-<pre class="mermaid">graph LR
-    X==> A[Affine]
-    A==> B[Sigmoid]
-    B==> C[Affine]
-    C==>D[Softmax]
-    T==>E
-    D==>E[Cross Entropy Error]
-    E==>F[L]
-  </pre>
-  <p>$\textbf{x}$는 입력 데이터, $\textbf{t}$는 정답 레이블. $L$은 손실을 나타냅니다.</p>
 <h2 id="행렬의-미분">행렬의 미분</h2>
 <blockquote>
 <p>신경망 학습의 목표는 손실을 최소화하는 매개변수를 찾는 것이다. 이때 중요한 것이 바로 미분과 기울기이다.</p>
@@ -489,7 +480,7 @@ $$</p>
 구현할 수 있다.</p>
 <h2 id="연쇄-법칙">연쇄 법칙</h2>
 <blockquote>
-<p>우리는 신경망의 학습을 위해 각 매개변수에 대한 손실의 기울기를 구해 매개변수를 갱신할 것이다. 신경망의 기울기는 back-propagation (오차역전파법)을 통해 구할 수 있으며, 이 때 필요한 것이 chain-rule (연쇄 법칙)이다.</p>
+<p>우리는 신경망의 학습을 위해 각 매개변수에 대한 손실의 기울기를 구해 매개변수를 갱신할 것이다. 신경망의 기울기는 오차역전파법 (back-propagation)을 통해 구할 수 있으며, 이 때 필요한 것이 연쇄 법칙이다.</p>
 </blockquote>
 <p>$y=f(x)$와 $z=g(y)$라는 두 함수가 있을 때, $z=g(f(x))$이다.</p>
 <p>$$
@@ -498,11 +489,58 @@ $$</p>
 $$</p>
 <p>$x$에 대한 $z$의 미분은 [식 6]과 같이 $y=f(x)$의 미분과 $z=g(y)$의 미분을 곱해 구할 수 있다. 이것이 바로 연쇄 법칙이다.</p>
 <p>즉, 함수가 아무리 복잡하더라도 개별 함수들의 미분을 통해 효율적인 계산을 할 수 있다는 것이다.</p>
+<h2 id="가중치-갱신">가중치 갱신</h2>
+<p>신경망의 학습은 다음 순서로 수행된다.</p>
+<pre class="mermaid">graph LR
+    a((미니배치))-->b((기울기 계산))-->c((매개변수 갱신))-->a
+  </pre>
+  <p>우선 미니배치에서 데이터를 선택하고, 이어서 오차역전파법으로 가중치의 기울기를 얻는다. 이 기울기는 현재의 가중치 매개변수에서 손실을 가장 크게 하는 방향을 가리킨다. 따라서 매개변수를 그 기울기와 반대 방향으로 갱신하면 손실을 줄일 수 있다. 이것이 바로 <strong>경사하강법</strong>이다.</p>
+<h2 id="확률적경사하강법">확률적경사하강법</h2>
+<p>확률적 경사하강법 (Stochastic Gradient Descent)은 무작위로 선택된 데이터(미니배치)에 대한 기울기를 이용하여, 현재의 가중치를 기울기 방향으로 일정한 거리만큼 갱신한다.</p>
+<p>$$
+W \gets {W} - \eta {\frac{\partial {L}}{\partial {W}}}
+\tag{7}
+$$</p>
+<p>[식 7]에서 갱신하는 가중치 매개변수는 $\mathbf{W}$
+이고, $\mathbf{W}$에 대한 손실 함수의 기울기는 $\frac{\partial {L}}{\partial {W}}$이다. $\eta$는 학습률 (learning rate)을 나타내고, 0.01이나 0.001 같은 값을 미리 정해서 사용한다.</p>
+<p>이것을 파이썬으로 구현하면 아래와 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SGD</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>  <span class="c1"># 학습률</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">grads</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="신경망-예제">신경망 예제</h2>
+<p>이전 포스팅에서 설계한 신경망에 Softmax 레이어와 Cross Entropy Error 레이어를 새로 추가해 보자.</p>
+<pre class="mermaid">graph LR
+    x(x)==> A(Affine)
+    A==> B(Sigmoid)
+    B==> C(Affine)
+    C==>D(Softmax)
+    t(t)==>E
+    D==>E(Cross Entropy Error)
+    E==>F(L)
+  </pre>
+  <p>$\textbf{x}$는 입력 데이터, $\textbf{t}$는 정답 레이블. $L$은 손실을 나타낸다.</p>
 <h2 id="sigmoid의-역전파-구현">Sigmoid의 역전파 구현</h2>
-<p>Sigmoid의 수식은 $y=\frac{1}{1+\exp{-x}}$이다. 그 미분은 아래 [식 7]과 같다.</p>
+<p>Sigmoid의 수식은 $y=\frac{1}{1+\exp{(-x)}}$이다. 그 미분은 아래 [식 7]과 같다.</p>
 <p>$$
 \frac{\partial y}{\partial x} = y(1-y)
-\tag{7}
+\tag{8}
 $$</p>
 <p>이를 파이썬으로 구현하면 아래와 같다.</p>
 <div class="highlight"><div class="chroma">
@@ -519,10 +557,10 @@ $$</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Sigmoid</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="err">：</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
 </span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[]</span> 
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dout</span><span class="p">):</span>
@@ -530,350 +568,85 @@ $$</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="affine의-역전파-구현">Affine의 역전파 구현</h2>
-<p>작성중..</p>
-
-</section>
-
-
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-    if (document.documentElement.dataset.scheme == 'dark') {
-      mermaid.initialize({theme: 'dark'})
-    } else {
-      mermaid.initialize({theme: 'light', themeVariables: {xyChart: {plotColorPalette: '#3366FF', backgroundColor: '#FAFAFA'}}})
-    }
-  </script>
-
-
-    <footer class="article-footer">
-    
-    <section class="article-tags">
-        
-            <a href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/">딥러닝</a>
-        
-            <a href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/">파이썬</a>
-        
-    </section>
-
-
-    
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    </footer>
-
-
-    
-        <link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
-            ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
-                defer
-                >
-            </script><script>
-    window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
-            delimiters: [
-                { left: "$$", right: "$$", display: true },
-                { left: "$", right: "$", display: false },
-                { left: "\\(", right: "\\)", display: false },
-                { left: "\\[", right: "\\]", display: true }
-            ],
-            ignoredClasses: ["gist"]
-        });})
-</script>
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">관련 글</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/word2vec/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/../images/deep-learning-from-scratch.jpeg" loading="lazy" data-key="word2vec" data-hash="/../images/deep-learning-from-scratch.jpeg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">word2vec을 이용한 단어 임베딩</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/word-distributed-representation/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/../images/deep-learning-from-scratch.jpeg" loading="lazy" data-key="word-distributed-representation" data-hash="/../images/deep-learning-from-scratch.jpeg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">단어의 분산 표현</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/neural-network-inference/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/../images/deep-learning-from-scratch.jpeg" loading="lazy" data-key="neural-network-inference" data-hash="/../images/deep-learning-from-scratch.jpeg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">신경망의 추론</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/neural-network-trainning/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/../images/deep-learning-from-scratch.jpeg" loading="lazy" data-key="neural-network-trainning" data-hash="/../images/deep-learning-from-scratch.jpeg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">신경망의 학습</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/neural-network-inference/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/../images/deep-learning-from-scratch.jpeg" loading="lazy" data-key="neural-network-inference" data-hash="/../images/deep-learning-from-scratch.jpeg"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">신경망의 추론</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    <script
-    src="https://giscus.app/client.js"
-    data-repo="gyeongminn/gyeongminn.github.io"
-    data-repo-id="R_kgDOKsf9nw"
-    data-category="Announcements"
-    data-category-id="DIC_kwDOKsf9n84Ca_6Y"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="top"
-    data-theme="light"
-    data-lang="ko"
-    crossorigin="anonymous"
-    async
-></script>
-<script>
-    function setGiscusTheme(theme) {
-        let giscus = document.querySelector("iframe.giscus-frame");
-        if (giscus) {
-            giscus.contentWindow.postMessage(
-                {
-                    giscus: {
-                        setConfig: {
-                            theme: theme,
-                        },
-                    },
-                },
-                "https://giscus.app"
-            );
-        }
-    }
-
-    (function () {
-        addEventListener("message", (e) => {
-            if (event.origin !== "https://giscus.app") return;
-            handler();
-        });
-        window.addEventListener("onColorSchemeChange", handler);
-
-        function handler() {
-            if (document.documentElement.dataset.scheme === "light") {
-                setGiscusTheme('light');
-            } else {
-                setGiscusTheme('noborder_gray');
-            }
-        }
-    })();
-</script>
-
-    
-
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2023 Gyeongmin Lee
-    </section>
-    
-    <section class="powerby">
-         <br />
-        
-    </section>
-</footer>
-
-
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    
-    <div class="pswp__bg"></div>
-
-    
-    <div class="pswp__scroll-wrap">
-
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/ts/main.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap";
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
-</html>
-pan class="lnt">26
+<p>Affine의 역전파는 MatMul 노드와 Repeat 노드의 역전파를 수행하면 구할 수 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Affine</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">W</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">b</span><span class="p">)]</span> 
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">xz</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span> 
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dout</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">doutz</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">dout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">db</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">grads</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">dW</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">grads</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">dx</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="twolayernet-구현">TwoLayerNet 구현</h2>
+<p>Sigmoid와 Affine 레이어의 back-propagation을 구현했으니, 이제 <code>TwoLayerNet</code> 클래스를 완성해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
 </span><span class="lnt">29
