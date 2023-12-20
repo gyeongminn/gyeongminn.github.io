@@ -417,23 +417,10 @@ if (!doNotTrack) {
 <p>이렇게 통계 기반 기법처럼 학습 데이터를 한번에 처리하지 말고, 데이터를 작게 나눠 순차적으로 학습시키는 (미니배치 학습) 방법이 필요하다.</p>
 <h3 id="추론-기반-기법의-개요">추론 기반 기법의 개요</h3>
 <p>추론이란 주변 단어(맥락)이 주어졌을 때, 무슨 단어가 들어갈 지 단어를 유추하는 것이다.</p>
-<pre class="mermaid">flowchart LR
-    you---?---goodbye~~~and~~~I~~~say~~~hello
-  </pre>
-  <p>맥락 정보를 입력받아 출현할 수 있는 단어들의 확률분포를 나타내는 모델을 만들고, 학습의 결과로 분산 표현을 얻는 것이 추론 기반 기법이다.</p>
+<p>맥락 정보를 입력받아 출현할 수 있는 단어들의 확률분포를 나타내는 모델을 만들고, 학습의 결과로 분산 표현을 얻는 것이 추론 기반 기법이다.</p>
 
 </section>
 
-
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-    if (document.documentElement.dataset.scheme == 'dark') {
-      mermaid.initialize({theme: 'dark'})
-    } else {
-      mermaid.initialize({theme: 'light', themeVariables: {xyChart: {plotColorPalette: '#3366FF', backgroundColor: '#FAFAFA'}}})
-    }
-  </script>
 
 
     <footer class="article-footer">
