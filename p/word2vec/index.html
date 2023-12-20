@@ -350,6 +350,25 @@ if (!doNotTrack) {
         <li><a href="#신경망에서의-단어-처리">신경망에서의 단어 처리</a></li>
       </ol>
     </li>
+    <li><a href="#cbow">CBOW</a>
+      <ol>
+        <li><a href="#cbow-모델의-추론-처리">CBOW 모델의 추론 처리</a></li>
+        <li><a href="#cbow-모델의-학습">CBOW 모델의 학습</a></li>
+        <li><a href="#word2vec의-가중치와-분산-표현">word2vec의 가중치와 분산 표현</a></li>
+      </ol>
+    </li>
+    <li><a href="#학습-데이터-준비">학습 데이터 준비</a>
+      <ol>
+        <li><a href="#맥락과-타깃">맥락과 타깃</a></li>
+        <li><a href="#원핫-벡터로-변환">원핫 벡터로 변환</a></li>
+      </ol>
+    </li>
+    <li><a href="#cbow-모델-구현">CBOW 모델 구현</a>
+      <ol>
+        <li><a href="#학습코드구현">학습코드구현</a></li>
+      </ol>
+    </li>
+    <li><a href="#word2vec-보충">word2vec 보충</a></li>
   </ol>
 </nav>
         </div>
@@ -435,12 +454,509 @@ if (!doNotTrack) {
     >분포 가설</a>을 기반으로 한다.</p>
 <h3 id="통계-기반-기법의-문제점">통계 기반 기법의 문제점</h3>
 <p>통계 기반 기법은 주변 단어의 빈도를 기초로 단어를 표현한다. 단어 수가 $N$개일 때, $N \times N$이라는 거대한 행렬을 만들게 된다. 영어 어휘만 해도  100만 개에 가까운데, 그렇다면 1조개의 원소를 가진 행렬이 필요하다는 것이다.</p>
-<p>이렇게 통계 기반 기법처럼 학습 데이터를 한번에 처리하지 말고, 데이터를 작게 나눠 순차적으로 학습시키는 (미니배치 학습) 방법이 필요하다.</p>
+<p>이렇게 통계 기반 기법처럼 학습 데이터를 한번에 처리하지 말고, <strong>데이터를 작게 나눠 순차적으로 학습</strong>시키는 (미니배치 학습) 방법이 필요하다.</p>
 <h3 id="추론-기반-기법의-개요">추론 기반 기법의 개요</h3>
-<p>추론이란 주변 단어(맥락)이 주어졌을 때, 무슨 단어가 들어갈 지 단어를 유추하는 것이다.</p>
+<p>추론이란 **주변 단어 (맥락)**가 주어졌을 때, 무슨 단어가 들어갈 지 단어를 <strong>유추</strong>하는 것이다.</p>
 <p>맥락 정보를 입력받아 출현할 수 있는 단어들의 확률분포를 나타내는 모델을 만들고, 학습의 결과로 분산 표현을 얻는 것이 추론 기반 기법이다.</p>
 <h3 id="신경망에서의-단어-처리">신경망에서의 단어 처리</h3>
-<p>신경망은 단어를 그대로 처리할 수 없기 때문에, 단어를 고정된 길이의 벡터로 변환해야 한다. 이를 위해 가장 대표적으로 사용되는 방법이 원핫 인코딩(one-hot encoding)이다.</p>
+<p>신경망은 단어를 그대로 처리할 수 없기 때문에, 단어를 고정된 길이의 벡터로 변환해야 한다. 이를 위해 가장 대표적으로 사용되는 방법이 <strong>원핫 인코딩</strong>(one-hot encoding)이다.</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:center">단어(텍스트)</th>
+<th style="text-align:center">단어 ID</th>
+<th style="text-align:center">원핫 표현</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">you</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">(1, 0, 0, 0, 0, 0, 0, 0)</td>
+</tr>
+<tr>
+<td style="text-align:center">goodbye</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">(0, 0, 1, 0, 0, 0, 0, 0)</td>
+</tr>
+</tbody>
+</table></div>
+<p>위와 같이 단어는 텍스트, 단어 ID, 원핫 표현으로 나타낼 수 있다. 단어를 고정 크기의 원핫 표현으로 나타내게 되면 뉴런의 수를 고정할 수 있다.</p>
+<p>신경망을 구성하는 계층들이 벡터를 처리할 수 있으므로, 이제 단어를 신경망으로 처리할 수 있을 것이다.</p>
+<p><img src="/p/word2vec/image.png"
+	width="562"
+	height="459"
+	srcset="/p/word2vec/image_hu3f7b4f5201a3d844f9498b9d3ce51d55_90389_480x0_resize_box_3.png 480w, /p/word2vec/image_hu3f7b4f5201a3d844f9498b9d3ce51d55_90389_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="완전연결계층에 의한 변환을 단순화한 그림"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="122"
+		data-flex-basis="293px"
+	
+></p>
+<p>완전연결계층의 계산은 행렬 곱으로 수행할 수 있고. 행렬 곱은 넘파이의 <code>np.matmul()</code>로 할 수 있다.</p>
+<h2 id="cbow">CBOW</h2>
+<h3 id="cbow-모델의-추론-처리">CBOW 모델의 추론 처리</h3>
+<p>CBOW 모델은 맥락으로부터 타깃을 추측하는 용도의 신경망이다. (타깃은 중앙 단어, 맥락은 주변 단어를 의미한다)</p>
+<p><img src="/p/word2vec/image-1.png"
+	width="853"
+	height="829"
+	srcset="/p/word2vec/image-1_hub4bfc2fe41a6c706de102652017462d2_200069_480x0_resize_box_3.png 480w, /p/word2vec/image-1_hub4bfc2fe41a6c706de102652017462d2_200069_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="CBOW 모델의신경망 구조"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="102"
+		data-flex-basis="246px"
+	
+></p>
+<p>입력층이 2개 있고, 은닉층을 거쳐 출력층에 도달한다.</p>
+<p>두 입력층에서 은닉층으로의 변환은 완전연결계층이 수행한다. 그리고 은닉층에서 출력층 뉴런으로의 변환은 다른 완전연결계층이 처리한다. 입력층이 여러 개이면 전체를 <strong>평균</strong>하면 된다.</p>
+<p>출력층의 뉴런은 총 7개인데, 이 뉴런 하나하나가 각각의 단어에 대응한다. 출력층 뉴런은 각 단어의 <strong>점수</strong>를 뜻하며, 값이 높을수록 대응 단어의 출현 확률도 높아진다. 이 점수에 소프트맥스 함수를 적용해서，<strong>확률</strong>을 얻을 수 있다.</p>
+<p>학습을 진행할수록 맥락에서 출현하는 단어를 잘 추측하는 방향으로 이 분산 표현들이 갱신된다. 이렇게 얻은 벡터에는 <strong>단어의 의미도 포함되어 있다</strong>.</p>
+<p><img src="/p/word2vec/image-2.png"
+	width="1009"
+	height="771"
+	srcset="/p/word2vec/image-2_hu83e02f47960715b8f885eb14234d3d19_138189_480x0_resize_box_3.png 480w, /p/word2vec/image-2_hu83e02f47960715b8f885eb14234d3d19_138189_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="계층 관점에서 본 CBOW 모델의 신경망 구성"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="130"
+		data-flex-basis="314px"
+	
+></p>
+<p>이제 CBOW 모델의 추론 처리를 파이썬으로 구현해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">MatMul</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">W</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">W</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W</span><span class="p">,</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+</span></span><span class="line"><span class="cl">        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">out</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dout</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W</span><span class="p">,</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dout</span><span class="p">,</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">dout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">grads</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">dW</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">dx</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>MatMul 계층은 내부에서 행렬 곱을 계산한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="c1"># 샘플 맥락 데이터</span>
+</span></span><span class="line"><span class="cl"><span class="n">c0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl"><span class="n">c1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 가중치 초기화</span>
+</span></span><span class="line"><span class="cl"><span class="n">W_in</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">W_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 계층 생성</span>
+</span></span><span class="line"><span class="cl"><span class="n">in_layer0</span> <span class="o">=</span> <span class="n">MatMul</span><span class="p">(</span><span class="n">W_in</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">in_layer1</span> <span class="o">=</span> <span class="n">MatMul</span><span class="p">(</span><span class="n">W_in</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">out_layer</span> <span class="o">=</span> <span class="n">MatMul</span><span class="p">(</span><span class="n">W_out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 순전파</span>
+</span></span><span class="line"><span class="cl"><span class="n">h0</span> <span class="o">=</span> <span class="n">in_layer0</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">h1</span> <span class="o">=</span> <span class="n">in_layer1</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">c1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">h</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">h0</span> <span class="o">+</span> <span class="n">h1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">out_layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>CBOW 모델은 활성화 함수를 사용하지 않는 간단한 구성의 신경망이다.</p>
+<h3 id="cbow-모델의-학습">CBOW 모델의 학습</h3>
+<blockquote>
+<p>모델이 올바른 예측을 할 수 있도록 가중치를 조정해야 한다.</p>
+</blockquote>
+<p>소프트맥스 함수를 이용 해 점수를 확률로 변환하고, 그 확률과 정답 레이블로부터 교차 엔트로피 오차를 구한 후, 그 값을 손실로 사용해 학습을 진행한다.</p>
+<p><img src="/p/word2vec/image-3.png"
+	width="995"
+	height="596"
+	srcset="/p/word2vec/image-3_hu42c86eda2c2eb22ccbe976f58bc00797_127466_480x0_resize_box_3.png 480w, /p/word2vec/image-3_hu42c86eda2c2eb22ccbe976f58bc00797_127466_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="CBOW 모델의 학습 시 신경망 구성"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="166"
+		data-flex-basis="400px"
+	
+></p>
+<p>앞서 구현한 추론 처리를 수행하는 CBOW 모델에 Softmax 계층과 Cross Entropy Error 계층을 추가하기만 하면 된다.</p>
+<h3 id="word2vec의-가중치와-분산-표현">word2vec의 가중치와 분산 표현</h3>
+<p>word2vec에서 사용되는 신경망에는 두 가지 가중치가 존재한다.</p>
+<ol>
+<li>
+<p>입력 측 가중치 $ W_{in} $: 입력 측 완전연결계층의 가중치로, 각 행은 해당 단어의 분산 표현을 나타낸다.</p>
+</li>
+<li>
+<p>출력 측 가중치 $ W_{out} $: 출력 측 완전연결계층의 가중치로, 단어의 의미가 인코딩된 벡터가 각 열에 저장된다.</p>
+</li>
+</ol>
+<p>일반적으로 word2vec에서는 입력 측 가중치 $ W_{in} $만을 최종 단어의 분산 표현으로 사용한다. 출력 측 가중치는 대부분의 연구에서 버려진다.</p>
+<p><img src="/p/word2vec/image-4.png"
+	width="904"
+	height="497"
+	srcset="/p/word2vec/image-4_hu1af831d405d8a936ea25b48a045ffece_189259_480x0_resize_box_3.png 480w, /p/word2vec/image-4_hu1af831d405d8a936ea25b48a045ffece_189259_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="각 단어의 분산 표현"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="181"
+		data-flex-basis="436px"
+	
+></p>
+<p>두 가중치는 하나만 이용할 수도 있고, 둘을 합쳐서 사용할 수도 있다.</p>
+<p>word2vec의 skip-gram 등 <strong>많은 연구에서는 입력 측의 가중치만 사용</strong>하고, GloVe에서는 두 가중치를 더하여 사용한다.</p>
+<h2 id="학습-데이터-준비">학습 데이터 준비</h2>
+<p>&ldquo;You say goodbye and I say hello&rdquo; 문장을 이용해 학습을 진행해 보자.</p>
+<p>문장을 전처리하는 <code>preprocess</code> 함수는 <a class="link" href="https://gyeongminn.github.io/p/word-distributed-representation/#%eb%a7%90%eb%ad%89%ec%b9%98-%ec%a0%84%ec%b2%98%eb%a6%ac"  target="_blank" rel="noopener"
+    >여기</a>를 참고하자.</p>
+<h3 id="맥락과-타깃">맥락과 타깃</h3>
+<p>word2vec에서 이용하는 신경망의 입력은 <strong>맥락</strong>이다. 그 정답 레이블은 중앙 단어인 <strong>타깃</strong> 이다. 우리는 맥락을 입력했을 때, 타깃을 출력할 확률이 높아지도록 학습시키면 된다.</p>
+<p><img src="/p/word2vec/image-5.png"
+	width="789"
+	height="312"
+	srcset="/p/word2vec/image-5_hu9e7d1c407f3b0c8c4571a4e51b18e111_176184_480x0_resize_box_3.png 480w, /p/word2vec/image-5_hu9e7d1c407f3b0c8c4571a4e51b18e111_176184_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="맥락과 타깃의 예시"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="252"
+		data-flex-basis="606px"
+	
+></p>
+<p>맥락과 타깃을 만드는 함수를 구현해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">create_contexts_target</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">target</span> <span class="o">=</span> <span class="n">corpus</span><span class="p">[</span><span class="n">window_size</span><span class="p">:</span><span class="o">-</span><span class="n">window_size</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">contexts</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">window_size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span><span class="o">-</span><span class="n">window_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cs</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">window_size</span><span class="p">,</span> <span class="n">window_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">corpus</span><span class="p">[</span><span class="n">idx</span> <span class="o">+</span> <span class="n">t</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">contexts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">contexts</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="원핫-벡터로-변환">원핫 벡터로 변환</h3>
+<p>맥락과 타깃을 단어 ID에서 원핫 표현으로 변환하기 위해, 원핫 벡터로 변환하는 함수를 구현해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">convert_one_hot</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">N</span> <span class="o">=</span> <span class="n">corpus</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">corpus</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">one_hot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">corpus</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">one_hot</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">word_id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">elif</span> <span class="n">corpus</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C</span> <span class="o">=</span> <span class="n">corpus</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">one_hot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">idx_0</span><span class="p">,</span> <span class="n">word_ids</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">corpus</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">idx_1</span><span class="p">,</span> <span class="n">word_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">word_ids</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">one_hot</span><span class="p">[</span><span class="n">idx_0</span><span class="p">,</span> <span class="n">idx_1</span><span class="p">,</span> <span class="n">word_id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">one_hot</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="cbow-모델-구현">CBOW 모델 구현</h2>
+<p>그럼 이제 모델을 구현해 보자.</p>
+<p><img src="/p/word2vec/image-6.png"
+	width="978"
+	height="664"
+	srcset="/p/word2vec/image-6_hud00d83d8669da602ae7fdcc74b583914_117555_480x0_resize_box_3.png 480w, /p/word2vec/image-6_hud00d83d8669da602ae7fdcc74b583914_117555_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="CBOW 모델의신경망 구성"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="353px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SimpleCBOW</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">V</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">hidden_size</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 가중치 초기화</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W_in</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W_out</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 계층 생성</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">in_layer0</span> <span class="o">=</span> <span class="n">MatMul</span><span class="p">(</span><span class="n">W_in</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">in_layer1</span> <span class="o">=</span> <span class="n">MatMul</span><span class="p">(</span><span class="n">W_in</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">out_layer</span> <span class="o">=</span> <span class="n">MatMul</span><span class="p">(</span><span class="n">W_out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">loss_layer</span> <span class="o">=</span> <span class="n">SoftmaxWithLoss</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 모든 가중치와 기울기를 리스트에 모은다.</span>
+</span></span><span class="line"><span class="cl">        <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">in_layer0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_layer1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_layer</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">+=</span> <span class="n">layer</span><span class="o">.</span><span class="n">params</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">+=</span> <span class="n">layer</span><span class="o">.</span><span class="n">grads</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 인스턴스 변수에 단어의 분산 표현을 저장한다.</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">word_vecs</span> <span class="o">=</span> <span class="n">W_in</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">contexts</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">h0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_layer0</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">contexts</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">h1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_layer1</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">contexts</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">h0</span> <span class="o">+</span> <span class="n">h1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">        <span class="n">score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">loss</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dout</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_layer</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_layer</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">da</span> <span class="o">*=</span> <span class="mf">0.5</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">in_layer1</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">da</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">in_layer0</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">da</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="학습코드구현">학습코드구현</h3>
+<p>학습 데이터를 준비해 신경망에 입력한 다음, 기울기를 구하고 가중치 매개변수를 순서대로 갱신해보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="n">window_size</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">hidden_size</span> <span class="o">=</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="n">max_epoch</span> <span class="o">=</span> <span class="mi">1000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;You say goodbye and I say hello.&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">corpus</span><span class="p">,</span> <span class="n">word_to_id</span><span class="p">,</span> <span class="n">id_to_word</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_to_id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">contexts</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">create_contexts_target</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">target</span> <span class="o">=</span> <span class="n">convert_one_hot</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">contexts</span> <span class="o">=</span> <span class="n">convert_one_hot</span><span class="p">(</span><span class="n">contexts</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">SimpleCBOW</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">optimizer</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">trainer</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">contexts</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">max_epoch</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">trainer</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">word_vecs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">word_vecs</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">word_id</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">id_to_word</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">word_vecs</span><span class="p">[</span><span class="n">word_id</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Optimizer는 Adam을 사용해서 학습시켰다.</p>
+<p><img src="/p/word2vec/image-7.png"
+	width="640"
+	height="480"
+	srcset="/p/word2vec/image-7_hu7d4630c01d55ea2ccca985100a1b63c6_27676_480x0_resize_box_3.png 480w, /p/word2vec/image-7_hu7d4630c01d55ea2ccca985100a1b63c6_27676_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="학습 경과 그래프"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="133"
+		data-flex-basis="320px"
+	
+></p>
+<p>학습을 거듭할수록 손실이 줄어들고 있다. 그럼 이제 학습이 끝난 후의 가중치 매개변수를 확인해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">you [ 1.001226   1.0100921 -1.0480953 -1.1371888  1.4559563]
+</span></span><span class="line"><span class="cl">say [-1.1566567  -1.176362    1.1436371   1.10196     0.29608265]
+</span></span><span class="line"><span class="cl">goodbye [ 0.93248147  0.8733082  -0.8807387  -0.79100204  0.47581592]
+</span></span><span class="line"><span class="cl">and [-0.77025014 -0.7765116   0.7260802   0.86010003  1.9209603 ]
+</span></span><span class="line"><span class="cl">i [ 0.9177614   0.86838746 -0.8880995  -0.7853987   0.48234403]
+</span></span><span class="line"><span class="cl">hello [ 0.97636664  1.0043367  -1.0315654  -1.1388433   1.4567573 ]
+</span></span><span class="line"><span class="cl">. [-1.2583737 -1.2487313  1.2197953  1.20546   -1.6672388]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이제 드디어 단어를 밀집벡터로 나타낼 수 있게 되었다. 이 밀집 벡터가 바로 단어의 분산 표현이다.</p>
+<p>학습이 잘 이루어졌으니, 이 분산 표현은 단어의 실제 의미를 담고 있을 것이다.</p>
+<p>여태 구현한 CBOW 모델은 처리 효율 면에서 문제가 있다. 이제 그걸 개선해 보자.</p>
+<h2 id="word2vec-보충">word2vec 보충</h2>
+<p>작성중..</p>
 
 </section>
 
