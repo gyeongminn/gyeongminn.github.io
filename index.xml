@@ -4401,7 +4401,7 @@ $d = y - x$&lt;/p&gt;
 &lt;p&gt;Chocolatey를 사용하면 이 과정을 &lt;code&gt;choco install python -y&lt;/code&gt; 와 같이 명령어 한 줄로 설치할 수 있다.&lt;/p&gt;
 &lt;p&gt;미리 설치 명령어가 담긴 배치 파일을 만들어 둔다면, 포맷 후 한번에 모든 프로그램을 설치할 수 있다.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;choco upgrade all&lt;/code&gt; 명령어를 사용하면 모든 프로그램을 업데이트할 수 있다.&lt;/p&gt;
-&lt;h1 id=&#34;설치-방법&#34;&gt;설치 방법&lt;/h1&gt;
+&lt;h2 id=&#34;설치-방법&#34;&gt;설치 방법&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chocolatey.org/install&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;공식 홈페이지&lt;/a&gt;에서 설치 커맨드를 복사한다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/chocolatey/image-1.png&#34;
@@ -4419,7 +4419,7 @@ $d = y - x$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;윈도우 + X&lt;/code&gt; 키 를 눌러 Windows 터미널(Windows PowerShell)을 관리자 모드로 열어준 후, 복사한 커맨드를 붙여넣기한 후 엔터를 눌러주면 설치가 진행된다.&lt;/p&gt;
-&lt;h1 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h1&gt;
+&lt;h2 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://community.chocolatey.org/packages&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;여기서&lt;/a&gt; 설치하고 싶은 패키지를 검색한다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/chocolatey/image-2.png&#34;
@@ -4465,7 +4465,7 @@ $d = y - x$&lt;/p&gt;
 		data-flex-basis=&#34;469px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h1 id=&#34;커맨드&#34;&gt;커맨드&lt;/h1&gt;
+&lt;h2 id=&#34;커맨드&#34;&gt;커맨드&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;패키지 검색
 &lt;code&gt;choco search 패키지명&lt;/code&gt;&lt;/p&gt;
@@ -4484,7 +4484,7 @@ $d = y - x$&lt;/p&gt;
 &lt;p&gt;chocolatey 버전 업그레이드
 &lt;code&gt;choco upgrade chocolatey &lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&#34;chocolatey와-패키지를-한번에-설치하는-스크립트&#34;&gt;Chocolatey와 패키지를 한번에 설치하는 스크립트&lt;/h1&gt;
+&lt;h2 id=&#34;chocolatey와-패키지를-한번에-설치하는-스크립트&#34;&gt;Chocolatey와 패키지를 한번에 설치하는 스크립트&lt;/h2&gt;
 &lt;p&gt;아래 소스 코드는 본 작성자가 사용하고 있는 스크립트인데, 아래 주석 부분을 수정해서 사용하면 된다.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
