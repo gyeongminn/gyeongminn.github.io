@@ -207,6 +207,21 @@
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://gyeongminn.github.io/tags/%EC%85%8B%EC%97%85/</loc>
+    <lastmod>2022-01-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongminn.github.io/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/</loc>
+    <lastmod>2022-01-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongminn.github.io/p/chocolatey/</loc>
+    <lastmod>2022-01-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://gyeongminn.github.io/p/rhythm-game-in-c/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
