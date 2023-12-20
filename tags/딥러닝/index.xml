@@ -23,7 +23,7 @@
 &lt;p&gt;통계 기반 기법은 주변 단어의 빈도를 기초로 단어를 표현한다. 단어 수가 $N$개일 때, $N \times N$이라는 거대한 행렬을 만들게 된다. 영어 어휘만 해도  100만 개에 가까운데, 그렇다면 1조개의 원소를 가진 행렬이 필요하다는 것이다.&lt;/p&gt;
 &lt;p&gt;이렇게 통계 기반 기법처럼 학습 데이터를 한번에 처리하지 말고, &lt;strong&gt;데이터를 작게 나눠 순차적으로 학습&lt;/strong&gt;시키는 (미니배치 학습) 방법이 필요하다.&lt;/p&gt;
 &lt;h3 id=&#34;추론-기반-기법의-개요&#34;&gt;추론 기반 기법의 개요&lt;/h3&gt;
-&lt;p&gt;추론이란 **주변 단어 (맥락)**가 주어졌을 때, 무슨 단어가 들어갈 지 단어를 &lt;strong&gt;유추&lt;/strong&gt;하는 것이다.&lt;/p&gt;
+&lt;p&gt;추론이란 &lt;strong&gt;주변 단어&lt;/strong&gt; (맥락)가 주어졌을 때, 무슨 단어가 들어갈 지 단어를 &lt;strong&gt;유추&lt;/strong&gt;하는 것이다.&lt;/p&gt;
 &lt;p&gt;맥락 정보를 입력받아 출현할 수 있는 단어들의 확률분포를 나타내는 모델을 만들고, 학습의 결과로 분산 표현을 얻는 것이 추론 기반 기법이다.&lt;/p&gt;
 &lt;h3 id=&#34;신경망에서의-단어-처리&#34;&gt;신경망에서의 단어 처리&lt;/h3&gt;
 &lt;p&gt;신경망은 단어를 그대로 처리할 수 없기 때문에, 단어를 고정된 길이의 벡터로 변환해야 한다. 이를 위해 가장 대표적으로 사용되는 방법이 &lt;strong&gt;원핫 인코딩&lt;/strong&gt;(one-hot encoding)이다.&lt;/p&gt;
@@ -74,7 +74,7 @@
 	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-1_hub4bfc2fe41a6c706de102652017462d2_200069_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-1_hub4bfc2fe41a6c706de102652017462d2_200069_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;CBOW 모델의신경망 구조&#34;
+		alt=&#34;CBOW 모델의 신경망 구조&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
@@ -84,7 +84,7 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;입력층이 2개 있고, 은닉층을 거쳐 출력층에 도달한다.&lt;/p&gt;
 &lt;p&gt;두 입력층에서 은닉층으로의 변환은 완전연결계층이 수행한다. 그리고 은닉층에서 출력층 뉴런으로의 변환은 다른 완전연결계층이 처리한다. 입력층이 여러 개이면 전체를 &lt;strong&gt;평균&lt;/strong&gt;하면 된다.&lt;/p&gt;
-&lt;p&gt;출력층의 뉴런은 총 7개인데, 이 뉴런 하나하나가 각각의 단어에 대응한다. 출력층 뉴런은 각 단어의 &lt;strong&gt;점수&lt;/strong&gt;를 뜻하며, 값이 높을수록 대응 단어의 출현 확률도 높아진다. 이 점수에 소프트맥스 함수를 적용해서，&lt;strong&gt;확률&lt;/strong&gt;을 얻을 수 있다.&lt;/p&gt;
+&lt;p&gt;출력층의 뉴런은 총 7개인데, 이 뉴런 하나하나가 각각의 단어에 대응한다. 출력층 뉴런은 각 단어의 &lt;strong&gt;점수&lt;/strong&gt;를 뜻하며, 값이 높을수록 대응 단어의 출현 확률도 높아진다. 이 점수에 소프트맥스 함수를 적용해서, &lt;strong&gt;확률&lt;/strong&gt;을 얻을 수 있다.&lt;/p&gt;
 &lt;p&gt;학습을 진행할수록 맥락에서 출현하는 단어를 잘 추측하는 방향으로 이 분산 표현들이 갱신된다. 이렇게 얻은 벡터에는 &lt;strong&gt;단어의 의미도 포함되어 있다&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-2.png&#34;
 	width=&#34;1009&#34;
@@ -208,18 +208,18 @@
 		data-flex-basis=&#34;400px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;앞서 구현한 추론 처리를 수행하는 CBOW 모델에 Softmax 계층과 Cross Entropy Error 계층을 추가하기만 하면 된다.&lt;/p&gt;
+&lt;p&gt;앞서 구현한 추론 처리를 수행하는 CBOW 모델에 &lt;code&gt;Softmax&lt;/code&gt; 계층과 &lt;code&gt;Cross Entropy Error&lt;/code&gt; 계층을 추가하기만 하면 된다.&lt;/p&gt;
 &lt;h3 id=&#34;word2vec의-가중치와-분산-표현&#34;&gt;word2vec의 가중치와 분산 표현&lt;/h3&gt;
 &lt;p&gt;word2vec에서 사용되는 신경망에는 두 가지 가중치가 존재한다.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;입력 측 가중치 $ W_{in} $: 입력 측 완전연결계층의 가중치로, 각 행은 해당 단어의 분산 표현을 나타낸다.&lt;/p&gt;
+&lt;p&gt;입력 측 가중치 $ W_\text{in} $: 입력 측 완전연결계층의 가중치로, 각 행은 해당 단어의 분산 표현을 나타낸다.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;출력 측 가중치 $ W_{out} $: 출력 측 완전연결계층의 가중치로, 단어의 의미가 인코딩된 벡터가 각 열에 저장된다.&lt;/p&gt;
+&lt;p&gt;출력 측 가중치 $ W_\text{out} $: 출력 측 완전연결계층의 가중치로, 단어의 의미가 인코딩된 벡터가 각 열에 저장된다.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;일반적으로 word2vec에서는 입력 측 가중치 $ W_{in} $만을 최종 단어의 분산 표현으로 사용한다. 출력 측 가중치는 대부분의 연구에서 버려진다.&lt;/p&gt;
+&lt;p&gt;일반적으로 word2vec에서는 입력 측 가중치 $ W_\text{in} $만을 최종 단어의 분산 표현으로 사용한다. 출력 측 가중치는 대부분의 연구에서 버려진다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-4.png&#34;
 	width=&#34;904&#34;
 	height=&#34;497&#34;
