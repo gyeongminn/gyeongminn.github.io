@@ -6,13 +6,14 @@
 
 <link rel='canonical' href='https://gyeongminn.github.io/p/paper-review-panda/'>
 
-<link rel="stylesheet" href="/scss/style.min.c810519ab2c92675a52f4d02eaf352e670cf2c93e0b44b8d9745835ba528673e.css"><meta property='og:title' content='[논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation'>
+<link rel="stylesheet" href="/scss/style.min.4856ab3eafbd6dad1ec51d8e26aa10472850b743d23dc9d886585a94844c4a0f.css"><meta property='og:title' content='[논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation'>
 <meta property='og:description' content='이상치 탐지 분야의 SOTA 방법 중 하나인 &#39;PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&#39; 논문 리뷰'>
 <meta property='og:url' content='https://gyeongminn.github.io/p/paper-review-panda/'>
 <meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='논문리뷰' /><meta property='article:tag' content='딥러닝' /><meta property='article:published_time' content='2023-12-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-27T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='논문리뷰' /><meta property='article:tag' content='딥러닝' /><meta property='article:published_time' content='2023-12-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-12-27T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongminn.github.io/images/paper-review.png' />
 <meta name="twitter:title" content="[논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation">
-<meta name="twitter:description" content="이상치 탐지 분야의 SOTA 방법 중 하나인 &#39;PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&#39; 논문 리뷰">
+<meta name="twitter:description" content="이상치 탐지 분야의 SOTA 방법 중 하나인 &#39;PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&#39; 논문 리뷰"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gyeongminn.github.io/images/paper-review.png' />
     <link rel="shortcut icon" href="/logo.ico/favicon.ico" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBG63ZJRZM"></script>
@@ -320,11 +321,51 @@ if (!doNotTrack) {
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">목차</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#초록">초록</a></li>
+    <li><a href="#서론">서론</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/paper-review-panda/">
+                
+                    <img src="/../images/paper-review.png" loading="lazy" alt="Featured image of post [논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -383,10 +424,12 @@ if (!doNotTrack) {
     
     <blockquote>
 <p><a class="link" href="https://openaccess.thecvf.com/content/CVPR2021/papers/Reiss_PANDA_Adapting_Pretrained_Features_for_Anomaly_Detection_and_Segmentation_CVPR_2021_paper.pdf"  target="_blank" rel="noopener"
-    >논문 링크</a></p>
+    >논문 PDF</a></p>
 </blockquote>
 <h1 id="panda-adapting-pretrained-features-for-anomaly-detection-and-segmentation">PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation</h1>
+<h2 id="초록">초록</h2>
 <p>이 논문은 이상 감지 방법이 고품질의 특징을 요구한다고 말하며, 최근 커뮤니티가 깊은 자기 감독 특징 학습의 발전을 통해 더 나은 특징을 얻으려고 시도했다고 언급한다. 놀랍게도, 사전 훈련된 깊은 특징을 사용하는 매우 유망한 방향이 대부분 간과되었다. 이 논문에서는 먼저 사전 훈련된 특징을 단순한 이상 감지 및 분할 방법과 결합하면, 훨씬 복잡한 최신 방법보다 효과적임을 경험적으로 입증한다.</p>
+<h2 id="서론">서론</h2>
 
 </section>
 
@@ -606,7 +649,7 @@ if (!doNotTrack) {
 <script>
     (function () {
         const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap";
+        customFont.href = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css";
         customFont.type = "text/css";
         customFont.rel = "stylesheet";
         document.head.appendChild(customFont);

@@ -13,12 +13,14 @@
         <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/p/paper-review-panda/</guid>
-        <description>&lt;blockquote&gt;
+        <description>&lt;img src="https://gyeongminn.github.io/images/paper-review.png" alt="Featured image of post [논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation" /&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openaccess.thecvf.com/content/CVPR2021/papers/Reiss_PANDA_Adapting_Pretrained_Features_for_Anomaly_Detection_and_Segmentation_CVPR_2021_paper.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;논문 링크&lt;/a&gt;&lt;/p&gt;
+    &gt;논문 PDF&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;panda-adapting-pretrained-features-for-anomaly-detection-and-segmentation&#34;&gt;PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&lt;/h1&gt;
+&lt;h2 id=&#34;초록&#34;&gt;초록&lt;/h2&gt;
 &lt;p&gt;이 논문은 이상 감지 방법이 고품질의 특징을 요구한다고 말하며, 최근 커뮤니티가 깊은 자기 감독 특징 학습의 발전을 통해 더 나은 특징을 얻으려고 시도했다고 언급한다. 놀랍게도, 사전 훈련된 깊은 특징을 사용하는 매우 유망한 방향이 대부분 간과되었다. 이 논문에서는 먼저 사전 훈련된 특징을 단순한 이상 감지 및 분할 방법과 결합하면, 훨씬 복잡한 최신 방법보다 효과적임을 경험적으로 입증한다.&lt;/p&gt;
+&lt;h2 id=&#34;서론&#34;&gt;서론&lt;/h2&gt;
 </description>
         </item>
         <item>
