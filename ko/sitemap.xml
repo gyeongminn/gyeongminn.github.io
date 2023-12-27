@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://gyeongminn.github.io/p/paper-review-panda/</loc>
+    <lastmod>2023-12-27T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://gyeongminn.github.io/categories/</loc>
-    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -18,7 +23,7 @@
                 />
   </url><url>
     <loc>https://gyeongminn.github.io/</loc>
-    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -33,7 +38,7 @@
                 />
   </url><url>
     <loc>https://gyeongminn.github.io/post/</loc>
-    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -48,7 +53,7 @@
                 />
   </url><url>
     <loc>https://gyeongminn.github.io/tags/</loc>
-    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-12-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -62,12 +67,22 @@
                 href="https://gyeongminn.github.io/tags/"
                 />
   </url><url>
-    <loc>https://gyeongminn.github.io/p/word2vec/</loc>
-    <lastmod>2023-12-19T00:00:00+00:00</lastmod>
+    <loc>https://gyeongminn.github.io/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</loc>
+    <lastmod>2023-12-27T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongminn.github.io/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</loc>
+    <lastmod>2023-12-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongminn.github.io/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</loc>
+    <lastmod>2023-12-27T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongminn.github.io/p/word2vec/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>

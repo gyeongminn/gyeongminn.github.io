@@ -7,10 +7,18 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Tue, 19 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 27 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>논문리뷰</title>
+        <link>https://gyeongminn.github.io/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
+        <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongminn.github.io/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>딥러닝</title>
         <link>https://gyeongminn.github.io/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</link>
-        <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</guid>
         <description></description>
