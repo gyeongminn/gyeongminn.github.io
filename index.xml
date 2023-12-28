@@ -3969,7 +3969,7 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
         <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/p/baekjoonbot/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/p/baekjoonbot/image-1.png" alt="Featured image of post 백준 디스코드 봇 &#39;백준봇&#39;" /&gt;&lt;h1 id=&#34;백준-디스코드-봇&#34;&gt;백준 디스코드 봇&lt;/h1&gt;
+        <description>&lt;img src="https://gyeongminn.github.io/p/baekjoonbot/image-1.png" alt="Featured image of post 백준 디스코드 봇 &#39;백준봇&#39;" /&gt;&lt;h1 id=&#34;백준-디스코드-봇-백준봇&#34;&gt;백준 디스코드 봇 &amp;lsquo;백준봇&amp;rsquo;&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;백준 스터디를 진행할 때 문제를 조금 더 이쁘게 올려 보고 싶어 만들었습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -4001,8 +4001,8 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h1&gt;
-&lt;h2 id=&#34;문제-올리기&#34;&gt;문제 올리기&lt;/h2&gt;
+&lt;h2 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h2&gt;
+&lt;h3 id=&#34;문제-올리기&#34;&gt;문제 올리기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;/백준 문제번호&lt;/code&gt;  로 문제를 올릴 수 있습니다.
 &lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-6.png&#34;
 	width=&#34;962&#34;
@@ -4029,7 +4029,7 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 		data-flex-basis=&#34;2773px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;문제와-소스코드를-함께-올리기&#34;&gt;문제와 소스코드를 함께 올리기&lt;/h2&gt;
+&lt;h3 id=&#34;문제와-소스코드를-함께-올리기&#34;&gt;문제와 소스코드를 함께 올리기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;/백준 문제번호&lt;/code&gt;  또는 &lt;code&gt;/백준 문제링크&lt;/code&gt;  하단에 소스코드를 같이 입력하면, 문제와 소스코드를 함께 올릴 수 있습니다.&lt;/p&gt;
 &lt;p&gt;줄바꿈은 &lt;code&gt;Shift&lt;/code&gt; + &lt;code&gt;Enter&lt;/code&gt; 키를 눌러주시면 됩니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-4.png&#34;
@@ -4057,7 +4057,7 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 		data-flex-basis=&#34;396px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;소스-코드가-길-때&#34;&gt;소스 코드가 길 때&lt;/h3&gt;
+&lt;h4 id=&#34;소스-코드가-길-때&#34;&gt;소스 코드가 길 때&lt;/h4&gt;
 &lt;p&gt;디스코드의 Embed의 내용은 4096자 제한이 있습니다.
 따라서 Embed의 범위를 벗어나면 아래 사진과 같이 출력합니다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-8.png&#34;
@@ -4101,7 +4101,7 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;백준봇-초대하기&#34;&gt;백준봇 초대하기&lt;/h1&gt;
+&lt;h2 id=&#34;백준봇-초대하기&#34;&gt;백준봇 초대하기&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://discord.com/api/oauth2/authorize?client_id=1055791861572325417&amp;amp;permissions=17179879424&amp;amp;scope=bot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;초대 링크&lt;/a&gt;&lt;/p&gt;
