@@ -368,7 +368,13 @@ if (!doNotTrack) {
         <li><a href="#학습코드구현">학습코드구현</a></li>
       </ol>
     </li>
-    <li><a href="#word2vec-보충">word2vec 보충</a></li>
+    <li><a href="#word2vec-보충">word2vec 보충</a>
+      <ol>
+        <li><a href="#cbow-모델과-확률">CBOW 모델과 확률</a></li>
+        <li><a href="#skip-gram-모델">skip-gram 모델</a></li>
+        <li><a href="#통계-기반-vs-추론-기반">통계 기반 vs 추론 기반</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -956,7 +962,77 @@ if (!doNotTrack) {
 <p>학습이 잘 이루어졌으니, 이 분산 표현은 단어의 실제 의미를 담고 있을 것이다.</p>
 <p>여태 구현한 CBOW 모델은 처리 효율 면에서 문제가 있다. 이제 그걸 개선해 보자.</p>
 <h2 id="word2vec-보충">word2vec 보충</h2>
-<p>작성중..</p>
+<h3 id="cbow-모델과-확률">CBOW 모델과 확률</h3>
+<p>사건 A가 일어날 확률은 $P(A)$와 같이 표기하고, A와 B가 동시에 일어날 확률은 $P(A, B)$와 같이 표기한다. 사건 B가 일어났을 때 사건 A가 일어날 확률은 $P(A|B)$와 같이 표기한다.</p>
+<p>맥락으로 $w_{t-1}$과 $w_{t+1}$ 이 주어졌을 때 $w_t$가 일어날 확률은</p>
+<p>$$
+P(w_t | w_{t-1}, w_{t+1})
+\tag 1
+$$</p>
+<p>식 1과 같이 쓸 수 있다. 이는 CBOW를 모델링 하는 식이다.</p>
+<p>교차 엔트로피 오차 식은 $L = - \sum_k t_k \log y_k$이다. $y_k$는 $k$번째에 해당하는 사건이 일어날 확률을 의미하고, $t_k$는 정답 레이블로 원핫 벡터로 표현된다. 여기서 문제의 정답은 $w_i$가 발생하는 것이므로 $w_i$에 해당하는 원소만 1이고 나머지는 0이 된다. 이 점을 활용하여, 다음 식을 유도할 수 있다.</p>
+<p>$$
+L = - \log P(w_t \ | \ w_{t-1}, \ w_{t+1})
+\tag 2
+$$</p>
+<p>식 2는 <strong>음의 로그 가능도</strong>라고 부른다. 이처럼 CBOW 모델의 손실 함수는 식 1의 확률에 $\log$를 취한 다음 마이너스를 붙인 것이다. 이는 샘플 데이터 하나에 대한 손실 함수이고, 이를 corpus 전체로 확장시키면 아래 식 3과 같다.</p>
+<p>$$
+L = - \frac{1}{T} \sum_{t=1}^T \log P(w_t \ | \ w_{t-1}, \ w_{t+1})
+\tag 3
+$$</p>
+<p>CBOW 모델의 학습이 수행하는 일은 이 손실 함수의 값을 가능한 한 작게 만드는 것이다.</p>
+<h3 id="skip-gram-모델">skip-gram 모델</h3>
+<p>skip-gram은 CBOW에서 다루는 맥락과 타깃을 역전시킨 모델이다.</p>
+<p><img src="/p/word2vec/image-8.png"
+	width="833"
+	height="147"
+	srcset="/p/word2vec/image-8_hu2916d9d77f1323c25fd727aaf35c33dd_75662_480x0_resize_box_3.png 480w, /p/word2vec/image-8_hu2916d9d77f1323c25fd727aaf35c33dd_75662_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="CBOW 모델과 skip-gram 모델이 다루는 문제"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="566"
+		data-flex-basis="1360px"
+	
+></p>
+<p>CBOW 모델은 맥락이 여러 개 있고, 그 여러 맥락으로부터 타깃을 추측한다. 반면에 skip-gmm 모델은 중앙의 타깃으로부터 주변의 맥락을 추측한다.</p>
+<p><img src="/p/word2vec/image-9.png"
+	width="811"
+	height="660"
+	srcset="/p/word2vec/image-9_huab099de2643e368e2fc9c09000b2c279_217229_480x0_resize_box_3.png 480w, /p/word2vec/image-9_huab099de2643e368e2fc9c09000b2c279_217229_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="skip-gram 모델의 신경망 구성 예"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="122"
+		data-flex-basis="294px"
+	
+></p>
+<p>skip-gram 모델을 확률 표기로 나타내면 아래 식 4와 같다.</p>
+<p>$$
+P(w_{t-1}, \ w_{t+1} \ | \ w_t)
+\tag 4
+$$</p>
+<p>조건부 독립이라고 가정하고 (맥락의 단어 사이에 관련성이 없다고 가정하고) 식 4를 아래 식 5와 같이 분해한다.</p>
+<p>$$
+P(w_{t-1}, \ w_{t+1} \ | \ w_t) = P(w_{t-1} \ | \ w_{t}) \ P(w_{t+1} \ | \ w_{t})
+\tag 5
+$$</p>
+<p>위 식을 교차 엔트로피 오차에 적용하고, corpus 전체로 확장시키면 아래 식 6이 된다.</p>
+<p>$$
+L = - \frac{1}{T} \sum_{t=1}^T ( \log P(w_{t-1} \ | \ w_{t})+ P(w_{t+1} \ | \ w_{t}))
+\tag 6
+$$</p>
+<p>skip-gram 모델은 맥락의 수만큼 추측하기 때문에 그 손실 함수는 각 맥락에서 구한 손실의 총합이어야 하는 반면, CBOW 모델은 타깃 하나의 손실을 구한다.</p>
+<p>단어 분산 표현의 정밀도 면에서 skip-gram 모델의 결과가 더 좋은 경우가 많고, corpus가 클 수록 성능 면에서 skip-gram이 뛰어난 경향이 있다.</p>
+<h3 id="통계-기반-vs-추론-기반">통계 기반 vs 추론 기반</h3>
+<p>통계 기반 기법과 추론 기반 기법인 word2vec은 학습과 갱신 방식에서 차이를 보인다.</p>
+<p>통계 기반은 새 단어 추가 시 처음부터 다시 계산해야 하지만, word2vec은 기존 가중치를 활용해 효율적으로 갱신할 수 있다. 단어의 유사성과 복잡한 패턴 인코딩에서도 word2vec이 더 복잡한 관계를 파악할 수 있으며, &lsquo;king - man + woman = queen&rsquo; 같은 유추 문제를 풀 수 있다.</p>
+<p>그러나 실제 유사성 평가에서는 두 기법 간 우열을 가리기 어렵다. 추론 기반과 통계 기반은 서로 관련되어 있으며, 이를 바탕으로 추론 기반과 통계 기반을 융합한 GloVe 기법이 등장하여 두 방법의 장점을 결합했다.</p>
 
 </section>
 
