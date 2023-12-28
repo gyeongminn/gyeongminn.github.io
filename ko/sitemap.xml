@@ -202,6 +202,16 @@
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://gyeongminn.github.io/tags/%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%EB%B4%87/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongminn.github.io/p/baekjoonbot/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://gyeongminn.github.io/p/boj-1011/</loc>
     <lastmod>2022-06-30T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
