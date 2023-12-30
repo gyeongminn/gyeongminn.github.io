@@ -13,7 +13,7 @@
         <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/p/prime-number-and-divisors/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
+        <description>&lt;img src="https://gyeongminn.github.io/images/algorithm.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;소수는 영어로 prime 이라고 한다. 또한, $p$가 소수일 때 $p^k$를 prime power 라고 한다.&lt;/p&gt;
 &lt;/blockquote&gt;
