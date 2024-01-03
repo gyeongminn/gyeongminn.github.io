@@ -14,34 +14,34 @@
         
         <guid>https://gyeongminn.github.io/p/word2vec-2/</guid>
         <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post Word2Vec의 최적화" /&gt;&lt;h1 id=&#34;word2vec의-최적화&#34;&gt;Word2Vec의 최적화&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image.png&#34;
-	width=&#34;846&#34;
-	height=&#34;564&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image_hub6583d446f343c62a3194bbf3c6f0f48_218700_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image_hub6583d446f343c62a3194bbf3c6f0f48_218700_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image-3.png&#34;
+	width=&#34;1569&#34;
+	height=&#34;1191&#34;
+	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image-3_hu8834c8184300983a591c4f0045bd8abe_487521_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image-3_hu8834c8184300983a591c4f0045bd8abe_487521_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Word2Vec의 구조&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;150&#34;
-		data-flex-basis=&#34;360px&#34;
+		data-flex-grow=&#34;131&#34;
+		data-flex-basis=&#34;316px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;Word2Vec은 자연어 처리 분야에서 매우 중요한 도구로 자리 잡고 있다. 그러나 Word2Vec은 어휘의 양이 방대해질수록 계산량과 메모리 사용량이 커지는 문제를 가지고 있다. 이러한 문제를 해결하기 위하여 &amp;lsquo;임베딩(Embedding)&amp;rsquo; 계층을 도입하고 &amp;lsquo;네거티브 샘플링(Negative Sampling)&amp;rsquo; 기법을 적용하는 두 가지 주요 개선 방법을 살펴보자.&lt;/p&gt;
 &lt;h2 id=&#34;embedding-계층&#34;&gt;Embedding 계층&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image-3.png&#34;
-	width=&#34;705&#34;
-	height=&#34;343&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image-3_hu47cdbed2c50406b23061fb27d8f4c4df_85638_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image-3_hu47cdbed2c50406b23061fb27d8f4c4df_85638_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image-4.png&#34;
+	width=&#34;1347&#34;
+	height=&#34;661&#34;
+	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image-4_hu38ab5d6d8c1cfa13035a3656906f9354_254061_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image-4_hu38ab5d6d8c1cfa13035a3656906f9354_254061_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Embedding Layer&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;205&#34;
-		data-flex-basis=&#34;493px&#34;
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;489px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;배경&#34;&gt;배경&lt;/h3&gt;
@@ -101,18 +101,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;네거티브-샘플링-기법&#34;&gt;네거티브 샘플링 기법&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image-1.png&#34;
-	width=&#34;894&#34;
-	height=&#34;362&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image-1_huc74c58e1bf91c4de1e671f2c010fea98_79255_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image-1_huc74c58e1bf91c4de1e671f2c010fea98_79255_1024x0_resize_box_3.png 1024w&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image-5.png&#34;
+	width=&#34;1559&#34;
+	height=&#34;772&#34;
+	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image-5_huf6cb38d7ca8e765b1958c39d9d025593_249082_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image-5_huf6cb38d7ca8e765b1958c39d9d025593_249082_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Negative Sampling&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;246&#34;
-		data-flex-basis=&#34;592px&#34;
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;484px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;네거티브 샘플링&lt;/strong&gt;은 다중 분류 문제를 이진 분류로 근사하여 계산량을 대폭 줄이는 기법이다. 이 기법은 특히 대규모 어휘를 다루는 자연어 처리에서 중요한 역할을 한다.&lt;/p&gt;
