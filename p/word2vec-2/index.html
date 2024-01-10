@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://gyeongminn.github.io/p/word2vec-2/'>
 
-<link rel="stylesheet" href="/scss/style.min.a76c551919afd76df5867c19ed304a67f11a65a5df158be28d4a51ce18b3b9d9.css"><meta property='og:title' content='Word2Vec의 최적화'>
+<link rel="stylesheet" href="/scss/style.min.f611aac5f68215ae344ad77733d73c084efa2379400011a717e7e70ad82a4e6e.css"><meta property='og:title' content='Word2Vec의 최적화'>
 <meta property='og:description' content='Embedding 계층과 네거티브 샘플링 도입으로 인한 word2vec의 최적화와 CBOW 모델의 개선'>
 <meta property='og:url' content='https://gyeongminn.github.io/p/word2vec-2/'>
 <meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
@@ -359,7 +359,7 @@ if (!doNotTrack) {
         <li><a href="#구현-예시-1">구현 예시</a></li>
       </ol>
     </li>
-    <li><a href="#결론">결론</a></li>
+    <li><a href="#cbow-모델-구현">CBOW 모델 구현</a></li>
   </ol>
 </nav>
         </div>
@@ -632,8 +632,102 @@ if (!doNotTrack) {
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">dh</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="결론">결론</h2>
-<p>임베딩 계층과 네거티브 샘플링 기법은 Word2Vec 모델의 계산량과 메모리 사용량을 현저하게 줄여주는 효과적인 방법이다. 특히, 대규모 어휘를 가진 말뭉치를 다루는 데 있어서 이러한 개선 방법은 필수적이다. 이를 통해 보다 빠르고 효율적으로 자연어 처리 모델을 학습이 가능하다.</p>
+</div><p>임베딩 계층과 네거티브 샘플링 기법은 Word2Vec 모델의 계산량과 메모리 사용량을 현저하게 줄여주는 효과적인 방법이다. 특히, 대규모 어휘를 가진 말뭉치를 다루는 데 있어서 이러한 개선 방법은 필수적이다. 이를 통해 보다 빠르고 효율적으로 자연어 처리 모델을 학습이 가능하다.</p>
+<h2 id="cbow-모델-구현">CBOW 모델 구현</h2>
+<p>이전 포스팅에서 구현했던 CBOW 모델에 Embedding과 Negative Sampling Loss 계층을 적용해 개선해 보자.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CBOW</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">window_size</span><span class="p">,</span> <span class="n">corpus</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">V</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">hidden_size</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W_in</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">W_out</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">in_layers</span> <span class="o">=</span><span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">window_size</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">layer</span> <span class="o">=</span> <span class="n">Embedding</span><span class="p">(</span><span class="n">W_in</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">in_layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">ns_loss</span> <span class="o">=</span> <span class="n">NegativeSamplingLoss</span><span class="p">(</span><span class="n">W_out</span><span class="p">,</span> <span class="n">corpus</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">layers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_layers</span> <span class="o">+</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ns_loss</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">+=</span> <span class="n">layer</span><span class="o">.</span><span class="n">params</span>
+</span></span><span class="line"><span class="cl">            <span class="bp">self</span><span class="o">.</span><span class="n">grads</span> <span class="o">+=</span> <span class="n">layer</span><span class="o">.</span><span class="n">grads</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">word_vecs</span> <span class="o">=</span> <span class="n">W_in</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">contexts</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">h</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_layers</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">h</span> <span class="o">+=</span> <span class="n">layer</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">contexts</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">h</span> <span class="o">*=</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_layers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns_loss</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">loss</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ns_loss</span><span class="o">.</span> <span class="n">backward</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dout</span> <span class="o">*=</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_layers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_layers</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">layer</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">dout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/word2vec-2/image.png"
+	width="771"
+	height="224"
+	srcset="/p/word2vec-2/image_hu97ada50fdfa2d7dea73986e8a482bada_60348_480x0_resize_box_3.png 480w, /p/word2vec-2/image_hu97ada50fdfa2d7dea73986e8a482bada_60348_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="맥락과 타깃을 단어 ID로 나타낸 예시"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="344"
+		data-flex-basis="826px"
+	
+></p>
+<p>단어 ID의 배열이 contexts와 target의 예이다. 맥락은 2차원 배열이고 타겟은 1차원 배열이고, 이러한 데이터가 순전파에에 입력되는 것이다.</p>
 
 </section>
 
