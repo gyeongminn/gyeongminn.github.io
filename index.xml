@@ -2830,7 +2830,7 @@ $$&lt;/p&gt;
         <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongminn.github.io/about/</guid>
-        <description>&lt;h1 id=&#34;안녕하세요-이경민입니다&#34;&gt;안녕하세요, 이경민입니다.&lt;/h1&gt;
+        <description>&lt;h2 id=&#34;안녕하세요-이경민입니다&#34;&gt;안녕하세요, 이경민입니다.&lt;/h2&gt;
 &lt;p class=&#34;icon-container&#34; align=&#34;left&#34;&gt;
     &lt;a class=&#34;custom-icon&#34; href=&#34;mailto:gyeongmin@hansung.ac.kr&#34; target=&#34;_blank&#34;&gt;
         &lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg&#34; alt=&#34;Mail&#34;/&gt;
@@ -2860,7 +2860,7 @@ $$&lt;/p&gt;
 &lt;p&gt;현재 반도체 비전 검사 프로그램을 만드는 업무을 하고 있으며, 컴퓨터 비전 분야에서 논문을 쓰며 딥러닝 연구를 하고 있습니다.&lt;/p&gt;
 &lt;p&gt;또한, PS(Problem Solving) 분야에도 관심이 있어 꾸준히 알고리즘 문제를 풀고 있습니다.&lt;/p&gt;
 &lt;p&gt;항상 더 좋은 코드를 짜기 위해 고민하며, 다른 분들의 코드를 보며 배울 점을 찾기 위해 노력하고 있습니다.&lt;/p&gt;
-&lt;h2 align=&#34;left&#34;&gt;Tech Stack&lt;/h3&gt;
+&lt;h2 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h2&gt;
 &lt;p class=&#34;icon-container&#34; align=&#34;left&#34;&gt;
     &lt;a class=&#34;custom-icon&#34; href=&#34;https://www.cprogramming.com/&#34; target=&#34;_blank&#34; rel=&#34;noreferrer&#34;&gt;
         &lt;img src=&#34;https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg&#34; alt=&#34;c&#34;/&gt;
@@ -2890,9 +2890,9 @@ $$&lt;/p&gt;
         &lt;img src=&#34;https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg&#34; alt=&#34;PyTorch&#34;/&gt;
     &lt;/a&gt;
 &lt;/p&gt;
-&lt;h2 align=&#34;left&#34;&gt;Research Interests&lt;/h3&gt;
+&lt;h2 id=&#34;research-interests&#34;&gt;Research Interests&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Computer Vision&lt;/strong&gt;, &lt;strong&gt;Anomaly Detection&lt;/strong&gt;, &lt;strong&gt;Natural Language Processing&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 align=&#34;left&#34;&gt;Projects&lt;/h3&gt;
+&lt;h2 id=&#34;projects&#34;&gt;Projects&lt;/h2&gt;
 &lt;div class=&#34;card-container&#34;&gt;
     &lt;div class=&#34;card&#34;&gt;
         &lt;div class=&#34;title&#34;&gt;C언어로 만든 리듬게임&lt;/div&gt;
@@ -2905,7 +2905,7 @@ $$&lt;/p&gt;
         &lt;a href=&#34;http://example.com&#34; class=&#34;card-button&#34; target=&#34;_blank&#34;&gt;자세히&lt;/a&gt;
     &lt;/div&gt;
 &lt;/div&gt;
-&lt;h2 align=&#34;left&#34;&gt;solved.ac&lt;/h3&gt;
+&lt;h2 id=&#34;solvedac-profile&#34;&gt;Solved.ac profile&lt;/h2&gt;
 &lt;div class=&#34;solved-card-container&#34;&gt;
     &lt;div class=&#34;solved-card&#34;&gt;
         &lt;a href=&#34;https://solved.ac/profile/gyeongmin/arena&#34; target=&#34;_blank&#34;&gt;
