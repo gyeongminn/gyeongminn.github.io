@@ -2908,31 +2908,15 @@ $$&lt;/p&gt;
 &lt;h2 align=&#34;left&#34;&gt;solved.ac&lt;/h3&gt;
 &lt;div class=&#34;solved-card-container&#34;&gt;
     &lt;div class=&#34;solved-card&#34;&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://solved.ac/gyeongmin/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;img src=&#34;http://mazassumnida.wtf/api/v2/generate_badge?boj=gyeongmin&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;solved.ac Profile&#34;
-	
-	
-&gt;&lt;/a&gt;
-&lt;/div&gt;&lt;/p&gt;
-&lt;div class=&#34;solved-card&#34;&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://solved.ac/profile/gyeongmin/arena&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;img src=&#34;https://solvedac.junah.dev/v1/generate_badge?handle=gyeongmin&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;solved.ac Arena&#34;
-	
-	
-&gt;&lt;/a&gt;
-&lt;/div&gt;&lt;/p&gt;
+        &lt;a href=&#34;https://solved.ac/profile/gyeongmin/arena&#34; target=&#34;_blank&#34;&gt;
+            &lt;img src=&#34;http://mazassumnida.wtf/api/v2/generate_badge?boj=gyeongmin&#34; loading=&#34;lazy&#34; alt=&#34;solved.ac Profile&#34;&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;solved-card&#34;&gt;
+        &lt;a href=&#34;https://solved.ac/profile/gyeongmin/arena&#34; target=&#34;_blank&#34;&gt;
+            &lt;img src=&#34;https://solvedac.junah.dev/v1/generate_badge?handle=gyeongmin&#34; /&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;script&gt;
     function updateIcons() {
