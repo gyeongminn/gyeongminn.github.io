@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>C&#43;&#43; on Gyeongmin의 개발 블로그</title>
-        <link>https://gyeongminn.github.io/tags/c&#43;&#43;/</link>
+        <link>https://gyeongmin.kr/tags/c&#43;&#43;/</link>
         <description>Recent content in C&#43;&#43; on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Sun, 03 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 03 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/c++/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>소수 판별과 약수 구하기</title>
-        <link>https://gyeongminn.github.io/p/prime-number-and-divisors/</link>
+        <link>https://gyeongmin.kr/p/prime-number-and-divisors/</link>
         <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/prime-number-and-divisors/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/algorithm.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
+        <guid>https://gyeongmin.kr/p/prime-number-and-divisors/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/algorithm.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;소수는 영어로 prime 이라고 한다. 또한, $p$가 소수일 때 $p^k$를 prime power 라고 한다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -368,11 +368,11 @@ $\frac{N}{d}$도 $1$이 아닌 $N$의 약수이므로, $d \leq\frac{N}{d}$ 이�
         </item>
         <item>
         <title>BOJ 1331: 나이트 투어 (C&#43;&#43;)</title>
-        <link>https://gyeongminn.github.io/p/boj-1331/</link>
+        <link>https://gyeongmin.kr/p/boj-1331/</link>
         <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-1331/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 1331: 나이트 투어 (C&#43;&#43;)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-1331/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 1331: 나이트 투어 (C&#43;&#43;)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/1331&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/1331&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -506,11 +506,11 @@ $\frac{N}{d}$도 $1$이 아닌 $N$의 약수이므로, $d \leq\frac{N}{d}$ 이�
         </item>
         <item>
         <title>BOJ 20437: 문자열 게임 2 (C&#43;&#43;)</title>
-        <link>https://gyeongminn.github.io/p/boj-20437/</link>
+        <link>https://gyeongmin.kr/p/boj-20437/</link>
         <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-20437/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 20437: 문자열 게임 2 (C&#43;&#43;)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-20437/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 20437: 문자열 게임 2 (C&#43;&#43;)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/20437&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/20437&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -744,11 +744,11 @@ $\frac{N}{d}$도 $1$이 아닌 $N$의 약수이므로, $d \leq\frac{N}{d}$ 이�
         </item>
         <item>
         <title>ABC 300: A, C, D</title>
-        <link>https://gyeongminn.github.io/p/abc-300/</link>
+        <link>https://gyeongmin.kr/p/abc-300/</link>
         <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/abc-300/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/atcoder.png" alt="Featured image of post ABC 300: A, C, D" /&gt;&lt;h2 id=&#34;a---n-choice-question&#34;&gt;A - N-choice question&lt;/h2&gt;
+        <guid>https://gyeongmin.kr/p/abc-300/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/atcoder.png" alt="Featured image of post ABC 300: A, C, D" /&gt;&lt;h2 id=&#34;a---n-choice-question&#34;&gt;A - N-choice question&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://atcoder.jp/contests/abc300/tasks/abc300_a&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://atcoder.jp/contests/abc300/tasks/abc300_a&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;문제&#34;&gt;문제&lt;/h3&gt;

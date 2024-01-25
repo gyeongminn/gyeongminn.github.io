@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on Gyeongmin의 개발 블로그</title>
-        <link>https://gyeongminn.github.io/page/</link>
+        <link>https://gyeongmin.kr/page/</link>
         <description>Recent content in Pages on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Fri, 17 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 17 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>About</title>
-        <link>https://gyeongminn.github.io/about/</link>
+        <link>https://gyeongmin.kr/about/</link>
         <pubDate>Fri, 17 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/about/</guid>
+        <guid>https://gyeongmin.kr/about/</guid>
         <description>&lt;h1 id=&#34;안녕하세요-이경민입니다&#34;&gt;안녕하세요, 이경민입니다.&lt;/h1&gt;
 &lt;p class=&#34;icon-container&#34; align=&#34;left&#34;&gt;
     &lt;a class=&#34;custom-icon&#34; href=&#34;mailto:gyeongmin@hansung.ac.kr&#34; target=&#34;_blank&#34;&gt;
@@ -194,26 +194,26 @@
         </item>
         <item>
         <title>Archives</title>
-        <link>https://gyeongminn.github.io/archives/</link>
+        <link>https://gyeongmin.kr/archives/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/archives/</guid>
+        <guid>https://gyeongmin.kr/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Links</title>
-        <link>https://gyeongminn.github.io/links/</link>
+        <link>https://gyeongmin.kr/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/links/</guid>
+        <guid>https://gyeongmin.kr/links/</guid>
         <description></description>
         </item>
         <item>
         <title>Search</title>
-        <link>https://gyeongminn.github.io/search/</link>
+        <link>https://gyeongmin.kr/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/search/</guid>
+        <guid>https://gyeongmin.kr/search/</guid>
         <description></description>
         </item>
         

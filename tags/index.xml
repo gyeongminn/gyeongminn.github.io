@@ -2,105 +2,105 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on Gyeongmin의 개발 블로그</title>
-        <link>https://gyeongminn.github.io/tags/</link>
+        <link>https://gyeongmin.kr/tags/</link>
         <description>Recent content in Tags on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 03 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 03 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>딥러닝</title>
-        <link>https://gyeongminn.github.io/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</link>
+        <link>https://gyeongmin.kr/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</link>
         <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</guid>
+        <guid>https://gyeongmin.kr/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</guid>
         <description></description>
         </item>
         <item>
         <title>파이썬</title>
-        <link>https://gyeongminn.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</link>
+        <link>https://gyeongmin.kr/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</link>
         <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</guid>
+        <guid>https://gyeongmin.kr/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC/</guid>
         <description></description>
         </item>
         <item>
         <title>논문리뷰</title>
-        <link>https://gyeongminn.github.io/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
+        <link>https://gyeongmin.kr/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
         <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</guid>
+        <guid>https://gyeongmin.kr/tags/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</guid>
         <description></description>
         </item>
         <item>
         <title>C&#43;&#43;</title>
-        <link>https://gyeongminn.github.io/tags/c&#43;&#43;/</link>
+        <link>https://gyeongmin.kr/tags/c&#43;&#43;/</link>
         <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/c&#43;&#43;/</guid>
+        <guid>https://gyeongmin.kr/tags/c&#43;&#43;/</guid>
         <description></description>
         </item>
         <item>
         <title>알고리즘</title>
-        <link>https://gyeongminn.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</link>
+        <link>https://gyeongmin.kr/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</link>
         <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</guid>
+        <guid>https://gyeongmin.kr/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</guid>
         <description></description>
         </item>
         <item>
         <title>수학</title>
-        <link>https://gyeongminn.github.io/tags/%EC%88%98%ED%95%99/</link>
+        <link>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</link>
         <pubDate>Wed, 15 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%EC%88%98%ED%95%99/</guid>
+        <guid>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</guid>
         <description></description>
         </item>
         <item>
         <title>스터디</title>
-        <link>https://gyeongminn.github.io/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</link>
+        <link>https://gyeongmin.kr/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</link>
         <pubDate>Wed, 15 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</guid>
+        <guid>https://gyeongmin.kr/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</guid>
         <description></description>
         </item>
         <item>
         <title>python</title>
-        <link>https://gyeongminn.github.io/tags/python/</link>
+        <link>https://gyeongmin.kr/tags/python/</link>
         <pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/python/</guid>
+        <guid>https://gyeongmin.kr/tags/python/</guid>
         <description></description>
         </item>
         <item>
         <title>디스코드봇</title>
-        <link>https://gyeongminn.github.io/tags/%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%EB%B4%87/</link>
+        <link>https://gyeongmin.kr/tags/%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%EB%B4%87/</link>
         <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%EB%B4%87/</guid>
+        <guid>https://gyeongmin.kr/tags/%EB%94%94%EC%8A%A4%EC%BD%94%EB%93%9C%EB%B4%87/</guid>
         <description></description>
         </item>
         <item>
         <title>윈도우</title>
-        <link>https://gyeongminn.github.io/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/</link>
+        <link>https://gyeongmin.kr/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/</link>
         <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/</guid>
+        <guid>https://gyeongmin.kr/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/</guid>
         <description></description>
         </item>
         <item>
         <title>프로젝트</title>
-        <link>https://gyeongminn.github.io/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
+        <link>https://gyeongmin.kr/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
         <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
+        <guid>https://gyeongmin.kr/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
         <description></description>
         </item>
         <item>
         <title>C/C&#43;&#43;</title>
-        <link>https://gyeongminn.github.io/tags/c/c&#43;&#43;/</link>
+        <link>https://gyeongmin.kr/tags/c/c&#43;&#43;/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/tags/c/c&#43;&#43;/</guid>
+        <guid>https://gyeongmin.kr/tags/c/c&#43;&#43;/</guid>
         <description></description>
         </item>
         

@@ -2,103 +2,103 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gyeongminn.github.io/en/categories/</loc>
+    <loc>https://gyeongmin.kr/en/categories/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongminn.github.io/categories/"
+                href="https://gyeongmin.kr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongminn.github.io/en/categories/"
+                href="https://gyeongmin.kr/en/categories/"
                 />
   </url><url>
-    <loc>https://gyeongminn.github.io/en/</loc>
+    <loc>https://gyeongmin.kr/en/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongminn.github.io/"
+                href="https://gyeongmin.kr/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongminn.github.io/en/"
+                href="https://gyeongmin.kr/en/"
                 />
   </url><url>
-    <loc>https://gyeongminn.github.io/en/post/</loc>
+    <loc>https://gyeongmin.kr/en/post/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongminn.github.io/post/"
+                href="https://gyeongmin.kr/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongminn.github.io/en/post/"
+                href="https://gyeongmin.kr/en/post/"
                 />
   </url><url>
-    <loc>https://gyeongminn.github.io/en/tags/project/</loc>
+    <loc>https://gyeongmin.kr/en/tags/project/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongminn.github.io/en/categories/project/</loc>
+    <loc>https://gyeongmin.kr/en/categories/project/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongminn.github.io/en/p/rhythm-game-in-c/</loc>
-    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://gyeongminn.github.io/p/rhythm-game-in-c/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://gyeongminn.github.io/en/p/rhythm-game-in-c/"
-                />
-  </url><url>
-    <loc>https://gyeongminn.github.io/en/tags/</loc>
+    <loc>https://gyeongmin.kr/en/p/rhythm-game-in-c/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongminn.github.io/tags/"
+                href="https://gyeongmin.kr/p/rhythm-game-in-c/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongminn.github.io/en/tags/"
+                href="https://gyeongmin.kr/en/p/rhythm-game-in-c/"
                 />
   </url><url>
-    <loc>https://gyeongminn.github.io/en/tags/c/c&#43;&#43;/</loc>
+    <loc>https://gyeongmin.kr/en/tags/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongminn.github.io/tags/c/c&#43;&#43;/"
+                href="https://gyeongmin.kr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongminn.github.io/en/tags/c/c&#43;&#43;/"
+                href="https://gyeongmin.kr/en/tags/"
+                />
+  </url><url>
+    <loc>https://gyeongmin.kr/en/tags/c/c&#43;&#43;/</loc>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongmin.kr/tags/c/c&#43;&#43;/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongmin.kr/en/tags/c/c&#43;&#43;/"
                 />
   </url>
 </urlset>

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on Gyeongmin의 개발 블로그</title>
-        <link>https://gyeongminn.github.io/post/</link>
+        <link>https://gyeongmin.kr/post/</link>
         <description>Recent content in Posts on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 03 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 03 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Word2Vec의 최적화</title>
-        <link>https://gyeongminn.github.io/p/word2vec-2/</link>
+        <link>https://gyeongmin.kr/p/word2vec-2/</link>
         <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/word2vec-2/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post Word2Vec의 최적화" /&gt;&lt;h1 id=&#34;word2vec의-최적화&#34;&gt;Word2Vec의 최적화&lt;/h1&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image-3.png&#34;
+        <guid>https://gyeongmin.kr/p/word2vec-2/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/deep-learning-from-scratch.jpeg" alt="Featured image of post Word2Vec의 최적화" /&gt;&lt;h1 id=&#34;word2vec의-최적화&#34;&gt;Word2Vec의 최적화&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec-2/image-3.png&#34;
 	width=&#34;1569&#34;
 	height=&#34;1191&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image-3_hu8834c8184300983a591c4f0045bd8abe_487521_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image-3_hu8834c8184300983a591c4f0045bd8abe_487521_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec-2/image-3_hu8834c8184300983a591c4f0045bd8abe_487521_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec-2/image-3_hu8834c8184300983a591c4f0045bd8abe_487521_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Word2Vec의 구조&#34;
@@ -30,10 +30,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Word2Vec은 자연어 처리 분야에서 매우 중요한 도구로 자리 잡고 있다. 그러나 Word2Vec은 어휘의 양이 방대해질수록 계산량과 메모리 사용량이 커지는 문제를 가지고 있다. 이러한 문제를 해결하기 위하여 &amp;lsquo;임베딩(Embedding)&amp;rsquo; 계층을 도입하고 &amp;lsquo;네거티브 샘플링(Negative Sampling)&amp;rsquo; 기법을 적용하는 두 가지 주요 개선 방법을 살펴보자.&lt;/p&gt;
 &lt;h2 id=&#34;embedding-계층&#34;&gt;Embedding 계층&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec-2/image-4.png&#34;
 	width=&#34;1347&#34;
 	height=&#34;661&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image-4_hu38ab5d6d8c1cfa13035a3656906f9354_254061_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image-4_hu38ab5d6d8c1cfa13035a3656906f9354_254061_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec-2/image-4_hu38ab5d6d8c1cfa13035a3656906f9354_254061_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec-2/image-4_hu38ab5d6d8c1cfa13035a3656906f9354_254061_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Embedding Layer&#34;
@@ -101,10 +101,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;네거티브-샘플링-기법&#34;&gt;네거티브 샘플링 기법&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec-2/image-5.png&#34;
 	width=&#34;1559&#34;
 	height=&#34;772&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image-5_huf6cb38d7ca8e765b1958c39d9d025593_249082_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image-5_huf6cb38d7ca8e765b1958c39d9d025593_249082_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec-2/image-5_huf6cb38d7ca8e765b1958c39d9d025593_249082_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec-2/image-5_huf6cb38d7ca8e765b1958c39d9d025593_249082_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Negative Sampling&#34;
@@ -288,10 +288,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec-2/image.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec-2/image.png&#34;
 	width=&#34;771&#34;
 	height=&#34;224&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec-2/image_hu97ada50fdfa2d7dea73986e8a482bada_60348_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec-2/image_hu97ada50fdfa2d7dea73986e8a482bada_60348_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec-2/image_hu97ada50fdfa2d7dea73986e8a482bada_60348_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec-2/image_hu97ada50fdfa2d7dea73986e8a482bada_60348_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;맥락과 타깃을 단어 ID로 나타낸 예시&#34;
@@ -311,11 +311,11 @@
         </item>
         <item>
         <title>[논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation</title>
-        <link>https://gyeongminn.github.io/p/paper-review-panda/</link>
+        <link>https://gyeongmin.kr/p/paper-review-panda/</link>
         <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/paper-review-panda/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/paper-review.png" alt="Featured image of post [논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation" /&gt;&lt;h1 id=&#34;panda-adapting-pretrained-features-for-anomaly-detection-and-segmentation&#34;&gt;PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&lt;/h1&gt;
+        <guid>https://gyeongmin.kr/p/paper-review-panda/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/paper-review.png" alt="Featured image of post [논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation" /&gt;&lt;h1 id=&#34;panda-adapting-pretrained-features-for-anomaly-detection-and-segmentation&#34;&gt;PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openaccess.thecvf.com/content/CVPR2021/papers/Reiss_PANDA_Adapting_Pretrained_Features_for_Anomaly_Detection_and_Segmentation_CVPR_2021_paper.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;논문 PDF&lt;/a&gt;&lt;/p&gt;
@@ -388,10 +388,10 @@
 &lt;p&gt;Outlier Exposure는 이미지 이상 탐지 작업을 확장한 것으로, Normal 데이터보다 Anomaly에 더 유사한 Auxiliary 데이터셋 $D_{OE}$가 있다고 가정하고, 데이터셋을 Normal과 Abnormal로 분류한다. 이는 Linear Classification Layer $w$와 Feature $\psi$를 이용해 Logistic Regression Loss를 계산하는 방식으로 이루어진다.&lt;/p&gt;
 &lt;h2 id=&#34;expreiments&#34;&gt;Expreiments&lt;/h2&gt;
 &lt;h3 id=&#34;dataset&#34;&gt;Dataset&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-1.png&#34;
 	width=&#34;828&#34;
 	height=&#34;383&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;왼쪽부터 시계 방향으로 CIFAR10, CIFAR100, Fashion MNIST, DogsVsCats, WBC, DIOR, Oxford Flowers, MVTec&#34;
@@ -471,10 +471,10 @@
 &lt;p&gt;여기서 MVTec을 제외한 데이터셋은 정상 데이터를 한 개의 클래스로 구성하고, 나머지 클래스는 비정상으로 구성한다. 예를 들어, 고양이 이미지는 정상이고 강아지나 토끼 등 다른 이미지는 전부 비정상으로 구성된다.&lt;/p&gt;
 &lt;p&gt;MVTec 데이터셋은 Anomaly Detection을 위해 제작된 데이터셋으로, 클래스마다 정상과 비정상 이미지가 라벨링되어 있다.&lt;/p&gt;
 &lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-2.png&#34;
 	width=&#34;1664&#34;
 	height=&#34;435&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Anomaly detection performance (Average ROC AUC %)&#34;
@@ -485,10 +485,10 @@
 		data-flex-basis=&#34;918px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-3.png&#34;
 	width=&#34;1042&#34;
 	height=&#34;385&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Pretrained feature performance on various small datasets (Average ROC AUC %)&#34;
@@ -500,10 +500,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;위 두 결과를 보았을 때, Self-Supervised 방법보다 DN2와 PANDA 방법이 훨씬 높은 성능을 보이는 것을 확인할 수 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-4.png&#34;
 	width=&#34;1085&#34;
 	height=&#34;111&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Comparison of anomaly segmentation methods (pixel-level ROCAUC and PRO %)&#34;
@@ -515,10 +515,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;기존의 Anomaly Segmentation 방법들보다 SPADE 방법이 매우 높은 성능을 보이는 것을 확인할 수 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-5.png&#34;
 	width=&#34;492&#34;
 	height=&#34;228&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;A comparison of different feature adaptation methods (Avg. ROC AUC %)&#34;
@@ -536,11 +536,11 @@
         </item>
         <item>
         <title>word2vec을 이용한 단어 임베딩</title>
-        <link>https://gyeongminn.github.io/p/word2vec/</link>
+        <link>https://gyeongmin.kr/p/word2vec/</link>
         <pubDate>Tue, 19 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/word2vec/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post word2vec을 이용한 단어 임베딩" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/word2vec/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/deep-learning-from-scratch.jpeg" alt="Featured image of post word2vec을 이용한 단어 임베딩" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;추론-기반-기법과-신경망&#34;&gt;추론 기반 기법과 신경망&lt;/h2&gt;
@@ -577,10 +577,10 @@
 &lt;/table&gt;
 &lt;p&gt;위와 같이 단어는 텍스트, 단어 ID, 원핫 표현으로 나타낼 수 있다. 단어를 고정 크기의 원핫 표현으로 나타내게 되면 뉴런의 수를 고정할 수 있다.&lt;/p&gt;
 &lt;p&gt;신경망을 구성하는 계층들이 벡터를 처리할 수 있으므로, 이제 단어를 신경망으로 처리할 수 있을 것이다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image.png&#34;
 	width=&#34;562&#34;
 	height=&#34;459&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image_hu3f7b4f5201a3d844f9498b9d3ce51d55_90389_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image_hu3f7b4f5201a3d844f9498b9d3ce51d55_90389_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image_hu3f7b4f5201a3d844f9498b9d3ce51d55_90389_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image_hu3f7b4f5201a3d844f9498b9d3ce51d55_90389_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;완전연결계층에 의한 변환을 단순화한 그림&#34;
@@ -595,10 +595,10 @@
 &lt;h2 id=&#34;cbow&#34;&gt;CBOW&lt;/h2&gt;
 &lt;h3 id=&#34;cbow-모델의-추론-처리&#34;&gt;CBOW 모델의 추론 처리&lt;/h3&gt;
 &lt;p&gt;CBOW 모델은 맥락으로부터 타깃을 추측하는 용도의 신경망이다. (타깃은 중앙 단어, 맥락은 주변 단어를 의미한다)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-1.png&#34;
 	width=&#34;853&#34;
 	height=&#34;829&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-1_hub4bfc2fe41a6c706de102652017462d2_200069_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-1_hub4bfc2fe41a6c706de102652017462d2_200069_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-1_hub4bfc2fe41a6c706de102652017462d2_200069_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-1_hub4bfc2fe41a6c706de102652017462d2_200069_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CBOW 모델의 신경망 구조&#34;
@@ -613,10 +613,10 @@
 &lt;p&gt;두 입력층에서 은닉층으로의 변환은 완전연결계층이 수행한다. 그리고 은닉층에서 출력층 뉴런으로의 변환은 다른 완전연결계층이 처리한다. 입력층이 여러 개이면 전체를 &lt;strong&gt;평균&lt;/strong&gt;하면 된다.&lt;/p&gt;
 &lt;p&gt;출력층의 뉴런은 총 7개인데, 이 뉴런 하나하나가 각각의 단어에 대응한다. 출력층 뉴런은 각 단어의 &lt;strong&gt;점수&lt;/strong&gt;를 뜻하며, 값이 높을수록 대응 단어의 출현 확률도 높아진다. 이 점수에 소프트맥스 함수를 적용해서, &lt;strong&gt;확률&lt;/strong&gt;을 얻을 수 있다.&lt;/p&gt;
 &lt;p&gt;학습을 진행할수록 맥락에서 출현하는 단어를 잘 추측하는 방향으로 이 분산 표현들이 갱신된다. 이렇게 얻은 벡터에는 &lt;strong&gt;단어의 의미도 포함되어 있다&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-2.png&#34;
 	width=&#34;1009&#34;
 	height=&#34;771&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-2_hu83e02f47960715b8f885eb14234d3d19_138189_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-2_hu83e02f47960715b8f885eb14234d3d19_138189_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-2_hu83e02f47960715b8f885eb14234d3d19_138189_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-2_hu83e02f47960715b8f885eb14234d3d19_138189_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;계층 관점에서 본 CBOW 모델의 신경망 구성&#34;
@@ -721,10 +721,10 @@
 &lt;p&gt;모델이 올바른 예측을 할 수 있도록 가중치를 조정해야 한다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;소프트맥스 함수를 이용 해 점수를 확률로 변환하고, 그 확률과 정답 레이블로부터 교차 엔트로피 오차를 구한 후, 그 값을 손실로 사용해 학습을 진행한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-3.png&#34;
 	width=&#34;995&#34;
 	height=&#34;596&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-3_hu42c86eda2c2eb22ccbe976f58bc00797_127466_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-3_hu42c86eda2c2eb22ccbe976f58bc00797_127466_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-3_hu42c86eda2c2eb22ccbe976f58bc00797_127466_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-3_hu42c86eda2c2eb22ccbe976f58bc00797_127466_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CBOW 모델의 학습 시 신경망 구성&#34;
@@ -747,10 +747,10 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;일반적으로 word2vec에서는 입력 측 가중치 $ W_\text{in} $만을 최종 단어의 분산 표현으로 사용한다. 출력 측 가중치는 대부분의 연구에서 버려진다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-4.png&#34;
 	width=&#34;904&#34;
 	height=&#34;497&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-4_hu1af831d405d8a936ea25b48a045ffece_189259_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-4_hu1af831d405d8a936ea25b48a045ffece_189259_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-4_hu1af831d405d8a936ea25b48a045ffece_189259_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-4_hu1af831d405d8a936ea25b48a045ffece_189259_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;각 단어의 분산 표현&#34;
@@ -769,10 +769,10 @@
     &gt;여기&lt;/a&gt;를 참고하자.&lt;/p&gt;
 &lt;h3 id=&#34;맥락과-타깃&#34;&gt;맥락과 타깃&lt;/h3&gt;
 &lt;p&gt;word2vec에서 이용하는 신경망의 입력은 &lt;strong&gt;맥락&lt;/strong&gt;이다. 그 정답 레이블은 중앙 단어인 &lt;strong&gt;타깃&lt;/strong&gt; 이다. 우리는 맥락을 입력했을 때, 타깃을 출력할 확률이 높아지도록 학습시키면 된다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-5.png&#34;
 	width=&#34;789&#34;
 	height=&#34;312&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-5_hu9e7d1c407f3b0c8c4571a4e51b18e111_176184_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-5_hu9e7d1c407f3b0c8c4571a4e51b18e111_176184_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-5_hu9e7d1c407f3b0c8c4571a4e51b18e111_176184_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-5_hu9e7d1c407f3b0c8c4571a4e51b18e111_176184_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;맥락과 타깃의 예시&#34;
@@ -858,10 +858,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;cbow-모델-구현&#34;&gt;CBOW 모델 구현&lt;/h2&gt;
 &lt;p&gt;그럼 이제 모델을 구현해 보자.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-6.png&#34;
 	width=&#34;978&#34;
 	height=&#34;664&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-6_hud00d83d8669da602ae7fdcc74b583914_117555_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-6_hud00d83d8669da602ae7fdcc74b583914_117555_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-6_hud00d83d8669da602ae7fdcc74b583914_117555_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-6_hud00d83d8669da602ae7fdcc74b583914_117555_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CBOW 모델의신경망 구성&#34;
@@ -1011,10 +1011,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;Optimizer는 Adam을 사용해서 학습시켰다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-7.png&#34;
 	width=&#34;640&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-7_hu7d4630c01d55ea2ccca985100a1b63c6_27676_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-7_hu7d4630c01d55ea2ccca985100a1b63c6_27676_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-7_hu7d4630c01d55ea2ccca985100a1b63c6_27676_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-7_hu7d4630c01d55ea2ccca985100a1b63c6_27676_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;학습 경과 그래프&#34;
@@ -1071,10 +1071,10 @@ $$&lt;/p&gt;
 &lt;p&gt;CBOW 모델의 학습이 수행하는 일은 이 손실 함수의 값을 가능한 한 작게 만드는 것이다.&lt;/p&gt;
 &lt;h3 id=&#34;skip-gram-모델&#34;&gt;skip-gram 모델&lt;/h3&gt;
 &lt;p&gt;skip-gram은 CBOW에서 다루는 맥락과 타깃을 역전시킨 모델이다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-8.png&#34;
 	width=&#34;833&#34;
 	height=&#34;147&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-8_hu2916d9d77f1323c25fd727aaf35c33dd_75662_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-8_hu2916d9d77f1323c25fd727aaf35c33dd_75662_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-8_hu2916d9d77f1323c25fd727aaf35c33dd_75662_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-8_hu2916d9d77f1323c25fd727aaf35c33dd_75662_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CBOW 모델과 skip-gram 모델이 다루는 문제&#34;
@@ -1086,10 +1086,10 @@ $$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;CBOW 모델은 맥락이 여러 개 있고, 그 여러 맥락으로부터 타깃을 추측한다. 반면에 skip-gmm 모델은 중앙의 타깃으로부터 주변의 맥락을 추측한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word2vec/image-9.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word2vec/image-9.png&#34;
 	width=&#34;811&#34;
 	height=&#34;660&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word2vec/image-9_huab099de2643e368e2fc9c09000b2c279_217229_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word2vec/image-9_huab099de2643e368e2fc9c09000b2c279_217229_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word2vec/image-9_huab099de2643e368e2fc9c09000b2c279_217229_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word2vec/image-9_huab099de2643e368e2fc9c09000b2c279_217229_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;skip-gram 모델의 신경망 구성 예&#34;
@@ -1125,11 +1125,11 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>소수 판별과 약수 구하기</title>
-        <link>https://gyeongminn.github.io/p/prime-number-and-divisors/</link>
+        <link>https://gyeongmin.kr/p/prime-number-and-divisors/</link>
         <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/prime-number-and-divisors/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/algorithm.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
+        <guid>https://gyeongmin.kr/p/prime-number-and-divisors/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/algorithm.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;소수는 영어로 prime 이라고 한다. 또한, $p$가 소수일 때 $p^k$를 prime power 라고 한다.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1484,11 +1484,11 @@ $\frac{N}{d}$도 $1$이 아닌 $N$의 약수이므로, $d \leq\frac{N}{d}$ 이�
         </item>
         <item>
         <title>BOJ 1331: 나이트 투어 (C&#43;&#43;)</title>
-        <link>https://gyeongminn.github.io/p/boj-1331/</link>
+        <link>https://gyeongmin.kr/p/boj-1331/</link>
         <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-1331/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 1331: 나이트 투어 (C&#43;&#43;)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-1331/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 1331: 나이트 투어 (C&#43;&#43;)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/1331&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/1331&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1622,11 +1622,11 @@ $\frac{N}{d}$도 $1$이 아닌 $N$의 약수이므로, $d \leq\frac{N}{d}$ 이�
         </item>
         <item>
         <title>단어의 분산 표현</title>
-        <link>https://gyeongminn.github.io/p/word-distributed-representation/</link>
+        <link>https://gyeongmin.kr/p/word-distributed-representation/</link>
         <pubDate>Mon, 27 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/word-distributed-representation/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 단어의 분산 표현" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/word-distributed-representation/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 단어의 분산 표현" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;자연어-처리와-단어의-의미&#34;&gt;자연어 처리와 단어의 의미&lt;/h2&gt;
@@ -2232,10 +2232,10 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/word-distributed-representation/myplot.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/word-distributed-representation/myplot.png&#34;
 	width=&#34;640&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/word-distributed-representation/myplot_huf803c14a96123a2f3e5d87800bfe075b_11535_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/word-distributed-representation/myplot_huf803c14a96123a2f3e5d87800bfe075b_11535_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/word-distributed-representation/myplot_huf803c14a96123a2f3e5d87800bfe075b_11535_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/word-distributed-representation/myplot_huf803c14a96123a2f3e5d87800bfe075b_11535_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2299,11 +2299,11 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>신경망의 학습</title>
-        <link>https://gyeongminn.github.io/p/neural-network-trainning/</link>
+        <link>https://gyeongmin.kr/p/neural-network-trainning/</link>
         <pubDate>Tue, 21 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/neural-network-trainning/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 신경망의 학습" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/neural-network-trainning/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 신경망의 학습" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;신경망의-학습&#34;&gt;신경망의 학습&lt;/h1&gt;
@@ -2627,11 +2627,11 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>신경망의 추론</title>
-        <link>https://gyeongminn.github.io/p/neural-network-inference/</link>
+        <link>https://gyeongmin.kr/p/neural-network-inference/</link>
         <pubDate>Mon, 20 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/neural-network-inference/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 신경망의 추론" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/neural-network-inference/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 신경망의 추론" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;신경망의-추론&#34;&gt;신경망의 추론&lt;/h1&gt;
@@ -2642,10 +2642,10 @@ $$&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;신경망은 두뇌의 신경세포, 즉 뉴런이 연결된 형태를 모방한 모델이다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/neural-network-inference/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/neural-network-inference/image.png&#34;
 	width=&#34;527&#34;
 	height=&#34;320&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/neural-network-inference/image_hu6da0e4cb5786d7f007b46bb018fc88f8_111431_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/neural-network-inference/image_hu6da0e4cb5786d7f007b46bb018fc88f8_111431_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/neural-network-inference/image_hu6da0e4cb5786d7f007b46bb018fc88f8_111431_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/neural-network-inference/image_hu6da0e4cb5786d7f007b46bb018fc88f8_111431_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;신경망의 예시 (출처 : https://blog.skby.net)&#34;
@@ -2826,11 +2826,11 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>기초 선형대수 - 스칼라, 벡터, 행렬</title>
-        <link>https://gyeongminn.github.io/p/basic-linear-algebra/</link>
+        <link>https://gyeongmin.kr/p/basic-linear-algebra/</link>
         <pubDate>Wed, 15 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/basic-linear-algebra/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 기초 선형대수 - 스칼라, 벡터, 행렬" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/basic-linear-algebra/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/deep-learning-from-scratch.jpeg" alt="Featured image of post 기초 선형대수 - 스칼라, 벡터, 행렬" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;밑바닥부터 시작하는 딥러닝 2&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&#34;기초-선형대수&#34;&gt;기초 선형대수&lt;/h1&gt;
@@ -3016,11 +3016,11 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>BOJ 20437: 문자열 게임 2 (C&#43;&#43;)</title>
-        <link>https://gyeongminn.github.io/p/boj-20437/</link>
+        <link>https://gyeongmin.kr/p/boj-20437/</link>
         <pubDate>Fri, 07 Jul 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-20437/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 20437: 문자열 게임 2 (C&#43;&#43;)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-20437/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 20437: 문자열 게임 2 (C&#43;&#43;)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/20437&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/20437&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3254,11 +3254,11 @@ $$&lt;/p&gt;
         </item>
         <item>
         <title>ABC 300: A, C, D</title>
-        <link>https://gyeongminn.github.io/p/abc-300/</link>
+        <link>https://gyeongmin.kr/p/abc-300/</link>
         <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/abc-300/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/atcoder.png" alt="Featured image of post ABC 300: A, C, D" /&gt;&lt;h2 id=&#34;a---n-choice-question&#34;&gt;A - N-choice question&lt;/h2&gt;
+        <guid>https://gyeongmin.kr/p/abc-300/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/atcoder.png" alt="Featured image of post ABC 300: A, C, D" /&gt;&lt;h2 id=&#34;a---n-choice-question&#34;&gt;A - N-choice question&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://atcoder.jp/contests/abc300/tasks/abc300_a&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://atcoder.jp/contests/abc300/tasks/abc300_a&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;문제&#34;&gt;문제&lt;/h3&gt;
@@ -3493,11 +3493,11 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
         </item>
         <item>
         <title>BOJ 23807: 두 단계 최단 경로 3 (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-23807/</link>
+        <link>https://gyeongmin.kr/p/boj-23807/</link>
         <pubDate>Fri, 21 Apr 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-23807/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 23807: 두 단계 최단 경로 3 (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-23807/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 23807: 두 단계 최단 경로 3 (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/23807&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/23807&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3626,10 +3626,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;후기&#34;&gt;후기&lt;/h2&gt;
 &lt;p&gt;파이썬 기준 시간 제한이 정말 빡빡한 문제였다. 이 문제를 파이썬으로 풀어본 사람이 없길래 파이썬으로 풀어 봤다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-23807/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-23807/image.png&#34;
 	width=&#34;2334&#34;
 	height=&#34;492&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-23807/image_hu6275cfec8ca0287ac9343170595d77f4_101850_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-23807/image_hu6275cfec8ca0287ac9343170595d77f4_101850_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-23807/image_hu6275cfec8ca0287ac9343170595d77f4_101850_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-23807/image_hu6275cfec8ca0287ac9343170595d77f4_101850_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3642,11 +3642,11 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
         </item>
         <item>
         <title>16935번 : 배열 돌리기 3 (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-16935/</link>
+        <link>https://gyeongmin.kr/p/boj-16935/</link>
         <pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-16935/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post 16935번 : 배열 돌리기 3 (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-16935/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post 16935번 : 배열 돌리기 3 (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/16935&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/16935&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3880,10 +3880,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;풀이&#34;&gt;풀이&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-16935/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-16935/image.png&#34;
 	width=&#34;804&#34;
 	height=&#34;603&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-16935/image_hub9aa214d7c5dfd41eb97aa2cb5b89c78_312627_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-16935/image_hub9aa214d7c5dfd41eb97aa2cb5b89c78_312627_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-16935/image_hub9aa214d7c5dfd41eb97aa2cb5b89c78_312627_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-16935/image_hub9aa214d7c5dfd41eb97aa2cb5b89c78_312627_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;풀이는 소스코드를 참고해 주세요&#34;
@@ -3900,11 +3900,11 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
         </item>
         <item>
         <title>BOJ 14620: 꽃길 (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-14620/</link>
+        <link>https://gyeongmin.kr/p/boj-14620/</link>
         <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-14620/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 14620: 꽃길 (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-14620/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 14620: 꽃길 (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/14620&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/14620&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3913,10 +3913,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &lt;p&gt;진아가 가진 꽃의 씨앗은 꽃을 심고나면 정확히 1년후에 꽃이 피므로 진아는 다음해 식목일 부터 꽃길을 걸을 수 있다.&lt;/p&gt;
 &lt;p&gt;하지만 진아에게는 꽃의 씨앗이 세개밖에 없었으므로 세 개의 꽃이 하나도 죽지 않고 1년후에 꽃잎이 만개하길 원한다.&lt;/p&gt;
 &lt;p&gt;꽃밭은 N $\times$ N의 격자 모양이고 진아는 씨앗을 (1,1)~(N,N)의 지점 중 한곳에 심을 수 있다. 꽃의 씨앗은 그림 (a)처럼 심어지며 1년 후 꽃이 피면 그림 (b)모양이 된다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-14620/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-14620/image.png&#34;
 	width=&#34;579&#34;
 	height=&#34;349&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-14620/image_hu6818dc205906c7e6bb90237cd021fa53_28279_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-14620/image_hu6818dc205906c7e6bb90237cd021fa53_28279_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-14620/image_hu6818dc205906c7e6bb90237cd021fa53_28279_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-14620/image_hu6818dc205906c7e6bb90237cd021fa53_28279_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3926,10 +3926,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;꽃을 심을 때는 주의할 점이있다. 어떤 씨앗이 꽃이 핀 뒤 다른 꽃잎(혹은 꽃술)과 닿게 될 경우 두 꽃 모두 죽어버린다. 또 화단 밖으로 꽃잎이 나가게 된다면 그 꽃은 죽어버리고 만다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-14620/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-14620/image-1.png&#34;
 	width=&#34;593&#34;
 	height=&#34;345&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-14620/image-1_hu503838a8d1e46810789a8270f24afdc5_44653_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-14620/image-1_hu503838a8d1e46810789a8270f24afdc5_44653_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-14620/image-1_hu503838a8d1e46810789a8270f24afdc5_44653_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-14620/image-1_hu503838a8d1e46810789a8270f24afdc5_44653_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -3951,10 +3951,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &lt;h1 id=&#34;풀이&#34;&gt;풀이&lt;/h1&gt;
 &lt;p&gt;꽃이 &lt;strong&gt;+&lt;/strong&gt; 모양으로 생겼기 때문에, 중심점을 잘 생각해야 한다.&lt;/p&gt;
 &lt;p&gt;다음 그림을 보면서 꽃이 죽는 규칙을 살펴보자.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-14620/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-14620/image-2.png&#34;
 	width=&#34;500&#34;
 	height=&#34;500&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-14620/image-2_hua4e8b0d31328622bf43e8c7fabfc6987_73593_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-14620/image-2_hua4e8b0d31328622bf43e8c7fabfc6987_73593_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-14620/image-2_hua4e8b0d31328622bf43e8c7fabfc6987_73593_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-14620/image-2_hua4e8b0d31328622bf43e8c7fabfc6987_73593_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4075,11 +4075,11 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
         </item>
         <item>
         <title>BOJ 9461: 파도반 수열 (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-9461/</link>
+        <link>https://gyeongmin.kr/p/boj-9461/</link>
         <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-9461/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 9461: 파도반 수열 (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-9461/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 9461: 파도반 수열 (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/9461&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/9461&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -4142,18 +4142,18 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
         </item>
         <item>
         <title>백준 디스코드 봇 &#39;백준봇&#39;</title>
-        <link>https://gyeongminn.github.io/p/baekjoonbot/</link>
+        <link>https://gyeongmin.kr/p/baekjoonbot/</link>
         <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/baekjoonbot/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/p/baekjoonbot/image-1.png" alt="Featured image of post 백준 디스코드 봇 &#39;백준봇&#39;" /&gt;&lt;h1 id=&#34;백준-디스코드-봇-백준봇&#34;&gt;백준 디스코드 봇 &amp;lsquo;백준봇&amp;rsquo;&lt;/h1&gt;
+        <guid>https://gyeongmin.kr/p/baekjoonbot/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-1.png" alt="Featured image of post 백준 디스코드 봇 &#39;백준봇&#39;" /&gt;&lt;h1 id=&#34;백준-디스코드-봇-백준봇&#34;&gt;백준 디스코드 봇 &amp;lsquo;백준봇&amp;rsquo;&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;백준 스터디를 진행할 때 문제를 조금 더 이쁘게 올려 보고 싶어 만들었습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-1.png&#34;
 	width=&#34;1187&#34;
 	height=&#34;904&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4165,10 +4165,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://solvedac.github.io/unofficial-documentation/#/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;solved.ac 비공식 API&lt;/a&gt; 를 사용하여 만들었습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-2.png&#34;
 	width=&#34;1500&#34;
 	height=&#34;500&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4181,10 +4181,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &lt;h2 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h2&gt;
 &lt;h3 id=&#34;문제-올리기&#34;&gt;문제 올리기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;/백준 문제번호&lt;/code&gt;  로 문제를 올릴 수 있습니다.
-&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-6.png&#34;
+&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-6.png&#34;
 	width=&#34;962&#34;
 	height=&#34;81&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4194,10 +4194,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;또는 &lt;code&gt;/백준 문제링크&lt;/code&gt;  로 문제를 올릴 수 있습니다.
-&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-7.png&#34;
+&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-7.png&#34;
 	width=&#34;1121&#34;
 	height=&#34;97&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4209,10 +4209,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &lt;h3 id=&#34;문제와-소스코드를-함께-올리기&#34;&gt;문제와 소스코드를 함께 올리기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;/백준 문제번호&lt;/code&gt;  또는 &lt;code&gt;/백준 문제링크&lt;/code&gt;  하단에 소스코드를 같이 입력하면, 문제와 소스코드를 함께 올릴 수 있습니다.&lt;/p&gt;
 &lt;p&gt;줄바꿈은 &lt;code&gt;Shift&lt;/code&gt; + &lt;code&gt;Enter&lt;/code&gt; 키를 눌러주시면 됩니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-4.png&#34;
 	width=&#34;964&#34;
 	height=&#34;517&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4222,10 +4222,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;위 사진과 같이 디스코드의 코드 블럭을 이용하시면, 하이라이팅된 코드를 업로드 할 수 있습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-3.png&#34;
 	width=&#34;970&#34;
 	height=&#34;587&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4237,10 +4237,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &lt;h4 id=&#34;소스-코드가-길-때&#34;&gt;소스 코드가 길 때&lt;/h4&gt;
 &lt;p&gt;디스코드의 Embed의 내용은 4096자 제한이 있습니다.
 따라서 Embed의 범위를 벗어나면 아래 사진과 같이 출력합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-8.png&#34;
 	width=&#34;959&#34;
 	height=&#34;590&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4251,10 +4251,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;명령어 입력이 잘못된 경우,
 &amp;ldquo;잘못된 입력입니다.&amp;rdquo; 라는 메세지를 출력합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-5.png&#34;
 	width=&#34;959&#34;
 	height=&#34;590&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4265,10 +4265,10 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;Embed에 실패하여 메세지를 보내지 못한 경우, 또는 solved.ac 서버가 불안정하여 데이터를 가져오지 못한 경우
 &amp;ldquo;메세지 전송이 실패했습니다.&amp;rdquo; 라는 메세지를 출력합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-9.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-9.png&#34;
 	width=&#34;960&#34;
 	height=&#34;69&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4289,21 +4289,21 @@ $(a&amp;lt;b&amp;lt;c)$ 이며, $a, b,c$는 소수이다.&lt;/p&gt;
         </item>
         <item>
         <title>BOJ 1011: Fly me to the Alpha Centauri (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-1011/</link>
+        <link>https://gyeongmin.kr/p/boj-1011/</link>
         <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-1011/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 1011: Fly me to the Alpha Centauri (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-1011/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 1011: Fly me to the Alpha Centauri (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/1011&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/1011&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;문제&#34;&gt;문제&lt;/h2&gt;
 &lt;p&gt;우현이는 어린 시절, 지구 외의 다른 행성에서도 인류들이 살아갈 수 있는 미래가 오리라 믿었다. 그리고 그가 지구라는 세상에 발을 내려 놓은 지 23년이 지난 지금, 세계 최연소 ASNA 우주 비행사가 되어 새로운 세계에 발을 내려 놓는 영광의 순간을 기다리고 있다.&lt;/p&gt;
 &lt;p&gt;그가 탑승하게 될 우주선은 Alpha Centauri라는 새로운 인류의 보금자리를 개척하기 위한 대규모 생활 유지 시스템을 탑재하고 있기 때문에, 그 크기와 질량이 엄청난 이유로 최신기술력을 총 동원하여 개발한 공간이동 장치를 탑재하였다. 하지만 이 공간이동 장치는 이동 거리를 급격하게 늘릴 경우 기계에 심각한 결함이 발생하는 단점이 있어서, 이전 작동시기에 k광년을 이동하였을 때는 $k-1$ , $k$ 혹은 $k+1$ 광년만을 다시 이동할 수 있다. 예를 들어, 이 장치를 처음 작동시킬 경우 -1 , 0 , 1 광년을 이론상 이동할 수 있으나 사실상 음수 혹은 0 거리만큼의 이동은 의미가 없으므로 1 광년을 이동할 수 있으며, 그 다음에는 0 , 1 , 2 광년을 이동할 수 있는 것이다. ( 여기서 다시 2광년을 이동한다면 다음 시기엔 1, 2, 3 광년을 이동할 수 있다. )&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-1011/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-1011/image.png&#34;
 	width=&#34;626&#34;
 	height=&#34;164&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-1011/image_hu1c570bd22b47ad41bfd2f1e1240e423c_67354_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-1011/image_hu1c570bd22b47ad41bfd2f1e1240e423c_67354_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-1011/image_hu1c570bd22b47ad41bfd2f1e1240e423c_67354_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-1011/image_hu1c570bd22b47ad41bfd2f1e1240e423c_67354_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -4482,11 +4482,11 @@ $d = y - x$&lt;/p&gt;
         </item>
         <item>
         <title>윈도우 패키지 매니저 Chocolatey</title>
-        <link>https://gyeongminn.github.io/p/chocolatey/</link>
+        <link>https://gyeongmin.kr/p/chocolatey/</link>
         <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/chocolatey/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/p/chocolatey/image.png" alt="Featured image of post 윈도우 패키지 매니저 Chocolatey" /&gt;&lt;h1 id=&#34;윈도우-패키지-매니저-chocolatey&#34;&gt;윈도우 패키지 매니저 Chocolatey&lt;/h1&gt;
+        <guid>https://gyeongmin.kr/p/chocolatey/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/p/chocolatey/image.png" alt="Featured image of post 윈도우 패키지 매니저 Chocolatey" /&gt;&lt;h1 id=&#34;윈도우-패키지-매니저-chocolatey&#34;&gt;윈도우 패키지 매니저 Chocolatey&lt;/h1&gt;
 &lt;p&gt;컴퓨터를 포맷한 후 초기 설정할 때 유용하게 사용중인 프로그램이다.&lt;/p&gt;
 &lt;p&gt;여태 프로그램을 설치하기 위해선 프로그램을 검색한 후, 사이트에 들어가서 설치 파일을 다운받은 후, 설치 파일을 실행시켜 일일히 Next를 눌러 가며 설치해야 했다.&lt;/p&gt;
 &lt;p&gt;Chocolatey를 사용하면 이 과정을 &lt;code&gt;choco install python -y&lt;/code&gt; 와 같이 명령어 한 줄로 설치할 수 있다.&lt;/p&gt;
@@ -4495,10 +4495,10 @@ $d = y - x$&lt;/p&gt;
 &lt;h2 id=&#34;설치-방법&#34;&gt;설치 방법&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chocolatey.org/install&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;공식 홈페이지&lt;/a&gt;에서 설치 커맨드를 복사한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/chocolatey/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-1.png&#34;
 	width=&#34;1772&#34;
 	height=&#34;678&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;설치 방법&#34;
@@ -4513,10 +4513,10 @@ $d = y - x$&lt;/p&gt;
 &lt;h2 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://community.chocolatey.org/packages&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;여기서&lt;/a&gt; 설치하고 싶은 패키지를 검색한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/chocolatey/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-2.png&#34;
 	width=&#34;1733&#34;
 	height=&#34;763&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 찾기&#34;
@@ -4527,10 +4527,10 @@ $d = y - x$&lt;/p&gt;
 		data-flex-basis=&#34;545px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/chocolatey/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-3.png&#34;
 	width=&#34;1643&#34;
 	height=&#34;148&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 설치 명령어 복사&#34;
@@ -4542,10 +4542,10 @@ $d = y - x$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;커맨드를 복사한 후, Windows PowerShell에서 커맨드를 실행한다. 조금만 기다리면 패키지가 설치된다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/chocolatey/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-4.png&#34;
 	width=&#34;1222&#34;
 	height=&#34;625&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 설치 예시&#34;
@@ -4757,11 +4757,11 @@ $d = y - x$&lt;/p&gt;
         </item>
         <item>
         <title>C언어로 만드는 리듬게임</title>
-        <link>https://gyeongminn.github.io/p/rhythm-game-in-c/</link>
+        <link>https://gyeongmin.kr/p/rhythm-game-in-c/</link>
         <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/rhythm-game-in-c/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/p/rhythm-game-in-c/image.png" alt="Featured image of post C언어로 만드는 리듬게임" /&gt;&lt;h1 id=&#34;c언어로-만드는-리듬게임&#34;&gt;C언어로 만드는 리듬게임&lt;/h1&gt;
+        <guid>https://gyeongmin.kr/p/rhythm-game-in-c/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/p/rhythm-game-in-c/image.png" alt="Featured image of post C언어로 만드는 리듬게임" /&gt;&lt;h1 id=&#34;c언어로-만드는-리듬게임&#34;&gt;C언어로 만드는 리듬게임&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;1학년 텀프로젝트 과제로 만들었던 리듬게임입니다.&lt;/p&gt;
 &lt;/blockquote&gt;

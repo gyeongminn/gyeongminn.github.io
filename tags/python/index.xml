@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>python on Gyeongmin의 개발 블로그</title>
-        <link>https://gyeongminn.github.io/tags/python/</link>
+        <link>https://gyeongmin.kr/tags/python/</link>
         <description>Recent content in python on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Mon, 06 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongminn.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 06 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>16935번 : 배열 돌리기 3 (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-16935/</link>
+        <link>https://gyeongmin.kr/p/boj-16935/</link>
         <pubDate>Mon, 06 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-16935/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post 16935번 : 배열 돌리기 3 (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-16935/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post 16935번 : 배열 돌리기 3 (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/16935&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/16935&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -247,10 +247,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;풀이&#34;&gt;풀이&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-16935/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-16935/image.png&#34;
 	width=&#34;804&#34;
 	height=&#34;603&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-16935/image_hub9aa214d7c5dfd41eb97aa2cb5b89c78_312627_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-16935/image_hub9aa214d7c5dfd41eb97aa2cb5b89c78_312627_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-16935/image_hub9aa214d7c5dfd41eb97aa2cb5b89c78_312627_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-16935/image_hub9aa214d7c5dfd41eb97aa2cb5b89c78_312627_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;풀이는 소스코드를 참고해 주세요&#34;
@@ -267,11 +267,11 @@
         </item>
         <item>
         <title>BOJ 14620: 꽃길 (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-14620/</link>
+        <link>https://gyeongmin.kr/p/boj-14620/</link>
         <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-14620/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 14620: 꽃길 (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-14620/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 14620: 꽃길 (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/14620&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/14620&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -280,10 +280,10 @@
 &lt;p&gt;진아가 가진 꽃의 씨앗은 꽃을 심고나면 정확히 1년후에 꽃이 피므로 진아는 다음해 식목일 부터 꽃길을 걸을 수 있다.&lt;/p&gt;
 &lt;p&gt;하지만 진아에게는 꽃의 씨앗이 세개밖에 없었으므로 세 개의 꽃이 하나도 죽지 않고 1년후에 꽃잎이 만개하길 원한다.&lt;/p&gt;
 &lt;p&gt;꽃밭은 N $\times$ N의 격자 모양이고 진아는 씨앗을 (1,1)~(N,N)의 지점 중 한곳에 심을 수 있다. 꽃의 씨앗은 그림 (a)처럼 심어지며 1년 후 꽃이 피면 그림 (b)모양이 된다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-14620/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-14620/image.png&#34;
 	width=&#34;579&#34;
 	height=&#34;349&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-14620/image_hu6818dc205906c7e6bb90237cd021fa53_28279_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-14620/image_hu6818dc205906c7e6bb90237cd021fa53_28279_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-14620/image_hu6818dc205906c7e6bb90237cd021fa53_28279_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-14620/image_hu6818dc205906c7e6bb90237cd021fa53_28279_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -293,10 +293,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;꽃을 심을 때는 주의할 점이있다. 어떤 씨앗이 꽃이 핀 뒤 다른 꽃잎(혹은 꽃술)과 닿게 될 경우 두 꽃 모두 죽어버린다. 또 화단 밖으로 꽃잎이 나가게 된다면 그 꽃은 죽어버리고 만다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-14620/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-14620/image-1.png&#34;
 	width=&#34;593&#34;
 	height=&#34;345&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-14620/image-1_hu503838a8d1e46810789a8270f24afdc5_44653_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-14620/image-1_hu503838a8d1e46810789a8270f24afdc5_44653_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-14620/image-1_hu503838a8d1e46810789a8270f24afdc5_44653_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-14620/image-1_hu503838a8d1e46810789a8270f24afdc5_44653_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -318,10 +318,10 @@
 &lt;h1 id=&#34;풀이&#34;&gt;풀이&lt;/h1&gt;
 &lt;p&gt;꽃이 &lt;strong&gt;+&lt;/strong&gt; 모양으로 생겼기 때문에, 중심점을 잘 생각해야 한다.&lt;/p&gt;
 &lt;p&gt;다음 그림을 보면서 꽃이 죽는 규칙을 살펴보자.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-14620/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-14620/image-2.png&#34;
 	width=&#34;500&#34;
 	height=&#34;500&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-14620/image-2_hua4e8b0d31328622bf43e8c7fabfc6987_73593_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-14620/image-2_hua4e8b0d31328622bf43e8c7fabfc6987_73593_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-14620/image-2_hua4e8b0d31328622bf43e8c7fabfc6987_73593_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-14620/image-2_hua4e8b0d31328622bf43e8c7fabfc6987_73593_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -442,11 +442,11 @@
         </item>
         <item>
         <title>BOJ 9461: 파도반 수열 (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-9461/</link>
+        <link>https://gyeongmin.kr/p/boj-9461/</link>
         <pubDate>Tue, 17 Jan 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-9461/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 9461: 파도반 수열 (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-9461/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 9461: 파도반 수열 (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/9461&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/9461&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -509,21 +509,21 @@
         </item>
         <item>
         <title>BOJ 1011: Fly me to the Alpha Centauri (Python)</title>
-        <link>https://gyeongminn.github.io/p/boj-1011/</link>
+        <link>https://gyeongmin.kr/p/boj-1011/</link>
         <pubDate>Thu, 30 Jun 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongminn.github.io/p/boj-1011/</guid>
-        <description>&lt;img src="https://gyeongminn.github.io/images/boj.png" alt="Featured image of post BOJ 1011: Fly me to the Alpha Centauri (Python)" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/boj-1011/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/boj.png" alt="Featured image of post BOJ 1011: Fly me to the Alpha Centauri (Python)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;문제 링크 : &lt;a class=&#34;link&#34; href=&#34;https://www.acmicpc.net/problem/1011&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.acmicpc.net/problem/1011&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;문제&#34;&gt;문제&lt;/h2&gt;
 &lt;p&gt;우현이는 어린 시절, 지구 외의 다른 행성에서도 인류들이 살아갈 수 있는 미래가 오리라 믿었다. 그리고 그가 지구라는 세상에 발을 내려 놓은 지 23년이 지난 지금, 세계 최연소 ASNA 우주 비행사가 되어 새로운 세계에 발을 내려 놓는 영광의 순간을 기다리고 있다.&lt;/p&gt;
 &lt;p&gt;그가 탑승하게 될 우주선은 Alpha Centauri라는 새로운 인류의 보금자리를 개척하기 위한 대규모 생활 유지 시스템을 탑재하고 있기 때문에, 그 크기와 질량이 엄청난 이유로 최신기술력을 총 동원하여 개발한 공간이동 장치를 탑재하였다. 하지만 이 공간이동 장치는 이동 거리를 급격하게 늘릴 경우 기계에 심각한 결함이 발생하는 단점이 있어서, 이전 작동시기에 k광년을 이동하였을 때는 $k-1$ , $k$ 혹은 $k+1$ 광년만을 다시 이동할 수 있다. 예를 들어, 이 장치를 처음 작동시킬 경우 -1 , 0 , 1 광년을 이론상 이동할 수 있으나 사실상 음수 혹은 0 거리만큼의 이동은 의미가 없으므로 1 광년을 이동할 수 있으며, 그 다음에는 0 , 1 , 2 광년을 이동할 수 있는 것이다. ( 여기서 다시 2광년을 이동한다면 다음 시기엔 1, 2, 3 광년을 이동할 수 있다. )&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongminn.github.io/p/boj-1011/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boj-1011/image.png&#34;
 	width=&#34;626&#34;
 	height=&#34;164&#34;
-	srcset=&#34;https://gyeongminn.github.io/p/boj-1011/image_hu1c570bd22b47ad41bfd2f1e1240e423c_67354_480x0_resize_box_3.png 480w, https://gyeongminn.github.io/p/boj-1011/image_hu1c570bd22b47ad41bfd2f1e1240e423c_67354_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boj-1011/image_hu1c570bd22b47ad41bfd2f1e1240e423c_67354_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boj-1011/image_hu1c570bd22b47ad41bfd2f1e1240e423c_67354_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
