@@ -230,12 +230,11 @@
 &lt;details&gt;
 &lt;summary&gt;문제 풀이&lt;/summary&gt;
 &lt;div markdown=&#34;1&#34;&gt;
-&lt;p&gt;온도 값이 1초마다 추가되며, 최근 K초 까지 온도의 중앙값을 다 더한 값을 구하는 문제이다. 값이 중복이 되기 때문에 &lt;code&gt;less_equal&amp;lt;&amp;gt;&lt;/code&gt;를 사용해 주자.&lt;/p&gt;
+&lt;p&gt;온도 값이 1초마다 추가되며, 최근 K초 까지 온도의 중앙값을 다 더한 값을 구하는 문제이다.&lt;/p&gt;
 &lt;p&gt;매 초마다 &lt;code&gt;ordered_multi_set&lt;/code&gt;에 값을 추가해 준다.&lt;/p&gt;
-&lt;p&gt;k초 이전에는 값 입력만 받는다.&lt;/p&gt;
-&lt;p&gt;k초부터는 중앙값을 구해준다. &lt;code&gt;find_by_order()&lt;/code&gt;는 zero-based임에 유의하자.&lt;/p&gt;
+&lt;p&gt;k초 이전에는 값 입력만 받고, k초부터는 중앙값을 구해준다. &lt;code&gt;find_by_order()&lt;/code&gt;는 zero-based임에 유의하자.&lt;/p&gt;
 &lt;p&gt;우리는 최근 k초까지의 값에만 관심 있기 때문에, k초 이후에는 k초 이전의 값은 삭제해 준다.&lt;/p&gt;
-&lt;p&gt;정답은 $2^{63}-1$ 이하이므로, &lt;code&gt;int&lt;/code&gt;범위를 초과함에 유의하자.&lt;/p&gt;
+&lt;p&gt;중복값이 발생하므로 &lt;code&gt;less_equal&amp;lt;&amp;gt;&lt;/code&gt;를 사용해 주자. 정답은 $2^{63}-1$ 이하이므로, &lt;code&gt;int&lt;/code&gt;범위를 초과한다.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/details&gt;</description>
         </item>

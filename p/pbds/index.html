@@ -641,12 +641,11 @@ if (!doNotTrack) {
 <details>
 <summary>문제 풀이</summary>
 <div markdown="1">
-<p>온도 값이 1초마다 추가되며, 최근 K초 까지 온도의 중앙값을 다 더한 값을 구하는 문제이다. 값이 중복이 되기 때문에 <code>less_equal&lt;&gt;</code>를 사용해 주자.</p>
+<p>온도 값이 1초마다 추가되며, 최근 K초 까지 온도의 중앙값을 다 더한 값을 구하는 문제이다.</p>
 <p>매 초마다 <code>ordered_multi_set</code>에 값을 추가해 준다.</p>
-<p>k초 이전에는 값 입력만 받는다.</p>
-<p>k초부터는 중앙값을 구해준다. <code>find_by_order()</code>는 zero-based임에 유의하자.</p>
+<p>k초 이전에는 값 입력만 받고, k초부터는 중앙값을 구해준다. <code>find_by_order()</code>는 zero-based임에 유의하자.</p>
 <p>우리는 최근 k초까지의 값에만 관심 있기 때문에, k초 이후에는 k초 이전의 값은 삭제해 준다.</p>
-<p>정답은 $2^{63}-1$ 이하이므로, <code>int</code>범위를 초과함에 유의하자.</p>
+<p>중복값이 발생하므로 <code>less_equal&lt;&gt;</code>를 사용해 주자. 정답은 $2^{63}-1$ 이하이므로, <code>int</code>범위를 초과한다.</p>
 </div>
 </details>
 </section>
