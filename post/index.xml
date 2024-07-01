@@ -7,7 +7,261 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 10 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Util] Bug Report Generator</title>
+        <link>https://gyeongmin.kr/p/bug-report/</link>
+        <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/bug-report/</guid>
+        <description>&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;en&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Bug Report Table&lt;/title&gt;
+    &lt;style&gt;
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            vertical-align: middle; /* Set vertical alignment to middle */
+        }
+        th {
+            background-color: none;
+        }
+        input[type=&#34;text&#34;], textarea {
+            width: 100%;
+            box-sizing: border-box;
+            background-color: transparent;
+            border: none;
+            resize: none; /* Prevent manual resizing */
+        }
+        input[type=&#34;radio&#34;] {
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .form-actions {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .form-actions button {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: white;
+            background-color: #34495e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-actions button:hover {
+            background-color: #2c3e50;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;Bug Report&lt;/h2&gt;
+&lt;div class=&#34;form-actions&#34;&gt;
+    &lt;button onclick=&#34;resetPage()&#34;&gt;Reset&lt;/button&gt;
+    &lt;button onclick=&#34;previewTable()&#34;&gt;Preview&lt;/button&gt;
+    &lt;button onclick=&#34;fillDateTime()&#34;&gt;Fill Current Time&lt;/button&gt;
+    &lt;button onclick=&#34;copyTableToClipboard()&#34;&gt;Copy to Clipboard&lt;/button&gt;
+&lt;/div&gt;
+&lt;table id=&#34;bugReportTable&#34;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Bug ID&lt;/th&gt;
+      &lt;th colspan=&#34;7&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;bugId&#34;&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td rowspan=&#34;3&#34;&gt;Overview&lt;/td&gt;
+      &lt;td&gt;Bug Name (Title)&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;bugName&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bug Reporter&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;bugReporter&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Date/Time Submitted&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;dateTimeSubmitted&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td rowspan=&#34;6&#34;&gt;Prioritization&lt;/td&gt;
+      &lt;td rowspan=&#34;2&#34;&gt;Bug Severity&lt;/td&gt;
+      &lt;td&gt;Blocker&lt;/td&gt;
+      &lt;td&gt;Critical&lt;/td&gt;
+      &lt;td&gt;Major&lt;/td&gt;
+      &lt;td&gt;Normal&lt;/td&gt;
+      &lt;td&gt;Minor&lt;/td&gt;
+      &lt;td&gt;Trivial&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;severity&#34; value=&#34;blocker&#34; checked&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;severity&#34; value=&#34;critical&#34;&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;severity&#34; value=&#34;major&#34;&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;severity&#34; value=&#34;normal&#34;&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;severity&#34; value=&#34;minor&#34;&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;severity&#34; value=&#34;trivial&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td rowspan=&#34;2&#34;&gt;Bug Priority&lt;/td&gt;
+      &lt;td&gt;Top&lt;/td&gt;
+      &lt;td&gt;High&lt;/td&gt;
+      &lt;td&gt;Medium&lt;/td&gt;
+      &lt;td&gt;Low&lt;/td&gt;
+      &lt;td&gt;None&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;priority&#34; value=&#34;top&#34; checked&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;priority&#34; value=&#34;high&#34;&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;priority&#34; value=&#34;medium&#34;&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;priority&#34; value=&#34;low&#34;&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;input type=&#34;radio&#34; name=&#34;priority&#34; value=&#34;none&#34;&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Assigned to&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;assignedTo&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Assigned on&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;assignedOn&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td rowspan=&#34;4&#34;&gt;Details&lt;/td&gt;
+      &lt;td&gt;Steps to reproduce&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;textarea id=&#34;stepsToReproduce&#34; oninput=&#34;autoResize(this)&#34;&gt;&lt;/textarea&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Expected Result&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;textarea id=&#34;expectedResult&#34; oninput=&#34;autoResize(this)&#34;&gt;&lt;/textarea&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Observed Result&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;textarea id=&#34;observedResult&#34; oninput=&#34;autoResize(this)&#34;&gt;&lt;/textarea&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;What actions is &lt;br&gt;this bug blocking?&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;textarea id=&#34;blockingActions&#34; oninput=&#34;autoResize(this)&#34;&gt;&lt;/textarea&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td rowspan=&#34;4&#34;&gt;Environment&lt;/td&gt;
+      &lt;td&gt;Platform&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;platform&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;OS&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;os&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Branch&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;branch&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Commit #&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;commit&#34;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan=&#34;2&#34;&gt;Note&lt;/td&gt;
+      &lt;td colspan=&#34;6&#34;&gt;&lt;textarea id=&#34;note&#34; oninput=&#34;autoResize(this)&#34;&gt;&lt;/textarea&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;script&gt;
+    function autoResize(textarea) {
+        textarea.style.height = &#39;auto&#39;;
+        textarea.style.height = (textarea.scrollHeight) + &#39;px&#39;;
+    }
+
+    function copyTableToClipboard() {
+        var table = document.getElementById(&#39;bugReportTable&#39;);
+        var tableClone = table.cloneNode(true);
+        
+        // Replace input text values with their contents
+        var inputs = tableClone.querySelectorAll(&#39;input[type=&#34;text&#34;], textarea&#39;);
+        inputs.forEach(input =&gt; {
+            var td = input.parentElement;
+            td.innerText = input.value;
+        });
+        
+        // Replace radio buttons with a check mark if selected
+        var radioGroups = {};
+        tableClone.querySelectorAll(&#39;input[type=&#34;radio&#34;]&#39;).forEach(radio =&gt; {
+            if (radio.checked) {
+                radioGroups[radio.name] = radio;
+            }
+        });
+        
+        for (const group in radioGroups) {
+            const selectedRadio = radioGroups[group];
+            selectedRadio.parentElement.innerText = &#39;✔️&#39;;
+        }
+        
+        var tableContent = &#39;&lt;table&gt;&#39; + tableClone.innerHTML + &#39;&lt;/table&gt;&#39;;
+        var tempTextarea = document.createElement(&#34;textarea&#34;);
+        tempTextarea.style.position = &#34;fixed&#34;;
+        tempTextarea.style.left = &#34;-9999px&#34;;
+        tempTextarea.value = tableContent;
+        document.body.appendChild(tempTextarea);
+        tempTextarea.select();
+        document.execCommand(&#34;copy&#34;);
+        document.body.removeChild(tempTextarea);
+        alert(&#34;Table content copied to clipboard!&#34;);
+    }
+
+    function resetPage() {
+        location.reload();
+    }
+
+    function previewTable() {
+        var table = document.getElementById(&#39;bugReportTable&#39;);
+        var tableClone = table.cloneNode(true);
+
+        // Replace input text values with their contents
+        var inputs = tableClone.querySelectorAll(&#39;input[type=&#34;text&#34;], textarea&#39;);
+        inputs.forEach(input =&gt; {
+            var td = input.parentElement;
+            td.innerText = input.value;
+        });
+
+        // Replace radio buttons with a check mark if selected
+        var radioGroups = {};
+        tableClone.querySelectorAll(&#39;input[type=&#34;radio&#34;]&#39;).forEach(radio =&gt; {
+            if (radio.checked) {
+                radioGroups[radio.name] = radio;
+            }
+        });
+
+        for (const group in radioGroups) {
+            const selectedRadio = radioGroups[group];
+            selectedRadio.parentElement.innerText = &#39;✔️&#39;;
+        }
+
+        var tableContent = &#39;&lt;table&gt;&#39; + tableClone.innerHTML + &#39;&lt;/table&gt;&#39;;
+        var newWindow = window.open();
+        newWindow.document.write(&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Preview Table&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&#39;);
+        newWindow.document.write(tableContent);
+        newWindow.document.write(&#39;&lt;/body&gt;&lt;/html&gt;&#39;);
+        newWindow.document.close();
+    }
+
+    function fillDateTime() {
+        var now = new Date();
+        var formattedDateTime = now.toISOString().slice(0, 19).replace(&#34;T&#34;, &#34; &#34;);
+        document.getElementById(&#39;dateTimeSubmitted&#39;).value = formattedDateTime;
+    }
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</description>
+        </item>
+        <item>
         <title>C&#43;&#43; STL PBDS (Policy based data structures)</title>
         <link>https://gyeongmin.kr/p/pbds/</link>
         <pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate>
