@@ -406,6 +406,7 @@
             resize: none; /* Prevent manual resizing */
         }
         input[type="radio"] {
+            min-height: 24px;
             width: auto;
             display: block;
             margin: 0 auto;
@@ -433,19 +434,22 @@
 <body>
 <h2>Bug Report</h2>
 <div class="form-actions">
-    <button onclick="resetPage()">Reset</button>
+    <button onclick="viewExample()">Example</button>
     <button onclick="previewTable()">Preview</button>
-    <button onclick="fillDateTime()">Fill Current Time</button>
-    <button onclick="copyTableToClipboard()">Copy to Clipboard</button>
+    <button onclick="resetPage()">Reset</button>
+    <button onclick="fillDateTime()">Fill Current Date/Time</button>
+    <button onclick="copyTableToClipboard()">Copy Table to Clipboard</button>
 </div>
 <table id="bugReportTable">
   <thead>
+    <tr></tr>
     <tr>
       <th>Bug ID</th>
       <th colspan="7"><input type="text" id="bugId"></th>
     </tr>
   </thead>
   <tbody>
+    <tr></tr>
     <tr>
       <td rowspan="3">Overview</td>
       <td>Bug Name (Title)</td>
@@ -459,8 +463,9 @@
       <td>Date/Time Submitted</td>
       <td colspan="6"><input type="text" id="dateTimeSubmitted"></td>
     </tr>
+    <tr></tr>
     <tr>
-      <td rowspan="6">Prioritization</td>
+      <td rowspan="5">Prioritization</td>
       <td rowspan="2">Bug Severity</td>
       <td>Blocker</td>
       <td>Critical</td>
@@ -498,10 +503,7 @@
       <td>Assigned to</td>
       <td colspan="6"><input type="text" id="assignedTo"></td>
     </tr>
-    <tr>
-      <td>Assigned on</td>
-      <td colspan="6"><input type="text" id="assignedOn"></td>
-    </tr>
+    <tr></tr>
     <tr>
       <td rowspan="4">Details</td>
       <td>Steps to reproduce</td>
@@ -613,8 +615,10 @@
         }
 
         var tableContent = '<div class="table-wrapper"><table>' + tableClone.innerHTML + '</table></div>';
-        var newWindow = window.open();
-        newWindow.document.write('<html><head><title>Preview Table</title></head><body>');
+        var newWindow = window.open('preview.html', 'preview', '_blank, width=800, height=900');
+        newWindow.document.write('<html><head><title>Preview Table</title><style>');
+        newWindow.document.write('table, th, td {border: 1px solid black; border-collapse:collapse; padding:10px;vertical-align:middle;}');
+        newWindow.document.write('</' + 'style></head><body>');
         newWindow.document.write(tableContent);
         newWindow.document.write('</body></html>');
         newWindow.document.close();
@@ -624,6 +628,117 @@
         var now = new Date();
         var formattedDateTime = now.toISOString().slice(0, 19).replace("T", " ");
         document.getElementById('dateTimeSubmitted').value = formattedDateTime;
+    }
+
+    function viewExample() {
+        var newWindow = window.open('preview.html', 'preview', '_blank, width=800, height=900');
+        newWindow.document.write('<html><head><title>Preview Table</title><style>table, th, td {border: 1px solid black; border-collapse:collapse; padding:10px;vertical-align:middle;}');
+        newWindow.document.write('</' + 'style></head><body><div class="table-wrapper">');
+        newWindow.document.write(`<div class="table-wrapper"><table>
+  <thead>
+    <tr></tr>
+    <tr>
+      <th>Bug ID</th>
+      <th colspan="7">bug-example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr></tr>
+    <tr>
+      <td rowspan="3">Overview</td>
+      <td>Bug Name (Title)</td>
+      <td colspan="6">example</td>
+    </tr>
+    <tr>
+      <td>Bug Reporter</td>
+      <td colspan="6">@gyeongmin</td>
+    </tr>
+    <tr>
+      <td>Date/Time Submitted</td>
+      <td colspan="6">2024-07-01 07:01:06</td>
+    </tr>
+    <tr></tr>
+    <tr>
+      <td rowspan="5">Prioritization</td>
+      <td rowspan="2">Bug Severity</td>
+      <td>Blocker</td>
+      <td>Critical</td>
+      <td>Major</td>
+      <td>Normal</td>
+      <td>Minor</td>
+      <td>Trivial</td>
+    </tr>
+    <tr>
+      <td><input type="radio" name="severity" value="blocker" checked="" control-id="ControlID-1"></td>
+      <td>✔️</td>
+      <td><input type="radio" name="severity" value="major" control-id="ControlID-2"></td>
+      <td><input type="radio" name="severity" value="normal"></td>
+      <td><input type="radio" name="severity" value="minor"></td>
+      <td><input type="radio" name="severity" value="trivial"></td>
+    </tr>
+    <tr>
+      <td rowspan="2">Bug Priority</td>
+      <td>Top</td>
+      <td>High</td>
+      <td>Medium</td>
+      <td>Low</td>
+      <td>None</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><input type="radio" name="priority" value="top" checked="" control-id="ControlID-3"></td>
+      <td><input type="radio" name="priority" value="high" control-id="ControlID-4"></td>
+      <td>✔️</td>
+      <td><input type="radio" name="priority" value="low"></td>
+      <td><input type="radio" name="priority" value="none"></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Assigned to</td>
+      <td colspan="6">@gyeongmin</td>
+    </tr>
+    <tr></tr>
+    <tr>
+      <td rowspan="4">Details</td>
+      <td>Steps to reproduce</td>
+      <td colspan="6">Step 1.<br>Step 2.<br>Step 3.<br>Step 4.</td>
+    </tr>
+    <tr>
+      <td>Expected Result</td>
+      <td colspan="6">~</td>
+    </tr>
+    <tr>
+      <td>Observed Result</td>
+      <td colspan="6">~</td>
+    </tr>
+    <tr>
+      <td>What actions is <br>this bug blocking?</td>
+      <td colspan="6">~</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Environment</td>
+      <td>Platform</td>
+      <td colspan="6">Vision PC, Songdo</td>
+    </tr>
+    <tr>
+      <td>OS</td>
+      <td colspan="6">Windows 10</td>
+    </tr>
+    <tr>
+      <td>Branch</td>
+      <td colspan="6">master</td>
+    </tr>
+    <tr>
+      <td>Commit #</td>
+      <td colspan="6">ba91c22da75442e971b1b4d8bc11937d3774b909</td>
+    </tr>
+    <tr>
+      <td colspan="2">Note</td>
+      <td colspan="6">This is an example.</td>
+    </tr>
+  </tbody>
+</table></div>`);
+        newWindow.document.close();
     }
 </script>
 </body>
