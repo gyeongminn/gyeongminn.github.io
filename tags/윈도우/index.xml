@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>윈도우 on Gyeongmin의 개발 블로그</title>
-        <link>https://gyeongmin.kr/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/</link>
+        <link>http://localhost:1313/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/</link>
         <description>Recent content in 윈도우 on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Sat, 15 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 15 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%EC%9C%88%EB%8F%84%EC%9A%B0/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>윈도우 패키지 매니저 Chocolatey</title>
-        <link>https://gyeongmin.kr/p/chocolatey/</link>
+        <link>http://localhost:1313/p/chocolatey/</link>
         <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/p/chocolatey/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/p/chocolatey/image.png" alt="Featured image of post 윈도우 패키지 매니저 Chocolatey" /&gt;&lt;h1 id=&#34;윈도우-패키지-매니저-chocolatey&#34;&gt;윈도우 패키지 매니저 Chocolatey&lt;/h1&gt;
+        <guid>http://localhost:1313/p/chocolatey/</guid>
+        <description>&lt;img src="http://localhost:1313/p/chocolatey/image.png" alt="Featured image of post 윈도우 패키지 매니저 Chocolatey" /&gt;&lt;h1 id=&#34;윈도우-패키지-매니저-chocolatey&#34;&gt;윈도우 패키지 매니저 Chocolatey&lt;/h1&gt;
 &lt;p&gt;컴퓨터를 포맷한 후 초기 설정할 때 유용하게 사용중인 프로그램이다.&lt;/p&gt;
 &lt;p&gt;여태 프로그램을 설치하기 위해선 프로그램을 검색한 후, 사이트에 들어가서 설치 파일을 다운받은 후, 설치 파일을 실행시켜 일일히 Next를 눌러 가며 설치해야 했다.&lt;/p&gt;
 &lt;p&gt;Chocolatey를 사용하면 이 과정을 &lt;code&gt;choco install python -y&lt;/code&gt; 와 같이 명령어 한 줄로 설치할 수 있다.&lt;/p&gt;
@@ -22,10 +22,10 @@
 &lt;h2 id=&#34;설치-방법&#34;&gt;설치 방법&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chocolatey.org/install&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;공식 홈페이지&lt;/a&gt;에서 설치 커맨드를 복사한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chocolatey/image-1.png&#34;
 	width=&#34;1772&#34;
 	height=&#34;678&#34;
-	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_480x0_resize_box_3.png 480w, http://localhost:1313/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;설치 방법&#34;
@@ -40,10 +40,10 @@
 &lt;h2 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://community.chocolatey.org/packages&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;여기서&lt;/a&gt; 설치하고 싶은 패키지를 검색한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chocolatey/image-2.png&#34;
 	width=&#34;1733&#34;
 	height=&#34;763&#34;
-	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_480x0_resize_box_3.png 480w, http://localhost:1313/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 찾기&#34;
@@ -54,10 +54,10 @@
 		data-flex-basis=&#34;545px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chocolatey/image-3.png&#34;
 	width=&#34;1643&#34;
 	height=&#34;148&#34;
-	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_480x0_resize_box_3.png 480w, http://localhost:1313/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 설치 명령어 복사&#34;
@@ -69,10 +69,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;커맨드를 복사한 후, Windows PowerShell에서 커맨드를 실행한다. 조금만 기다리면 패키지가 설치된다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chocolatey/image-4.png&#34;
 	width=&#34;1222&#34;
 	height=&#34;625&#34;
-	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_480x0_resize_box_3.png 480w, http://localhost:1313/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 설치 예시&#34;

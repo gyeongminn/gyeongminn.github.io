@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 10 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Tools</title>
+        <link>https://gyeongmin.kr/categories/tools/</link>
+        <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/categories/tools/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>알고리즘 노트</title>
         <link>https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</link>
         <pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate>
