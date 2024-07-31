@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 17 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>논문리뷰</title>
+        <link>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
+        <pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Tools</title>
         <link>https://gyeongmin.kr/categories/tools/</link>
         <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
@@ -29,14 +37,6 @@
         <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>논문리뷰</title>
-        <link>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
-        <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</guid>
         <description></description>
         </item>
         <item>
