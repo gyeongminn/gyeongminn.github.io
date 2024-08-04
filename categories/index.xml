@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on Gyeongmin의 개발 블로그</title>
-        <link>https://gyeongmin.kr/categories/</link>
+        <link>http://localhost:1313/categories/</link>
         <description>Recent content in Categories on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 17 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 17 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>논문리뷰</title>
-        <link>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
+        <link>http://localhost:1313/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
         <pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</guid>
+        <guid>http://localhost:1313/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</guid>
         <description></description>
         </item>
         <item>
         <title>Tools</title>
-        <link>https://gyeongmin.kr/categories/tools/</link>
+        <link>http://localhost:1313/categories/tools/</link>
         <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/categories/tools/</guid>
+        <guid>http://localhost:1313/categories/tools/</guid>
         <description></description>
         </item>
         <item>
         <title>알고리즘 노트</title>
-        <link>https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</link>
+        <link>http://localhost:1313/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</link>
         <pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</guid>
+        <guid>http://localhost:1313/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</guid>
         <description></description>
         </item>
         <item>
         <title>밑바닥부터 시작하는 딥러닝 2</title>
-        <link>https://gyeongmin.kr/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</link>
+        <link>http://localhost:1313/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</link>
         <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</guid>
+        <guid>http://localhost:1313/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</guid>
         <description></description>
         </item>
         <item>
         <title>알고리즘</title>
-        <link>https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</link>
+        <link>http://localhost:1313/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</link>
         <pubDate>Thu, 30 Nov 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</guid>
+        <guid>http://localhost:1313/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</guid>
         <description></description>
         </item>
         <item>
         <title>프로젝트</title>
-        <link>https://gyeongmin.kr/categories/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
+        <link>http://localhost:1313/categories/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
         <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/categories/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
+        <guid>http://localhost:1313/categories/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
         <description></description>
         </item>
         

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>논문리뷰 on Gyeongmin의 개발 블로그</title>
-        <link>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
+        <link>http://localhost:1313/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link>
         <description>Recent content in 논문리뷰 on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 17 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 17 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction</title>
-        <link>https://gyeongmin.kr/p/paper-review-hyperspectral-ad/</link>
+        <link>http://localhost:1313/p/paper-review-hyperspectral-ad/</link>
         <pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/p/paper-review-hyperspectral-ad/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/paper-review.png" alt="Featured image of post [논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction" /&gt;&lt;h1 id=&#34;hyperspectral-anomaly-detection-via-background-and-potential-anomaly-dictionaries-construction&#34;&gt;Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction&lt;/h1&gt;
+        <guid>http://localhost:1313/p/paper-review-hyperspectral-ad/</guid>
+        <description>&lt;img src="http://localhost:1313/images/paper-review.png" alt="Featured image of post [논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction" /&gt;&lt;h1 id=&#34;hyperspectral-anomaly-detection-via-background-and-potential-anomaly-dictionaries-construction&#34;&gt;Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://ieeexplore.ieee.org/abstract/document/8519775&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;논문 링크&lt;/a&gt;&lt;/p&gt;
@@ -24,10 +24,10 @@
 &lt;p&gt;초분광영상(Hyperspectral image, HSI)은 넓은 범위와 높은 해상도의 스펙트럼을 가지고 있는 이미지이다. HSI 기반의 Anomaly Detection은 다양한 분야에서 연구되어 왔다.&lt;/p&gt;
 &lt;p&gt;Supervised 기반의 물체 검출과 달리 Anomaly Detection은 목표물에 대한 사전 정보를 알지 못한 상태에서 이루어지기 때문에, 기존 방법들은 배경 정보를 최대한 활용하려고 노력했다. local region의 중심에 있는 배경 픽셀은 다른 픽셀들의 조합으로 표현될 수 있지만 anomalous한 픽셀은 그렇지 않다는 가정을 바탕으로 JSR (Joint Sparse Representation)의 특성을 활용하는 AD 방법이 제안되었다.&lt;/p&gt;
 &lt;p&gt;HSI는 일반적으로 유사한 스펙트럼 특성을 균질하게 가지고 있기 때문에, 이 구조는 subspace로 표현될 수 있다. 일반적으로 PCS나 RPCA가 사용되고, 더 나은 multisubspace 학습을 위해 LRR(Low-Rank Representation) 방법이 제안되었다. HSI 데이터의 경우, LRR 기법은 분류와 Denoising에 사용되었으며, 최근에는 Anomaly Detection Problem을 모델링하는 데에도 활용되었다. background는 low-rank를 가지고 있고, anomaly는 sparse한 속송을 가지고 있다고 가정하여 RPCA 모델을 확장하여 데이터를 background, anomaly, noise로 분해했고 mahalanobis 거리를 이용하여 AD를 진행했다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-hyperspectral-ad/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/paper-review-hyperspectral-ad/image.png&#34;
 	width=&#34;1847&#34;
 	height=&#34;795&#34;
-	srcset=&#34;https://gyeongmin.kr/p/paper-review-hyperspectral-ad/image_hu78a6f5733d58b1ee28393f06e5b5a05d_445139_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-hyperspectral-ad/image_hu78a6f5733d58b1ee28393f06e5b5a05d_445139_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/paper-review-hyperspectral-ad/image_hu78a6f5733d58b1ee28393f06e5b5a05d_445139_480x0_resize_box_3.png 480w, http://localhost:1313/p/paper-review-hyperspectral-ad/image_hu78a6f5733d58b1ee28393f06e5b5a05d_445139_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Schematic of our dictionary construction method for hyperspectral anomaly detection&#34;
@@ -40,6 +40,12 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;본 논문에서는 background와 anomaly information을 잘 모델링하기 위해, LRSR(Low-Rank and Sparse Representation)을 활용한 새로운 HSI Anomaly Detection을 제안한다. HSI의 homogeneity 때문에 background는 low-rank 속성을 가지고, anomaly는 sparsity한 속성을 가지도록 제약된다. JSR 모델은 clutter와 anomaly의 영향을 받지 않는 순수한 배경을 묘사하는 데에 사용된다.&lt;/p&gt;
 &lt;h2 id=&#34;proposed-method&#34;&gt;Proposed Method&lt;/h2&gt;
+&lt;h3 id=&#34;a-background-anomaly-and-noise-decomposition-model&#34;&gt;A. Background, Anomaly, and Noise Decomposition Model&lt;/h3&gt;
+&lt;p&gt;Background를 $BZ$, Anomaly를 $A$, Noise를 $E$라고 했을 때, HSI 이미지 $X$는&lt;/p&gt;
+&lt;p&gt;$$
+X = BZ + A + E
+$$&lt;/p&gt;
+&lt;p&gt;와 같이 나타낼 수 있다.&lt;/p&gt;
 &lt;h2 id=&#34;experiments-results&#34;&gt;Experiments Results&lt;/h2&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;이 논문에서는 LRSR 전략을 활용한 배경 및 잠재적 이상 사전 기반의 새로운 HSI 이상 탐지 방법(PAB-DC)을 제시하였다. 이 방법에서는 원본 데이터를 배경, 이상, 노이즈 부분으로 분해한다. 배경 부분에서는 서로 다른 배경 물질의 기저 부분공간을 포착하기 위해 저차원 표현을 사용한다. 이상 부분에서는 이상 현상의 특성을 시뮬레이션하기 위해 희소 표현을 활용한다. 또한, 기존의 일반적인 방법들이 배경 정보만 고려하는 것과 달리, 우리는 배경 정보와 추정된 이상 스펙트럼 정보를 모두 사용하여 성능을 향상시키는 방법을 제안하였다. 배경 사전은 각 클래스에 대해 그룹화된 과잉완비 사전을 사용한 JSR 모델을 도입하여 구성한다. 잠재적 이상 사전은 JSR 모델에서 계산된 잔차를 사용하여 강한 이상 픽셀을 포착하기 위해 구축된다. 제안된 PAB-DC 방법의 우수성은 네 가지 표준 방법과의 비교를 통해 다섯 개의 실제 데이터 실험에서 입증되었다.&lt;/p&gt;
@@ -47,11 +53,11 @@
         </item>
         <item>
         <title>[논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation</title>
-        <link>https://gyeongmin.kr/p/paper-review-panda/</link>
+        <link>http://localhost:1313/p/paper-review-panda/</link>
         <pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/p/paper-review-panda/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/paper-review.png" alt="Featured image of post [논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation" /&gt;&lt;h1 id=&#34;panda-adapting-pretrained-features-for-anomaly-detection-and-segmentation&#34;&gt;PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&lt;/h1&gt;
+        <guid>http://localhost:1313/p/paper-review-panda/</guid>
+        <description>&lt;img src="http://localhost:1313/images/paper-review.png" alt="Featured image of post [논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation" /&gt;&lt;h1 id=&#34;panda-adapting-pretrained-features-for-anomaly-detection-and-segmentation&#34;&gt;PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://openaccess.thecvf.com/content/CVPR2021/papers/Reiss_PANDA_Adapting_Pretrained_Features_for_Anomaly_Detection_and_Segmentation_CVPR_2021_paper.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;논문 PDF&lt;/a&gt;&lt;/p&gt;
@@ -124,10 +130,10 @@
 &lt;p&gt;Outlier Exposure는 이미지 이상 탐지 작업을 확장한 것으로, Normal 데이터보다 Anomaly에 더 유사한 Auxiliary 데이터셋 $D_{OE}$가 있다고 가정하고, 데이터셋을 Normal과 Abnormal로 분류한다. 이는 Linear Classification Layer $w$와 Feature $\psi$를 이용해 Logistic Regression Loss를 계산하는 방식으로 이루어진다.&lt;/p&gt;
 &lt;h2 id=&#34;expreiments&#34;&gt;Expreiments&lt;/h2&gt;
 &lt;h3 id=&#34;dataset&#34;&gt;Dataset&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/paper-review-panda/image-1.png&#34;
 	width=&#34;828&#34;
 	height=&#34;383&#34;
-	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_480x0_resize_box_3.png 480w, http://localhost:1313/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;왼쪽부터 시계 방향으로 CIFAR10, CIFAR100, Fashion MNIST, DogsVsCats, WBC, DIOR, Oxford Flowers, MVTec&#34;
@@ -207,10 +213,10 @@
 &lt;p&gt;여기서 MVTec을 제외한 데이터셋은 정상 데이터를 한 개의 클래스로 구성하고, 나머지 클래스는 비정상으로 구성한다. 예를 들어, 고양이 이미지는 정상이고 강아지나 토끼 등 다른 이미지는 전부 비정상으로 구성된다.&lt;/p&gt;
 &lt;p&gt;MVTec 데이터셋은 Anomaly Detection을 위해 제작된 데이터셋으로, 클래스마다 정상과 비정상 이미지가 라벨링되어 있다.&lt;/p&gt;
 &lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/paper-review-panda/image-2.png&#34;
 	width=&#34;1664&#34;
 	height=&#34;435&#34;
-	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_480x0_resize_box_3.png 480w, http://localhost:1313/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Anomaly detection performance (Average ROC AUC %)&#34;
@@ -221,10 +227,10 @@
 		data-flex-basis=&#34;918px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/paper-review-panda/image-3.png&#34;
 	width=&#34;1042&#34;
 	height=&#34;385&#34;
-	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_480x0_resize_box_3.png 480w, http://localhost:1313/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Pretrained feature performance on various small datasets (Average ROC AUC %)&#34;
@@ -236,10 +242,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;위 두 결과를 보았을 때, Self-Supervised 방법보다 DN2와 PANDA 방법이 훨씬 높은 성능을 보이는 것을 확인할 수 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/paper-review-panda/image-4.png&#34;
 	width=&#34;1085&#34;
 	height=&#34;111&#34;
-	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_480x0_resize_box_3.png 480w, http://localhost:1313/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Comparison of anomaly segmentation methods (pixel-level ROCAUC and PRO %)&#34;
@@ -251,10 +257,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;기존의 Anomaly Segmentation 방법들보다 SPADE 방법이 매우 높은 성능을 보이는 것을 확인할 수 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/paper-review-panda/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/paper-review-panda/image-5.png&#34;
 	width=&#34;492&#34;
 	height=&#34;228&#34;
-	srcset=&#34;https://gyeongmin.kr/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_480x0_resize_box_3.png 480w, http://localhost:1313/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;A comparison of different feature adaptation methods (Avg. ROC AUC %)&#34;

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안'>
 <title>[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction</title>
 
-<link rel='canonical' href='https://gyeongmin.kr/p/paper-review-hyperspectral-ad/'>
+<link rel='canonical' href='http://localhost:1313/p/paper-review-hyperspectral-ad/'>
 
 <link rel="stylesheet" href="/scss/style.min.acbb6090fc4dc18e19ddfb2dac28698830113a17c14e081be52e94d929eabb6e.css"><meta property='og:title' content='[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction'>
 <meta property='og:description' content='Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안'>
-<meta property='og:url' content='https://gyeongmin.kr/p/paper-review-hyperspectral-ad/'>
+<meta property='og:url' content='http://localhost:1313/p/paper-review-hyperspectral-ad/'>
 <meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='딥러닝' /><meta property='article:published_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongmin.kr/images/paper-review.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='딥러닝' /><meta property='article:published_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/images/paper-review.png' />
 <meta name="twitter:title" content="[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction">
 <meta name="twitter:description" content="Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://gyeongmin.kr/images/paper-review.png' />
+    <meta name="twitter:image" content='http://localhost:1313/images/paper-review.png' />
     <link rel="shortcut icon" href="/logo.ico/favicon.ico" />
 
   
@@ -297,9 +297,9 @@
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="https://gyeongmin.kr/" selected>한국어</option>
+                            <option value="http://localhost:1313/" selected>한국어</option>
                         
-                            <option value="https://gyeongmin.kr/en/" >English</option>
+                            <option value="http://localhost:1313/en/" >English</option>
                         
                     </select>
                 </li>
@@ -354,7 +354,11 @@
   <ol>
     <li><a href="#abstract">Abstract</a></li>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#proposed-method">Proposed Method</a></li>
+    <li><a href="#proposed-method">Proposed Method</a>
+      <ol>
+        <li><a href="#background-anomaly-and-noise-decomposition-model">Background, Anomaly, and Noise Decomposition Model</a></li>
+      </ol>
+    </li>
     <li><a href="#experiments-results">Experiments Results</a></li>
     <li><a href="#conclusion">Conclusion</a></li>
   </ol>
@@ -440,7 +444,7 @@
 <h2 id="introduction">Introduction</h2>
 <p>초분광영상(Hyperspectral image, HSI)은 넓은 범위와 높은 해상도의 스펙트럼을 가지고 있는 이미지이다. HSI 기반의 Anomaly Detection은 다양한 분야에서 연구되어 왔다.</p>
 <p>Supervised 기반의 물체 검출과 달리 Anomaly Detection은 목표물에 대한 사전 정보를 알지 못한 상태에서 이루어지기 때문에, 기존 방법들은 배경 정보를 최대한 활용하려고 노력했다. local region의 중심에 있는 배경 픽셀은 다른 픽셀들의 조합으로 표현될 수 있지만 anomalous한 픽셀은 그렇지 않다는 가정을 바탕으로 JSR (Joint Sparse Representation)의 특성을 활용하는 AD 방법이 제안되었다.</p>
-<p>HSI는 일반적으로 유사한 스펙트럼 특성을 균질하게 가지고 있기 때문에, 이 구조는 subspace로 표현될 수 있다. 일반적으로 PCS나 RPCA가 사용되고, 더 나은 multisubspace 학습을 위해 LRR(Low-Rank Representation) 방법이 제안되었다. HSI 데이터의 경우, LRR 기법은 분류와 Denoising에 사용되었으며, 최근에는 Anomaly Detection Problem을 모델링하는 데에도 활용되었다. background는 low-rank를 가지고 있고, anomaly는 sparse한 속송을 가지고 있다고 가정하여 RPCA 모델을 확장하여 데이터를 background, anomaly, noise로 분해했고 mahalanobis 거리를 이용하여 AD를 진행했다.</p>
+<p>HSI는 일반적으로 유사한 스펙트럼 특성을 균질하게 가지고 있기 때문에, 이 구조는 subspace로 표현될 수 있다. 일반적으로 PCS나 RPCA가 사용되고, 더 나은 multisubspace 학습을 위해 LRR(Low-Rank Representation) 방법이 제안되었다. HSI 데이터의 경우, LRR 기법은 분류와 Denoising에 사용되었으며, 최근에는 Anomaly Detection Problem을 모델링하는 데에도 활용되었다. background는 low-rank를 가지고 있고, anomaly는 sparse한 속성을 가지고 있다고 가정하여 RPCA 모델을 확장하여 데이터를 background, anomaly, noise로 분해했고 mahalanobis 거리를 이용하여 AD를 진행했다.</p>
 <p><img src="/p/paper-review-hyperspectral-ad/image.png"
 	width="1847"
 	height="795"
@@ -457,6 +461,12 @@
 ></p>
 <p>본 논문에서는 background와 anomaly information을 잘 모델링하기 위해, LRSR(Low-Rank and Sparse Representation)을 활용한 새로운 HSI Anomaly Detection을 제안한다. HSI의 homogeneity 때문에 background는 low-rank 속성을 가지고, anomaly는 sparsity한 속성을 가지도록 제약된다. JSR 모델은 clutter와 anomaly의 영향을 받지 않는 순수한 배경을 묘사하는 데에 사용된다.</p>
 <h2 id="proposed-method">Proposed Method</h2>
+<h3 id="background-anomaly-and-noise-decomposition-model">Background, Anomaly, and Noise Decomposition Model</h3>
+<p>Background를 $BZ$, Anomaly를 $A$, Noise를 $E$라고 했을 때, HSI 이미지 $X$는 아래와 같이 나타낼 수 있다.</p>
+<p>$$
+X = BZ + A + E
+$$</p>
+<p>HSI에서 local region은 대부분 homogeneity하기 때문에 배경은 low-rank의 성질을 가진다. Noise는 두 가지 종류가 있는데, Sparse한 Noise와 Gaussian Random Noise가 있다. $l_2$, $l_1$ norm은 두 Noise 모두를 잘 설명하기 때문에 본 논문에서는 Noise를 모델링하는 데에 $l_{2,1}$ norm을 사용한다.</p>
 <h2 id="experiments-results">Experiments Results</h2>
 <h2 id="conclusion">Conclusion</h2>
 <p>이 논문에서는 LRSR 전략을 활용한 배경 및 잠재적 이상 사전 기반의 새로운 HSI 이상 탐지 방법(PAB-DC)을 제시하였다. 이 방법에서는 원본 데이터를 배경, 이상, 노이즈 부분으로 분해한다. 배경 부분에서는 서로 다른 배경 물질의 기저 부분공간을 포착하기 위해 저차원 표현을 사용한다. 이상 부분에서는 이상 현상의 특성을 시뮬레이션하기 위해 희소 표현을 활용한다. 또한, 기존의 일반적인 방법들이 배경 정보만 고려하는 것과 달리, 우리는 배경 정보와 추정된 이상 스펙트럼 정보를 모두 사용하여 성능을 향상시키는 방법을 제안하였다. 배경 사전은 각 클래스에 대해 그룹화된 과잉완비 사전을 사용한 JSR 모델을 도입하여 구성한다. 잠재적 이상 사전은 JSR 모델에서 계산된 잔차를 사용하여 강한 이상 픽셀을 포착하기 위해 구축된다. 제안된 PAB-DC 방법의 우수성은 네 가지 표준 방법과의 비교를 통해 다섯 개의 실제 데이터 실험에서 입증되었다.</p>

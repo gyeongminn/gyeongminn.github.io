@@ -2,285 +2,285 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://gyeongmin.kr/p/paper-review-hyperspectral-ad/</loc>
+    <loc>http://localhost:1313/p/paper-review-hyperspectral-ad/</loc>
     <lastmod>2024-07-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/categories/</loc>
-    <lastmod>2024-07-17T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://gyeongmin.kr/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://gyeongmin.kr/categories/"
-                />
-  </url><url>
-    <loc>https://gyeongmin.kr/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2024-07-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongmin.kr/en/"
+                href="http://localhost:1313/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongmin.kr/"
+                href="http://localhost:1313/categories/"
                 />
   </url><url>
-    <loc>https://gyeongmin.kr/post/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2024-07-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongmin.kr/en/post/"
+                href="http://localhost:1313/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongmin.kr/post/"
+                href="http://localhost:1313/"
                 />
   </url><url>
-    <loc>https://gyeongmin.kr/tags/</loc>
+    <loc>http://localhost:1313/post/</loc>
     <lastmod>2024-07-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongmin.kr/en/tags/"
+                href="http://localhost:1313/en/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongmin.kr/tags/"
+                href="http://localhost:1313/post/"
                 />
   </url><url>
-    <loc>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</loc>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2024-07-17T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="http://localhost:1313/tags/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</loc>
     <lastmod>2024-07-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</loc>
+    <loc>http://localhost:1313/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</loc>
     <lastmod>2024-07-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/bug-report/</loc>
+    <loc>http://localhost:1313/p/bug-report/</loc>
     <lastmod>2024-07-01T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/categories/tools/</loc>
+    <loc>http://localhost:1313/categories/tools/</loc>
     <lastmod>2024-07-01T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/c&#43;&#43;/</loc>
+    <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
     <lastmod>2024-04-10T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/pbds/</loc>
+    <loc>http://localhost:1313/p/pbds/</loc>
     <lastmod>2024-04-10T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
+    <loc>http://localhost:1313/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
     <lastmod>2024-04-10T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</loc>
+    <loc>http://localhost:1313/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</loc>
     <lastmod>2024-04-10T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/python/</loc>
+    <loc>http://localhost:1313/tags/python/</loc>
     <lastmod>2024-01-03T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/word2vec-2/</loc>
+    <loc>http://localhost:1313/p/word2vec-2/</loc>
     <lastmod>2024-01-03T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</loc>
+    <loc>http://localhost:1313/categories/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-2/</loc>
     <lastmod>2024-01-03T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/paper-review-panda/</loc>
+    <loc>http://localhost:1313/p/paper-review-panda/</loc>
     <lastmod>2023-12-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/word2vec/</loc>
+    <loc>http://localhost:1313/p/word2vec/</loc>
     <lastmod>2023-12-19T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/prime-number-and-divisors/</loc>
+    <loc>http://localhost:1313/p/prime-number-and-divisors/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/boj-1331/</loc>
+    <loc>http://localhost:1313/p/boj-1331/</loc>
     <lastmod>2023-11-30T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
+    <loc>http://localhost:1313/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
     <lastmod>2023-11-30T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/word-distributed-representation/</loc>
+    <loc>http://localhost:1313/p/word-distributed-representation/</loc>
     <lastmod>2023-11-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/neural-network-trainning/</loc>
+    <loc>http://localhost:1313/p/neural-network-trainning/</loc>
     <lastmod>2023-11-21T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/neural-network-inference/</loc>
+    <loc>http://localhost:1313/p/neural-network-inference/</loc>
     <lastmod>2023-11-20T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
     <lastmod>2023-11-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/page/</loc>
+    <loc>http://localhost:1313/page/</loc>
     <lastmod>2023-11-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/basic-linear-algebra/</loc>
+    <loc>http://localhost:1313/p/basic-linear-algebra/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</loc>
+    <loc>http://localhost:1313/tags/%EC%88%98%ED%95%99/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</loc>
+    <loc>http://localhost:1313/tags/%EC%8A%A4%ED%84%B0%EB%94%94/</loc>
     <lastmod>2023-11-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/boj-20437/</loc>
+    <loc>http://localhost:1313/p/boj-20437/</loc>
     <lastmod>2023-07-07T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/abc-300/</loc>
+    <loc>http://localhost:1313/p/abc-300/</loc>
     <lastmod>2023-04-30T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/boj-23807/</loc>
+    <loc>http://localhost:1313/p/boj-23807/</loc>
     <lastmod>2023-04-21T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/boj-16935/</loc>
+    <loc>http://localhost:1313/p/boj-16935/</loc>
     <lastmod>2023-02-06T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/boj-14620/</loc>
+    <loc>http://localhost:1313/p/boj-14620/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/boj-9461/</loc>
+    <loc>http://localhost:1313/p/boj-9461/</loc>
     <lastmod>2023-01-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/baekjoonbot/</loc>
+    <loc>http://localhost:1313/p/baekjoonbot/</loc>
     <lastmod>2023-01-03T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/boj-1011/</loc>
+    <loc>http://localhost:1313/p/boj-1011/</loc>
     <lastmod>2022-06-30T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/chocolatey/</loc>
+    <loc>http://localhost:1313/p/chocolatey/</loc>
     <lastmod>2022-01-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/c/c&#43;&#43;/</loc>
+    <loc>http://localhost:1313/tags/c/c&#43;&#43;/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongmin.kr/en/tags/c/c&#43;&#43;/"
+                href="http://localhost:1313/en/tags/c/c&#43;&#43;/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongmin.kr/tags/c/c&#43;&#43;/"
+                href="http://localhost:1313/tags/c/c&#43;&#43;/"
                 />
   </url><url>
-    <loc>https://gyeongmin.kr/p/rhythm-game-in-c/</loc>
+    <loc>http://localhost:1313/p/rhythm-game-in-c/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://gyeongmin.kr/en/p/rhythm-game-in-c/"
+                href="http://localhost:1313/en/p/rhythm-game-in-c/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://gyeongmin.kr/p/rhythm-game-in-c/"
+                href="http://localhost:1313/p/rhythm-game-in-c/"
                 />
   </url><url>
-    <loc>https://gyeongmin.kr/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
+    <loc>http://localhost:1313/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/categories/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
+    <loc>http://localhost:1313/categories/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/archives/</loc>
+    <loc>http://localhost:1313/archives/</loc>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/links/</loc>
+    <loc>http://localhost:1313/links/</loc>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/search/</loc>
+    <loc>http://localhost:1313/search/</loc>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
