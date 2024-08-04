@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tools on Gyeongmin의 개발 블로그</title>
-        <link>http://localhost:1313/categories/tools/</link>
+        <link>https://gyeongmin.kr/categories/tools/</link>
         <description>Recent content in Tools on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/tools/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/tools/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Util] Bug Report Generator</title>
-        <link>http://localhost:1313/p/bug-report/</link>
+        <link>https://gyeongmin.kr/p/bug-report/</link>
         <pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/bug-report/</guid>
+        <guid>https://gyeongmin.kr/p/bug-report/</guid>
         <description>&lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;en&#34;&gt;
 &lt;head&gt;
@@ -378,18 +378,18 @@
         </item>
         <item>
         <title>백준 디스코드 봇 &#39;백준봇&#39;</title>
-        <link>http://localhost:1313/p/baekjoonbot/</link>
+        <link>https://gyeongmin.kr/p/baekjoonbot/</link>
         <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/baekjoonbot/</guid>
-        <description>&lt;img src="http://localhost:1313/p/baekjoonbot/image-1.png" alt="Featured image of post 백준 디스코드 봇 &#39;백준봇&#39;" /&gt;&lt;h1 id=&#34;백준-디스코드-봇-백준봇&#34;&gt;백준 디스코드 봇 &amp;lsquo;백준봇&amp;rsquo;&lt;/h1&gt;
+        <guid>https://gyeongmin.kr/p/baekjoonbot/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-1.png" alt="Featured image of post 백준 디스코드 봇 &#39;백준봇&#39;" /&gt;&lt;h1 id=&#34;백준-디스코드-봇-백준봇&#34;&gt;백준 디스코드 봇 &amp;lsquo;백준봇&amp;rsquo;&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;백준 스터디를 진행할 때 문제를 조금 더 이쁘게 올려 보고 싶어 만들었습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-1.png&#34;
 	width=&#34;1187&#34;
 	height=&#34;904&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -401,10 +401,10 @@
 &lt;hr&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://solvedac.github.io/unofficial-documentation/#/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;solved.ac 비공식 API&lt;/a&gt; 를 사용하여 만들었습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-2.png&#34;
 	width=&#34;1500&#34;
 	height=&#34;500&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -417,10 +417,10 @@
 &lt;h2 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h2&gt;
 &lt;h3 id=&#34;문제-올리기&#34;&gt;문제 올리기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;/백준 문제번호&lt;/code&gt;  로 문제를 올릴 수 있습니다.
-&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-6.png&#34;
+&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-6.png&#34;
 	width=&#34;962&#34;
 	height=&#34;81&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -430,10 +430,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;또는 &lt;code&gt;/백준 문제링크&lt;/code&gt;  로 문제를 올릴 수 있습니다.
-&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-7.png&#34;
+&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-7.png&#34;
 	width=&#34;1121&#34;
 	height=&#34;97&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -445,10 +445,10 @@
 &lt;h3 id=&#34;문제와-소스코드를-함께-올리기&#34;&gt;문제와 소스코드를 함께 올리기&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;/백준 문제번호&lt;/code&gt;  또는 &lt;code&gt;/백준 문제링크&lt;/code&gt;  하단에 소스코드를 같이 입력하면, 문제와 소스코드를 함께 올릴 수 있습니다.&lt;/p&gt;
 &lt;p&gt;줄바꿈은 &lt;code&gt;Shift&lt;/code&gt; + &lt;code&gt;Enter&lt;/code&gt; 키를 눌러주시면 됩니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-4.png&#34;
 	width=&#34;964&#34;
 	height=&#34;517&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -458,10 +458,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;위 사진과 같이 디스코드의 코드 블럭을 이용하시면, 하이라이팅된 코드를 업로드 할 수 있습니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-3.png&#34;
 	width=&#34;970&#34;
 	height=&#34;587&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -473,10 +473,10 @@
 &lt;h4 id=&#34;소스-코드가-길-때&#34;&gt;소스 코드가 길 때&lt;/h4&gt;
 &lt;p&gt;디스코드의 Embed의 내용은 4096자 제한이 있습니다.
 따라서 Embed의 범위를 벗어나면 아래 사진과 같이 출력합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-8.png&#34;
 	width=&#34;959&#34;
 	height=&#34;590&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -487,10 +487,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;명령어 입력이 잘못된 경우,
 &amp;ldquo;잘못된 입력입니다.&amp;rdquo; 라는 메세지를 출력합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-5.png&#34;
 	width=&#34;959&#34;
 	height=&#34;590&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -501,10 +501,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;Embed에 실패하여 메세지를 보내지 못한 경우, 또는 solved.ac 서버가 불안정하여 데이터를 가져오지 못한 경우
 &amp;ldquo;메세지 전송이 실패했습니다.&amp;rdquo; 라는 메세지를 출력합니다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/baekjoonbot/image-9.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/baekjoonbot/image-9.png&#34;
 	width=&#34;960&#34;
 	height=&#34;69&#34;
-	srcset=&#34;http://localhost:1313/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_480x0_resize_box_3.png 480w, http://localhost:1313/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -525,11 +525,11 @@
         </item>
         <item>
         <title>윈도우 패키지 매니저 Chocolatey</title>
-        <link>http://localhost:1313/p/chocolatey/</link>
+        <link>https://gyeongmin.kr/p/chocolatey/</link>
         <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/chocolatey/</guid>
-        <description>&lt;img src="http://localhost:1313/p/chocolatey/image.png" alt="Featured image of post 윈도우 패키지 매니저 Chocolatey" /&gt;&lt;h1 id=&#34;윈도우-패키지-매니저-chocolatey&#34;&gt;윈도우 패키지 매니저 Chocolatey&lt;/h1&gt;
+        <guid>https://gyeongmin.kr/p/chocolatey/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/p/chocolatey/image.png" alt="Featured image of post 윈도우 패키지 매니저 Chocolatey" /&gt;&lt;h1 id=&#34;윈도우-패키지-매니저-chocolatey&#34;&gt;윈도우 패키지 매니저 Chocolatey&lt;/h1&gt;
 &lt;p&gt;컴퓨터를 포맷한 후 초기 설정할 때 유용하게 사용중인 프로그램이다.&lt;/p&gt;
 &lt;p&gt;여태 프로그램을 설치하기 위해선 프로그램을 검색한 후, 사이트에 들어가서 설치 파일을 다운받은 후, 설치 파일을 실행시켜 일일히 Next를 눌러 가며 설치해야 했다.&lt;/p&gt;
 &lt;p&gt;Chocolatey를 사용하면 이 과정을 &lt;code&gt;choco install python -y&lt;/code&gt; 와 같이 명령어 한 줄로 설치할 수 있다.&lt;/p&gt;
@@ -538,10 +538,10 @@
 &lt;h2 id=&#34;설치-방법&#34;&gt;설치 방법&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://chocolatey.org/install&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;공식 홈페이지&lt;/a&gt;에서 설치 커맨드를 복사한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chocolatey/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-1.png&#34;
 	width=&#34;1772&#34;
 	height=&#34;678&#34;
-	srcset=&#34;http://localhost:1313/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_480x0_resize_box_3.png 480w, http://localhost:1313/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;설치 방법&#34;
@@ -556,10 +556,10 @@
 &lt;h2 id=&#34;사용-방법&#34;&gt;사용 방법&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://community.chocolatey.org/packages&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;여기서&lt;/a&gt; 설치하고 싶은 패키지를 검색한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chocolatey/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-2.png&#34;
 	width=&#34;1733&#34;
 	height=&#34;763&#34;
-	srcset=&#34;http://localhost:1313/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_480x0_resize_box_3.png 480w, http://localhost:1313/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 찾기&#34;
@@ -570,10 +570,10 @@
 		data-flex-basis=&#34;545px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chocolatey/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-3.png&#34;
 	width=&#34;1643&#34;
 	height=&#34;148&#34;
-	srcset=&#34;http://localhost:1313/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_480x0_resize_box_3.png 480w, http://localhost:1313/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 설치 명령어 복사&#34;
@@ -585,10 +585,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;커맨드를 복사한 후, Windows PowerShell에서 커맨드를 실행한다. 조금만 기다리면 패키지가 설치된다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/p/chocolatey/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/chocolatey/image-4.png&#34;
 	width=&#34;1222&#34;
 	height=&#34;625&#34;
-	srcset=&#34;http://localhost:1313/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_480x0_resize_box_3.png 480w, http://localhost:1313/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;패키지 설치 예시&#34;

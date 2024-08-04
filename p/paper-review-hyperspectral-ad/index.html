@@ -1,40 +1,31 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+    <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안'>
 <title>[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction</title>
 
-<link rel='canonical' href='http://localhost:1313/p/paper-review-hyperspectral-ad/'>
+<link rel='canonical' href='https://gyeongmin.kr/p/paper-review-hyperspectral-ad/'>
 
 <link rel="stylesheet" href="/scss/style.min.acbb6090fc4dc18e19ddfb2dac28698830113a17c14e081be52e94d929eabb6e.css"><meta property='og:title' content='[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction'>
 <meta property='og:description' content='Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안'>
-<meta property='og:url' content='http://localhost:1313/p/paper-review-hyperspectral-ad/'>
+<meta property='og:url' content='https://gyeongmin.kr/p/paper-review-hyperspectral-ad/'>
 <meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='딥러닝' /><meta property='article:published_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='og:image' content='http://localhost:1313/images/paper-review.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='딥러닝' /><meta property='article:published_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongmin.kr/images/paper-review.png' />
 <meta name="twitter:title" content="[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction">
 <meta name="twitter:description" content="Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='http://localhost:1313/images/paper-review.png' />
+    <meta name="twitter:image" content='https://gyeongmin.kr/images/paper-review.png' />
     <link rel="shortcut icon" href="/logo.ico/favicon.ico" />
 
-  
-    
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBG63ZJRZM"></script>
-      <script>
-        var doNotTrack = false;
-        if ( false ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-RBG63ZJRZM');
-        }
-      </script>
-    
-  
-
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBG63ZJRZM"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-RBG63ZJRZM', { 'anonymize_ip': false });
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061"
      crossorigin="anonymous"></script>
 
@@ -297,9 +288,9 @@
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="http://localhost:1313/" selected>한국어</option>
+                            <option value="https://gyeongmin.kr/" selected>한국어</option>
                         
-                            <option value="http://localhost:1313/en/" >English</option>
+                            <option value="https://gyeongmin.kr/en/" >English</option>
                         
                     </select>
                 </li>
@@ -357,6 +348,9 @@
     <li><a href="#proposed-method">Proposed Method</a>
       <ol>
         <li><a href="#background-anomaly-and-noise-decomposition-model">Background, Anomaly, and Noise Decomposition Model</a></li>
+        <li><a href="#background-dictionary-construction">Background Dictionary Construction</a></li>
+        <li><a href="#potential-anomaly-dictionary-construction">Potential Anomaly Dictionary Construction</a></li>
+        <li><a href="#4-최적화-및-계산-복잡도">4. 최적화 및 계산 복잡도</a></li>
       </ol>
     </li>
     <li><a href="#experiments-results">Experiments Results</a></li>
@@ -377,7 +371,7 @@
         <div class="article-image">
             <a href="/p/paper-review-hyperspectral-ad/">
                 
-                    <img src="/images/paper-review.png" loading="lazy" alt="Featured image of post [논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction" />
+                    <img src="/../images/paper-review.png" loading="lazy" alt="Featured image of post [논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction" />
                 
             </a>
         </div>
@@ -466,10 +460,43 @@
 <p>$$
 X = BZ + A + E
 $$</p>
-<p>HSI에서 local region은 대부분 homogeneity하기 때문에 배경은 low-rank의 성질을 가진다. Noise는 두 가지 종류가 있는데, Sparse한 Noise와 Gaussian Random Noise가 있다. $l_2$, $l_1$ norm은 두 Noise 모두를 잘 설명하기 때문에 본 논문에서는 Noise를 모델링하는 데에 $l_{2,1}$ norm을 사용한다.</p>
+<p>HSI에서 local region은 대부분 homogeneity하기 때문에 배경은 low-rank의 성질을 가진다. Anomaly는 sparse한 속성을 부여하여 모델링한다. Noise는 Sparse한 Noise와 Gaussian Random Noise 두 종류가 존재하는데, 이를 표현하기 위해 Noise를 모델링하는 데에 $l_{2,1}$ norm을 사용한다.</p>
+<p>최적화 문제는 다음과 같이 정의된다. $\beta$와 $\lambda$는 각 성분 간의 균형을 맞추기 위한 계수이다.</p>
+<p>$$
+min_{Z,A,E} \text{rank}(Z) + \beta{\Vert A \Vert_l} + \lambda{\Vert E \Vert _{2,1}} \quad \text{s.t} \ X = BZ + A + E
+$$</p>
+<h3 id="background-dictionary-construction">Background Dictionary Construction</h3>
+<p>local region 내의 픽셀들은 공통된 구조를 공유할 수 있으므로, <strong>공동 희소 표현(JSR)</strong> 모델을 사용하여 지역 내의 픽셀들을 몇 가지 공통된 원자의 선형 결합으로 표현한다.</p>
+<p>region을 클러스터링하여 비슷한 구조를 가진 픽셀 그룹으로 나누고, 각 클러스터에서 자주 사용되는 원자를 선택하여 Background Dictionary를 구축한다. $U$는 지역 내의 픽셀 행렬, $V$는 Overcomplete Dictoinary, $\psi$는 표현 계수, $R$은 잔차(residual)다.</p>
+<p>$$
+\min |\psi|_{\text{row},0} \quad \text{s.t} \ U = V\psi + R
+$$</p>
+<p>Background Dictionary의 원자는 JSR 모델에서 자주 사용되는 원자들로 선택되며, 선택 빈도는 정규화된 계수의 합으로 정의된다.</p>
+<p>$$
+P_c = \frac{1}{\gamma} \sum_{i=1}^{n_c} \sum_{j=1}^{L} |\psi_{i,j}|
+$$</p>
+<h3 id="potential-anomaly-dictionary-construction">Potential Anomaly Dictionary Construction</h3>
+<p>Potential Anomaly Dictionary는 JSR 모델을 사용하여 큰 잔차를 가지는 픽셀들을 선택하여 구성한다. 이 잔차가 큰 픽셀들은 이상일 가능성이 높다고 간주된다.</p>
+<p>각 픽셀의 AL (Anomalous Level)은 지역 기반의 잔차 평균을 계산하여 결정됩니다.</p>
+<p>$$
+AL = \frac{1}{\chi} \left[ R^1_{\text{mean}}, R^2_{\text{mean}}, \dots, R^K_{\text{mean}} \right]
+$$</p>
+<p>Anomaly Weight는 이러한 이상 수준과 선택 빈도, 계수의 절대값을 고려하여 선택되며, 이는 다음과 같은 수식으로 표현된다. $F_c$는 선택된 원소의 빈도수를 반영한다.</p>
+<p>$$
+AW_c = \frac{P_c}{F_c}
+$$</p>
+<h3 id="4-최적화-및-계산-복잡도">4. 최적화 및 계산 복잡도</h3>
+<p>최적화 문제는 Augmented Lagrange Multiplier (ALM) 방법을 사용하여 해결한다. 이를 위해 보조 변수 ( J )와 ( L )을 도입하여 목적함수를 분리 가능하게 만들고, 문제를 다음과 같은 형태로 변환한다.</p>
+<p>$$
+\min_{J,E,Z,S,L} {\Vert J \Vert}_* + \beta \Vert L \Vert _1 + \lambda \Vert E \Vert _{2,1} \quad \text{s.t} ; X = BZ + TS + E, Z = J, S = L
+$$</p>
+<p>계산 복잡도는 배경 및 잠재적 이상 사전 구축과 ALM 방법을 통한 최적화 과정에서 주로 발생한다. 복잡도를 줄이기 위해 다양한 방법이 적용되었으며, 이는 주로 ( Z )의 저랭크 특성을 활용하여 행렬의 차원을 줄이는 방식으로 해결한다.</p>
 <h2 id="experiments-results">Experiments Results</h2>
+<p>제안된 PAB-DC 방법의 성능을 평가하기 위해 5개의 실제 hyperspectral 이미지 데이터 세트를 사용하여 실험을 수행하였다. 이 데이터 세트들은 각기 다른 특성을 가지며, 항공 이미지로 구성되어 있다. PAB-DC 방법은 Global-RX, Local-RX, CRD, LRSR 등 최신 방법들과 성능을 비교하였다. 실험 결과, PAB-DC 방법은 대부분의 데이터 세트에서 다른 방법들에 비해 우수한 성능을 보였으며, 이는 ROC 곡선과 AUC 값을 통해 정량적으로 입증되었다.</p>
+<p>또한, potential anomaly dictionary의 효과를 검증하기 위해 이 dictionary를 사용한 경우와 그렇지 않은 경우를 비교하였다. 그 결과, potential anomaly dictionary를 활용한 PAB-DC 방법이 더 높은 탐지 성능을 보였으며, 이는 이 dictionary가 이상 탐지에 중요한 역할을 한다는 것을 시사한다. 마지막으로, 매개변수 분석을 통해 윈도우 크기, 클러스터 수, $\beta$와 $\lambda$ 값, 배경 사전과 potential anomaly dictionary의 원자 수 등의 매개변수들이 탐지 성능에 미치는 영향을 평가하였다. 이러한 분석 결과, 제안된 PAB-DC 방법은 비교적 안정적인 성능을 보였으며, 다양한 매개변수 설정에서도 우수한 탐지 성능을 유지함을 확인하였다. 종합적으로, PAB-DC 방법이 기존의 방법들보다 hyperspectral 이미지에서의 이상 탐지 성능이 뛰어남을 실험을 통해 입증하였다.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>이 논문에서는 LRSR 전략을 활용한 배경 및 잠재적 이상 사전 기반의 새로운 HSI 이상 탐지 방법(PAB-DC)을 제시하였다. 이 방법에서는 원본 데이터를 배경, 이상, 노이즈 부분으로 분해한다. 배경 부분에서는 서로 다른 배경 물질의 기저 부분공간을 포착하기 위해 저차원 표현을 사용한다. 이상 부분에서는 이상 현상의 특성을 시뮬레이션하기 위해 희소 표현을 활용한다. 또한, 기존의 일반적인 방법들이 배경 정보만 고려하는 것과 달리, 우리는 배경 정보와 추정된 이상 스펙트럼 정보를 모두 사용하여 성능을 향상시키는 방법을 제안하였다. 배경 사전은 각 클래스에 대해 그룹화된 과잉완비 사전을 사용한 JSR 모델을 도입하여 구성한다. 잠재적 이상 사전은 JSR 모델에서 계산된 잔차를 사용하여 강한 이상 픽셀을 포착하기 위해 구축된다. 제안된 PAB-DC 방법의 우수성은 네 가지 표준 방법과의 비교를 통해 다섯 개의 실제 데이터 실험에서 입증되었다.</p>
+<p>이 논문에서는 LRSR 전략을 활용한 Background 및 potential anomaly
+dictionary 기반의 새로운 HSI 이상 탐지 방법(PAB-DC)을 제시하였다. PAB-DC 방법이 hyperspectral 이미지에서 anomaly detection을 효과적으로 수행할 수 있음을 강조하였다. 이 방법은 low-rank와 sparse representation(LRSR) 전략을 사용하여 데이터를 배경, anomaly, 그리고 noise로 분해하며, 배경 사전과 potential anomaly dictionary를 활용하여 성능을 크게 향상시켰다. 기존의 방법들이 주로 배경 정보에만 의존한 것과 달리, PAB-DC는 anomaly 정보를 적극적으로 활용하여 다른 최신 방법들보다 뛰어난 성능을 보였다. 이를 통해 PAB-DC가 hyperspectral 이미지 anomaly detection에서 강력한 도구임을 입증하였다.</p>
 
 </section>
 
@@ -542,7 +569,7 @@ $$</p>
         
             <div class="article-image">
                 
-                    <img src="/images/paper-review.png" loading="lazy" data-key="paper-review-panda" data-hash="/images/paper-review.png"/>
+                    <img src="/../images/paper-review.png" loading="lazy" data-key="paper-review-panda" data-hash="/../images/paper-review.png"/>
                 
             </div>
         

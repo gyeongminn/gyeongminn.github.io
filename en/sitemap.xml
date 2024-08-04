@@ -2,104 +2,103 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/en/tags/c/c&#43;&#43;/</loc>
+    <loc>https://gyeongmin.kr/en/categories/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="http://localhost:1313/tags/c/c&#43;&#43;/"
+                href="https://gyeongmin.kr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/tags/c/c&#43;&#43;/"
+                href="https://gyeongmin.kr/en/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/categories/</loc>
+    <loc>https://gyeongmin.kr/en/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="http://localhost:1313/categories/"
+                href="https://gyeongmin.kr/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/categories/"
+                href="https://gyeongmin.kr/en/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/</loc>
+    <loc>https://gyeongmin.kr/en/post/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="http://localhost:1313/"
+                href="https://gyeongmin.kr/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/"
+                href="https://gyeongmin.kr/en/post/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/post/</loc>
+    <loc>https://gyeongmin.kr/en/tags/project/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongmin.kr/en/categories/project/</loc>
+    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongmin.kr/en/p/rhythm-game-in-c/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="http://localhost:1313/post/"
+                href="https://gyeongmin.kr/p/rhythm-game-in-c/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/post/"
+                href="https://gyeongmin.kr/en/p/rhythm-game-in-c/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/tags/project/</loc>
-    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/en/categories/project/</loc>
-    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/en/p/rhythm-game-in-c/</loc>
+    <loc>https://gyeongmin.kr/en/tags/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="http://localhost:1313/p/rhythm-game-in-c/"
+                href="https://gyeongmin.kr/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/p/rhythm-game-in-c/"
+                href="https://gyeongmin.kr/en/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/tags/</loc>
-    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
+    <loc>https://gyeongmin.kr/en/tags/c/c&#43;&#43;/</loc>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="http://localhost:1313/tags/"
+                href="https://gyeongmin.kr/tags/c/c&#43;&#43;/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/tags/"
+                href="https://gyeongmin.kr/en/tags/c/c&#43;&#43;/"
                 />
   </url>
 </urlset>

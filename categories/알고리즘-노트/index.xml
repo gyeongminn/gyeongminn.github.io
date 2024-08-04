@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>알고리즘 노트 on Gyeongmin의 개발 블로그</title>
-        <link>http://localhost:1313/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</link>
+        <link>https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/</link>
         <description>Recent content in 알고리즘 노트 on Gyeongmin의 개발 블로그</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 10 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 10 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EB%85%B8%ED%8A%B8/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>C&#43;&#43; STL PBDS (Policy based data structures)</title>
-        <link>http://localhost:1313/p/pbds/</link>
+        <link>https://gyeongmin.kr/p/pbds/</link>
         <pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/pbds/</guid>
-        <description>&lt;img src="http://localhost:1313/images/algorithm.png" alt="Featured image of post C&#43;&#43; STL PBDS (Policy based data structures)" /&gt;&lt;h2 id=&#34;ordered_set이란&#34;&gt;ordered_set이란?&lt;/h2&gt;
+        <guid>https://gyeongmin.kr/p/pbds/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/algorithm.png" alt="Featured image of post C&#43;&#43; STL PBDS (Policy based data structures)" /&gt;&lt;h2 id=&#34;ordered_set이란&#34;&gt;ordered_set이란?&lt;/h2&gt;
 &lt;p&gt;g++에서 추가된 자료구조로, std::set과 유사하지만, 아래 두 연산을 $\mathcal{O}(\log N)$만에 수행할 수 있다.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -240,11 +240,11 @@
         </item>
         <item>
         <title>소수 판별과 약수 구하기</title>
-        <link>http://localhost:1313/p/prime-number-and-divisors/</link>
+        <link>https://gyeongmin.kr/p/prime-number-and-divisors/</link>
         <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/p/prime-number-and-divisors/</guid>
-        <description>&lt;img src="http://localhost:1313/images/algorithm.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
+        <guid>https://gyeongmin.kr/p/prime-number-and-divisors/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/algorithm.png" alt="Featured image of post 소수 판별과 약수 구하기" /&gt;&lt;h2 id=&#34;소수와-약수-배수의-정의&#34;&gt;소수와 약수, 배수의 정의&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;소수는 영어로 prime 이라고 한다. 또한, $p$가 소수일 때 $p^k$를 prime power 라고 한다.&lt;/p&gt;
 &lt;/blockquote&gt;
