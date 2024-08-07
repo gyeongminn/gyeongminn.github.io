@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 17 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>딥러닝</title>
         <link>https://gyeongmin.kr/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</link>
-        <pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate>
+        <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</guid>
         <description></description>
@@ -56,19 +56,19 @@
         <description></description>
         </item>
         <item>
+        <title>C/C&#43;&#43;</title>
+        <link>https://gyeongmin.kr/tags/c/c&#43;&#43;/</link>
+        <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/tags/c/c&#43;&#43;/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>프로젝트</title>
         <link>https://gyeongmin.kr/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
         <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>C/C&#43;&#43;</title>
-        <link>https://gyeongmin.kr/tags/c/c&#43;&#43;/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/tags/c/c&#43;&#43;/</guid>
         <description></description>
         </item>
         
