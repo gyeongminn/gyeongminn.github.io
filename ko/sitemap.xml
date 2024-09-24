@@ -2,6 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://gyeongmin.kr/about/</loc>
+    <lastmod>2024-09-24T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongmin.kr/</loc>
+    <lastmod>2024-09-24T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongmin.kr/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongmin.kr/"
+                />
+  </url><url>
+    <loc>https://gyeongmin.kr/page/</loc>
+    <lastmod>2024-09-24T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://gyeongmin.kr/p/paper-review-visual-attention-ad/</loc>
     <lastmod>2024-07-27T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
@@ -20,21 +45,6 @@
                 rel="alternate"
                 hreflang="ko"
                 href="https://gyeongmin.kr/categories/"
-                />
-  </url><url>
-    <loc>https://gyeongmin.kr/</loc>
-    <lastmod>2024-07-27T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://gyeongmin.kr/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://gyeongmin.kr/"
                 />
   </url><url>
     <loc>https://gyeongmin.kr/post/</loc>
@@ -164,16 +174,6 @@
   </url><url>
     <loc>https://gyeongmin.kr/p/neural-network-inference/</loc>
     <lastmod>2023-11-20T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://gyeongmin.kr/about/</loc>
-    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://gyeongmin.kr/page/</loc>
-    <lastmod>2023-11-17T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
