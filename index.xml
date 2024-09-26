@@ -87,7 +87,7 @@
     &lt;div class=&#34;container&#34;&gt;
         &lt;p class=&#34;title&#34;&gt;DeepSeers&lt;br&gt;Vision Software Engineer&lt;/p&gt;
         &lt;p class=&#34;text&#34;&gt;• 연구실 내 스타트업으로 전환하여 기존과 동일한 프로젝트 진행중&lt;span class=&#34;date&#34;&gt;
-        &lt;p class=&#34;text&#34;&gt;• 각종 반도체 비전 검사 연구 및 개발
+        &lt;p class=&#34;text&#34;&gt;• 각종 반도체 비전 검사 개발 및 연구
         &lt;p class=&#34;text&#34;&gt;&lt;span class=&#34;date&#34;&gt;2024.02-Present&lt;/span&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -169,7 +169,12 @@
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 align=&#34;left&#34;&gt;Solved.ac profile&lt;/h2&gt;
-&lt;div class=&#34;solved-card-container&#34;&gt;
+&lt;div class=&#34;solved-card&#34;&gt;
+    &lt;a href=&#34;https://solved.ac/profile/gyeongmin&#34; target=&#34;_blank&#34;&gt;
+        &lt;img src=&#34;http://mazassumnida.wtf/api/v2/generate_badge?boj=gyeongmin&#34; loading=&#34;lazy&#34; alt=&#34;solved.ac Profile&#34;&gt;
+    &lt;/a&gt;
+&lt;/div&gt;
+&lt;!-- &lt;div class=&#34;solved-card-container&#34;&gt;
     &lt;div class=&#34;solved-card&#34;&gt;
         &lt;a href=&#34;https://solved.ac/profile/gyeongmin&#34; target=&#34;_blank&#34;&gt;
             &lt;img src=&#34;http://mazassumnida.wtf/api/v2/generate_badge?boj=gyeongmin&#34; loading=&#34;lazy&#34; alt=&#34;solved.ac Profile&#34;&gt;
@@ -180,7 +185,7 @@
             &lt;img src=&#34;https://solvedac.junah.dev/v1/generate_badge?handle=gyeongmin&#34; /&gt;
         &lt;/a&gt;
     &lt;/div&gt;
-&lt;/div&gt;
+&lt;/div&gt; --&gt;
 &lt;script&gt;
     function updateIcons() {
         var githubIcon = document.getElementById(&#39;githubIcon&#39;);
