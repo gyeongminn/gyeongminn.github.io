@@ -87,14 +87,15 @@
     &lt;div class=&#34;container&#34;&gt;
         &lt;p class=&#34;title&#34;&gt;DeepSeers&lt;br&gt;Vision Software Engineer&lt;/p&gt;
         &lt;p class=&#34;text&#34;&gt;• 연구실 내 스타트업으로 전환하여 기존과 동일한 프로젝트 진행중&lt;span class=&#34;date&#34;&gt;
-        &lt;p class=&#34;text&#34;&gt;• 각종 반도체 비전 검사 개발 및 연구
+        &lt;p class=&#34;text&#34;&gt;• BGA, LGA, QFN 등 각종 패키지 비전 검사 개발
+        &lt;p class=&#34;text&#34;&gt;• 비전 검사를 위한 티칭 및 검사 결과 시각화 관련 UI 개발
         &lt;p class=&#34;text&#34;&gt;&lt;span class=&#34;date&#34;&gt;Feb 2024 - Present&lt;/span&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&#34;research&#34;&gt;
     &lt;div class=&#34;container&#34;&gt;
         &lt;p class=&#34;title&#34;&gt;Hansung University AML Lab.&lt;br&gt;Undergraduate Researcher&lt;/p&gt;
-        &lt;p class=&#34;text&#34;&gt;• (연구 과제) 반도체 패키지 비전 검사 장비 소프트웨어 개발&lt;span class=&#34;date&#34;&gt;(2023-2024)&lt;/span&gt;&lt;/p&gt;
+        &lt;p class=&#34;text&#34;&gt;• 반도체 패키지 비전 검사 장비 소프트웨어 개발&lt;span class=&#34;date&#34;&gt;(2023-2024)&lt;/span&gt;&lt;/p&gt;
         &lt;p class=&#34;text&#34;&gt;• 반도체 패키징 공정에서의 Anomaly Detection 연구&lt;span class=&#34;date&#34;&gt;(2023-2024)&lt;/span&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
