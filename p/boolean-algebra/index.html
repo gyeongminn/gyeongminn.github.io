@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='안녕하세요, 이경민입니다. &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 안녕하세요, 한성대학교 컴퓨터공학부 21학번 이경민입니다. 저는 한기준 교수님의 지도 아래 AML 연구실에서 학석사 연계'>
-<title>About</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='부울 대수의 기초'>
+<title>부울 대수</title>
 
-<link rel='canonical' href='https://gyeongmin.kr/about/'>
+<link rel='canonical' href='https://gyeongmin.kr/p/boolean-algebra/'>
 
-<link rel="stylesheet" href="/scss/style.min.2325ab3f1c53340b74d88bd622b7f5bcc047e55d78831b42a905dd43de9993e0.css"><meta property='og:title' content='About'>
-<meta property='og:description' content='안녕하세요, 이경민입니다. &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 안녕하세요, 한성대학교 컴퓨터공학부 21학번 이경민입니다. 저는 한기준 교수님의 지도 아래 AML 연구실에서 학석사 연계'>
-<meta property='og:url' content='https://gyeongmin.kr/about/'>
+<link rel="stylesheet" href="/scss/style.min.2325ab3f1c53340b74d88bd622b7f5bcc047e55d78831b42a905dd43de9993e0.css"><meta property='og:title' content='부울 대수'>
+<meta property='og:description' content='부울 대수의 기초'>
+<meta property='og:url' content='https://gyeongmin.kr/p/boolean-algebra/'>
 <meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:published_time' content='2024-09-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-09-24T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="안녕하세요, 이경민입니다. &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 안녕하세요, 한성대학교 컴퓨터공학부 21학번 이경민입니다. 저는 한기준 교수님의 지도 아래 AML 연구실에서 학석사 연계">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='수학' /><meta property='article:tag' content='컴퓨터구조' /><meta property='article:published_time' content='2024-11-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongmin.kr/images/computer-system-architecture.png' />
+<meta name="twitter:title" content="부울 대수">
+<meta name="twitter:description" content="부울 대수의 기초"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gyeongmin.kr/images/computer-system-architecture.png' />
     <link rel="shortcut icon" href="/logo.ico/favicon.ico" />
 
   
@@ -204,7 +205,7 @@
         </li>
         
         
-        <li  class='current' >
+        <li >
             <a href='/about/' >
                 
                 
@@ -329,20 +330,78 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">목차</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#2진법과-논리-게이트">2진법과 논리 게이트</a></li>
+    <li><a href="#부울-대수">부울 대수</a>
+      <ol>
+        <li><a href="#부울-대수의-기본-관계">부울 대수의 기본 관계</a></li>
+        <li><a href="#수식의-보수">수식의 보수</a></li>
+        <li><a href="#부울-대수의-활용">부울 대수의 활용</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/boolean-algebra/">
+                
+                    <img src="/images/computer-system-architecture.png" loading="lazy" alt="Featured image of post 부울 대수" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/" >
+                컴퓨터구조
+            </a>
+        
+    </header>
     
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/about/">About</a>
+            <a href="/p/boolean-algebra/">부울 대수</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            부울 대수의 기초
+        </h3>
         
     </div>
 
@@ -362,7 +421,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Sep 24, 2024</time>
+                <time class="article-time--published">Nov 20, 2024</time>
             </div>
         
 
@@ -378,216 +437,178 @@
     <section class="article-content">
     
     
-    <h1 id="안녕하세요-이경민입니다">안녕하세요, 이경민입니다.</h1>
-<p class="icon-container" align="left">
-    <a class="custom-icon" href="mailto:gyeongmin@hansung.ac.kr" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Mail"/>
-    </a>
-    &nbsp;
-    <a class="custom-icon" href="https://instagram.com/gyeongminx" target="_blank">
-        <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Instagram"/>
-    </a>
-    &nbsp;
-    <a class="custom-icon" href="https://www.linkedin.com/in/gyeongmin-lee-865448256/" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" alt="Linkedin"/>
-    </a>
-    &nbsp;
-    <a class="custom-icon" href="https://gyeongminn.github.io/cv.pdf" target="_blank">
-        <img id="cvIcon" src="https://gyeongminn.github.io/logo.ico/cv-light.svg" alt="CV"/>
-    </a>
-    &nbsp;
-    <a class="custom-icon" href="https://github.com/gyeongminn" target="_blank">
-        <img id="githubIcon" src="https://gyeongminn.github.io/logo.ico/github-light.svg" alt="GitHub"/>
-    </a>
-    &nbsp;
-    <a class="custom-icon" href="https://gyeongminn.github.io" target="_blank">
-        <img id="blogIcon" src="https://gyeongminn.github.io/logo.ico/blog-light.svg" alt="DevBlog"/>
-    </a>
-</p>
-<p>안녕하세요, 한성대학교 컴퓨터공학부 21학번 이경민입니다.</p>
-<p>저는 한기준 교수님의 지도 아래 AML 연구실에서 학석사 연계 과정을 진행하고 있으며, 연구실이 스타트업으로 전환되어 현재 스타트업에서 근무하고 있습니다.</p>
-<p>스타트업에서 반도체 비전 검사 프로그램 개발 프로젝트에 참여하며, 비전 검사 파트를 담당하고 있습니다.</p>
-<p>이 과정에서 실무 경험을 쌓고 있으며, 컴퓨터 비전 분야의 딥러닝 연구를 병행하여 논문도 작성하고 있습니다.</p>
-<p>또한 알고리즘 문제 해결(Problem Solving, PS) 분야에도 관심이 많아 꾸준히 문제를 풀며 역량을 키우고 있습니다.</p>
-<p>항상 더 좋은 코드를 작성하기 위해 고민하고, 다른 분들의 코드를 보며 배울 점을 찾으려고 노력하고 있습니다.</p>
-<h2 align="left">Tech Stack</h2>
-<p class="icon-container" align="left">
-    <a class="custom-icon" href="https://www.cprogramming.com/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c"/>
-    </a>
-    <a class="custom-icon" href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus"/>
-    </a>
-    <a class="custom-icon" href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp"/>
-    </a>
-    <a class="custom-icon" href="https://www.python.org" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python"/>
-    </a>
-    <a class="custom-icon" href="https://www.java.com" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java"/>
-    </a>
-    <a class="custom-icon" href="https://www.mvtec.com/products/halcon" target="_blank" rel="noreferrer">
-        <img src="https://user-images.githubusercontent.com/97784561/224551155-ef0d5041-8e60-4f72-817a-3a6bd1d03c93.png" alt="Halcon"/>
-    </a>
-    <a class="custom-icon" href="https://www.tensorflow.org" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"/>
-    </a>
-    <a class="custom-icon" href="https://pytorch.org/" target="_blank" rel="noreferrer">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg" alt="PyTorch"/>
-    </a>
-</p>
-<h2 align="left">Education</h2>
-<div class="research">
-    <div class="container">
-        <p class="title">한성대학교 컴퓨터공학부</p>
-        <p class="text">• 교내 알고리즘 대회 출제자 3회 참여 <span class="date">(2023-2024)</span></p>
-        <p class="text">• 공과대학 학생회 홍보국장<span class="date">(2023)</span></p>
-        <p class="text">• 학술소모임 BUG 부회장<span class="date">(2022)</span></p>
-        <p class="text">• 컴퓨터공학부 전공튜터링 튜터 3회 참여<span class="date">(2022-2023)</span></p>
-    </div>
-</div>
-<h2 align="left">Experience</h2>
-<div class="research">
-    <div class="container">
-        <p class="title">DeepSeers<br>Vision Software Engineer</p>
-        <p class="text">• 연구실 내 스타트업으로 전환하여 기존과 동일한 프로젝트 진행중<span class="date">
-        <p class="text">• BGA, LGA, QFN 등 각종 패키지 비전 검사 개발
-        <p class="text">• 비전 검사를 위한 티칭 및 검사 결과 시각화 관련 UI 개발
-        <p class="text"><span class="date">Feb 2024 - Present</span></p>
-    </div>
-</div>
-<div class="research">
-    <div class="container">
-        <p class="title">Hansung University AML Lab.<br>Undergraduate Researcher</p>
-        <p class="text">• 반도체 패키지 비전 검사 장비 소프트웨어 개발<span class="date">(2023-2024)</span></p>
-        <p class="text">• 반도체 패키징 공정에서의 Anomaly Detection 연구<span class="date">(2023-2024)</span></p>
-    </div>
-</div>
-<h2 align="left">Research</h2>
-<div class="research">
-    <p class="first-type">Interest</p>
-    <div class="container">
-        <p class="text">Computer Vision, Anomaly Detection, Natural Language Processing</p>
-    </div>
-    <p class="type">Project</p>
-    <div class="container">
-        <p class="title">반도체 소자 생산을 위한 인공지능 기반 스마트 제조 공정 장비 및 관련 기술 개발</p>
-        <p class="text">산업통상자원부(Ministry of Trade, Industry and Energy)</p>
-        <p class="date">Jun 2023 - Dec 2024</p>
-    </div>
-    <p class="type">Conference</p>
-    <div class="container">
-        <p class="title">BGA Anomaly Detection by exploiting Variational AutoEncoders</p>
-        <p class="author"><span class="me">Gyeongmin Lee</span>, Wonyong Choi, Keejun Han*</p>
-        <p class="text">21st International Symposium on Microelectronics and Packaging (ISMP 2023)</p>
-        <p class="date">October 26, 2023 (Poster Presentation)</p>
-        <p class="text"><a class="detail" href="https://raw.githubusercontent.com/gyeongminn/bga-anomaly-detection-vae/main/docs/ismp_2023_gyeongmin.png" target="_blank">See the poster ></a></p>
-    </div>
-    <div class="container">
-        <p class="title">Variational AutoEncoder를 활용한 BGA 결함 탐지</p>
-        <p class="author"><span class="me">Gyeongmin Lee</span>, Wonyong Choi, Keejun Han*</p>
-        <p class="text">HCI KOREA 2024</p>
-        <p class="date">January 24, 2024 (Poster Presentation)</p>
-        <p class="text"><a class="detail" href="https://conference.hcikorea.org/pds/2024/HCI2024%20Proceedings.pdf#page=1141" target="_blank">See the paper ></a></p>
-    </div>
-    <div class="container">
-        <p class="title">실시간 마킹/표면 검사 시스템 개발을 위한 다중 비전 검사 기술의 최적화</p>
-        <p class="author"><span class="me">Gyeongmin Lee</span>, Daeyoung Roh, Mujin Kim, Keejun Han*</p>
-        <p class="text">Korean Institute of Information Scientists and Engineers (KCC 2024)</p>
-        <p class="date">June 28, 2024 (Poster Presentation)</p>
-        <p class="text"><a class="detail" href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11862284" target="_blank">See the paper ></a></p>
-    </div>
-    <div class="container">
-        <p class="title">Automatic ROI Recommender for Saw Singulation: Seamless Adaptation for Various Semiconductor Devices</p>
-        <p class="author"><span class="me">Gyeongmin Lee</span>, Seungtaek Lim, Keejun Han*</p>
-        <p class="text">22nd International Symposium on Microelectronics and Packaging (ISMP-IRSP 2024)</p>
-        <p class="date">November 5, 2024 (Oral Presentation)</p>
-    </div>
-</div>
-<h2 align="left">Awards & Certification</h2>
-<div class="research">
-    <div class="container">
-        <p class="title">제19회 한성공학경진대회 동상</p>
-        <p class="text">발행: 한성대학교 <span class="date">(2023.09)</span></p>
-        <p class="text">개인 맞춤형 학습 도우미 어플리케이션 SumNote를 개발했습니다.</p>
-        <p class="text"><a class="detail" href="https://media.licdn.com/dms/image/D562DAQFLy-eSjkcd7g/profile-treasury-image-shrink_1280_1280/0/1699853670366?e=1708318800&v=beta&t=FkLVVVWibS_S1P9h3Jj97907LPakQ4hBXGkvwBvILNU" target="_blank">See the certificate > </a></p>
-    </div>
-</div>
-<h2 align="left">Projects</h2>
-<div class="card-container">
-    <div class="card">
-        <div class="title">교내 프로그래밍 대회</div>
-        <p>총 3회 (23년 3월, 23년 11월, 24년 1월) 교내 대회를 총괄해 주최하고 문제를 출제하였습니다. 총 10문제 출제하였고, 문제지와 해설지는 아래 링크에서 확인하실 수 있습니다.</p>
-        <a href="https://github.com/HSU-CSE/hsupc-2023-2" class="card-button" target="_blank">자세히</a>
-    </div>
-    <div class="card">
-        <div class="title">중고거래 플랫폼 가지마켓</div>
-        <p>고급 모바일 프로그래밍 과목에서 텀프로젝트로 만들었던 중고거래 어플리케이션입니다. 로그인, 글 등록, 상세조회, 수정, 삭제, 글 목록 필터, 채팅 기능이 가능합니다.</p>
-        <a href="https://github.com/Gazi-Market/gazi-market" class="card-button" target="_blank">자세히</a>
-    </div>
-    <div class="card">
-        <div class="title">내 손 안의 노트, 썸노트</div>
-        <p>Chat GPT를 활용한 개인 맞춤형 학습 도우미 안드로이드 어플리케이션입니다. 카메라로 책을 찍으면 문자를 인식하고, 내용을 요약해 예쁘게 노트로 보여줍니다. 또한 문제를 생성하고 풀어볼 수 있습니다.</p>
-        <a href="https://github.com/SumNote" class="card-button" target="_blank">자세히</a>
-    </div>
-    <div class="card">
-        <div class="title">백준 디스코드 봇 '백준봇'</div>
-        <p>코딩 테스트 스터디에 사용하기 좋은 디스코드 봇입니다. 백준 문제와 소스코드를 디스코드 Embed 기능을 사용해 디스코드에 예쁘게 공유할 수 있습니다. solved.ac 비공식 API 를 사용하여 만들었습니다.</p>
-        <a href="https://gyeongminn.github.io/p/baekjoonbot/" class="card-button" target="_blank">자세히</a>
-    </div>
-    <div class="card">
-        <div class="title">C언어로 만든 리듬게임</div>
-        <p>1학년 텀프로젝트 과제로 만들었던 리듬게임입니다. C언어를 사용하여 콘솔창에서 리듬게임을 구현했습니다. 박자에 맞춰 키를 입력하고, 점수를 획득하는 게임입니다.</p>
-        <a href="https://gyeongminn.github.io/p/rhythm-game-in-c/" class="card-button" target="_blank">자세히</a>
-    </div>
-    <div class="card">
-        <div class="title">롤 자동 로그인 프로그램</div>
-        <p>여러 리그오브레전드 계정을 돌려가며 쓰시는 분들을 위한 프로그램입니다. 아이디를 미리 저장한 후, 간편하게 로그인할 수 있습니다. AutoHotkey와 C# GUI를 이용해 만들었습니다.</p>
-        <a href="https://github.com/gyeongminn/lol-login" class="card-button" target="_blank">자세히</a>
-    </div>
-</div>
-<h2 align="left">Solved.ac profile</h2>
-<div class="solved-card">
-    <a href="https://solved.ac/profile/gyeongmin" target="_blank">
-        <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=gyeongmin" loading="lazy" alt="solved.ac Profile">
-    </a>
-</div>
-<!-- <div class="solved-card-container">
-    <div class="solved-card">
-        <a href="https://solved.ac/profile/gyeongmin" target="_blank">
-            <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=gyeongmin" loading="lazy" alt="solved.ac Profile">
-        </a>
-    </div>
-    <div class="solved-card">
-        <a href="https://solved.ac/profile/gyeongmin/arena" target="_blank">
-            <img src="https://solvedac.junah.dev/v1/generate_badge?handle=gyeongmin" />
-        </a>
-    </div>
-</div> -->
-<script>
-    function updateIcons() {
-        var githubIcon = document.getElementById('githubIcon');
-        var blogIcon = document.getElementById('blogIcon');
-        var cvIcon = document.getElementById('cvIcon');
-        if (document.documentElement.dataset.scheme == 'dark') {
-            githubIcon.src = 'https://gyeongminn.github.io/logo.ico/github-light.svg';
-            blogIcon.src = 'https://gyeongminn.github.io/logo.ico/blog-light.svg';
-            cvIcon.src = 'https://gyeongminn.github.io/logo.ico/cv-light.svg';
-        } else {
-            githubIcon.src = 'https://gyeongminn.github.io/logo.ico/github-dark.svg';
-            blogIcon.src = 'https://gyeongminn.github.io/logo.ico/blog-dark.svg';
-            cvIcon.src = 'https://gyeongminn.github.io/logo.ico/cv-dark.svg';
-        }
-    }
-    updateIcons();
-</script>
+    <blockquote>
+<p>본 포스팅은 &lsquo;Mano의 컴퓨터시스템구조&rsquo; 교재를 참고했습니다.</p>
+</blockquote>
+<h2 id="2진법과-논리-게이트">2진법과 논리 게이트</h2>
+<p>2진법은 0과 1이라는 두개의 숫자만을 사용하여 수를 나타내는 것이다.</p>
+<p>디지털 컴퓨터는 0과 1 두개의 숫자만을 사용하는데, 하나의 이진 숫자를 bit라고 부른다. 컴퓨터는 전압 신호를 이용하여 0과 1로 표현한다.</p>
+<p>이전 정보의 처리는 게이트라 불리는 논리 회로에서 이루어진다. 아래 표는 각 게이트의 이름, 대수 표현식, 진리표를 나타낸 것이다.</p>
+<table style="max-width: 800px;">
+  <tr>
+    <th style="text-align: center; vertical-align: middle; font-size: 20px;">Name</th>
+    <th style="text-align: center; vertical-align: middle; font-size: 20px;">Algebraic function</th>
+    <th style="text-align: center; vertical-align: middle; font-size: 16px;">Truth table</th>
+  </tr>
+  <tr>
+    <td style="text-align: center; vertical-align: middle; font-size: 24px;">$\text{AND}$</td>
+    <td style="text-align: center; vertical-align: middle; font-size: 20px;">$x = A \cdot B$</td>
+    <td>
+      <div class="table-wrapper"><table>
+        <tr><th>A</th><th>B</th><th>x</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center; vertical-align: middle; font-size: 24px;">$\text{OR}$</td>
+    <td style="text-align: center; vertical-align: middle; font-size: 20px;">$x = A + B$</td>
+    <td>
+      <div class="table-wrapper"><table>
+        <tr><th>A</th><th>B</th><th>x</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center; vertical-align: middle; font-size: 24px;">$\text{Inverter}$</td>
+    <td style="text-align: center; vertical-align: middle; font-size: 20px;">$x = A^\prime$</td>
+    <td>
+      <div class="table-wrapper"><table>
+        <tr><th>A</th><th>x</th></tr>
+        <tr><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td></tr>
+      </table></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center; vertical-align: middle; font-size: 24px;">$\text{Buffer}$</td>
+    <td style="text-align: center; vertical-align: middle; font-size: 20px;">$x = A$</td>
+    <td>
+      <div class="table-wrapper"><table>
+        <tr><th>A</th><th>x</th></tr>
+        <tr><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td></tr>
+      </table></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center; vertical-align: middle; font-size: 24px;">$\text{NAND}$</td>
+    <td style="text-align: center; vertical-align: middle; font-size: 20px;">$x = (A · B)^\prime$</td>
+    <td>
+      <div class="table-wrapper"><table>
+        <tr><th>A</th><th>B</th><th>x</th></tr>
+        <tr><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td></tr>
+      </table></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center; vertical-align: middle; font-size: 24px;">$\text{NOR}$</td>
+    <td style="text-align: center; vertical-align: middle; font-size: 20px;">$x = (A + B)^\prime$</td>
+    <td>
+      <div class="table-wrapper"><table>
+        <tr><th>A</th><th>B</th><th>x</th></tr>
+        <tr><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td></tr>
+      </table></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center; vertical-align: middle; font-size: 24px;">$\text{XOR}$</td>
+    <td style="text-align: center; vertical-align: middle; font-size: 20px;">$x = A ⊕ B$</td>
+    <td>
+      <div class="table-wrapper"><table>
+        <tr><th>A</th><th>B</th><th>x</th></tr>
+        <tr><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td></tr>
+      </table></div>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: center; vertical-align: middle; font-size: 24px;">$\text{XNOR}$</td>
+    <td style="text-align: center; vertical-align: middle; font-size: 20px;">$x = (A ⊕ B)^\prime$</td>
+    <td>
+      <div class="table-wrapper"><table>
+        <tr><th>A</th><th>B</th><th>x</th></tr>
+        <tr><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td></tr>
+      </table></div>
+    </td>
+  </tr>
+</table>
+<h2 id="부울-대수">부울 대수</h2>
+<p>부울 대수는 19세기 중반 조지 불이 만든 대수 체계로, 디지털 회로의 해석과 설계를 쉽게 하는 것이 목적이다.</p>
+<p>부울 대수의 기본 관계는 아래와 같다. 각각은 모두 진리표로 증명할 수 있다.</p>
+<h3 id="부울-대수의-기본-관계">부울 대수의 기본 관계</h3>
+<ol>
+<li>$x + 0 = x$</li>
+<li>$x \cdot 0 = 0$</li>
+<li>$x + 1 = 1$</li>
+<li>$x \cdot 1 = x$</li>
+<li>$x + x = x$</li>
+<li>$x \cdot x = x$</li>
+<li>$x + x^\prime= 1$</li>
+<li>$x \cdot x^\prime 0$</li>
+<li>$x + y = y + x$</li>
+<li>$x \cdot y = y \cdot x$</li>
+<li>$x + (y + z) = (x + y) + z$</li>
+<li>$x \cdot (y \cdot z) = (x \cdot y) \cdot z$</li>
+<li>$x (y + z) = xy + xz$</li>
+<li>$x + yz = (x + y)(x + z)$</li>
+<li>$(x + y)^\prime= x^\prime \cdot y^\prime $</li>
+<li>$(x \cdot y)^\prime = x^\prime + y^\prime $</li>
+<li>$(x^\prime)^\prime = x$</li>
+</ol>
+<p>위 식은 부울 대수의 기본적인 관계를 나타낸다. 부울대수는 교환 법칙과 결합 법칙이 성립한다. 또한 식 15번과 16번은 드 모르간의 정리이다.</p>
+<h3 id="수식의-보수">수식의 보수</h3>
+<p>드 모르간의 정리는 모든 $\text{OR}$ 연산은 $\text{AND}$ 로, 모든 $\text{AND}$ 연산은 $\text{OR}$ 로 바꾸어 주고, 각 변수를 보수화하면 간단히 적용할 수 있다.</p>
+<p>예들들어 다음과 같이 수식의 보수를 만들 수 있다.</p>
+<p>$$
+F=AB+C^\prime D^\prime +B^\prime D
+$$
+$$
+F^\prime =(A^\prime +B^\prime )(C+D)(B+D^\prime )
+$$</p>
+<h3 id="부울-대수의-활용">부울 대수의 활용</h3>
+<p>부울 대수를 통해 디지털 회로를 간단히 하는 데 사용할 수 있다. 아래와 같은 회로 $F$가 있다고 가정해 보자.</p>
+<p>$$
+F=ABC+ABC^\prime +A^\prime C
+$$</p>
+<p>부울 대수를 적용하면, $(C+C)^\prime =1$이고, $AB \cdot 1=AB$ 이므로,</p>
+<p>$$
+F=ABC+ABC^\prime  +A^\prime  C=AB(C+C^\prime  )+A^\prime  C=AB+A^\prime  C
+$$</p>
+<p>이다. 따라서 4개의 게이트만 사용하여 효율적인 회로를 설계할 수 있는 것이다.</p>
+
 </section>
 
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/%EC%88%98%ED%95%99/">수학</a>
+        
+            <a href="/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/">컴퓨터구조</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -636,6 +657,58 @@
     
 
      
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="gyeongminn/gyeongminn.github.io"
+    data-repo-id="R_kgDOKsf9nw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKsf9n84Ca_6Y"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('noborder_gray');
+            }
+        }
+    })();
+</script>
+
     
 
     <footer class="site-footer">

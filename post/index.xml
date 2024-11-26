@@ -7,7 +7,172 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>부울 대수</title>
+        <link>https://gyeongmin.kr/p/boolean-algebra/</link>
+        <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/boolean-algebra/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 부울 대수" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;2진법과-논리-게이트&#34;&gt;2진법과 논리 게이트&lt;/h2&gt;
+&lt;p&gt;2진법은 0과 1이라는 두개의 숫자만을 사용하여 수를 나타내는 것이다.&lt;/p&gt;
+&lt;p&gt;디지털 컴퓨터는 0과 1 두개의 숫자만을 사용하는데, 하나의 이진 숫자를 bit라고 부른다. 컴퓨터는 전압 신호를 이용하여 0과 1로 표현한다.&lt;/p&gt;
+&lt;p&gt;이전 정보의 처리는 게이트라 불리는 논리 회로에서 이루어진다. 아래 표는 각 게이트의 이름, 대수 표현식, 진리표를 나타낸 것이다.&lt;/p&gt;
+&lt;table style=&#34;max-width: 800px;&#34;&gt;
+  &lt;tr&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;Name&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;Algebraic function&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 16px;&#34;&gt;Truth table&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{AND}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A \cdot B$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{OR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A + B$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{Inverter}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A^\prime$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{Buffer}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{NAND}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A · B)^\prime$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{NOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A + B)^\prime$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{XOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A ⊕ B$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{XNOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A ⊕ B)^\prime$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;부울-대수&#34;&gt;부울 대수&lt;/h2&gt;
+&lt;p&gt;부울 대수는 19세기 중반 조지 불이 만든 대수 체계로, 디지털 회로의 해석과 설계를 쉽게 하는 것이 목적이다.&lt;/p&gt;
+&lt;p&gt;부울 대수의 기본 관계는 아래와 같다. 각각은 모두 진리표로 증명할 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;부울-대수의-기본-관계&#34;&gt;부울 대수의 기본 관계&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;$x + 0 = x$&lt;/li&gt;
+&lt;li&gt;$x \cdot 0 = 0$&lt;/li&gt;
+&lt;li&gt;$x + 1 = 1$&lt;/li&gt;
+&lt;li&gt;$x \cdot 1 = x$&lt;/li&gt;
+&lt;li&gt;$x + x = x$&lt;/li&gt;
+&lt;li&gt;$x \cdot x = x$&lt;/li&gt;
+&lt;li&gt;$x + x^\prime= 1$&lt;/li&gt;
+&lt;li&gt;$x \cdot x^\prime 0$&lt;/li&gt;
+&lt;li&gt;$x + y = y + x$&lt;/li&gt;
+&lt;li&gt;$x \cdot y = y \cdot x$&lt;/li&gt;
+&lt;li&gt;$x + (y + z) = (x + y) + z$&lt;/li&gt;
+&lt;li&gt;$x \cdot (y \cdot z) = (x \cdot y) \cdot z$&lt;/li&gt;
+&lt;li&gt;$x (y + z) = xy + xz$&lt;/li&gt;
+&lt;li&gt;$x + yz = (x + y)(x + z)$&lt;/li&gt;
+&lt;li&gt;$(x + y)^\prime= x^\prime \cdot y^\prime $&lt;/li&gt;
+&lt;li&gt;$(x \cdot y)^\prime = x^\prime + y^\prime $&lt;/li&gt;
+&lt;li&gt;$(x^\prime)^\prime = x$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;위 식은 부울 대수의 기본적인 관계를 나타낸다. 부울대수는 교환 법칙과 결합 법칙이 성립한다. 또한 식 15번과 16번은 드 모르간의 정리이다.&lt;/p&gt;
+&lt;h3 id=&#34;수식의-보수&#34;&gt;수식의 보수&lt;/h3&gt;
+&lt;p&gt;드 모르간의 정리는 모든 $\text{OR}$ 연산은 $\text{AND}$ 로, 모든 $\text{AND}$ 연산은 $\text{OR}$ 로 바꾸어 주고, 각 변수를 보수화하면 간단히 적용할 수 있다.&lt;/p&gt;
+&lt;p&gt;예들들어 다음과 같이 수식의 보수를 만들 수 있다.&lt;/p&gt;
+&lt;p&gt;$$
+F=AB+C^\prime D^\prime +B^\prime D
+$$
+$$
+F^\prime =(A^\prime +B^\prime )(C+D)(B+D^\prime )
+$$&lt;/p&gt;
+&lt;h3 id=&#34;부울-대수의-활용&#34;&gt;부울 대수의 활용&lt;/h3&gt;
+&lt;p&gt;부울 대수를 통해 디지털 회로를 간단히 하는 데 사용할 수 있다. 아래와 같은 회로 $F$가 있다고 가정해 보자.&lt;/p&gt;
+&lt;p&gt;$$
+F=ABC+ABC^\prime +A^\prime C
+$$&lt;/p&gt;
+&lt;p&gt;부울 대수를 적용하면, $(C+C)^\prime =1$이고, $AB \cdot 1=AB$ 이므로,&lt;/p&gt;
+&lt;p&gt;$$
+F=ABC+ABC^\prime  +A^\prime  C=AB(C+C^\prime  )+A^\prime  C=AB+A^\prime  C
+$$&lt;/p&gt;
+&lt;p&gt;이다. 따라서 4개의 게이트만 사용하여 효율적인 회로를 설계할 수 있는 것이다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>[논문리뷰] Visual Attention and Background Subtraction With Adaptive Weight for Hyperspectral Anomaly Detection</title>
         <link>https://gyeongmin.kr/p/paper-review-visual-attention-ad/</link>
         <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
