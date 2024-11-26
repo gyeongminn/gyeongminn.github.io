@@ -170,6 +170,27 @@ $$&lt;/p&gt;
 F=ABC+ABC^\prime  +A^\prime  C=AB(C+C^\prime  )+A^\prime  C=AB+A^\prime  C
 $$&lt;/p&gt;
 &lt;p&gt;이다. 따라서 4개의 게이트만 사용하여 효율적인 회로를 설계할 수 있는 것이다.&lt;/p&gt;
+&lt;h3 id=&#34;부울-대수-문제&#34;&gt;부울 대수 문제&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$A + AB = A$ 임을 보여라.&lt;/p&gt;
+ &lt;details&gt;
+ &lt;summary&gt;풀이&lt;/summary&gt;
+ &lt;div markdown=&#34;1&#34;&gt;
+     $A(1+B) = A \cdot 1 = A$
+ &lt;/div&gt;
+ &lt;/details&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$A \cdot (A + B) = A$ 임을 보여라.&lt;/p&gt;
+ &lt;details&gt;
+ &lt;summary&gt;풀이&lt;/summary&gt;
+ &lt;div markdown=&#34;1&#34;&gt;
+     $AA + AB = A + AB = A + AB = A$
+ &lt;/div&gt;
+ &lt;/details&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         <item>
