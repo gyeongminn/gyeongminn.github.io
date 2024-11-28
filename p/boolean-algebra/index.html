@@ -16,16 +16,25 @@
     <meta name="twitter:image" content='https://gyeongmin.kr/images/computer-system-architecture.png' />
     <link rel="shortcut icon" href="/logo.ico/favicon.ico" />
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBG63ZJRZM"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-RBG63ZJRZM', { 'anonymize_ip': false });
-}
-</script>
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-RBG63ZJRZM"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-RBG63ZJRZM');
+        }
+      </script>
+    
+  
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061"
      crossorigin="anonymous"></script>
 
@@ -368,7 +377,7 @@ if (!doNotTrack) {
         <div class="article-image">
             <a href="/p/boolean-algebra/">
                 
-                    <img src="/../images/computer-system-architecture.png" loading="lazy" alt="Featured image of post 부울 대수" />
+                    <img src="/images/computer-system-architecture.png" loading="lazy" alt="Featured image of post 부울 대수" />
                 
             </a>
         </div>
@@ -589,20 +598,18 @@ $$</p>
 <h3 id="부울-대수-문제">부울 대수 문제</h3>
 <ol>
 <li>
-<p>$A + AB = A$ 임을 보여라.</p>
- <details>
- <summary>풀이</summary>
- <div markdown="1">
-     $A(1+B) = A \cdot 1 = A$
- </div>
- </details>
-</li>
-<li>
 <p>$A \cdot (A + B) = A$ 임을 보여라.</p>
  <details>
  <summary>풀이</summary>
  <div markdown="1">
-     $AA + AB = A + AB = A + AB = A$
+     $$
+     \begin{aligned}
+         AA + AB &= A + AB \\
+         &= A (1 + B) \\
+         &= A \cdot 1 \\
+         &= A
+     \end{aligned}
+     $$
  </div>
  </details>
 </li>
@@ -611,7 +618,14 @@ $$</p>
  <details>
  <summary>풀이</summary>
  <div markdown="1">
-     $AA + AB^\prime  + AB + BB^\prime  =  AA + AB^\prime  + AB + BB^\prime  = A + A(B^\prime  + B) = A + A·1 = A $
+     $$
+     \begin{aligned}
+         AA + AB' + AB + BB' &= AA + AB' + AB + BB' \\
+         &= A + A(B' + B) \\
+         &= A + A \cdot 1 \\
+         &= A
+     \end{aligned}
+     $$
  </div>
  </details>
 </li>
