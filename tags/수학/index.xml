@@ -22,12 +22,12 @@
 &lt;p&gt;이전 정보의 처리는 게이트라 불리는 논리 회로에서 이루어진다. 아래 표는 각 게이트의 이름, 대수 표현식, 진리표를 나타낸 것이다.&lt;/p&gt;
 &lt;table style=&#34;max-width: 800px;&#34;&gt;
   &lt;tr&gt;
-    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;Name&lt;/th&gt;
-    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;Algebraic function&lt;/th&gt;
-    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 16px;&#34;&gt;Truth table&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Name&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Algebraic function&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Truth table&lt;/th&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{AND}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px&#34;&gt;$\text{AND}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A \cdot B$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -40,7 +40,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{OR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{OR}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A + B$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -53,7 +53,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{Inverter}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{Inverter}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A^\prime$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -64,7 +64,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{Buffer}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{Buffer}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -75,7 +75,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{NAND}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{NAND}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A · B)^\prime$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -88,7 +88,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{NOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{NOR}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A + B)^\prime$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -101,7 +101,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{XOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{XOR}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A ⊕ B$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -114,7 +114,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{XNOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{XNOR}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A ⊕ B)^\prime$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
