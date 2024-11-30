@@ -22,12 +22,12 @@
 &lt;p&gt;이전 정보의 처리는 게이트라 불리는 논리 회로에서 이루어진다. 아래 표는 각 게이트의 이름, 대수 표현식, 진리표를 나타낸 것이다.&lt;/p&gt;
 &lt;table style=&#34;max-width: 800px;&#34;&gt;
   &lt;tr&gt;
-    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;Name&lt;/th&gt;
-    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;Algebraic function&lt;/th&gt;
-    &lt;th style=&#34;text-align: center; vertical-align: middle; font-size: 16px;&#34;&gt;Truth table&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Name&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Algebraic function&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Truth table&lt;/th&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{AND}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px&#34;&gt;$\text{AND}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A \cdot B$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -40,7 +40,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{OR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{OR}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A + B$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -53,7 +53,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{Inverter}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{Inverter}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A^\prime$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -64,7 +64,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{Buffer}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{Buffer}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -75,7 +75,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{NAND}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{NAND}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A · B)^\prime$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -88,7 +88,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{NOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{NOR}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A + B)^\prime$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -101,7 +101,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{XOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{XOR}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A ⊕ B$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -114,7 +114,7 @@
     &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 24px;&#34;&gt;$\text{XNOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{XNOR}$&lt;/td&gt;
     &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A ⊕ B)^\prime$&lt;/td&gt;
     &lt;td&gt;
       &lt;table&gt;
@@ -173,20 +173,18 @@ $$&lt;/p&gt;
 &lt;h3 id=&#34;부울-대수-문제&#34;&gt;부울 대수 문제&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;$A + AB = A$ 임을 보여라.&lt;/p&gt;
- &lt;details&gt;
- &lt;summary&gt;풀이&lt;/summary&gt;
- &lt;div markdown=&#34;1&#34;&gt;
-     $A(1+B) = A \cdot 1 = A$
- &lt;/div&gt;
- &lt;/details&gt;
-&lt;/li&gt;
-&lt;li&gt;
 &lt;p&gt;$A \cdot (A + B) = A$ 임을 보여라.&lt;/p&gt;
  &lt;details&gt;
  &lt;summary&gt;풀이&lt;/summary&gt;
  &lt;div markdown=&#34;1&#34;&gt;
-     $AA + AB = A + AB = A + AB = A$
+     $$
+     \begin{aligned}
+         AA + AB &amp;= A + AB \\
+         &amp;= A (1 + B) \\
+         &amp;= A \cdot 1 \\
+         &amp;= A
+     \end{aligned}
+     $$
  &lt;/div&gt;
  &lt;/details&gt;
 &lt;/li&gt;
@@ -195,7 +193,14 @@ $$&lt;/p&gt;
  &lt;details&gt;
  &lt;summary&gt;풀이&lt;/summary&gt;
  &lt;div markdown=&#34;1&#34;&gt;
-     $AA + AB^\prime  + AB + BB^\prime  =  AA + AB^\prime  + AB + BB^\prime  = A + A(B^\prime  + B) = A + A·1 = A $
+     $$
+     \begin{aligned}
+         AA + AB&#39; + AB + BB&#39; &amp;= AA + AB&#39; + AB + BB&#39; \\
+         &amp;= A + A(B&#39; + B) \\
+         &amp;= A + A \cdot 1 \\
+         &amp;= A
+     \end{aligned}
+     $$
  &lt;/div&gt;
  &lt;/details&gt;
 &lt;/li&gt;
@@ -282,7 +287,7 @@ $$&lt;/p&gt;
 &lt;div class=&#34;research&#34;&gt;
     &lt;div class=&#34;container&#34;&gt;
         &lt;p class=&#34;title&#34;&gt;DeepSeers&lt;br&gt;Vision Software Engineer&lt;/p&gt;
-        &lt;p class=&#34;text&#34;&gt;• 연구실 내 스타트업으로 전환하여 기존과 동일한 프로젝트 진행중&lt;span class=&#34;date&#34;&gt;
+        &lt;p class=&#34;text&#34;&gt;• 연구실 내 스타트업으로 전환하여 창업멤버로서 기존과 동일한 프로젝트 진행중&lt;span class=&#34;date&#34;&gt;
         &lt;p class=&#34;text&#34;&gt;• QFN, BGA. LGA 패키지 아랫면 검사 알고리즘 34종 개발
         &lt;p class=&#34;text&#34;&gt;• ±5µm 이내의 정확한 자재 사이즈 측정을 위한 패키지 외곽 검출 로직 개발
         &lt;p class=&#34;text&#34;&gt;• Calibration Plate를 활용한 Pixel Pitch 계산 알고리즘 개발
