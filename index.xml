@@ -287,11 +287,17 @@ $$&lt;/p&gt;
         &lt;p class=&#34;title&#34;&gt;DeepSeers&lt;br&gt;Vision Software Engineer&lt;/p&gt;
         &lt;p class=&#34;text&#34;&gt;• 연구실 내 스타트업으로 전환하여 창업멤버로서 기존과 동일한 프로젝트 진행중&lt;span class=&#34;date&#34;&gt;
         &lt;p class=&#34;text&#34;&gt;• QFN, BGA. LGA 패키지 아랫면 검사 알고리즘 34종 개발
+        &lt;p class=&#34;text&#34;&gt;• 맵핑 비전 멀티샷 검사 및 멀티샷 티칭 알고리즘 개발
         &lt;p class=&#34;text&#34;&gt;• ±5µm 이내의 정확한 자재 사이즈 측정을 위한 패키지 외곽 검출 로직 개발
         &lt;p class=&#34;text&#34;&gt;• Calibration Plate를 활용한 Pixel Pitch 계산 알고리즘 개발
-        &lt;p class=&#34;text&#34;&gt;• Motor Calibration을 위한 비전 알고리즘 개발 
+        &lt;p class=&#34;text&#34;&gt;• Motor Calibration을 위한 비전 알고리즘 개발
         &lt;p class=&#34;text&#34;&gt;• Morphology를 이용한 ROI 및 Threshold Recommendation 알고리즘 개발
         &lt;p class=&#34;text&#34;&gt;• 딥러닝을 이용한 ROI Recommendation 알고리즘 개발 및 특허 출원
+        &lt;p class=&#34;text&#34;&gt;• Camera Link 및 GigE 카메라 인터페이스 연동 및 통합 조명 시리얼 코드 개발
+        &lt;p class=&#34;text&#34;&gt;• 핸들러-비전 소켓 통신 프로토콜 연동 및 개발
+        &lt;p class=&#34;text&#34;&gt;• Strip DataCode 검사 개발 및 인식률 향상
+        &lt;p class=&#34;text&#34;&gt;• EMI Ring Map 알고리즘 개발
+        &lt;p class=&#34;text&#34;&gt;• 다중 카메라 라이브에서의 프레임 동기화 및 속도 향상
         &lt;p class=&#34;text&#34;&gt;• 티칭 시퀀스 간소화 및 WPF를 활용한 티칭 UI 개발
         &lt;p class=&#34;text&#34;&gt;• 검사 결과 시각화를 위한 UI 개발 및 렌더링 성능 최적화
         &lt;p class=&#34;text&#34;&gt;• Block을 고려한 Vision Table 내 자재 위치 계산 로직 개발
