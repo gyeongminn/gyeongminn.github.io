@@ -274,19 +274,28 @@ $$&lt;/p&gt;
 &lt;div class=&#34;research&#34;&gt;
     &lt;div class=&#34;container&#34;&gt;
         &lt;p class=&#34;title&#34;&gt;한성대학교 컴퓨터공학부&lt;/p&gt;
-        &lt;p class=&#34;text&#34;&gt;• 교내 알고리즘 대회 출제자 3회 참여 &lt;span class=&#34;date&#34;&gt;(2023-2024)&lt;/span&gt;&lt;/p&gt;
         &lt;p class=&#34;text&#34;&gt;• 공과대학 학생회 홍보국장&lt;span class=&#34;date&#34;&gt;(2023)&lt;/span&gt;&lt;/p&gt;
         &lt;p class=&#34;text&#34;&gt;• 학술소모임 BUG 부회장&lt;span class=&#34;date&#34;&gt;(2022)&lt;/span&gt;&lt;/p&gt;
-        &lt;p class=&#34;text&#34;&gt;• 컴퓨터공학부 전공튜터링 튜터 3회 참여&lt;span class=&#34;date&#34;&gt;(2022-2023)&lt;/span&gt;&lt;/p&gt;
+        &lt;p class=&#34;text&#34;&gt;• 컴퓨터공학부 전공튜터링 튜터 3회 참여&lt;span class=&#34;date&#34;&gt;
+        &lt;p class=&#34;text&#34;&gt;• 교내 알고리즘 대회 최초 개설 및 출제자 4회 참여 &lt;span class=&#34;date&#34;&gt;(2023-2024)&lt;/span&gt;&lt;/p&gt;
+        &lt;p class=&#34;text&#34;&gt;&lt;a class=&#34;detail&#34; href=&#34;https://github.com/HSU-CSE/hsupc-2023-2&#34; target=&#34;_blank&#34;&gt;&amp;nbsp;&amp;nbsp; See the details &gt;&lt;/a&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2 align=&#34;left&#34;&gt;Experience&lt;/h2&gt;
 &lt;div class=&#34;research&#34;&gt;
     &lt;div class=&#34;container&#34;&gt;
         &lt;p class=&#34;title&#34;&gt;DeepSeers&lt;br&gt;Vision Software Engineer&lt;/p&gt;
-        &lt;p class=&#34;text&#34;&gt;• 연구실 내 스타트업으로 전환하여 기존과 동일한 프로젝트 진행중&lt;span class=&#34;date&#34;&gt;
-        &lt;p class=&#34;text&#34;&gt;• BGA, LGA, QFN 등 각종 패키지 비전 검사 개발
-        &lt;p class=&#34;text&#34;&gt;• 비전 검사를 위한 티칭 및 검사 결과 시각화 관련 UI 개발
+        &lt;p class=&#34;text&#34;&gt;• 연구실 내 스타트업으로 전환하여 창업멤버로서 기존과 동일한 프로젝트 진행중&lt;span class=&#34;date&#34;&gt;
+        &lt;p class=&#34;text&#34;&gt;• QFN, BGA. LGA 패키지 아랫면 검사 알고리즘 34종 개발
+        &lt;p class=&#34;text&#34;&gt;• ±5µm 이내의 정확한 자재 사이즈 측정을 위한 패키지 외곽 검출 로직 개발
+        &lt;p class=&#34;text&#34;&gt;• Calibration Plate를 활용한 Pixel Pitch 계산 알고리즘 개발
+        &lt;p class=&#34;text&#34;&gt;• Motor Calibration을 위한 비전 알고리즘 개발 
+        &lt;p class=&#34;text&#34;&gt;• Morphology를 이용한 ROI 및 Threshold Recommendation 알고리즘 개발
+        &lt;p class=&#34;text&#34;&gt;• 딥러닝을 이용한 ROI Recommendation 알고리즘 개발 및 특허 출원
+        &lt;p class=&#34;text&#34;&gt;• 티칭 시퀀스 간소화 및 WPF를 활용한 티칭 UI 개발
+        &lt;p class=&#34;text&#34;&gt;• 검사 결과 시각화를 위한 UI 개발 및 렌더링 성능 최적화
+        &lt;p class=&#34;text&#34;&gt;• Block을 고려한 Vision Table 내 자재 위치 계산 로직 개발
+        &lt;p class=&#34;text&#34;&gt;• 각종 장비 하드웨어 트러블 슈팅 및 해외 고객사 비전 셋업
         &lt;p class=&#34;text&#34;&gt;&lt;span class=&#34;date&#34;&gt;Feb 2024 - Present&lt;/span&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -301,7 +310,7 @@ $$&lt;/p&gt;
 &lt;div class=&#34;research&#34;&gt;
     &lt;p class=&#34;first-type&#34;&gt;Interest&lt;/p&gt;
     &lt;div class=&#34;container&#34;&gt;
-        &lt;p class=&#34;text&#34;&gt;Computer Vision, Anomaly Detection, Natural Language Processing&lt;/p&gt;
+        &lt;p class=&#34;text&#34;&gt;Computer Vision, Anomaly Detection, Algorithm&lt;/p&gt;
     &lt;/div&gt;
     &lt;p class=&#34;type&#34;&gt;Project&lt;/p&gt;
     &lt;div class=&#34;container&#34;&gt;
@@ -364,7 +373,7 @@ $$&lt;/p&gt;
 &lt;div class=&#34;card-container&#34;&gt;
     &lt;div class=&#34;card&#34;&gt;
         &lt;div class=&#34;title&#34;&gt;교내 프로그래밍 대회&lt;/div&gt;
-        &lt;p&gt;총 3회 (23년 3월, 23년 11월, 24년 1월) 교내 대회를 총괄해 주최하고 문제를 출제하였습니다. 총 10문제 출제하였고, 문제지와 해설지는 아래 링크에서 확인하실 수 있습니다.&lt;/p&gt;
+        &lt;p&gt;컴퓨터공학부 학과, 학생회, 동아리 등과 협업하여 기존에는 없던 교내 프로그래밍 대회를 총괄 및 주최하고 각종 문제를 출제하였습니다. 4회차에 걸쳐 (23년 3월, 23년 11월, 24년 1월, 24년 11월) 총 11문제 출제하였습니다. 문제지와 해설지는 아래 링크에서 확인하실 수 있습니다.&lt;/p&gt;
         &lt;a href=&#34;https://github.com/HSU-CSE/hsupc-2023-2&#34; class=&#34;card-button&#34; target=&#34;_blank&#34;&gt;자세히&lt;/a&gt;
     &lt;/div&gt;
     &lt;div class=&#34;card&#34;&gt;
@@ -384,7 +393,7 @@ $$&lt;/p&gt;
     &lt;/div&gt;
     &lt;div class=&#34;card&#34;&gt;
         &lt;div class=&#34;title&#34;&gt;C언어로 만든 리듬게임&lt;/div&gt;
-        &lt;p&gt;1학년 텀프로젝트 과제로 만들었던 리듬게임입니다. C언어를 사용하여 콘솔창에서 리듬게임을 구현했습니다. 박자에 맞춰 키를 입력하고, 점수를 획득하는 게임입니다.&lt;/p&gt;
+        &lt;p&gt;한성대학교 1학년 &#39;프로그래밍랩&#39; 과목의 텀프로젝트 과제로 만들었던 리듬게임입니다. C언어를 사용하여 콘솔창에서 리듬게임을 구현했습니다. 박자에 맞춰 키를 입력하고, 점수를 획득하는 게임입니다.&lt;/p&gt;
         &lt;a href=&#34;https://gyeongminn.github.io/p/rhythm-game-in-c/&#34; class=&#34;card-button&#34; target=&#34;_blank&#34;&gt;자세히&lt;/a&gt;
     &lt;/div&gt;
     &lt;div class=&#34;card&#34;&gt;
