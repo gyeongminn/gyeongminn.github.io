@@ -62,12 +62,12 @@
                 href="https://gyeongmin.kr/tags/"
                 />
   </url><url>
-    <loc>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</loc>
+    <loc>https://gyeongmin.kr/p/half-adder-and-full-adder/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/p/karnaugh-map/</loc>
+    <loc>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
@@ -79,6 +79,11 @@
   </url><url>
     <loc>https://gyeongmin.kr/categories/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</loc>
     <lastmod>2024-12-04T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongmin.kr/p/karnaugh-map/</loc>
+    <lastmod>2024-12-03T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -257,21 +262,6 @@
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/c/c&#43;&#43;/</loc>
-    <lastmod>2021-12-15T00:00:00+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://gyeongmin.kr/en/tags/c/c&#43;&#43;/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://gyeongmin.kr/tags/c/c&#43;&#43;/"
-                />
-  </url><url>
     <loc>https://gyeongmin.kr/p/rhythm-game-in-c/</loc>
     <lastmod>2021-12-15T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
@@ -300,6 +290,20 @@
     <loc>https://gyeongmin.kr/archives/</loc>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongmin.kr/tags/c/c&#43;&#43;/</loc>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://gyeongmin.kr/en/tags/c/c&#43;&#43;/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://gyeongmin.kr/tags/c/c&#43;&#43;/"
+                />
   </url><url>
     <loc>https://gyeongmin.kr/links/</loc>
     <changefreq>always</changefreq>

@@ -8,9 +8,84 @@
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
         <lastBuildDate>Wed, 04 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>반가산기와 전가산기</title>
+        <link>https://gyeongmin.kr/p/half-adder-and-full-adder/</link>
+        <pubDate>Wed, 04 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/half-adder-and-full-adder/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 반가산기와 전가산기" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;조합-회로&#34;&gt;조합 회로&lt;/h2&gt;
+&lt;p&gt;조합 회로는 입력과 출력을 가진 논리 게이트의 집합으로 출력의 값은 0과 1들의 조합의 함수이다. 조합 회로와 상반되는 순차 회로는 게이트와 플립플롭 등이 있다.&lt;/p&gt;
+&lt;p&gt;조합 회로를 설계 절차는 다음과 같다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;문제가 제시된다.&lt;/li&gt;
+&lt;li&gt;입력과 출력 변수에 문자 기호를 붙인다.&lt;/li&gt;
+&lt;li&gt;입력과 출력 사이의 관계를 정의하는 진리표를 유도한다.&lt;/li&gt;
+&lt;li&gt;각 출력에 대한 간소화된 부울 함수를 얻는다.&lt;/li&gt;
+&lt;li&gt;논리도를 그린다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;반가산기&#34;&gt;반가산기&lt;/h2&gt;
+&lt;p&gt;반가산기는 비트 두 개를 서로 산술적으로 가산하는 조합 회로이다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image.png&#34;
+	width=&#34;1011&#34;
+	height=&#34;541&#34;
+	srcset=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image_hu3ff95a68c5b0e41d6ab8cc1e1ee58ecf_49337_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/half-adder-and-full-adder/image_hu3ff95a68c5b0e41d6ab8cc1e1ee58ecf_49337_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;반가산기의 회로도와 진리표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;448px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 그림에서 C는 Carry(캐리, 자리올림)이고, S는 Sum이다.&lt;/p&gt;
+&lt;p&gt;$A=0, B=1$ 이면 $0+1$ 이므로 $S=1, C=0$이다.&lt;/p&gt;
+&lt;p&gt;$A=1, B=1$ 이면 $1+1$ 이므로 $S=1, C=1$이다.&lt;/p&gt;
+&lt;p&gt;A, B 모두 1일 때만 C가 1이 된다. 따라서 C는 $\text{AND}$ 게이트로 구현할 수 있다.&lt;/p&gt;
+&lt;p&gt;A, B 둘 중 하나만 1이면 S가 1이 된다. 따라서 S는 $\text{XOR}$ 게이트로 구현할 수 있다.&lt;/p&gt;
+&lt;p&gt;따라서 반가산기의 논리 표현식은 아래와 같다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+\begin{aligned}
+S &amp;= x{^\prime}y+xy{^\prime} = x⊕y \\
+C &amp;= xy
+\end{aligned}
+$$
+&lt;h2 id=&#34;전가산기&#34;&gt;전가산기&lt;/h2&gt;
+&lt;p&gt;전가산기는 비트 두개와 밑의 자리에서 올라오는 캐리까지 고려하여 비트 세 개를 가산하는 조합 회로이다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1.png&#34;
+	width=&#34;639&#34;
+	height=&#34;383&#34;
+	srcset=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu07584b1257b5df3e52a161abb3402be6_59665_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu07584b1257b5df3e52a161abb3402be6_59665_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;전가산기의 회로도와 진리표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;A, B, X에서 1의 개수가 1개 혹은 3개이면 S가 1이 된다.&lt;/p&gt;
+&lt;p&gt;A, B, X에서 1의 개수가 2개 혹은 3개이면 C가 1이 된다.&lt;/p&gt;
+&lt;p&gt;전가산기의 논리 표현식은 아래와 같다. 전가산기는 반가산기 두 개와 $\text{OR}$ 게이트로 구현할 수 있다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+\begin{aligned}
+S &amp;= x⊕y⊕z \\
+C &amp;= xy+(x⊕y)z
+\end{aligned}
+$$</description>
+        </item>
+        <item>
         <title>카르노 맵과 부울 식의 간소화</title>
         <link>https://gyeongmin.kr/p/karnaugh-map/</link>
-        <pubDate>Wed, 04 Dec 2024 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 03 Dec 2024 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/p/karnaugh-map/</guid>
         <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 카르노 맵과 부울 식의 간소화" /&gt;&lt;blockquote&gt;
