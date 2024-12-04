@@ -58,17 +58,17 @@ $$
 &lt;h2 id=&#34;전가산기&#34;&gt;전가산기&lt;/h2&gt;
 &lt;p&gt;전가산기는 비트 두개와 밑의 자리에서 올라오는 캐리까지 고려하여 비트 세 개를 가산하는 조합 회로이다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1.png&#34;
-	width=&#34;639&#34;
-	height=&#34;383&#34;
-	srcset=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu07584b1257b5df3e52a161abb3402be6_59665_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu07584b1257b5df3e52a161abb3402be6_59665_1024x0_resize_box_3.png 1024w&#34;
+	width=&#34;987&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu890d852f8f65522d7c96d7e53ebb4d67_56069_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu890d852f8f65522d7c96d7e53ebb4d67_56069_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;전가산기의 회로도와 진리표&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;166&#34;
-		data-flex-basis=&#34;400px&#34;
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;393px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;A, B, X에서 1의 개수가 1개 혹은 3개이면 S가 1이 된다.&lt;/p&gt;
