@@ -7,7 +7,201 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 04 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>카르노 맵과 부울 식의 간소화</title>
+        <link>https://gyeongmin.kr/p/karnaugh-map/</link>
+        <pubDate>Wed, 04 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/karnaugh-map/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 카르노 맵과 부울 식의 간소화" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;맵과-민텀&#34;&gt;맵과 민텀&lt;/h2&gt;
+&lt;p&gt;논리표현식은 부울 대수를 사용해서 간단히 만들 수 있으나 여러 가지 규칙이 있다. 맵 방법은 karnaugh 맵과 Veitch 다이어그램이 있다.&lt;/p&gt;
+&lt;p&gt;진리표에서 각 변수의 각 조합을 민텀(minterm)이라고 한다. n개의 변수가 있으면 $2^n$개의 민텀이 있다.&lt;/p&gt;
+&lt;table style=&#34;width: 50%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
+    &lt;tr&gt;
+        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;A&lt;/th&gt;
+        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;B&lt;/th&gt;
+        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;C&lt;/th&gt;
+        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;F&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;Truth Table 1&amp;gt;
+&lt;/p&gt;
+&lt;p&gt;위 진리표를 민텀으로 표현하면 아래와 같다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+\begin{aligned}
+    F(x,y,z) &amp;= \sum (1,4,5,6,7) \\
+    &amp;= x{^\prime}y{^\prime}z+xy{^\prime}z{^\prime}+xy{^\prime}z+xyz{^\prime}+xyz
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;p&gt;맵은 여러 개의 사각형으로 이루어지고, 각 사각형의 구역은 각각의 민텀을 표시한다. 함수가 1이 될 때 해당 구역에 1을 넣고, 0일 땐 0을 넣거나 빈 칸으로 둔다.&lt;/p&gt;
+&lt;p&gt;맵은 두 변수일 땐 $2 \times 2$, 세 변수일 땐 $2 \times 4$, 네 변수일 땐 $4 \times 4$ 크기로 그린다. 그 이상은 맵 방식으로 하면 복잡하여 다른 방법을 사용한다. 아래는 그 예시이다.&lt;/p&gt;
+&lt;style&gt;
+.diagonal {
+  background-image: linear-gradient(
+    to left bottom, 
+    transparent calc(50% - 0.4px), 
+    var(--card-text-color-main), 
+    transparent calc(50% + 0.4px)
+  );
+  background-size: 120% 120%;
+  background-position: center;
+}
+&lt;/style&gt;
+&lt;table style=&#34;width: 50%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center; &#34;&gt;
+        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;B&lt;/div&gt;
+        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;A&lt;/div&gt;
+      &lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;A&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;O&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;X&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;2&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;O&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;X&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;2 변수 맵 예제&amp;gt;
+&lt;table style=&#34;width: 80%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center;&#34;&gt;
+        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;BC&lt;/div&gt;
+        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;A&lt;/div&gt;
+      &lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;3 변수 맵 예제&amp;gt;
+&lt;table style=&#34;width: 80%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center;&#34;&gt;
+        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;CD&lt;/div&gt;
+        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;AB&lt;/div&gt;
+      &lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;4 변수 맵 예제&amp;gt;
+&lt;h2 id=&#34;맵을-이용한-간소화&#34;&gt;맵을 이용한 간소화&lt;/h2&gt;
+&lt;p&gt;카르노 맵을 이용한 간소화는 텍스트로 설명하면 이해하기 어렵다. 그 대신, 카르노 맵을 이용한 간소화를 매우 쉽게 설명한 &amp;lsquo;전기는빠지직(송건웅)&amp;lsquo;님의 유튜브 영상을 첨부한다.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://youtu.be/IsMRUf_3m6U?si=ocTJN__kqXcgR3ko&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://youtu.be/IsMRUf_3m6U?si=ocTJN__kqXcgR3ko&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>부울 대수</title>
         <link>https://gyeongmin.kr/p/boolean-algebra/</link>
         <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
@@ -195,8 +389,8 @@ $$&lt;/p&gt;
  &lt;div markdown=&#34;1&#34;&gt;
      $$
      \begin{aligned}
-         AA + AB&#39; + AB + BB&#39; &amp;= AA + AB&#39; + AB + BB&#39; \\
-         &amp;= A + A(B&#39; + B) \\
+         AA + AB{^\prime} + AB + BB{^\prime} &amp;= AA + AB{^\prime} + AB + BB{^\prime} \\
+         &amp;= A + A(B{^\prime} + B) \\
          &amp;= A + A \cdot 1 \\
          &amp;= A
      \end{aligned}

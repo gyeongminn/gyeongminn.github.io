@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gyeongmin.kr/categories/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -18,7 +18,7 @@
                 />
   </url><url>
     <loc>https://gyeongmin.kr/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -33,7 +33,7 @@
                 />
   </url><url>
     <loc>https://gyeongmin.kr/post/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -48,7 +48,7 @@
                 />
   </url><url>
     <loc>https://gyeongmin.kr/tags/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
     <xhtml:link
@@ -62,22 +62,27 @@
                 href="https://gyeongmin.kr/tags/"
                 />
   </url><url>
-    <loc>https://gyeongmin.kr/p/boolean-algebra/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
+    <loc>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</loc>
+    <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
+    <loc>https://gyeongmin.kr/p/karnaugh-map/</loc>
+    <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</loc>
-    <lastmod>2024-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-04T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gyeongmin.kr/categories/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</loc>
+    <lastmod>2024-12-04T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://gyeongmin.kr/p/boolean-algebra/</loc>
     <lastmod>2024-11-20T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
