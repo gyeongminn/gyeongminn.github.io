@@ -7,13 +7,142 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Fri, 09 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9E%90%EC%97%B0%EC%96%B4-%EC%B2%98%EB%A6%AC%EC%99%80-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%B9%84%EC%A0%84-%EC%8B%AC%EC%B8%B5%ED%95%99%EC%8A%B5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 24 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9E%90%EC%97%B0%EC%96%B4-%EC%B2%98%EB%A6%AC%EC%99%80-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%B9%84%EC%A0%84-%EC%8B%AC%EC%B8%B5%ED%95%99%EC%8A%B5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>활성화 함수</title>
+        <link>https://gyeongmin.kr/p/activation-functions/</link>
+        <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/activation-functions/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 활성화 함수" /&gt;&lt;h2 id=&#34;활성화-함수&#34;&gt;활성화 함수&lt;/h2&gt;
+&lt;p&gt;활성화 함수는 인공 신경망에서 뉴런의 출력을 비선형으로 변환하여 은닉층을 활성화하는 역할을 한다. 이를 통해 네트워크는 데이터의 복잡한 패턴을 학습하고 비선형 문제를 해결할 수 있다.&lt;/p&gt;
+&lt;p&gt;각 노드의 전달 보강이 다르므로 입력값에 따라 일부 노드는 활성화(Activate)되고 다른 노드는 비활성화(Deactivate)된다.&lt;/p&gt;
+&lt;p&gt;활성화 함수는 비선형 구조를 가지며 미분 가능해야 학습이 가능하고, 입력값을 정규화(Normalization)하는 효과도 수행한다.&lt;/p&gt;
+&lt;h2 id=&#34;계단-함수-step-function&#34;&gt;계단 함수 (Step Function)&lt;/h2&gt;
+&lt;p&gt;계단 함수는 입력값이 특정 임곗값(보통 0)을 넘으면 1을 출력하고, 그렇지 않으면 0을 출력하는 함수이다.&lt;/p&gt;
+&lt;p&gt;이 함수는 출력이 이산적이므로 단순한 분류 작업에 사용될 수 있지만, 비연속적인 특성으로 인해 기울기(Gradient)가 존재하지 않아 역전파(Backpropagation)를 사용할 수 없다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+f(x) =
+\begin{cases} 
+   1 &amp; \text{if } x \geq 0 \\
+   0 &amp; \text{if } x &lt; 0
+\end{cases}
+$$
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Step Function&#34;
+    y-axis 0 --&gt; 1
+    x-axis [-4, -3, -2, -1, 0, 0, 1, 2, 3, 4]
+    line   [ 0,  0,  0,  0, 0, 1, 1, 1, 1, 1]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;임곗값-함수-threshold-function&#34;&gt;임곗값 함수 (Threshold Function)&lt;/h2&gt;
+&lt;p&gt;임곗값 함수는 계단 함수의 변형으로 특정 임계값을 기준으로 값을 출력한다. 입력값이 임계값 이상이면 1을 출력하고, 그 미만이면 특정 값을 출력한다.&lt;/p&gt;
+&lt;p&gt;이 함수는 이진 분류에 사용될 수 있으나, 계단 함수와 마찬가지로 기울기가 없어서 신경망 학습에는 적합하지 않다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+f(x) =
+\begin{cases} 
+   x &amp; \text{if } x &gt; threshold \\
+   value &amp; \text{else } \ \ \ otherwise
+\end{cases}
+$$
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Threshold Function (value = -5)&#34;
+    y-axis -5 --&gt; 4
+    x-axis [-4, -3, -2, -1, 0, 0,  1, 2, 3, 4]
+    line   [-5, -5, -5, -5, -5, 0, 1, 2, 3, 4]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;시그모이드-함수-sigmoid-function&#34;&gt;시그모이드 함수 (Sigmoid Function)&lt;/h2&gt;
+&lt;p&gt;시그모이드 함수는 입력값을 0과 1 사이의 연속적인 값으로 변환하는 함수로, 출력값을 확률로 해석할 수 있어 이진 분류 문제에서 사용된다.&lt;/p&gt;
+&lt;p&gt;함수의 출력이 부드럽게 변하므로 미분이 가능하지만, 큰 입력값에서는 기울기가 0에 가까워지는 &lt;strong&gt;Vanishing Gradient&lt;/strong&gt; 문제가 발생할 수 있어 깊은 신경망에서는 성능이 저하될 수 있다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+f(x) = \frac{1}{1 + e^{-x}}
+$$
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Sigmoid Function&#34;
+    y-axis 0 --&gt; 1
+    x-axis [-5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+    line [0.0067, 0.011, 0.018, 0.029, 0.047, 0.076, 0.119, 0.182, 0.269, 0.378, 0.5, 0.622, 0.731, 0.818, 0.881, 0.924, 0.953, 0.971, 0.982, 0.989, 0.993]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;하이퍼볼릭-탄젠트-함수-tanh-function&#34;&gt;하이퍼볼릭 탄젠트 함수 (Tanh Function)&lt;/h2&gt;
+&lt;p&gt;하이퍼볼릭탄젠트 함수는 시그모이드 함수의 확장판으로, 출력 범위가 -1에서 1 사이로 설정되어 있다.&lt;/p&gt;
+&lt;p&gt;이 함수는 평균이 0에 가까워져 학습이 비교적 안정적이며, 시그모이드 함수보다 빠르게 수렴할 수 있다. 그러나 여전히 큰 입력값에서는 기울기가 0에 가까워지는 문제를 완전히 해결하지는 못한다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+$$
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Tanh Function&#34;
+    y-axis -1 --&gt; 1
+    x-axis [-5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+    line [-1, -0.999, -0.999, -0.998, -0.995, -0.986, -0.964, -0.905, -0.761, -0.462, 0, 0.462, 0.761, 0.905, 0.964, 0.986, 0.995, 0.998, 0.999, 0.999, 1]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;relu-함수-rectified-linear-unit-function&#34;&gt;ReLU 함수 (Rectified Linear Unit Function)&lt;/h2&gt;
+&lt;p&gt;ReLU(Rectified Linear Unit) 함수는 입력값이 0 이하이면 0을 출력하고, 그 이상이면 입력값을 그대로 출력하는 함수이다.&lt;/p&gt;
+&lt;p&gt;간단한 수식과 계산량 덕분에 학습 속도가 빠르고 효율적이지만, 0 이하의 값에서는 기울기가 0이 되어 뉴런이 더 이상 업데이트되지 않는 죽은 뉴런 문제가 발생할 수 있다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+f(x) = \max(0, x)
+$$
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;ReLU Function&#34;
+    y-axis -0.5 --&gt; 3
+    x-axis [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+    line [0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;leaky-relu-함수&#34;&gt;Leaky ReLU 함수&lt;/h2&gt;
+&lt;p&gt;Leaky ReLU 함수는 ReLU 함수의 단점을 개선한 형태로, 입력값이 0 이하일 때도 작은 기울기
+α를 곱한 값을 출력한다. 이로 인해 죽은 뉴런 문제를 완화하며 학습이 계속 이루어질 수 있도록 한다.&lt;/p&gt;
+&lt;p&gt;기울기 α는 보통 0.01과 같은 작은 값으로 설정되며, ReLU의 비선형성과 계산 효율성을 유지한다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+f(x) =
+\begin{cases}
+x &amp; \text{if } x &gt; 0 \\
+\alpha x &amp; \text{if } x \leq 0
+\end{cases}
+$$
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Leaky ReLU Function (α = 0.1)&#34;
+    y-axis -1 --&gt; 5
+    x-axis [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+    line [-0.5, -0.4, -0.3, -0.2, -0.1, 0, 1, 2, 3, 4, 5]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;prelu-함수-parametric-relu-function&#34;&gt;PReLU 함수 (Parametric ReLU Function)&lt;/h2&gt;
+&lt;p&gt;PReLU(Parametric ReLU) 함수는 Leaky ReLU의 확장판으로, 0 이하의 기울기 α를 고정된 값이 아닌 학습 가능한 파라미터로 설정한다.&lt;/p&gt;
+&lt;p&gt;이로 인해 데이터에 따라 기울기를 최적화할 수 있으므로 네트워크의 성능을 더욱 개선할 수 있다. 다만 학습할 파라미터가 늘어나기 때문에 계산 비용이 조금 증가할 수 있다.&lt;/p&gt;
+&lt;h2 id=&#34;elu-함수-exponential-linear-unit-function&#34;&gt;ELU 함수 (Exponential Linear Unit Function)&lt;/h2&gt;
+&lt;p&gt;ELU(Exponential Linear Unit) 함수는 ReLU와 Leaky ReLU의 단점을 보완한 함수로, 입력값이 0 이하일 때 $ e^x - 1 $ 형태의 부드러운 곡선을 갖는다.&lt;/p&gt;
+&lt;p&gt;ELU는 0 이하의 출력이 음수 값을 가지기 때문에 평균 출력이 0에 가깝게 유지되어 학습을 더 안정적으로 만들며, 죽은 뉴런 문제도 해결할 수 있다.&lt;/p&gt;
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+ELU(x) =
+\begin{cases}
+   x &amp; \text{if } x &gt; 0 \\
+   \alpha (e^x - 1) &amp; \text{else } \text{otherwise}
+\end{cases}
+$$
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;ELU Function (α = 1)&#34;
+    y-axis -3 --&gt; 5
+    x-axis [-4, -3.6, -3.2, -2.8, -2.4, -2, -1.6, -1.2, -0.8, -0.4, 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4]
+    line [-0.9817, -0.9736, -0.9502, -0.9131, -0.8647, -0.7869, -0.6988, -0.6065, -0.4866, -0.3297, 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;소프트맥스-함수-softmax-function&#34;&gt;소프트맥스 함수 (Softmax Function)&lt;/h2&gt;
+&lt;p&gt;소프트맥스 함수는 다중 클래스 분류에서 사용되는 함수로, 입력값을 확률 분포로 변환한다. 각 클래스의 출력값에 대해 지수 함수로 변환한 후, 전체 클래스의 지수값 합으로 나눈다.&lt;/p&gt;
+&lt;p&gt;이로 인해 출력값의 합이 항상 1이 되며, 이를 통해 각 클래스에 대한 확률로 해석할 수 있다. 소프트맥스 함수는 주로 신경망의 출력층에서 사용된다.&lt;/p&gt;
+&lt;p&gt;$$
+p_k = \frac{e^{z_k}}{\sum_{i=1}^n e^{z_i}}
+$$&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>최적화 함수의 종류와 발전 과정</title>
         <link>https://gyeongmin.kr/p/optimization-functions/</link>
         <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/p/optimization-functions/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 최적화 함수의 종류와 발전 과정" /&gt;&lt;h2 id=&#34;최적화-함수란&#34;&gt;최적화 함수란?&lt;/h2&gt;
+        <description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 최적화 함수의 종류와 발전 과정" /&gt;&lt;h2 id=&#34;최적화-함수란&#34;&gt;최적화 함수란?&lt;/h2&gt;
 &lt;p&gt;신경망(neural network)의 학습 목적은 손실 함수(loss function)의 값을 최대한 낮추는 매개변수(parameter)를 찾는 것이다. 이는 곧 매개변수의 최적값을 찾는 문제이며, 이를 최적화 문제(optimization)라고 한다. 최적화 문제를 해결하기 위해 사용하는 도구가 바로 최적화 함수(optimizer)이다.&lt;/p&gt;
 &lt;p&gt;최적화 함수는 손실 함수의 값을 최소화하는 방향으로 모델의 매개변수를 조정한다. 손실 함수는 예측값(predicted value)과 실제값(true value) 간의 차이를 나타내며, 최적화 함수는 손실을 점진적으로 줄여 모델의 예측 성능을 향상시킨다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/optimization-functions/image.png&#34;
@@ -209,135 +338,6 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        </item>
-        <item>
-        <title>활성화 함수</title>
-        <link>https://gyeongmin.kr/p/activation-functions/</link>
-        <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/p/activation-functions/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 활성화 함수" /&gt;&lt;h2 id=&#34;활성화-함수&#34;&gt;활성화 함수&lt;/h2&gt;
-&lt;p&gt;활성화 함수는 인공 신경망에서 뉴런의 출력을 비선형으로 변환하여 은닉층을 활성화하는 역할을 한다. 이를 통해 네트워크는 데이터의 복잡한 패턴을 학습하고 비선형 문제를 해결할 수 있다.&lt;/p&gt;
-&lt;p&gt;각 노드의 전달 보강이 다르므로 입력값에 따라 일부 노드는 활성화(Activate)되고 다른 노드는 비활성화(Deactivate)된다.&lt;/p&gt;
-&lt;p&gt;활성화 함수는 비선형 구조를 가지며 미분 가능해야 학습이 가능하고, 입력값을 정규화(Normalization)하는 효과도 수행한다.&lt;/p&gt;
-&lt;h2 id=&#34;1-계단-함수-step-function&#34;&gt;1. 계단 함수 (Step Function)&lt;/h2&gt;
-&lt;p&gt;계단 함수는 입력값이 특정 임곗값(보통 0)을 넘으면 1을 출력하고, 그렇지 않으면 0을 출력하는 함수이다.&lt;/p&gt;
-&lt;p&gt;이 함수는 출력이 이산적이므로 단순한 분류 작업에 사용될 수 있지만, 비연속적인 특성으로 인해 기울기(Gradient)가 존재하지 않아 역전파(Backpropagation)를 사용할 수 없다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-f(x) =
-\begin{cases} 
-   1 &amp; \text{if } x \geq 0 \\
-   0 &amp; \text{if } x &lt; 0
-\end{cases}
-$$
-&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
-    title &#34;Step Function&#34;
-    y-axis 0 --&gt; 1
-    x-axis [-4, -3, -2, -1, 0, 0, 1, 2, 3, 4]
-    line   [ 0,  0,  0,  0, 0, 1, 1, 1, 1, 1]
-  &lt;/pre&gt;
-  &lt;h2 id=&#34;2-임곗값-함수-threshold-function&#34;&gt;2. 임곗값 함수 (Threshold Function)&lt;/h2&gt;
-&lt;p&gt;임곗값 함수는 계단 함수의 변형으로 특정 임계값을 기준으로 값을 출력한다. 입력값이 임계값 이상이면 1을 출력하고, 그 미만이면 특정 값을 출력한다.&lt;/p&gt;
-&lt;p&gt;이 함수는 이진 분류에 사용될 수 있으나, 계단 함수와 마찬가지로 기울기가 없어서 신경망 학습에는 적합하지 않다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-f(x) =
-\begin{cases} 
-   x &amp; \text{if } x &gt; threshold \\
-   value &amp; \text{else } \ \ \ otherwise
-\end{cases}
-$$
-&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
-    title &#34;Threshold Function (value = -5)&#34;
-    y-axis -5 --&gt; 4
-    x-axis [-4, -3, -2, -1, 0, 0,  1, 2, 3, 4]
-    line   [-5, -5, -5, -5, -5, 0, 1, 2, 3, 4]
-  &lt;/pre&gt;
-  &lt;h2 id=&#34;3-시그모이드-함수-sigmoid-function&#34;&gt;3. 시그모이드 함수 (Sigmoid Function)&lt;/h2&gt;
-&lt;p&gt;시그모이드 함수는 입력값을 0과 1 사이의 연속적인 값으로 변환하는 함수로, 출력값을 확률로 해석할 수 있어 이진 분류 문제에서 사용된다.&lt;/p&gt;
-&lt;p&gt;함수의 출력이 부드럽게 변하므로 미분이 가능하지만, 큰 입력값에서는 기울기가 0에 가까워지는 &lt;strong&gt;Vanishing Gradient&lt;/strong&gt; 문제가 발생할 수 있어 깊은 신경망에서는 성능이 저하될 수 있다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-f(x) = \frac{1}{1 + e^{-x}}
-$$
-&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
-    title &#34;Sigmoid Function&#34;
-    y-axis 0 --&gt; 1
-    x-axis [-5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
-    line [0.0067, 0.011, 0.018, 0.029, 0.047, 0.076, 0.119, 0.182, 0.269, 0.378, 0.5, 0.622, 0.731, 0.818, 0.881, 0.924, 0.953, 0.971, 0.982, 0.989, 0.993]
-  &lt;/pre&gt;
-  &lt;h2 id=&#34;4-하이퍼볼릭-탄젠트-함수-tanh-function&#34;&gt;4. 하이퍼볼릭 탄젠트 함수 (Tanh Function)&lt;/h2&gt;
-&lt;p&gt;하이퍼볼릭탄젠트 함수는 시그모이드 함수의 확장판으로, 출력 범위가 -1에서 1 사이로 설정되어 있다.&lt;/p&gt;
-&lt;p&gt;이 함수는 평균이 0에 가까워져 학습이 비교적 안정적이며, 시그모이드 함수보다 빠르게 수렴할 수 있다. 그러나 여전히 큰 입력값에서는 기울기가 0에 가까워지는 문제를 완전히 해결하지는 못한다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
-$$
-&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
-    title &#34;Tanh Function&#34;
-    y-axis -1 --&gt; 1
-    x-axis [-5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
-    line [-1, -0.999, -0.999, -0.998, -0.995, -0.986, -0.964, -0.905, -0.761, -0.462, 0, 0.462, 0.761, 0.905, 0.964, 0.986, 0.995, 0.998, 0.999, 0.999, 1]
-  &lt;/pre&gt;
-  &lt;h2 id=&#34;5-relu-함수-rectified-linear-unit&#34;&gt;5. ReLU 함수 (Rectified Linear Unit)&lt;/h2&gt;
-&lt;p&gt;ReLU(Rectified Linear Unit) 함수는 입력값이 0 이하이면 0을 출력하고, 그 이상이면 입력값을 그대로 출력하는 함수이다.&lt;/p&gt;
-&lt;p&gt;간단한 수식과 계산량 덕분에 학습 속도가 빠르고 효율적이지만, 0 이하의 값에서는 기울기가 0이 되어 뉴런이 더 이상 업데이트되지 않는 죽은 뉴런 문제가 발생할 수 있다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-f(x) = \max(0, x)
-$$
-&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
-    title &#34;ReLU Function&#34;
-    y-axis -0.5 --&gt; 3
-    x-axis [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
-    line [0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5]
-  &lt;/pre&gt;
-  &lt;h2 id=&#34;6-leaky-relu-함수&#34;&gt;6. Leaky ReLU 함수&lt;/h2&gt;
-&lt;p&gt;Leaky ReLU 함수는 ReLU 함수의 단점을 개선한 형태로, 입력값이 0 이하일 때도 작은 기울기
-α를 곱한 값을 출력한다. 이로 인해 죽은 뉴런 문제를 완화하며 학습이 계속 이루어질 수 있도록 한다.&lt;/p&gt;
-&lt;p&gt;기울기 α는 보통 0.01과 같은 작은 값으로 설정되며, ReLU의 비선형성과 계산 효율성을 유지한다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-f(x) =
-\begin{cases}
-x &amp; \text{if } x &gt; 0 \\
-\alpha x &amp; \text{if } x \leq 0
-\end{cases}
-$$
-&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
-    title &#34;Leaky ReLU Function (α = 0.1)&#34;
-    y-axis -1 --&gt; 5
-    x-axis [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
-    line [-0.5, -0.4, -0.3, -0.2, -0.1, 0, 1, 2, 3, 4, 5]
-  &lt;/pre&gt;
-  &lt;h2 id=&#34;7-prelu-함수&#34;&gt;7. PReLU 함수&lt;/h2&gt;
-&lt;p&gt;PReLU(Parametric ReLU) 함수는 Leaky ReLU의 확장판으로, 0 이하의 기울기 α를 고정된 값이 아닌 학습 가능한 파라미터로 설정한다.&lt;/p&gt;
-&lt;p&gt;이로 인해 데이터에 따라 기울기를 최적화할 수 있으므로 네트워크의 성능을 더욱 개선할 수 있다. 다만 학습할 파라미터가 늘어나기 때문에 계산 비용이 조금 증가할 수 있다.&lt;/p&gt;
-&lt;h2 id=&#34;8-elu-함수&#34;&gt;8. ELU 함수&lt;/h2&gt;
-&lt;p&gt;ELU(Exponential Linear Unit) 함수는 ReLU와 Leaky ReLU의 단점을 보완한 함수로, 입력값이 0 이하일 때 $ e^x - 1 $ 형태의 부드러운 곡선을 갖는다.&lt;/p&gt;
-&lt;p&gt;ELU는 0 이하의 출력이 음수 값을 가지기 때문에 평균 출력이 0에 가깝게 유지되어 학습을 더 안정적으로 만들며, 죽은 뉴런 문제도 해결할 수 있다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-ELU(x) =
-\begin{cases}
-   x &amp; \text{if } x &gt; 0 \\
-   \alpha (e^x - 1) &amp; \text{else } \text{otherwise}
-\end{cases}
-$$
-&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
-    title &#34;ELU Function (α = 1)&#34;
-    y-axis -3 --&gt; 5
-    x-axis [-4, -3.6, -3.2, -2.8, -2.4, -2, -1.6, -1.2, -0.8, -0.4, 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4]
-    line [-0.9817, -0.9736, -0.9502, -0.9131, -0.8647, -0.7869, -0.6988, -0.6065, -0.4866, -0.3297, 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4]
-  &lt;/pre&gt;
-  &lt;h2 id=&#34;9-소프트맥스-함수-softmax&#34;&gt;9. 소프트맥스 함수 (Softmax)&lt;/h2&gt;
-&lt;p&gt;소프트맥스 함수는 다중 클래스 분류에서 사용되는 함수로, 입력값을 확률 분포로 변환한다. 각 클래스의 출력값에 대해 지수 함수로 변환한 후, 전체 클래스의 지수값 합으로 나눈다.&lt;/p&gt;
-&lt;p&gt;이로 인해 출력값의 합이 항상 1이 되며, 이를 통해 각 클래스에 대한 확률로 해석할 수 있다. 소프트맥스 함수는 주로 신경망의 출력층에서 사용된다.&lt;/p&gt;
-&lt;p&gt;$$
-p_k = \frac{e^{z_k}}{\sum_{i=1}^n e^{z_i}}
-$$&lt;/p&gt;
-</description>
         </item>
         
     </channel>

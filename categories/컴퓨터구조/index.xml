@@ -7,10 +7,10 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Tue, 10 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>플립플롭</title>
         <link>https://gyeongmin.kr/p/flip-flop/</link>
-        <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/p/flip-flop/</guid>
         <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 플립플롭" /&gt;&lt;blockquote&gt;
@@ -119,9 +119,87 @@
 </description>
         </item>
         <item>
+        <title>순차 회로 (Sequential Circuit)</title>
+        <link>https://gyeongmin.kr/p/boolean-algebrad/</link>
+        <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/boolean-algebrad/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 순차 회로 (Sequential Circuit)" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;순차-회로&#34;&gt;순차 회로&lt;/h2&gt;
+&lt;p&gt;순차 회로란, 입력 및 현재 상태에 따라 출력 및 다음 상태가 결정되는 논리회로이다. 결국 현재의 입력과 과거의 출력 상태에 의해 출력값이 결정된다.&lt;/p&gt;
+&lt;p&gt;게이트로만 이루어진 회로는 조합회로이고, 플립플롭과 게이트로 이루어진 회로는 순차 회로이다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image.png&#34;
+	width=&#34;705&#34;
+	height=&#34;259&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image_hue087f1c4af1e3ec344b6922e7de60bbc_35572_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image_hue087f1c4af1e3ec344b6922e7de60bbc_35572_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;클럭 동기형 순차 회로의 블럭도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;272&#34;
+		data-flex-basis=&#34;653px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;동기-순차회로와-비동기-순차회로&#34;&gt;동기 순차회로와 비동기 순차회로&lt;/h2&gt;
+&lt;p&gt;동기 순차회로는 모두 같은 하나의 클럭을 서로 공유하고, 플립플롭들이 같은 시간에 동작한다.&lt;/p&gt;
+&lt;p&gt;비동기 순차회로는 클럭을 서로 공유하지 않고, 플립플롭들이 각자 동작한다.&lt;/p&gt;
+&lt;p&gt;비동기 순차회로는 각자 제어하거나 타이밍 신호를 해석하는 것이 복잡하므로, 컴퓨터 시스템과 같은 디지털 시스템은 대부분이 동기 순차회로이다.&lt;/p&gt;
+&lt;h2 id=&#34;무어-머신과-밀리-머신&#34;&gt;무어 머신과 밀리 머신&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-1.png&#34;
+	width=&#34;544&#34;
+	height=&#34;420&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-1_hu56dca9f896e9006a5ee00bd4504ec564_24207_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image-1_hu56dca9f896e9006a5ee00bd4504ec564_24207_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;무어 머신과 밀리 머신&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;310px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;무어 머신 (Moore Machine)은 출력이 현재 상태에 의해서 만 결정된다. 즉, 플립플롭 출력들(현재 상태들)의 조합에 의해서 만 결정된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\text{출력} = f(\text{상태})$&lt;/li&gt;
+&lt;li&gt;$\text{다음상태} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;밀리 머신 (Mealy Machine)은  출력이 현재 상태와 입력 모두에 의해서 결정된다. 즉, 같은 상태라도 입력에 따라서 달라질 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\text{출력} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
+&lt;li&gt;$\text{다음상태} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;밀리 머신과는 달리, 무어 머신은 상태가 변할 때만 출력이 변하여 더 간단한 구조이다. 무어 머신이 제어하기에 더 간단하며, 대부분의 디지털 시스템은 무어 머신이다.&lt;/p&gt;
+&lt;h2 id=&#34;상태표&#34;&gt;상태표&lt;/h2&gt;
+&lt;p&gt;순차 회로의 특성은 입력, 출력, 플립플롭의 상태로 만들어진다. 출력과 다음 상태는 입력과 현재 상태에 대한 함수인데, 이 사이의 관계를 상태표라고 한다.&lt;/p&gt;
+&lt;p&gt;$m$개의 플립플롭, $n$개의 입력 변수, $p$개의 출력 변수를 가지고 있는 순차 회로는 현상태에 $m$개의 열, 입력에 $n$개의 열, 출력에 $p$개의 행을 갖는 상태표가 된다. 또한 행에는 $2^{m+n}$개의 조합이 나오게 된다. 다음 상태와 출력열은 입력 변수의 함수이고 회로로부터 직접 구해진다.&lt;/p&gt;
+&lt;h2 id=&#34;상태도&#34;&gt;상태도&lt;/h2&gt;
+&lt;p&gt;상태표에 나타난 정보를 그림으로 표시한 것이 상태도이다. 상태는 원으로 표시하고, 상태 사이의 전이는 원 사이를 연결하는 직선으로 표시한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-2.png&#34;
+	width=&#34;615&#34;
+	height=&#34;489&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-2_hua2c703da86596f7241436757bb87a7df_56810_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image-2_hua2c703da86596f7241436757bb87a7df_56810_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;상태도의 예시&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;301px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 그림과 같이 일반적으로 원 안에는 플립플롭의 상태를 적고, 간선에는 입력/출력값을 적는다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>반가산기와 전가산기</title>
         <link>https://gyeongmin.kr/p/half-adder-and-full-adder/</link>
-        <pubDate>Wed, 04 Dec 2024 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/p/half-adder-and-full-adder/</guid>
         <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 반가산기와 전가산기" /&gt;&lt;blockquote&gt;
@@ -198,7 +276,7 @@ $$
         <item>
         <title>카르노 맵과 부울 식의 간소화</title>
         <link>https://gyeongmin.kr/p/karnaugh-map/</link>
-        <pubDate>Tue, 03 Dec 2024 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/p/karnaugh-map/</guid>
         <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 카르노 맵과 부울 식의 간소화" /&gt;&lt;blockquote&gt;
@@ -392,7 +470,7 @@ $$
         <item>
         <title>부울 대수</title>
         <link>https://gyeongmin.kr/p/boolean-algebra/</link>
-        <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/p/boolean-algebra/</guid>
         <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 부울 대수" /&gt;&lt;blockquote&gt;

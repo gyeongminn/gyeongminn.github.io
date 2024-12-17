@@ -7,23 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ko</language>
         <copyright>Gyeongmin Lee</copyright>
-        <lastBuildDate>Tue, 10 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>수학</title>
-        <link>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</link>
-        <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>컴퓨터구조</title>
-        <link>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</link>
-        <pubDate>Tue, 10 Dec 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</guid>
-        <description></description>
-        </item>
-        <item>
+        <lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>딥러닝</title>
         <link>https://gyeongmin.kr/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/</link>
         <pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate>
@@ -48,9 +32,25 @@
         <description></description>
         </item>
         <item>
+        <title>수학</title>
+        <link>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</link>
+        <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>컴퓨터구조</title>
+        <link>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</link>
+        <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Python</title>
         <link>https://gyeongmin.kr/tags/python/</link>
-        <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+        <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/tags/python/</guid>
         <description></description>
