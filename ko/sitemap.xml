@@ -172,6 +172,11 @@
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://gyeongmin.kr/p/activation-functions/</loc>
+    <lastmod>2024-02-09T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://gyeongmin.kr/p/word2vec-2/</loc>
     <lastmod>2024-01-03T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
