@@ -954,117 +954,6 @@ $$&lt;/p&gt;
 &lt;/details&gt;</description>
         </item>
         <item>
-        <title>플립플롭</title>
-        <link>https://gyeongmin.kr/p/flip-flop/</link>
-        <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/p/flip-flop/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 플립플롭" /&gt;&lt;blockquote&gt;
-&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;플립플롭&#34;&gt;플립플롭&lt;/h2&gt;
-&lt;p&gt;플립플롭(flip-flop)은 한 비트의 정보를 저장하는 이진 셀(cell)로서, 정상 출력과 보수화된 출력을 가지고 있다. 플립플롭은 입력 펄스가 상태 변환을 일으키기 전까지 이진 상태를 계속 유지한다. 전기 신호가 지속적으로 공급 되어야만 정보를 유지할 수 있는 휘발성 메모리이다.&lt;/p&gt;
-&lt;p&gt;입력의 수와 입력이 이진 상태에 영향을 미치는 방식에 따라 여러 종류로 분류할 수 있다.&lt;/p&gt;
-&lt;h2 id=&#34;sr-플립플롭&#34;&gt;SR 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image.png&#34;
-	width=&#34;595&#34;
-	height=&#34;179&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;SR 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;332&#34;
-		data-flex-basis=&#34;797px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;$S$(set), $R$(reset), $C$(clock)로 이루어진 세 개의 입력과 하나의 출력 $Q$ 를 가지고 있으며, 경우에 따라 작은 원을 기호로 하는 보수화된 출력을 갖기도 한다. $C$에 있는 화살표는 동적 입력(dynamic input)을 나타내는 것으로, 플립플롭이 입력 클럭 신호의 상승 변이에서 동작함을 의미한다.&lt;/p&gt;
-&lt;p&gt;$S=1, R=0$이면 $Q=1$이 되고, $S=0,R=1$이면 $Q=0$이 된다. $S=R=0$이면 $Q$는 이전 상태를 유지하고, $S=R=1$이면 $Q$값은 랜덤하다.&lt;/p&gt;
-&lt;h2 id=&#34;d-플립플롭&#34;&gt;D 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-1.png&#34;
-	width=&#34;481&#34;
-	height=&#34;164&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;D 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;293&#34;
-		data-flex-basis=&#34;703px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;D(data) 플립플롭은 SR 플립플롭의 S와 R 입력을 인버터로 연결하고 D라는 기호를 붙인 것이다. $D$ 값이 그대로 저장된다.&lt;/p&gt;
-&lt;p&gt;D 플립플롭은 불변조건 $[Q(t+1)=Q(t)]$가 없기 때문에, 불변 조건을 만들기 위해서는 클럭을 끊거나 출력을 입력으로 되돌려 주어야 한다.&lt;/p&gt;
-&lt;h2 id=&#34;jk-플립플롭&#34;&gt;JK 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-2.png&#34;
-	width=&#34;552&#34;
-	height=&#34;164&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;JK 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;336&#34;
-		data-flex-basis=&#34;807px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;SR 플립플롭에서 $S=R=1$ 일 때 $Q$ 값이 랜덤하다는 단점을 보완한 것이 JK 플립플롭이다. $J=K=1$일 때 클럭 펄스는 플립플롭의 출력을 보수로 만든다. 이를 수식으로 표현하면 $Q(t+1)=Q^\prime (t)$ 이다.&lt;/p&gt;
-&lt;h2 id=&#34;t-플립플롭&#34;&gt;T 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-3.png&#34;
-	width=&#34;557&#34;
-	height=&#34;159&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;T 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;350&#34;
-		data-flex-basis=&#34;840px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;T(toggle) 플립플롭은 JK 플립플롭에서 입력 J와 K를 T 하나로 묶은 것이다. $T=0$인 경우 상태의 변화가 없고, $T=0$인 경우 상태는 보수가 된다. 회로도를 보면서 이해하면 편하다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-5.png&#34;
-	width=&#34;1188&#34;
-	height=&#34;792&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;각 플립플롭별 회로도&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;150&#34;
-		data-flex-basis=&#34;360px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;h2 id=&#34;edge-triggered-플립플롭&#34;&gt;Edge-Triggered 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-4.png&#34;
-	width=&#34;619&#34;
-	height=&#34;372&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Edge-Triggered 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;166&#34;
-		data-flex-basis=&#34;399px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;상태 변경을 클럭 펄스의 변이 동안 동기화하는 것을 모서리-변이형 플립플롭이라고 한다. 입력 펄스가 일정한 임계값을 넘어설 때 입력값을 고정시켜 클럭 펄스가 0이 되거나 다음 펄스가 올 때까지 값을 유지한다. 클럭 펄스가 상승할 때 (Positive-edge-triggered) 반응하거나, 하강할 때 (Negative-edge-triggered) 변이한다. 입력 $D$의 변이가 효과를 미치기 위해서는 입력 $D$의 값이 일정하게 유지되어야 하는 최소 시간인 set up time과 클럭 변이 후 $D$의 값이 변화하지 않아야 하는 hold time을 필요로 한다. 전파 지연 시간보다 짧게 클럭 펄스가 High를 유지한다면, Race 현상을 방지할 수 있다.&lt;/p&gt;
-&lt;p&gt;또 다른 형태로, master-slave 플립플롭이 있다. 이것은 클럭이 1일 때 반응하는 master 플립플롭과 클럭이 0일 때 반응하는 slave 플립플롭으로 구성된다. 클럭이 1에서 0으로 변할 때 입력이 출력으로 전달되는 효과를 가져 Race 현상을 방지할 수 있다.&lt;/p&gt;
-</description>
-        </item>
-        <item>
         <title>활성화 함수</title>
         <link>https://gyeongmin.kr/p/activation-functions/</link>
         <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
@@ -4643,12 +4532,12 @@ $$&lt;/p&gt;
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>ABC 300: A, C, D</title>
+        <title>AtCoder ABC 300: A, C, D</title>
         <link>https://gyeongmin.kr/p/abc-300/</link>
         <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/p/abc-300/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/atcoder.png" alt="Featured image of post ABC 300: A, C, D" /&gt;&lt;h2 id=&#34;a---n-choice-question&#34;&gt;A - N-choice question&lt;/h2&gt;
+        <description>&lt;img src="https://gyeongmin.kr/images/atcoder.png" alt="Featured image of post AtCoder ABC 300: A, C, D" /&gt;&lt;h2 id=&#34;a---n-choice-question&#34;&gt;A - N-choice question&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://atcoder.jp/contests/abc300/tasks/abc300_a&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://atcoder.jp/contests/abc300/tasks/abc300_a&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;문제&#34;&gt;문제&lt;/h3&gt;
@@ -5871,16 +5760,16 @@ $d = y - x$&lt;/p&gt;
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>순차 회로 (Sequential Circuit)</title>
+        <title>순차회로 (Sequential Circuit)</title>
         <link>https://gyeongmin.kr/p/boolean-algebrad/</link>
         <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/p/boolean-algebrad/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 순차 회로 (Sequential Circuit)" /&gt;&lt;blockquote&gt;
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 순차회로 (Sequential Circuit)" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;순차-회로&#34;&gt;순차 회로&lt;/h2&gt;
-&lt;p&gt;순차 회로란, 입력 및 현재 상태에 따라 출력 및 다음 상태가 결정되는 논리회로이다. 결국 현재의 입력과 과거의 출력 상태에 의해 출력값이 결정된다.&lt;/p&gt;
+&lt;p&gt;순차 회로 (Sequential Circuit)란, 입력 및 현재 상태에 따라 출력 및 다음 상태가 결정되는 논리회로이다. 결국 현재의 입력과 과거의 출력 상태에 의해 출력값이 결정된다.&lt;/p&gt;
 &lt;p&gt;게이트로만 이루어진 회로는 조합회로이고, 플립플롭과 게이트로 이루어진 회로는 순차 회로이다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image.png&#34;
 	width=&#34;705&#34;
@@ -5896,11 +5785,11 @@ $d = y - x$&lt;/p&gt;
 		data-flex-basis=&#34;653px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h2 id=&#34;동기-순차회로와-비동기-순차회로&#34;&gt;동기 순차회로와 비동기 순차회로&lt;/h2&gt;
+&lt;h3 id=&#34;동기-순차회로와-비동기-순차회로&#34;&gt;동기 순차회로와 비동기 순차회로&lt;/h3&gt;
 &lt;p&gt;동기 순차회로는 모두 같은 하나의 클럭을 서로 공유하고, 플립플롭들이 같은 시간에 동작한다.&lt;/p&gt;
 &lt;p&gt;비동기 순차회로는 클럭을 서로 공유하지 않고, 플립플롭들이 각자 동작한다.&lt;/p&gt;
 &lt;p&gt;비동기 순차회로는 각자 제어하거나 타이밍 신호를 해석하는 것이 복잡하므로, 컴퓨터 시스템과 같은 디지털 시스템은 대부분이 동기 순차회로이다.&lt;/p&gt;
-&lt;h2 id=&#34;무어-머신과-밀리-머신&#34;&gt;무어 머신과 밀리 머신&lt;/h2&gt;
+&lt;h3 id=&#34;무어-머신과-밀리-머신&#34;&gt;무어 머신과 밀리 머신&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-1.png&#34;
 	width=&#34;544&#34;
 	height=&#34;420&#34;
@@ -5926,11 +5815,17 @@ $d = y - x$&lt;/p&gt;
 &lt;li&gt;$\text{다음상태} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;밀리 머신과는 달리, 무어 머신은 상태가 변할 때만 출력이 변하여 더 간단한 구조이다. 무어 머신이 제어하기에 더 간단하며, 대부분의 디지털 시스템은 무어 머신이다.&lt;/p&gt;
-&lt;h2 id=&#34;상태표&#34;&gt;상태표&lt;/h2&gt;
-&lt;p&gt;순차 회로의 특성은 입력, 출력, 플립플롭의 상태로 만들어진다. 출력과 다음 상태는 입력과 현재 상태에 대한 함수인데, 이 사이의 관계를 상태표라고 한다.&lt;/p&gt;
-&lt;p&gt;$m$개의 플립플롭, $n$개의 입력 변수, $p$개의 출력 변수를 가지고 있는 순차 회로는 현상태에 $m$개의 열, 입력에 $n$개의 열, 출력에 $p$개의 행을 갖는 상태표가 된다. 또한 행에는 $2^{m+n}$개의 조합이 나오게 된다. 다음 상태와 출력열은 입력 변수의 함수이고 회로로부터 직접 구해진다.&lt;/p&gt;
-&lt;h2 id=&#34;상태도&#34;&gt;상태도&lt;/h2&gt;
-&lt;p&gt;상태표에 나타난 정보를 그림으로 표시한 것이 상태도이다. 상태는 원으로 표시하고, 상태 사이의 전이는 원 사이를 연결하는 직선으로 표시한다.&lt;/p&gt;
+&lt;h2 id=&#34;순차-회로의-설계&#34;&gt;순차 회로의 설계&lt;/h2&gt;
+&lt;p&gt;순차 회로를 설계할 때는 좌측에서 우측으로, 순차 회로를 분석할 때는 우측에서 좌측 단계로 진행된다.&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;flowchart LR
+    기능정의[기능 정의&lt;br&gt;기능 설명] &lt;--&gt; 상태도[상태도&lt;br&gt;State Diagram]
+    상태도 &lt;--&gt; 상태표[상태표&lt;br&gt;State Table]
+    상태표 &lt;--&gt; 입력논리식[입력 논리식&lt;br&gt;출력 논리식]
+    입력논리식 &lt;--&gt; 논리회로도[논리회로도&lt;br&gt;Logic Diagram]
+  &lt;/pre&gt;
+  &lt;p&gt;순차 회로의 특성은 입력, 출력, 플립플롭의 상태로 만들어진다. 출력과 다음 상태는 입력과 현재 상태에 대한 함수인데, 이 사이의 관계를 상태표라고 한다.&lt;/p&gt;
+&lt;h3 id=&#34;상태도&#34;&gt;상태도&lt;/h3&gt;
+&lt;p&gt;상태는 원으로 표시하고, 상태 사이의 전이는 원 사이를 연결하는 직선으로 표시한다. 일반적으로 원 안에는 플립플롭의 상태를 적고, 간선에는 입력/출력값을 적는다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-2.png&#34;
 	width=&#34;615&#34;
 	height=&#34;489&#34;
@@ -5945,7 +5840,183 @@ $d = y - x$&lt;/p&gt;
 		data-flex-basis=&#34;301px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;위 그림과 같이 일반적으로 원 안에는 플립플롭의 상태를 적고, 간선에는 입력/출력값을 적는다.&lt;/p&gt;
+&lt;h3 id=&#34;상태표&#34;&gt;상태표&lt;/h3&gt;
+&lt;p&gt;$m$개의 플립플롭, $n$개의 입력 변수, $p$개의 출력 변수를 가지고 있는 순차 회로는 현상태에 $m$개의 열, 입력에 $n$개의 열, 출력에 $p$개의 행을 갖는 상태표가 된다. 또한 행에는 $2^{m+n}$개의 조합이 나오게 된다. 다음 상태와 출력열은 입력 변수의 함수이고 회로로부터 직접 구해진다.&lt;/p&gt;
+&lt;p&gt;위 상태도 예시를 상태표로 바꾸면 다음과 같다.&lt;/p&gt;
+&lt;div style=&#34;display: flex; justify-content: center;&#34;&gt;
+  &lt;table style=&#34;width: 50%; border-collapse: collapse; text-align: center;&#34;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th style=&#34;text-align: center;&#34;&gt;현재 상태&lt;/th&gt;
+        &lt;th style=&#34;text-align: center;&#34;&gt;입력&lt;/th&gt;
+        &lt;th style=&#34;text-align: center;&#34;&gt;다음 상태&lt;/th&gt;
+        &lt;th style=&#34;text-align: center;&#34;&gt;출력&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;위와 같이 상태도를 가지고 상태표를 만들 수 있고, 상태표를 가지고 상태도를 만들 수 있다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>플립플롭</title>
+        <link>https://gyeongmin.kr/p/flip-flop/</link>
+        <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/flip-flop/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 플립플롭" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;플립플롭&#34;&gt;플립플롭&lt;/h2&gt;
+&lt;p&gt;플립플롭(flip-flop)은 한 비트의 정보를 저장하는 이진 셀(cell)로서, 정상 출력과 보수화된 출력을 가지고 있다. 플립플롭은 입력 펄스가 상태 변환을 일으키기 전까지 이진 상태를 계속 유지한다. 전기 신호가 지속적으로 공급 되어야만 정보를 유지할 수 있는 휘발성 메모리이다.&lt;/p&gt;
+&lt;p&gt;입력의 수와 입력이 이진 상태에 영향을 미치는 방식에 따라 여러 종류로 분류할 수 있다.&lt;/p&gt;
+&lt;h2 id=&#34;sr-플립플롭&#34;&gt;SR 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image.png&#34;
+	width=&#34;595&#34;
+	height=&#34;179&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;SR 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;332&#34;
+		data-flex-basis=&#34;797px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;$S$(set), $R$(reset), $C$(clock)로 이루어진 세 개의 입력과 하나의 출력 $Q$ 를 가지고 있으며, 경우에 따라 작은 원을 기호로 하는 보수화된 출력을 갖기도 한다. $C$에 있는 화살표는 동적 입력(dynamic input)을 나타내는 것으로, 플립플롭이 입력 클럭 신호의 상승 변이에서 동작함을 의미한다.&lt;/p&gt;
+&lt;p&gt;$S=1, R=0$이면 $Q=1$이 되고, $S=0,R=1$이면 $Q=0$이 된다. $S=R=0$이면 $Q$는 이전 상태를 유지하고, $S=R=1$이면 $Q$값은 랜덤하다.&lt;/p&gt;
+&lt;h2 id=&#34;d-플립플롭&#34;&gt;D 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-1.png&#34;
+	width=&#34;481&#34;
+	height=&#34;164&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;D 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;293&#34;
+		data-flex-basis=&#34;703px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;D(data) 플립플롭은 SR 플립플롭의 S와 R 입력을 인버터로 연결하고 D라는 기호를 붙인 것이다. $D$ 값이 그대로 저장된다.&lt;/p&gt;
+&lt;p&gt;D 플립플롭은 불변조건 $[Q(t+1)=Q(t)]$가 없기 때문에, 불변 조건을 만들기 위해서는 클럭을 끊거나 출력을 입력으로 되돌려 주어야 한다.&lt;/p&gt;
+&lt;h2 id=&#34;jk-플립플롭&#34;&gt;JK 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-2.png&#34;
+	width=&#34;552&#34;
+	height=&#34;164&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;JK 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;336&#34;
+		data-flex-basis=&#34;807px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;SR 플립플롭에서 $S=R=1$ 일 때 $Q$ 값이 랜덤하다는 단점을 보완한 것이 JK 플립플롭이다. $J=K=1$일 때 클럭 펄스는 플립플롭의 출력을 보수로 만든다. 이를 수식으로 표현하면 $Q(t+1)=Q^\prime (t)$ 이다.&lt;/p&gt;
+&lt;h2 id=&#34;t-플립플롭&#34;&gt;T 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-3.png&#34;
+	width=&#34;557&#34;
+	height=&#34;159&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;T 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;350&#34;
+		data-flex-basis=&#34;840px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;T(toggle) 플립플롭은 JK 플립플롭에서 입력 J와 K를 T 하나로 묶은 것이다. $T=0$인 경우 상태의 변화가 없고, $T=0$인 경우 상태는 보수가 된다. 회로도를 보면서 이해하면 편하다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-5.png&#34;
+	width=&#34;1188&#34;
+	height=&#34;792&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;각 플립플롭별 회로도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;edge-triggered-플립플롭&#34;&gt;Edge-Triggered 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-4.png&#34;
+	width=&#34;619&#34;
+	height=&#34;372&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Edge-Triggered 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;399px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;상태 변경을 클럭 펄스의 변이 동안 동기화하는 것을 모서리-변이형 플립플롭이라고 한다. 입력 펄스가 일정한 임계값을 넘어설 때 입력값을 고정시켜 클럭 펄스가 0이 되거나 다음 펄스가 올 때까지 값을 유지한다. 클럭 펄스가 상승할 때 (Positive-edge-triggered) 반응하거나, 하강할 때 (Negative-edge-triggered) 변이한다. 입력 $D$의 변이가 효과를 미치기 위해서는 입력 $D$의 값이 일정하게 유지되어야 하는 최소 시간인 set up time과 클럭 변이 후 $D$의 값이 변화하지 않아야 하는 hold time을 필요로 한다. 전파 지연 시간보다 짧게 클럭 펄스가 High를 유지한다면, Race 현상을 방지할 수 있다.&lt;/p&gt;
+&lt;p&gt;또 다른 형태로, master-slave 플립플롭이 있다. 이것은 클럭이 1일 때 반응하는 master 플립플롭과 클럭이 0일 때 반응하는 slave 플립플롭으로 구성된다. 클럭이 1에서 0으로 변할 때 입력이 출력으로 전달되는 효과를 가져 Race 현상을 방지할 수 있다.&lt;/p&gt;
 </description>
         </item>
         <item>

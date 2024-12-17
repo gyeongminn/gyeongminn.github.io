@@ -32,27 +32,19 @@
         <description></description>
         </item>
         <item>
-        <title>수학</title>
-        <link>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</link>
-        <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>컴퓨터구조</title>
-        <link>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</link>
-        <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>Python</title>
         <link>https://gyeongmin.kr/tags/python/</link>
         <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/tags/python/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>수학</title>
+        <link>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</link>
+        <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/tags/%EC%88%98%ED%95%99/</guid>
         <description></description>
         </item>
         <item>
@@ -64,11 +56,11 @@
         <description></description>
         </item>
         <item>
-        <title>C/C&#43;&#43;</title>
-        <link>https://gyeongmin.kr/tags/c/c&#43;&#43;/</link>
-        <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
+        <title>컴퓨터구조</title>
+        <link>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</link>
+        <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/tags/c/c&#43;&#43;/</guid>
+        <guid>https://gyeongmin.kr/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</guid>
         <description></description>
         </item>
         <item>
@@ -77,6 +69,14 @@
         <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
         
         <guid>https://gyeongmin.kr/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>C/C&#43;&#43;</title>
+        <link>https://gyeongmin.kr/tags/c/c&#43;&#43;/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/tags/c/c&#43;&#43;/</guid>
         <description></description>
         </item>
         
