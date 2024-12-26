@@ -530,12 +530,12 @@ $$&lt;/p&gt;
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>집적회로</title>
-        <link>https://gyeongmin.kr/p/integrated-circuit/</link>
+        <title>집적 회로, 디코더, 인코더</title>
+        <link>https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/</link>
         <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/p/integrated-circuit/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 집적회로" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 집적 회로, 디코더, 인코더" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;집적-회로&#34;&gt;집적 회로&lt;/h2&gt;
@@ -557,10 +557,10 @@ $$&lt;/p&gt;
 &lt;p&gt;TTL은 가장 많이 사용되고 있는 논리군이고, ECL은 고속도가 요구되는 시스템에 사용되며, MOS는 부품의 밀도가 높은 집적 회로에, CMOS는 적은 전력 소비가 요구되는 시스템에 많이 사용된다.&lt;/p&gt;
 &lt;h2 id=&#34;디코더&#34;&gt;디코더&lt;/h2&gt;
 &lt;p&gt;$n$비트의 이진 코드는 서로 다른 $2^n$개의 원소 정보를 나타낼 수 있다. 디코더는 $n$비트로 코딩된 이진 정보를 최대 $2^n$개의 서로 다른 출력으로 바꾸어 주는 조합 회로이다. $n$개의 입력과 $m(m&amp;lt;2^n)$개의 출력을 가지는 디코더를 $n$대 $m$ 라인 디코더 혹은 $n \times m$ 디코더라고 한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image.png&#34;
 	width=&#34;684&#34;
 	height=&#34;747&#34;
-	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;3X8 디코더의 진리표와 회로도&#34;
@@ -572,12 +572,10 @@ $$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;E가 0일때 모든 출력은 항상 0이고, E가 1일때만 정상적으로 동작한다. 각 출력은 다른 일곱 개의 입력 조합에 대해서는 0이고, 오직 하나의 조합에 대해서만 1인 출력값을 가진다. 이것이 입력 이진수에 해당한는 8진수 값이라고 할 수 있다.&lt;/p&gt;
-&lt;h3 id=&#34;nand-게이트-디코더&#34;&gt;NAND 게이트 디코더&lt;/h3&gt;
-&lt;p&gt;보수화된 형태로 출력을 만드는 것이 더 경제적이기 때문에, NAND 게이트로 디코드를 형성하기도 한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-1.png&#34;
 	width=&#34;972&#34;
 	height=&#34;413&#34;
-	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;2X4 NAND 게이트 디코더&#34;
@@ -588,10 +586,11 @@ $$&lt;/p&gt;
 		data-flex-basis=&#34;564px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit/image-2.png&#34;
+&lt;p&gt;보수화된 형태로 출력을 만드는 것이 더 경제적이기 때문에, NAND 게이트로 디코드를 형성하기도 한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-2.png&#34;
 	width=&#34;731&#34;
 	height=&#34;540&#34;
-	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit/image-2_hua1d5171524807b662f78c69edb7a342c_97000_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit/image-2_hua1d5171524807b662f78c69edb7a342c_97000_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-2_hua1d5171524807b662f78c69edb7a342c_97000_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-2_hua1d5171524807b662f78c69edb7a342c_97000_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;두 개의 2X4 디코더로 만든 3X8 디코더&#34;
@@ -602,15 +601,14 @@ $$&lt;/p&gt;
 		data-flex-basis=&#34;324px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;디코더-확장&#34;&gt;디코더 확장&lt;/h3&gt;
 &lt;p&gt;두 개 이상의 디코더를 동일한 인에이블 입력에 연결해 하나의 커다란 디코더를 구성할 수 있다.
 즉 $4 \times 16$ 디코더 네 개로 $16 \times 64$ 디코더를 만들 수 있다.&lt;/p&gt;
-&lt;h3 id=&#34;인코더&#34;&gt;인코더&lt;/h3&gt;
+&lt;h2 id=&#34;인코더&#34;&gt;인코더&lt;/h2&gt;
 &lt;p&gt;인코더는 디코더와 반대되는 동작을 수행하는 디지털 회로로서 $2^n$개 입력값에 대해 $n$개의 이진 코드를 출력한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-3.png&#34;
 	width=&#34;660&#34;
 	height=&#34;264&#34;
-	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;8진 대 이진 인코더에 대한 진리표&#34;
@@ -622,547 +620,12 @@ $$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;이 인코더는 진리표에 따라 세 개의 $\text{OR}$ 게이트들로 구현할 수 있으며, 각 출력에 대한 부울식은 다음과 같다.&lt;/p&gt;
-&lt;p&gt;$$
-A_0 = D_1 + D_3 + D_5 + D_7
-$$&lt;/p&gt;
-&lt;p&gt;$$
-A_1 = D_2 + D_3 + D_6 + D_7
-$$&lt;/p&gt;
-&lt;p&gt;$$
+&lt;div markdown=&#34;1&#34;&gt;
+$$
+A_0 = D_1 + D_3 + D_5 + D_7 \\
+A_1 = D_2 + D_3 + D_6 + D_7 \\
 A_2 = D_4 + D_5 + D_6 + D_7
-$$&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>순차회로 (Sequential Circuit)</title>
-        <link>https://gyeongmin.kr/p/boolean-algebrad/</link>
-        <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/p/boolean-algebrad/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 순차회로 (Sequential Circuit)" /&gt;&lt;blockquote&gt;
-&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;순차-회로&#34;&gt;순차 회로&lt;/h2&gt;
-&lt;p&gt;순차 회로 (Sequential Circuit)란, 입력 및 현재 상태에 따라 출력 및 다음 상태가 결정되는 논리회로이다. 결국 현재의 입력과 과거의 출력 상태에 의해 출력값이 결정된다.&lt;/p&gt;
-&lt;p&gt;게이트로만 이루어진 회로는 조합회로이고, 플립플롭과 게이트로 이루어진 회로는 순차 회로이다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image.png&#34;
-	width=&#34;705&#34;
-	height=&#34;259&#34;
-	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image_hue087f1c4af1e3ec344b6922e7de60bbc_35572_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image_hue087f1c4af1e3ec344b6922e7de60bbc_35572_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;클럭 동기형 순차 회로의 블럭도&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;272&#34;
-		data-flex-basis=&#34;653px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;동기-순차회로와-비동기-순차회로&#34;&gt;동기 순차회로와 비동기 순차회로&lt;/h3&gt;
-&lt;p&gt;동기 순차회로는 모두 같은 하나의 클럭을 서로 공유하고, 플립플롭들이 같은 시간에 동작한다.&lt;/p&gt;
-&lt;p&gt;비동기 순차회로는 클럭을 서로 공유하지 않고, 플립플롭들이 각자 동작한다.&lt;/p&gt;
-&lt;p&gt;비동기 순차회로는 각자 제어하거나 타이밍 신호를 해석하는 것이 복잡하므로, 컴퓨터 시스템과 같은 디지털 시스템은 대부분이 동기 순차회로이다.&lt;/p&gt;
-&lt;h3 id=&#34;무어-머신과-밀리-머신&#34;&gt;무어 머신과 밀리 머신&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-1.png&#34;
-	width=&#34;544&#34;
-	height=&#34;420&#34;
-	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-1_hu56dca9f896e9006a5ee00bd4504ec564_24207_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image-1_hu56dca9f896e9006a5ee00bd4504ec564_24207_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;무어 머신과 밀리 머신&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;129&#34;
-		data-flex-basis=&#34;310px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;무어 머신 (Moore Machine)은 출력이 현재 상태에 의해서 만 결정된다. 즉, 플립플롭 출력들(현재 상태들)의 조합에 의해서 만 결정된다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;$\text{출력} = f(\text{상태})$&lt;/li&gt;
-&lt;li&gt;$\text{다음상태} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;밀리 머신 (Mealy Machine)은  출력이 현재 상태와 입력 모두에 의해서 결정된다. 즉, 같은 상태라도 입력에 따라서 달라질 수 있다.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;$\text{출력} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
-&lt;li&gt;$\text{다음상태} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;밀리 머신과는 달리, 무어 머신은 상태가 변할 때만 출력이 변하여 더 간단한 구조이다. 무어 머신이 제어하기에 더 간단하며, 대부분의 디지털 시스템은 무어 머신이다.&lt;/p&gt;
-&lt;h2 id=&#34;순차-회로의-설계&#34;&gt;순차 회로의 설계&lt;/h2&gt;
-&lt;p&gt;순차 회로를 설계할 때는 좌측에서 우측으로, 순차 회로를 분석할 때는 우측에서 좌측 단계로 진행된다.&lt;/p&gt;
-&lt;pre class=&#34;mermaid&#34;&gt;flowchart LR
-    기능정의[기능 정의&lt;br&gt;기능 설명] &lt;--&gt; 상태도[상태도&lt;br&gt;State Diagram]
-    상태도 &lt;--&gt; 상태표[상태표&lt;br&gt;State Table]
-    상태표 &lt;--&gt; 입력논리식[입력 논리식&lt;br&gt;출력 논리식]
-    입력논리식 &lt;--&gt; 논리회로도[논리회로도&lt;br&gt;Logic Diagram]
-  &lt;/pre&gt;
-  &lt;p&gt;순차 회로의 특성은 입력, 출력, 플립플롭의 상태로 만들어진다. 출력과 다음 상태는 입력과 현재 상태에 대한 함수인데, 이 사이의 관계를 상태표라고 한다.&lt;/p&gt;
-&lt;h3 id=&#34;상태도&#34;&gt;상태도&lt;/h3&gt;
-&lt;p&gt;상태는 원으로 표시하고, 상태 사이의 전이는 원 사이를 연결하는 직선으로 표시한다. 일반적으로 원 안에는 플립플롭의 상태를 적고, 간선에는 입력/출력값을 적는다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-2.png&#34;
-	width=&#34;615&#34;
-	height=&#34;489&#34;
-	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-2_hua2c703da86596f7241436757bb87a7df_56810_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image-2_hua2c703da86596f7241436757bb87a7df_56810_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;상태도의 예시&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;125&#34;
-		data-flex-basis=&#34;301px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;h3 id=&#34;상태표&#34;&gt;상태표&lt;/h3&gt;
-&lt;p&gt;$m$개의 플립플롭, $n$개의 입력 변수, $p$개의 출력 변수를 가지고 있는 순차 회로는 현상태에 $m$개의 열, 입력에 $n$개의 열, 출력에 $p$개의 행을 갖는 상태표가 된다. 또한 행에는 $2^{m+n}$개의 조합이 나오게 된다. 다음 상태와 출력열은 입력 변수의 함수이고 회로로부터 직접 구해진다.&lt;/p&gt;
-&lt;p&gt;위 상태도 예시를 상태표로 바꾸면 다음과 같다.&lt;/p&gt;
-&lt;div style=&#34;display: flex; justify-content: center;&#34;&gt;
-  &lt;table style=&#34;width: 50%; border-collapse: collapse; text-align: center;&#34;&gt;
-    &lt;thead&gt;
-      &lt;tr&gt;
-        &lt;th style=&#34;text-align: center;&#34;&gt;현재 상태&lt;/th&gt;
-        &lt;th style=&#34;text-align: center;&#34;&gt;입력&lt;/th&gt;
-        &lt;th style=&#34;text-align: center;&#34;&gt;다음 상태&lt;/th&gt;
-        &lt;th style=&#34;text-align: center;&#34;&gt;출력&lt;/th&gt;
-      &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-      &lt;tr&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
-&lt;/div&gt;
-&lt;p&gt;위와 같이 상태도를 가지고 상태표를 만들 수 있고, 상태표를 가지고 상태도를 만들 수 있다.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>플립플롭</title>
-        <link>https://gyeongmin.kr/p/flip-flop/</link>
-        <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/p/flip-flop/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 플립플롭" /&gt;&lt;blockquote&gt;
-&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;플립플롭&#34;&gt;플립플롭&lt;/h2&gt;
-&lt;p&gt;플립플롭(flip-flop)은 한 비트의 정보를 저장하는 이진 셀(cell)로서, 정상 출력과 보수화된 출력을 가지고 있다. 플립플롭은 입력 펄스가 상태 변환을 일으키기 전까지 이진 상태를 계속 유지한다. 전기 신호가 지속적으로 공급 되어야만 정보를 유지할 수 있는 휘발성 메모리이다.&lt;/p&gt;
-&lt;p&gt;입력의 수와 입력이 이진 상태에 영향을 미치는 방식에 따라 여러 종류로 분류할 수 있다.&lt;/p&gt;
-&lt;h2 id=&#34;sr-플립플롭&#34;&gt;SR 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image.png&#34;
-	width=&#34;595&#34;
-	height=&#34;179&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;SR 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;332&#34;
-		data-flex-basis=&#34;797px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;$S$(set), $R$(reset), $C$(clock)로 이루어진 세 개의 입력과 하나의 출력 $Q$ 를 가지고 있으며, 경우에 따라 작은 원을 기호로 하는 보수화된 출력을 갖기도 한다. $C$에 있는 화살표는 동적 입력(dynamic input)을 나타내는 것으로, 플립플롭이 입력 클럭 신호의 상승 변이에서 동작함을 의미한다.&lt;/p&gt;
-&lt;p&gt;$S=1, R=0$이면 $Q=1$이 되고, $S=0,R=1$이면 $Q=0$이 된다. $S=R=0$이면 $Q$는 이전 상태를 유지하고, $S=R=1$이면 $Q$값은 랜덤하다.&lt;/p&gt;
-&lt;h2 id=&#34;d-플립플롭&#34;&gt;D 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-1.png&#34;
-	width=&#34;481&#34;
-	height=&#34;164&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;D 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;293&#34;
-		data-flex-basis=&#34;703px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;D(data) 플립플롭은 SR 플립플롭의 S와 R 입력을 인버터로 연결하고 D라는 기호를 붙인 것이다. $D$ 값이 그대로 저장된다.&lt;/p&gt;
-&lt;p&gt;D 플립플롭은 불변조건 $[Q(t+1)=Q(t)]$가 없기 때문에, 불변 조건을 만들기 위해서는 클럭을 끊거나 출력을 입력으로 되돌려 주어야 한다.&lt;/p&gt;
-&lt;h2 id=&#34;jk-플립플롭&#34;&gt;JK 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-2.png&#34;
-	width=&#34;552&#34;
-	height=&#34;164&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;JK 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;336&#34;
-		data-flex-basis=&#34;807px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;SR 플립플롭에서 $S=R=1$ 일 때 $Q$ 값이 랜덤하다는 단점을 보완한 것이 JK 플립플롭이다. $J=K=1$일 때 클럭 펄스는 플립플롭의 출력을 보수로 만든다. 이를 수식으로 표현하면 $Q(t+1)=Q^\prime (t)$ 이다.&lt;/p&gt;
-&lt;h2 id=&#34;t-플립플롭&#34;&gt;T 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-3.png&#34;
-	width=&#34;557&#34;
-	height=&#34;159&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;T 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;350&#34;
-		data-flex-basis=&#34;840px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;T(toggle) 플립플롭은 JK 플립플롭에서 입력 J와 K를 T 하나로 묶은 것이다. $T=0$인 경우 상태의 변화가 없고, $T=0$인 경우 상태는 보수가 된다. 회로도를 보면서 이해하면 편하다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-5.png&#34;
-	width=&#34;1188&#34;
-	height=&#34;792&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;각 플립플롭별 회로도&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;150&#34;
-		data-flex-basis=&#34;360px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;h2 id=&#34;edge-triggered-플립플롭&#34;&gt;Edge-Triggered 플립플롭&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-4.png&#34;
-	width=&#34;619&#34;
-	height=&#34;372&#34;
-	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Edge-Triggered 플립플롭&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;166&#34;
-		data-flex-basis=&#34;399px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;상태 변경을 클럭 펄스의 변이 동안 동기화하는 것을 모서리-변이형 플립플롭이라고 한다. 입력 펄스가 일정한 임계값을 넘어설 때 입력값을 고정시켜 클럭 펄스가 0이 되거나 다음 펄스가 올 때까지 값을 유지한다. 클럭 펄스가 상승할 때 (Positive-edge-triggered) 반응하거나, 하강할 때 (Negative-edge-triggered) 변이한다. 입력 $D$의 변이가 효과를 미치기 위해서는 입력 $D$의 값이 일정하게 유지되어야 하는 최소 시간인 set up time과 클럭 변이 후 $D$의 값이 변화하지 않아야 하는 hold time을 필요로 한다. 전파 지연 시간보다 짧게 클럭 펄스가 High를 유지한다면, Race 현상을 방지할 수 있다.&lt;/p&gt;
-&lt;p&gt;또 다른 형태로, master-slave 플립플롭이 있다. 이것은 클럭이 1일 때 반응하는 master 플립플롭과 클럭이 0일 때 반응하는 slave 플립플롭으로 구성된다. 클럭이 1에서 0으로 변할 때 입력이 출력으로 전달되는 효과를 가져 Race 현상을 방지할 수 있다.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>반가산기와 전가산기</title>
-        <link>https://gyeongmin.kr/p/half-adder-and-full-adder/</link>
-        <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/p/half-adder-and-full-adder/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 반가산기와 전가산기" /&gt;&lt;blockquote&gt;
-&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;조합-회로&#34;&gt;조합 회로&lt;/h2&gt;
-&lt;p&gt;조합 회로는 입력과 출력을 가진 논리 게이트의 집합으로 출력의 값은 0과 1들의 조합의 함수이다. 조합 회로와 상반되는 순차 회로는 게이트와 플립플롭 등이 있다.&lt;/p&gt;
-&lt;p&gt;조합 회로를 설계 절차는 다음과 같다.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;문제가 제시된다.&lt;/li&gt;
-&lt;li&gt;입력과 출력 변수에 문자 기호를 붙인다.&lt;/li&gt;
-&lt;li&gt;입력과 출력 사이의 관계를 정의하는 진리표를 유도한다.&lt;/li&gt;
-&lt;li&gt;각 출력에 대한 간소화된 부울 함수를 얻는다.&lt;/li&gt;
-&lt;li&gt;논리도를 그린다.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;반가산기&#34;&gt;반가산기&lt;/h2&gt;
-&lt;p&gt;반가산기는 비트 두 개를 서로 산술적으로 가산하는 조합 회로이다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image.png&#34;
-	width=&#34;1011&#34;
-	height=&#34;541&#34;
-	srcset=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image_hu3ff95a68c5b0e41d6ab8cc1e1ee58ecf_49337_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/half-adder-and-full-adder/image_hu3ff95a68c5b0e41d6ab8cc1e1ee58ecf_49337_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;반가산기의 회로도와 진리표&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;186&#34;
-		data-flex-basis=&#34;448px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;위 그림에서 C는 Carry(캐리, 자리올림)이고, S는 Sum이다.&lt;/p&gt;
-&lt;p&gt;$A=0, B=1$ 이면 $0+1$ 이므로 $S=1, C=0$이다.&lt;/p&gt;
-&lt;p&gt;$A=1, B=1$ 이면 $1+1$ 이므로 $S=1, C=1$이다.&lt;/p&gt;
-&lt;p&gt;A, B 모두 1일 때만 C가 1이 된다. 따라서 C는 $\text{AND}$ 게이트로 구현할 수 있다.&lt;/p&gt;
-&lt;p&gt;A, B가 서로 다르면 S가 1이 된다. 따라서 S는 $\text{XOR}$ 게이트로 구현할 수 있다.&lt;/p&gt;
-&lt;p&gt;따라서 반가산기의 논리 표현식은 아래와 같다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-\begin{aligned}
-S &amp;= x{^\prime}y+xy{^\prime} = x⊕y \\
-C &amp;= xy
-\end{aligned}
-$$
-&lt;h2 id=&#34;전가산기&#34;&gt;전가산기&lt;/h2&gt;
-&lt;p&gt;전가산기는 비트 두개와 밑의 자리에서 올라오는 캐리까지 고려하여 비트 세 개를 가산하는 조합 회로이다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1.png&#34;
-	width=&#34;987&#34;
-	height=&#34;602&#34;
-	srcset=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu890d852f8f65522d7c96d7e53ebb4d67_56069_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu890d852f8f65522d7c96d7e53ebb4d67_56069_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;전가산기의 회로도와 진리표&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;163&#34;
-		data-flex-basis=&#34;393px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;A, B, X에서 1의 개수가 1개 혹은 3개이면 S가 1이 된다.&lt;/p&gt;
-&lt;p&gt;A, B, X에서 1의 개수가 2개 혹은 3개이면 C가 1이 된다.&lt;/p&gt;
-&lt;p&gt;전가산기의 논리 표현식은 아래와 같다. 전가산기는 반가산기 두 개와 $\text{OR}$ 게이트로 구현할 수 있다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-\begin{aligned}
-S &amp;= x⊕y⊕z \\
-C &amp;= xy+(x⊕y)z
-\end{aligned}
-$$
-&lt;p&gt;전가산기를 4개 이어붙이면 4비트 덧셈기가 되고, 32개를 이어붙이면 32비트 덧셈기가 된다.&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>카르노 맵과 부울 식의 간소화</title>
-        <link>https://gyeongmin.kr/p/karnaugh-map/</link>
-        <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://gyeongmin.kr/p/karnaugh-map/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 카르노 맵과 부울 식의 간소화" /&gt;&lt;blockquote&gt;
-&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;맵과-민텀&#34;&gt;맵과 민텀&lt;/h2&gt;
-&lt;p&gt;논리표현식은 부울 대수를 사용해서 간단히 만들 수 있으나 여러 가지 규칙이 있다. 맵 방법은 karnaugh 맵과 Veitch 다이어그램이 있다.&lt;/p&gt;
-&lt;p&gt;진리표에서 각 변수의 각 조합을 민텀(minterm)이라고 한다. n개의 변수가 있으면 $2^n$개의 민텀이 있다.&lt;/p&gt;
-&lt;table style=&#34;width: 50%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
-    &lt;tr&gt;
-        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;A&lt;/th&gt;
-        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;B&lt;/th&gt;
-        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;C&lt;/th&gt;
-        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;F&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;Truth Table 1&amp;gt;
-&lt;/p&gt;
-&lt;p&gt;위 진리표를 민텀으로 표현하면 아래와 같다.&lt;/p&gt;
-&lt;div markdown=&#34;1&#34;&gt;
-$$
-\begin{aligned}
-    F(x,y,z) &amp;= \sum (1,4,5,6,7) \\
-    &amp;= x{^\prime}y{^\prime}z+xy{^\prime}z{^\prime}+xy{^\prime}z+xyz{^\prime}+xyz
-\end{aligned}
-$$
-&lt;/div&gt;
-&lt;p&gt;맵은 여러 개의 사각형으로 이루어지고, 각 사각형의 구역은 각각의 민텀을 표시한다. 함수가 1이 될 때 해당 구역에 1을 넣고, 0일 땐 0을 넣거나 빈 칸으로 둔다.&lt;/p&gt;
-&lt;p&gt;맵은 두 변수일 땐 $2 \times 2$, 세 변수일 땐 $2 \times 4$, 네 변수일 땐 $4 \times 4$ 크기로 그린다. 그 이상은 맵 방식으로 하면 복잡하여 다른 방법을 사용한다. 아래는 그 예시이다.&lt;/p&gt;
-&lt;style&gt;
-.diagonal {
-  background-image: linear-gradient(
-    to left bottom, 
-    transparent calc(50% - 0.4px), 
-    var(--card-text-color-main), 
-    transparent calc(50% + 0.4px)
-  );
-  background-size: 120% 120%;
-  background-position: center;
-}
-&lt;/style&gt;
-&lt;table style=&#34;width: 50%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center; &#34;&gt;
-        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;B&lt;/div&gt;
-        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;A&lt;/div&gt;
-      &lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;A&lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;B&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/th&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;O&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;X&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;2&lt;/th&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;O&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;X&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;2 변수 맵 예제&amp;gt;
-&lt;table style=&#34;width: 80%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center;&#34;&gt;
-        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;BC&lt;/div&gt;
-        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;A&lt;/div&gt;
-      &lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/th&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/th&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;3 변수 맵 예제&amp;gt;
-&lt;table style=&#34;width: 80%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center;&#34;&gt;
-        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;CD&lt;/div&gt;
-        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;AB&lt;/div&gt;
-      &lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
-      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;4 변수 맵 예제&amp;gt;
-&lt;h2 id=&#34;맵을-이용한-간소화&#34;&gt;맵을 이용한 간소화&lt;/h2&gt;
-&lt;p&gt;카르노 맵을 이용한 간소화는 텍스트로 설명하면 이해하기 어렵다. 그 대신, 카르노 맵을 이용한 간소화를 매우 쉽게 설명한 &amp;lsquo;전기는빠지직(송건웅)&amp;lsquo;님의 유튜브 영상을 첨부한다.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://youtu.be/IsMRUf_3m6U?si=ocTJN__kqXcgR3ko&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://youtu.be/IsMRUf_3m6U?si=ocTJN__kqXcgR3ko&lt;/a&gt;&lt;/p&gt;
-</description>
+$$</description>
         </item>
         <item>
         <title>부울 대수</title>
