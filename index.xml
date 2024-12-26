@@ -5760,6 +5760,106 @@ $d = y - x$&lt;/p&gt;
 &lt;/div&gt;</description>
         </item>
         <item>
+        <title>집적회로</title>
+        <link>https://gyeongmin.kr/p/integrated-circuit/</link>
+        <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/integrated-circuit/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 집적회로" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;집적-회로&#34;&gt;집적 회로&lt;/h2&gt;
+&lt;p&gt;집적 회로(IC)는 디지털 게이트를 구성하는 전자 부품들을 포함하는 실리콘 반도체(chip)이다.
+기술이 발전함에 따라 칩 안에 담을 수 있는 게이트의 개수가 급격히 증가하였고, 집적된 정도에 따라 아래와 같이 소규모, 중규모, 대규모 집적 장치로 분류한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;소규모 집적 장치(SSI)는 10개 이하의 독립적인 게이트가 하나의 칩에 들어가 있고, 게이트의 입출력이 바로 외부 핀으로 연결된다.&lt;/li&gt;
+&lt;li&gt;중규모 집적 장치(MSI)는 10개에서 200개의 게이트가 들어가 있고, 디코더나 가산기, 레지스터와 같은 디지털 장치를 구현한다.&lt;/li&gt;
+&lt;li&gt;대규모 집적 장치(LSI)는 200에서 1000개의 게이트를 집적하고 프로세서나 메모리 칩과 같은 디지털 시스템을 형성한다.&lt;/li&gt;
+&lt;li&gt;초대규모 집적 장치(VLSI)는 수천 개의 게이트를 하나의 칩에 집적하여 대형 메모리나 복잡한 마이크로 컴퓨터 칩을 형성한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;디지털 회로는 구현하는 데 적용된 기술에 따라 디지털 논리군으로 분류된다. 대표적으로 아래와 같은 것들이 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TTL: 트랜지스터-트랜지스터 논리&lt;/li&gt;
+&lt;li&gt;ECL: 에미터-결합 논리&lt;/li&gt;
+&lt;li&gt;MOS: 금속-산화물 반도체&lt;/li&gt;
+&lt;li&gt;CMOS: 상보 금속-산화물 반도체&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TTL은 가장 많이 사용되고 있는 논리군이고, ECL은 고속도가 요구되는 시스템에 사용되며, MOS는 부품의 밀도가 높은 집적 회로에, CMOS는 적은 전력 소비가 요구되는 시스템에 많이 사용된다.&lt;/p&gt;
+&lt;h2 id=&#34;디코더&#34;&gt;디코더&lt;/h2&gt;
+&lt;p&gt;$n$비트의 이진 코드는 서로 다른 $2^n$개의 원소 정보를 나타낼 수 있다. 디코더는 $n$비트로 코딩된 이진 정보를 최대 $2^n$개의 서로 다른 출력으로 바꾸어 주는 조합 회로이다. $n$개의 입력과 $m(m&amp;lt;2^n)$개의 출력을 가지는 디코더를 $n$대 $m$ 라인 디코더 혹은 $n \times m$ 디코더라고 한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit/image.png&#34;
+	width=&#34;684&#34;
+	height=&#34;747&#34;
+	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3X8 디코더의 진리표와 회로도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;91&#34;
+		data-flex-basis=&#34;219px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;E가 0일때 모든 출력은 항상 0이고, E가 1일때만 정상적으로 동작한다. 각 출력은 다른 일곱 개의 입력 조합에 대해서는 0이고, 오직 하나의 조합에 대해서만 1인 출력값을 가진다. 이것이 입력 이진수에 해당한는 8진수 값이라고 할 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;nand-게이트-디코더&#34;&gt;NAND 게이트 디코더&lt;/h3&gt;
+&lt;p&gt;보수화된 형태로 출력을 만드는 것이 더 경제적이기 때문에, NAND 게이트로 디코드를 형성하기도 한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit/image-1.png&#34;
+	width=&#34;972&#34;
+	height=&#34;413&#34;
+	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;2X4 NAND 게이트 디코더&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;564px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit/image-2.png&#34;
+	width=&#34;731&#34;
+	height=&#34;540&#34;
+	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit/image-2_hua1d5171524807b662f78c69edb7a342c_97000_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit/image-2_hua1d5171524807b662f78c69edb7a342c_97000_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;두 개의 2X4 디코더로 만든 3X8 디코더&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;디코더-확장&#34;&gt;디코더 확장&lt;/h3&gt;
+&lt;p&gt;두 개 이상의 디코더를 동일한 인에이블 입력에 연결해 하나의 커다란 디코더를 구성할 수 있다.
+즉 $4 \times 16$ 디코더 네 개로 $16 \times 64$ 디코더를 만들 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;인코더&#34;&gt;인코더&lt;/h3&gt;
+&lt;p&gt;인코더는 디코더와 반대되는 동작을 수행하는 디지털 회로로서 $2^n$개 입력값에 대해 $n$개의 이진 코드를 출력한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit/image-3.png&#34;
+	width=&#34;660&#34;
+	height=&#34;264&#34;
+	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;8진 대 이진 인코더에 대한 진리표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;600px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;이 인코더는 진리표에 따라 세 개의 $\text{OR}$ 게이트들로 구현할 수 있으며, 각 출력에 대한 부울식은 다음과 같다.&lt;/p&gt;
+&lt;p&gt;$$
+A_0 = D_1 + D_3 + D_5 + D_7
+A_1 = D_2 + D_3 + D_6 + D_7
+A_2 = D_4 + D_5 + D_6 + D_7
+$$&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>순차회로 (Sequential Circuit)</title>
         <link>https://gyeongmin.kr/p/boolean-algebrad/</link>
         <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
