@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='카르노 맵을 이용한 맵의 간소화'>
-<title>플립플롭</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다. 집적 회로 집적 회로(IC)는 디지털 게이트를 구성하는 전자 부품'>
+<title>집적 회로, 디코더, 인코더, 멀티플렉서</title>
 
-<link rel='canonical' href='https://gyeongmin.kr/p/flip-flop/'>
+<link rel='canonical' href='https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/'>
 
-<link rel="stylesheet" href="/scss/style.min.2325ab3f1c53340b74d88bd622b7f5bcc047e55d78831b42a905dd43de9993e0.css"><meta property='og:title' content='플립플롭'>
-<meta property='og:description' content='카르노 맵을 이용한 맵의 간소화'>
-<meta property='og:url' content='https://gyeongmin.kr/p/flip-flop/'>
+<link rel="stylesheet" href="/scss/style.min.2325ab3f1c53340b74d88bd622b7f5bcc047e55d78831b42a905dd43de9993e0.css"><meta property='og:title' content='집적 회로, 디코더, 인코더, 멀티플렉서'>
+<meta property='og:description' content='본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다. 집적 회로 집적 회로(IC)는 디지털 게이트를 구성하는 전자 부품'>
+<meta property='og:url' content='https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/'>
 <meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='컴퓨터구조' /><meta property='article:published_time' content='2022-03-10T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-03-10T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongmin.kr/images/computer-system-architecture.png' />
-<meta name="twitter:title" content="플립플롭">
-<meta name="twitter:description" content="카르노 맵을 이용한 맵의 간소화"><meta name="twitter:card" content="summary_large_image">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='수학' /><meta property='article:tag' content='컴퓨터구조' /><meta property='article:published_time' content='2022-04-09T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-04-09T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongmin.kr/images/computer-system-architecture.png' />
+<meta name="twitter:title" content="집적 회로, 디코더, 인코더, 멀티플렉서">
+<meta name="twitter:description" content="본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다. 집적 회로 집적 회로(IC)는 디지털 게이트를 구성하는 전자 부품"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://gyeongmin.kr/images/computer-system-architecture.png' />
     <link rel="shortcut icon" href="/logo.ico/favicon.ico" />
 
@@ -343,12 +343,10 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#플립플롭">플립플롭</a></li>
-    <li><a href="#sr-플립플롭">SR 플립플롭</a></li>
-    <li><a href="#d-플립플롭">D 플립플롭</a></li>
-    <li><a href="#jk-플립플롭">JK 플립플롭</a></li>
-    <li><a href="#t-플립플롭">T 플립플롭</a></li>
-    <li><a href="#edge-triggered-플립플롭">Edge-Triggered 플립플롭</a></li>
+    <li><a href="#집적-회로">집적 회로</a></li>
+    <li><a href="#디코더">디코더</a></li>
+    <li><a href="#인코더">인코더</a></li>
+    <li><a href="#멀티플렉서">멀티플렉서</a></li>
   </ol>
 </nav>
         </div>
@@ -363,9 +361,9 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/flip-flop/">
+            <a href="/p/ic-and-decoder-and-encoder-and-mux/">
                 
-                    <img src="/../images/computer-system-architecture.png" loading="lazy" alt="Featured image of post 플립플롭" />
+                    <img src="/../images/computer-system-architecture.png" loading="lazy" alt="Featured image of post 집적 회로, 디코더, 인코더, 멀티플렉서" />
                 
             </a>
         </div>
@@ -384,13 +382,9 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/flip-flop/">플립플롭</a>
+            <a href="/p/ic-and-decoder-and-encoder-and-mux/">집적 회로, 디코더, 인코더, 멀티플렉서</a>
         </h2>
     
-        
-        <h3 class="article-subtitle">
-            카르노 맵을 이용한 맵의 간소화
-        </h3>
         
     </div>
 
@@ -410,7 +404,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Mar 10, 2022</time>
+                <time class="article-time--published">Apr 09, 2022</time>
             </div>
         
 
@@ -429,106 +423,142 @@ if (!doNotTrack) {
     <blockquote>
 <p>본 포스팅은 &lsquo;Mano의 컴퓨터시스템구조&rsquo; 교재를 참고했습니다.</p>
 </blockquote>
-<h2 id="플립플롭">플립플롭</h2>
-<p>플립플롭(flip-flop)은 한 비트의 정보를 저장하는 이진 셀(cell)로서, 정상 출력과 보수화된 출력을 가지고 있다. 플립플롭은 입력 펄스가 상태 변환을 일으키기 전까지 이진 상태를 계속 유지한다. 전기 신호가 지속적으로 공급 되어야만 정보를 유지할 수 있는 휘발성 메모리이다.</p>
-<p>입력의 수와 입력이 이진 상태에 영향을 미치는 방식에 따라 여러 종류로 분류할 수 있다.</p>
-<h2 id="sr-플립플롭">SR 플립플롭</h2>
-<p><img src="/p/flip-flop/image.png"
-	width="595"
-	height="179"
-	srcset="/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_480x0_resize_box_3.png 480w, /p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_1024x0_resize_box_3.png 1024w"
+<h2 id="집적-회로">집적 회로</h2>
+<p>집적 회로(IC)는 디지털 게이트를 구성하는 전자 부품들을 포함하는 실리콘 반도체(chip)이다.
+기술이 발전함에 따라 칩 안에 담을 수 있는 게이트의 개수가 급격히 증가하였고, 집적된 정도에 따라 아래와 같이 소규모, 중규모, 대규모 집적 장치로 분류한다.</p>
+<ul>
+<li>소규모 집적 장치(SSI)는 10개 이하의 독립적인 게이트가 하나의 칩에 들어가 있고, 게이트의 입출력이 바로 외부 핀으로 연결된다.</li>
+<li>중규모 집적 장치(MSI)는 10개에서 200개의 게이트가 들어가 있고, 디코더나 가산기, 레지스터와 같은 디지털 장치를 구현한다.</li>
+<li>대규모 집적 장치(LSI)는 200에서 1000개의 게이트를 집적하고 프로세서나 메모리 칩과 같은 디지털 시스템을 형성한다.</li>
+<li>초대규모 집적 장치(VLSI)는 수천 개의 게이트를 하나의 칩에 집적하여 대형 메모리나 복잡한 마이크로 컴퓨터 칩을 형성한다.</li>
+</ul>
+<p>디지털 회로는 구현하는 데 적용된 기술에 따라 디지털 논리군으로 분류된다. 대표적으로 아래와 같은 것들이 있다.</p>
+<ul>
+<li>TTL: 트랜지스터-트랜지스터 논리</li>
+<li>ECL: 에미터-결합 논리</li>
+<li>MOS: 금속-산화물 반도체</li>
+<li>CMOS: 상보 금속-산화물 반도체</li>
+</ul>
+<p>TTL은 가장 많이 사용되고 있는 논리군이고, ECL은 고속도가 요구되는 시스템에 사용되며, MOS는 부품의 밀도가 높은 집적 회로에, CMOS는 적은 전력 소비가 요구되는 시스템에 많이 사용된다.</p>
+<h2 id="디코더">디코더</h2>
+<p>$n$비트의 이진 코드는 서로 다른 $2^n$개의 원소 정보를 나타낼 수 있다. 디코더는 $n$비트로 코딩된 이진 정보를 최대 $2^n$개의 서로 다른 출력으로 바꾸어 주는 조합 회로이다. $n$개의 입력과 $m(m&lt;2^n)$개의 출력을 가지는 디코더를 $n$대 $m$ 라인 디코더 혹은 $n \times m$ 디코더라고 한다.</p>
+<p><img src="/p/ic-and-decoder-and-encoder-and-mux/image.png"
+	width="684"
+	height="747"
+	srcset="/p/ic-and-decoder-and-encoder-and-mux/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_480x0_resize_box_3.png 480w, /p/ic-and-decoder-and-encoder-and-mux/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="SR 플립플롭"
+		alt="3X8 디코더의 진리표와 회로도"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="332"
-		data-flex-basis="797px"
+		data-flex-grow="91"
+		data-flex-basis="219px"
 	
 ></p>
-<p>$S$(set), $R$(reset), $C$(clock)로 이루어진 세 개의 입력과 하나의 출력 $Q$ 를 가지고 있으며, 경우에 따라 작은 원을 기호로 하는 보수화된 출력을 갖기도 한다. $C$에 있는 화살표는 동적 입력(dynamic input)을 나타내는 것으로, 플립플롭이 입력 클럭 신호의 상승 변이에서 동작함을 의미한다.</p>
-<p>$S=1, R=0$이면 $Q=1$이 되고, $S=0,R=1$이면 $Q=0$이 된다. $S=R=0$이면 $Q$는 이전 상태를 유지하고, $S=R=1$이면 $Q$값은 랜덤하다.</p>
-<h2 id="d-플립플롭">D 플립플롭</h2>
-<p><img src="/p/flip-flop/image-1.png"
-	width="481"
-	height="164"
-	srcset="/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_480x0_resize_box_3.png 480w, /p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_1024x0_resize_box_3.png 1024w"
+<p>E가 0일때 모든 출력은 항상 0이고, E가 1일때만 정상적으로 동작한다. 각 출력은 다른 일곱 개의 입력 조합에 대해서는 0이고, 오직 하나의 조합에 대해서만 1인 출력값을 가진다. 이것이 입력 이진수에 해당한는 8진수 값이라고 할 수 있다.</p>
+<p><img src="/p/ic-and-decoder-and-encoder-and-mux/image-1.png"
+	width="972"
+	height="413"
+	srcset="/p/ic-and-decoder-and-encoder-and-mux/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_480x0_resize_box_3.png 480w, /p/ic-and-decoder-and-encoder-and-mux/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="D 플립플롭"
+		alt="2X4 NAND 게이트 디코더"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="293"
-		data-flex-basis="703px"
+		data-flex-grow="235"
+		data-flex-basis="564px"
 	
 ></p>
-<p>D(data) 플립플롭은 SR 플립플롭의 S와 R 입력을 인버터로 연결하고 D라는 기호를 붙인 것이다. $D$ 값이 그대로 저장된다.</p>
-<p>D 플립플롭은 불변조건 $[Q(t+1)=Q(t)]$가 없기 때문에, 불변 조건을 만들기 위해서는 클럭을 끊거나 출력을 입력으로 되돌려 주어야 한다.</p>
-<h2 id="jk-플립플롭">JK 플립플롭</h2>
-<p><img src="/p/flip-flop/image-2.png"
-	width="552"
-	height="164"
-	srcset="/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_480x0_resize_box_3.png 480w, /p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_1024x0_resize_box_3.png 1024w"
+<p>보수화된 형태로 출력을 만드는 것이 더 경제적이기 때문에, NAND 게이트로 디코드를 형성하기도 한다.</p>
+<p><img src="/p/ic-and-decoder-and-encoder-and-mux/image-2.png"
+	width="731"
+	height="540"
+	srcset="/p/ic-and-decoder-and-encoder-and-mux/image-2_hua1d5171524807b662f78c69edb7a342c_97000_480x0_resize_box_3.png 480w, /p/ic-and-decoder-and-encoder-and-mux/image-2_hua1d5171524807b662f78c69edb7a342c_97000_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="JK 플립플롭"
+		alt="두 개의 2X4 디코더로 만든 3X8 디코더"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="336"
-		data-flex-basis="807px"
+		data-flex-grow="135"
+		data-flex-basis="324px"
 	
 ></p>
-<p>SR 플립플롭에서 $S=R=1$ 일 때 $Q$ 값이 랜덤하다는 단점을 보완한 것이 JK 플립플롭이다. $J=K=1$일 때 클럭 펄스는 플립플롭의 출력을 보수로 만든다. 이를 수식으로 표현하면 $Q(t+1)=Q^\prime (t)$ 이다.</p>
-<h2 id="t-플립플롭">T 플립플롭</h2>
-<p><img src="/p/flip-flop/image-3.png"
-	width="557"
-	height="159"
-	srcset="/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_480x0_resize_box_3.png 480w, /p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_1024x0_resize_box_3.png 1024w"
+<p>두 개 이상의 디코더를 동일한 인에이블 입력에 연결해 하나의 커다란 디코더를 구성할 수 있다.
+즉 $4 \times 16$ 디코더 네 개로 $16 \times 64$ 디코더를 만들 수 있다.</p>
+<h2 id="인코더">인코더</h2>
+<p>인코더는 디코더와 반대되는 동작을 수행하는 디지털 회로로서 $2^n$개 입력값에 대해 $n$개의 이진 코드를 출력한다.</p>
+<p><img src="/p/ic-and-decoder-and-encoder-and-mux/image-3.png"
+	width="660"
+	height="264"
+	srcset="/p/ic-and-decoder-and-encoder-and-mux/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_480x0_resize_box_3.png 480w, /p/ic-and-decoder-and-encoder-and-mux/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="T 플립플롭"
+		alt="8진 대 이진 인코더에 대한 진리표"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="350"
-		data-flex-basis="840px"
+		data-flex-grow="250"
+		data-flex-basis="600px"
 	
 ></p>
-<p>T(toggle) 플립플롭은 JK 플립플롭에서 입력 J와 K를 T 하나로 묶은 것이다. $T=0$인 경우 상태의 변화가 없고, $T=0$인 경우 상태는 보수가 된다. 회로도를 보면서 이해하면 편하다.</p>
-<p><img src="/p/flip-flop/image-5.png"
-	width="1188"
-	height="792"
-	srcset="/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_480x0_resize_box_3.png 480w, /p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_1024x0_resize_box_3.png 1024w"
+<p>이 인코더는 진리표에 따라 세 개의 $\text{OR}$ 게이트들로 구현할 수 있으며, 각 출력에 대한 부울식은 다음과 같다.</p>
+<div markdown="1">
+$$
+A_0 = D_1 + D_3 + D_5 + D_7 \\
+A_1 = D_2 + D_3 + D_6 + D_7 \\
+A_2 = D_4 + D_5 + D_6 + D_7
+$$
+<h2 id="멀티플렉서">멀티플렉서</h2>
+<p>멀티플렉서는 $n$개의 선택 입력에 따라 $2^n$개의 출력을 하나의 출력에 선택적으로 연결시켜 주는 조합 회로이다.
+멀티플렉서는 흔히 데이터 선택기(data selector)라고도 하며, 줄여서 MUX라고 쓴다.</p>
+<p><img src="/p/ic-and-decoder-and-encoder-and-mux/image1.png"
+	width="920"
+	height="565"
+	srcset="/p/ic-and-decoder-and-encoder-and-mux/image1_hu038882f24ea1dd95b3bea07487f1f548_93413_480x0_resize_box_3.png 480w, /p/ic-and-decoder-and-encoder-and-mux/image1_hu038882f24ea1dd95b3bea07487f1f548_93413_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="각 플립플롭별 회로도"
+		alt="4X1 멀티플렉서"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="150"
-		data-flex-basis="360px"
+		data-flex-grow="162"
+		data-flex-basis="390px"
 	
 ></p>
-<h2 id="edge-triggered-플립플롭">Edge-Triggered 플립플롭</h2>
-<p><img src="/p/flip-flop/image-4.png"
-	width="619"
-	height="372"
-	srcset="/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_480x0_resize_box_3.png 480w, /p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_1024x0_resize_box_3.png 1024w"
+<p>디코더에 $2^n$개의 입력 라인을 더하게 되면 $2^n$대 1 멀티플렉서를 구현할 수 있다. 디코더처럼 멀티플렉서도 동작을 제어하거나 확장을 위해 인에이블 입력을 가질 수 있다.</p>
+<p><img src="/p/ic-and-decoder-and-encoder-and-mux/image1-1.png"
+	width="679"
+	height="384"
+	srcset="/p/ic-and-decoder-and-encoder-and-mux/image1-1_hu2989effcc0d85358fe3d749e80fd3fb7_118765_480x0_resize_box_3.png 480w, /p/ic-and-decoder-and-encoder-and-mux/image1-1_hu2989effcc0d85358fe3d749e80fd3fb7_118765_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="Edge-Triggered 플립플롭"
+		alt="4X1 멀티플렉서에 대한 함수표"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="166"
-		data-flex-basis="399px"
+		data-flex-grow="176"
+		data-flex-basis="424px"
 	
 ></p>
-<p>상태 변경을 클럭 펄스의 변이 동안 동기화하는 것을 모서리-변이형 플립플롭이라고 한다. 입력 펄스가 일정한 임계값을 넘어설 때 입력값을 고정시켜 클럭 펄스가 0이 되거나 다음 펄스가 올 때까지 값을 유지한다. 클럭 펄스가 상승할 때 (Positive-edge-triggered) 반응하거나, 하강할 때 (Negative-edge-triggered) 변이한다. 입력 $D$의 변이가 효과를 미치기 위해서는 입력 $D$의 값이 일정하게 유지되어야 하는 최소 시간인 set up time과 클럭 변이 후 $D$의 값이 변화하지 않아야 하는 hold time을 필요로 한다. 전파 지연 시간보다 짧게 클럭 펄스가 High를 유지한다면, Race 현상을 방지할 수 있다.</p>
-<p>또 다른 형태로, master-slave 플립플롭이 있다. 이것은 클럭이 1일 때 반응하는 master 플립플롭과 클럭이 0일 때 반응하는 slave 플립플롭으로 구성된다. 클럭이 1에서 0으로 변할 때 입력이 출력으로 전달되는 효과를 가져 Race 현상을 방지할 수 있다.</p>
+<p>위 멀티플렉서는 여섯 개의 입력을 가지기 때문에, $2^6=64$줄의 진리표가 필요하다. 하지만 위와 같이 함수표를 이용하면 간단하게 나타낼 수 있다.</p>
+<p><img src="/p/ic-and-decoder-and-encoder-and-mux/image1-2.png"
+	width="869"
+	height="529"
+	srcset="/p/ic-and-decoder-and-encoder-and-mux/image1-2_hu22efaea6e62fac6e30b6d3477db7bbdf_52211_480x0_resize_box_3.png 480w, /p/ic-and-decoder-and-encoder-and-mux/image1-2_hu22efaea6e62fac6e30b6d3477db7bbdf_52211_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Quadruple 2X1 멀티플렉서"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="164"
+		data-flex-basis="394px"
+	
+></p>
+<p>보통 하나의 IC칩에는 여러 개의 멀티플렉서가 포함된다. 이 회로는 함수표와 같이 두 개의 4비트 데이터를 선택적으로 출력해주는 멀티플렉서로 동작한다.</p>
 
 </section>
 
@@ -537,6 +567,8 @@ if (!doNotTrack) {
     <footer class="article-footer">
     
     <section class="article-tags">
+        
+            <a href="/tags/%EC%88%98%ED%95%99/">수학</a>
         
             <a href="/tags/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/">컴퓨터구조</a>
         
@@ -596,6 +628,25 @@ if (!doNotTrack) {
             
                 
 <article class="has-image">
+    <a href="/p/boolean-algebra/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/../images/computer-system-architecture.png" loading="lazy" data-key="boolean-algebra" data-hash="/../images/computer-system-architecture.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">부울 대수</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/register/">
         
         
@@ -608,25 +659,6 @@ if (!doNotTrack) {
 
         <div class="article-details">
             <h2 class="article-title">레지스터</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/ic-and-decoder-and-encoder-and-mux/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/../images/computer-system-architecture.png" loading="lazy" data-key="ic-and-decoder-and-encoder-and-mux" data-hash="/../images/computer-system-architecture.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">집적 회로, 디코더, 인코더, 멀티플렉서</h2>
         </div>
     </a>
 </article>
@@ -653,6 +685,25 @@ if (!doNotTrack) {
             
                 
 <article class="has-image">
+    <a href="/p/flip-flop/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/../images/computer-system-architecture.png" loading="lazy" data-key="flip-flop" data-hash="/../images/computer-system-architecture.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">플립플롭</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/half-adder-and-full-adder/">
         
         
@@ -665,25 +716,6 @@ if (!doNotTrack) {
 
         <div class="article-details">
             <h2 class="article-title">반가산기와 전가산기</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/p/karnaugh-map/">
-        
-        
-            <div class="article-image">
-                
-                    <img src="/../images/computer-system-architecture.png" loading="lazy" data-key="karnaugh-map" data-hash="/../images/computer-system-architecture.png"/>
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">카르노 맵과 부울 식의 간소화</h2>
         </div>
     </a>
 </article>

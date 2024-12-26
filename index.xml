@@ -5760,68 +5760,20 @@ $d = y - x$&lt;/p&gt;
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>멀티플렉서와 레지스터</title>
-        <link>https://gyeongmin.kr/p/multiplexer-and-register/</link>
+        <title>레지스터</title>
+        <link>https://gyeongmin.kr/p/register/</link>
         <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/p/multiplexer-and-register/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 멀티플렉서와 레지스터" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/register/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 레지스터" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;멀티플렉서&#34;&gt;멀티플렉서&lt;/h2&gt;
-&lt;p&gt;멀티플렉서는 $n$개의 선택 입력에 따라 $2^n$개의 출력을 하나의 출력에 선택적으로 연결시켜 주는 조합 회로이다.
-멀티플렉서는 흔히 데이터 선택기(data selector)라고도 하며, 줄여서 MUX라고 쓴다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image.png&#34;
-	width=&#34;920&#34;
-	height=&#34;565&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image_hu038882f24ea1dd95b3bea07487f1f548_93413_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image_hu038882f24ea1dd95b3bea07487f1f548_93413_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;4X1 멀티플렉서&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;162&#34;
-		data-flex-basis=&#34;390px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;디코더에 $2^n$개의 입력 라인을 더하게 되면 $2^n$대 1 멀티플렉서를 구현할 수 있다. 디코더처럼 멀티플렉서도 동작을 제어하거나 확장을 위해 인에이블 입력을 가질 수 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-1.png&#34;
-	width=&#34;679&#34;
-	height=&#34;384&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-1_hu2989effcc0d85358fe3d749e80fd3fb7_118765_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-1_hu2989effcc0d85358fe3d749e80fd3fb7_118765_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;4X1 멀티플렉서에 대한 함수표&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;176&#34;
-		data-flex-basis=&#34;424px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;위 멀티플렉서는 여섯 개의 입력을 가지기 때문에, $2^6=64$줄의 진리표가 필요하다. 하지만 위와 같이 함수표를 이용하면 간단하게 나타낼 수 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-2.png&#34;
-	width=&#34;869&#34;
-	height=&#34;529&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-2_hu22efaea6e62fac6e30b6d3477db7bbdf_52211_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-2_hu22efaea6e62fac6e30b6d3477db7bbdf_52211_1024x0_resize_box_3.png 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Quadruple 2X1 멀티플렉서&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;164&#34;
-		data-flex-basis=&#34;394px&#34;
-	
-&gt;&lt;/p&gt;
-&lt;p&gt;보통 하나의 IC칩에는 여러 개의 멀티플렉서가 포함된다. 이 회로는 함수표와 같이 두 개의 4비트 데이터를 선택적으로 출력해주는 멀티플렉서로 동작한다.&lt;/p&gt;
 &lt;h2 id=&#34;레지스터&#34;&gt;레지스터&lt;/h2&gt;
 &lt;p&gt;$n$비트의 레지스터는 $n$비트의 이진 정보를 저장하기 위한 $n$개의 플립플롭과 데이터 처리를 위한 조합 회로로 구성되어 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-3.png&#34;
 	width=&#34;827&#34;
 	height=&#34;771&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-3_hu013b62c223be7cbb769b9e6f6875b662_85846_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-3_hu013b62c223be7cbb769b9e6f6875b662_85846_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-3_hu013b62c223be7cbb769b9e6f6875b662_85846_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-3_hu013b62c223be7cbb769b9e6f6875b662_85846_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;4비트 레지스터&#34;
@@ -5834,10 +5786,10 @@ $d = y - x$&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;위 레지스터는 아무런 외부 게이트를 가지지 않고 플립플롭으로만 구성된 가장 단순한 형태의 레지스터이다.
 클리어 입력은 그 값이 0이 될 경우, 클럭 동작과 관계 없이 레지스터의 모든 플립플롭 출력을 0으로 만든다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-4.png&#34;
 	width=&#34;970&#34;
 	height=&#34;918&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-4_hu57b1fa2b31a3f17cdfe4ae725228d952_184972_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-4_hu57b1fa2b31a3f17cdfe4ae725228d952_184972_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-4_hu57b1fa2b31a3f17cdfe4ae725228d952_184972_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-4_hu57b1fa2b31a3f17cdfe4ae725228d952_184972_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;병렬 로드를 가진 4비트 레지스터&#34;
@@ -5854,10 +5806,10 @@ $d = y - x$&lt;/p&gt;
 &lt;p&gt;버퍼 게이트는 클럭 발생기로부터의 전력 소모를 줄이는 역할을 한다.&lt;/p&gt;
 &lt;h2 id=&#34;시프트-레지스터&#34;&gt;시프트 레지스터&lt;/h2&gt;
 &lt;p&gt;레지스터에 저장되어 있는 이진 정보를 단방향 혹은 양방향으로 이동시킬 수 있는 것이 시프트 레지스터이다. 시프트 레지스터의 각 플립플롭들은 각각의 입력과 출력이 연쇄적으로 연결되어 있고, 공통의 클럭 펄스가 다음 상태로의 이동을 제어한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-5.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-5.png&#34;
 	width=&#34;858&#34;
 	height=&#34;203&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-5_hu64015c35d4c7ec58687900c18d70aca1_82680_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-5_hu64015c35d4c7ec58687900c18d70aca1_82680_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-5_hu64015c35d4c7ec58687900c18d70aca1_82680_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-5_hu64015c35d4c7ec58687900c18d70aca1_82680_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;4비트 시프트 레지스터&#34;
@@ -5870,10 +5822,10 @@ $d = y - x$&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;위 그림에서 serial input은 시프트 될 경우 가장 왼쪽 플립플롭에 들어갈 값을 결정하며, serial output은 가장 오른쪽 플립플롭의 출력이다.&lt;/p&gt;
 &lt;p&gt;시프트 레지스터에서 원하지 않는 클럭을 제한함으로써 특정 클럭 펄스에만 시프트가 일어나도록 제어할 수 있다. 위 그림에서는 클럭을 AND게이트의 한 입력에 연결하고, 다른 입력에는 제어 신호를 연결함으로써 구현하였다. 또한 D 입력을 제어하는 추가 회로를 이용하여 구현할 수도 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-6.png&#34;
 	width=&#34;835&#34;
 	height=&#34;1075&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-6_hube48a1e274ae620365c7b2b41147ac3a_344378_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-6_hube48a1e274ae620365c7b2b41147ac3a_344378_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-6_hube48a1e274ae620365c7b2b41147ac3a_344378_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-6_hube48a1e274ae620365c7b2b41147ac3a_344378_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;병렬 로드를 가진 4비트 양방향 시프트 레지스터&#34;
@@ -5884,10 +5836,10 @@ $d = y - x$&lt;/p&gt;
 		data-flex-basis=&#34;186px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-7.png&#34;
 	width=&#34;793&#34;
 	height=&#34;268&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-7_hud329363e26be7004051e6195132deab6_93584_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-7_hud329363e26be7004051e6195132deab6_93584_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-7_hud329363e26be7004051e6195132deab6_93584_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-7_hud329363e26be7004051e6195132deab6_93584_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;병렬 로드를 가진 4비트 양방향 시프트 레지스터의 함수표&#34;
@@ -5903,10 +5855,10 @@ $d = y - x$&lt;/p&gt;
 &lt;p&gt;입력 펄스에 따라 미리 정해진 순서대로 상태 변이가 진행되는 레지스터를 카운터라고 한다. 입력 펄스가 클럭 펄스를 사용하거나 외부로부터 얻을 수도 있다. 입력 펄스의 시간 간격은 일정할수도 있고 랜덤할수도 있다.&lt;/p&gt;
 &lt;p&gt;카운터는 어떤 사건의 발생 횟수를 세거나, 동작 순서를 제어하는 타이밍 신호를 만드는 데 사용된다.
 이진수의 순서를 따르는 카운터를 이진 카운터라고 한다. $n$개의 플립플롭을 가진 $n$비트 이진 카운터는 0에서 $(2^n-1)$까지 카운트한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-8.png&#34;
 	width=&#34;907&#34;
 	height=&#34;1125&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-8_hu491bfaff988f4b1bbbf1fd567f9483f7_171592_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-8_hu491bfaff988f4b1bbbf1fd567f9483f7_171592_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-8_hu491bfaff988f4b1bbbf1fd567f9483f7_171592_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-8_hu491bfaff988f4b1bbbf1fd567f9483f7_171592_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;4비트 동기 이진 카운터&#34;
@@ -5918,10 +5870,10 @@ $d = y - x$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;카운터 회로는 보통 보수화 기능을 가지고 있는 T 플립플롭이나 JK 플립플롭을 이용한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-9.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-9.png&#34;
 	width=&#34;764&#34;
 	height=&#34;889&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-9_hube09b85bef2588e7c5a4b030fd6d4e47_216442_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-9_hube09b85bef2588e7c5a4b030fd6d4e47_216442_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-9_hube09b85bef2588e7c5a4b030fd6d4e47_216442_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-9_hube09b85bef2588e7c5a4b030fd6d4e47_216442_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;병렬 로드와 동기 클리어를 가진 4비트 이진 카운터&#34;
@@ -5932,10 +5884,10 @@ $d = y - x$&lt;/p&gt;
 		data-flex-basis=&#34;206px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-10.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-10.png&#34;
 	width=&#34;837&#34;
 	height=&#34;212&#34;
-	srcset=&#34;https://gyeongmin.kr/p/multiplexer-and-register/image-10_huf66103903e9971be669a1d917247df3e_71114_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/multiplexer-and-register/image-10_huf66103903e9971be669a1d917247df3e_71114_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-10_huf66103903e9971be669a1d917247df3e_71114_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-10_huf66103903e9971be669a1d917247df3e_71114_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;병렬 로드와 동기 클리어를 가진 4비트 이진 카운터에 대한 함수표&#34;
@@ -5948,15 +5900,73 @@ $d = y - x$&lt;/p&gt;
 &gt;&lt;/p&gt;
 &lt;p&gt;카운터의 초기값 설정을 위해 병렬 로드 기능을 가진 카운터가 필요하다. 클리어 입력이 1일 대, 모든 플립플롭의 K 입력이 1로 설정되기 때문에 다음 클럭 변이에서 모든 플립플롭 출력이 0으로 클리어된다.&lt;/p&gt;
 &lt;p&gt;클리어 입력과 로드 입력이 모두 0이고, increment 입력이 1일 때, 정상적인 동작을 수행한다.&lt;/p&gt;
+&lt;h2 id=&#34;메모리-장치&#34;&gt;메모리 장치&lt;/h2&gt;
+&lt;p&gt;메모리 장치는 정보의 입출력 기능을 가지고 있는 저장요소들의 집합으로서, 입출력에서 하나의 단위로 취급되는 비트의 그룹인 word로 정보를 저장한다. 즉 메모리 워드는 1과 0의 비트 그룹으로 숫자, 명령어, 문자 등의 이진화된 정보를 저장한다.&lt;/p&gt;
+&lt;p&gt;특히 8비트로 이루어진 비트 그룹을 바이트(byte)라고 하며, 대부분의 컴퓨터 메모리는 8배수 크기의 워드를 채택한다.&lt;/p&gt;
+&lt;p&gt;메모리 내부 구조는 한 워드를 구성하는 비트 수나 전체 워드 수에 의해 규정된다. 메모리의 각 워드는 0에서부터 $2^k-1$까지의 주소를 가지고 있어 주소 입력(k개의 입력 라인)의 값에 따라 특정 워드가 선택된다. 내부의 디코더가 이런 선택 동작을 수행한다. 따라서 컴퓨터의 메모리가 $2^n$개의 워드인 경우에는 $n$비트의 주소가 필요하다. 보통&lt;/p&gt;
+&lt;h3 id=&#34;ram&#34;&gt;RAM&lt;/h3&gt;
+&lt;p&gt;RAM(Random Access Memory)에서는 워드의 물리적인 위치에 관계없이 접근 절차나 접근 시간이 동일하다. 메모리와 외부 세계와의 통신은 데이터 입출력 라인, 주소 라인, 제어 라인을 통해 이루어진다.
+RAM은 데이터 입력을 위한 쓰기 동작과 데이터 출력을 위한 읽기 동작을 제공하며, 제어 신호에 의해 선택된다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image.png&#34;
+	width=&#34;871&#34;
+	height=&#34;688&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image_hubfa941b0dc2b87d5706071ad823cc7cf_107705_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image_hubfa941b0dc2b87d5706071ad823cc7cf_107705_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RAM에 대한 블럭도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 블럭도에 나타난 RAM은 $n$개의 입력과 출력을 가지고 있고, $k$개의 주소 라인으로 메모리 내의 $2^k$개의 워드 중에서 하나를 선택할 수 있다. 두 개의 제어 입력은 데이터의 전송 방향을 지정한다.&lt;/p&gt;
+&lt;p&gt;하나의 새로운 워드가 전송되어 메모리에 저장될 때엔 다음과 같은 과정이 필요하다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;원하는 워드의 이진 주소값을 주소 입력에 넣는다.&lt;/li&gt;
+&lt;li&gt;메모리에 저장될 데이터 비트들을 데이터 입력에 넣는다.&lt;/li&gt;
+&lt;li&gt;쓰기 입력을 활성화한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;메모리에 저장된 한 워드를 꺼내오는 데엔 다음과 같은 과정이 필요하다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;원하는 워드의 이진 주소값을 주소 입력에 넣는다.&lt;/li&gt;
+&lt;li&gt;읽기 입력을 활성화한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;rom&#34;&gt;ROM&lt;/h3&gt;
+&lt;p&gt;읽기전용 메모리(Read-Only Memory, ROM)는 데이터가 한 번 저장되면 하드웨어의 수명이 다할 때까지 내용이 변경되지 않는다. ROM은 쓰기 동작이 허용되지 않으며, 한 번 저장된 데이터는 영구적으로 유지된다.&lt;/p&gt;
+&lt;p&gt;반면, RAM과 같은 다른 메모리는 회로가 동작하는 동안 데이터를 자유롭게 읽고 쓰는 기능이 있지만, 전원이 차단되면 데이터가 사라진다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-1.png&#34;
+	width=&#34;570&#34;
+	height=&#34;708&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-1_hu171a10b1ba41e1b8fd01cb21812d26d9_71065_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-1_hu171a10b1ba41e1b8fd01cb21812d26d9_71065_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ROM에 대한 블럭도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;80&#34;
+		data-flex-basis=&#34;193px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;ROM은 내부에 특정 전자적 구조를 통해 데이터를 저장한다. 데이터를 저장하기 위해 ROM 내부에는 프로그램 가능한 전자적 퓨즈(fuse)가 존재한다. 이러한 퓨즈는 특정 패턴을 형성하며, 이를 통해 전원이 끊어지더라도 데이터가 안정적으로 유지된다. ROM은 저장된 데이터를 직접 읽어내는 방식으로 작동하며, 데이터의 주소를 입력받아 고정된 출력값을 제공한다. 따라서 읽기 제어 입력이 필요하지 않아 구조적으로 간단하면서도 신뢰성이 높은 특징을 가진다.&lt;/p&gt;
+&lt;p&gt;ROM의 저장 방식은 매우 효율적이며, 제어 회로와 디코더의 결합을 통해 작동한다. ROM에 저장된 데이터는 주소 입력값에 따라 즉시 출력값이 결정되기 때문에 빠른 응답 속도를 제공한다. RAM과 달리, ROM은 데이터를 읽는 용도로만 사용되며 추가적인 저장 기능은 필요하지 않다. 이는 ROM이 데이터의 저장뿐 아니라 제어 회로의 설계에도 적합한 이유이다.&lt;/p&gt;
+&lt;p&gt;컴퓨터 시스템에서 ROM은 주로 고정된 프로그램 저장 용도로 사용된다. 이는 운영체제의 초기 부팅 과정이나 하드웨어와의 상호작용을 위한 기초 제어 코드를 포함한다. 또한, ROM은 제어 회로에서 내부 변수의 상태 변화를 기록하거나 변경되지 않는 상수를 저장하는 데 활용된다. 예를 들어, 전자 기기의 기본 동작을 정의하는 펌웨어는 ROM에 저장되어 장치의 동작을 안정적으로 지원한다.&lt;/p&gt;
+&lt;h4 id=&#34;rom의-종류&#34;&gt;ROM의 종류&lt;/h4&gt;
+&lt;p&gt;ROM은 정보 저장 방식에 따라 다양한 종류로 나뉜다. 가장 기본적인 형태는 제조 공정 단계에서 데이터를 미리 프로그래밍하는 고정된 프로그램 ROM(Mask ROM)이다. 이 방식은 고객이 요청한 데이터를 기반으로 제조 과정에서 ROM에 고정 데이터를 삽입한다. 대량 생산 시 경제적 효율성을 제공하지만, 동일한 ROM을 소량 주문할 경우 높은 비용이 발생하는 단점이 있다.&lt;/p&gt;
+&lt;p&gt;프로그래밍 가능한 ROM(PROM)은 초기 상태에서 모든 출력이 1로 설정된 상태에서 시작한다. 사용자는 PROM 프로그래머라는 장비를 이용해 특정 비트를 끊어 데이터를 설정할 수 있다. PROM은 한 번 데이터가 기록되면 수정이 불가능하기 때문에 실험용 데이터 저장에 주로 사용된다.&lt;/p&gt;
+&lt;p&gt;지울 수 있는 PROM(EPROM)은 한 단계 더 진화한 기술이다. EPROM은 자외선 노출을 통해 데이터를 초기 상태로 복구할 수 있으며, 이를 통해 데이터를 재프로그래밍하는 기능을 제공한다. 이 기술은 제한된 수정 가능성을 제공하지만, 여전히 물리적 절차를 요구한다.&lt;/p&gt;
+&lt;p&gt;전기적 소거가 가능한 PROM(EEPROM)은 ROM 기술의 최종 진화 형태로, 전기적 신호를 통해 데이터를 수정하거나 삭제할 수 있다. EEPROM은 높은 유연성을 제공하며, 현대의 컴퓨터와 전자 장치에서 자주 사용된다. 이는 소규모 데이터를 반복적으로 갱신해야 하는 환경에서 매우 유용하다.&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>집적 회로, 디코더, 인코더</title>
-        <link>https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/</link>
+        <title>집적 회로, 디코더, 인코더, 멀티플렉서</title>
+        <link>https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/</link>
         <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/</guid>
-        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 집적 회로, 디코더, 인코더" /&gt;&lt;blockquote&gt;
+        <guid>https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 집적 회로, 디코더, 인코더, 멀티플렉서" /&gt;&lt;blockquote&gt;
 &lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;집적-회로&#34;&gt;집적 회로&lt;/h2&gt;
@@ -5978,10 +5988,10 @@ $d = y - x$&lt;/p&gt;
 &lt;p&gt;TTL은 가장 많이 사용되고 있는 논리군이고, ECL은 고속도가 요구되는 시스템에 사용되며, MOS는 부품의 밀도가 높은 집적 회로에, CMOS는 적은 전력 소비가 요구되는 시스템에 많이 사용된다.&lt;/p&gt;
 &lt;h2 id=&#34;디코더&#34;&gt;디코더&lt;/h2&gt;
 &lt;p&gt;$n$비트의 이진 코드는 서로 다른 $2^n$개의 원소 정보를 나타낼 수 있다. 디코더는 $n$비트로 코딩된 이진 정보를 최대 $2^n$개의 서로 다른 출력으로 바꾸어 주는 조합 회로이다. $n$개의 입력과 $m(m&amp;lt;2^n)$개의 출력을 가지는 디코더를 $n$대 $m$ 라인 디코더 혹은 $n \times m$ 디코더라고 한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image.png&#34;
 	width=&#34;684&#34;
 	height=&#34;747&#34;
-	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;3X8 디코더의 진리표와 회로도&#34;
@@ -5993,10 +6003,10 @@ $d = y - x$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;E가 0일때 모든 출력은 항상 0이고, E가 1일때만 정상적으로 동작한다. 각 출력은 다른 일곱 개의 입력 조합에 대해서는 0이고, 오직 하나의 조합에 대해서만 1인 출력값을 가진다. 이것이 입력 이진수에 해당한는 8진수 값이라고 할 수 있다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-1.png&#34;
 	width=&#34;972&#34;
 	height=&#34;413&#34;
-	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;2X4 NAND 게이트 디코더&#34;
@@ -6008,10 +6018,10 @@ $d = y - x$&lt;/p&gt;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;보수화된 형태로 출력을 만드는 것이 더 경제적이기 때문에, NAND 게이트로 디코드를 형성하기도 한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-2.png&#34;
 	width=&#34;731&#34;
 	height=&#34;540&#34;
-	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-2_hua1d5171524807b662f78c69edb7a342c_97000_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-2_hua1d5171524807b662f78c69edb7a342c_97000_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-2_hua1d5171524807b662f78c69edb7a342c_97000_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-2_hua1d5171524807b662f78c69edb7a342c_97000_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;두 개의 2X4 디코더로 만든 3X8 디코더&#34;
@@ -6026,10 +6036,10 @@ $d = y - x$&lt;/p&gt;
 즉 $4 \times 16$ 디코더 네 개로 $16 \times 64$ 디코더를 만들 수 있다.&lt;/p&gt;
 &lt;h2 id=&#34;인코더&#34;&gt;인코더&lt;/h2&gt;
 &lt;p&gt;인코더는 디코더와 반대되는 동작을 수행하는 디지털 회로로서 $2^n$개 입력값에 대해 $n$개의 이진 코드를 출력한다.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-3.png&#34;
 	width=&#34;660&#34;
 	height=&#34;264&#34;
-	srcset=&#34;https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/integrated-circuit-and-decoder-and-encoder/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;8진 대 이진 인코더에 대한 진리표&#34;
@@ -6046,7 +6056,56 @@ $$
 A_0 = D_1 + D_3 + D_5 + D_7 \\
 A_1 = D_2 + D_3 + D_6 + D_7 \\
 A_2 = D_4 + D_5 + D_6 + D_7
-$$</description>
+$$
+&lt;h2 id=&#34;멀티플렉서&#34;&gt;멀티플렉서&lt;/h2&gt;
+&lt;p&gt;멀티플렉서는 $n$개의 선택 입력에 따라 $2^n$개의 출력을 하나의 출력에 선택적으로 연결시켜 주는 조합 회로이다.
+멀티플렉서는 흔히 데이터 선택기(data selector)라고도 하며, 줄여서 MUX라고 쓴다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1.png&#34;
+	width=&#34;920&#34;
+	height=&#34;565&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1_hu038882f24ea1dd95b3bea07487f1f548_93413_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1_hu038882f24ea1dd95b3bea07487f1f548_93413_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;4X1 멀티플렉서&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;390px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;디코더에 $2^n$개의 입력 라인을 더하게 되면 $2^n$대 1 멀티플렉서를 구현할 수 있다. 디코더처럼 멀티플렉서도 동작을 제어하거나 확장을 위해 인에이블 입력을 가질 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-1.png&#34;
+	width=&#34;679&#34;
+	height=&#34;384&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-1_hu2989effcc0d85358fe3d749e80fd3fb7_118765_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-1_hu2989effcc0d85358fe3d749e80fd3fb7_118765_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;4X1 멀티플렉서에 대한 함수표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;424px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 멀티플렉서는 여섯 개의 입력을 가지기 때문에, $2^6=64$줄의 진리표가 필요하다. 하지만 위와 같이 함수표를 이용하면 간단하게 나타낼 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-2.png&#34;
+	width=&#34;869&#34;
+	height=&#34;529&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-2_hu22efaea6e62fac6e30b6d3477db7bbdf_52211_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-2_hu22efaea6e62fac6e30b6d3477db7bbdf_52211_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Quadruple 2X1 멀티플렉서&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;394px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;보통 하나의 IC칩에는 여러 개의 멀티플렉서가 포함된다. 이 회로는 함수표와 같이 두 개의 4비트 데이터를 선택적으로 출력해주는 멀티플렉서로 동작한다.&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>순차 회로</title>
