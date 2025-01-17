@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C/C++ on Gyeongmin's Dev Blog</title><link>https://gyeongmin.kr/en/tags/c/c++/</link><description>Recent content in C/C++ on Gyeongmin's Dev Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>Gyeongmin Lee</copyright><atom:link href="https://gyeongmin.kr/en/tags/c/c++/index.xml" rel="self" type="application/rss+xml"/><item><title>Rhythm Game in C Language</title><link>https://gyeongmin.kr/en/p/rhythm-game-in-c/</link><pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/en/p/rhythm-game-in-c/</guid><description>&lt;img src="https://gyeongmin.kr/en/p/rhythm-game-in-c/image.png" alt="Featured image of post Rhythm Game in C Language" />&lt;h1 id="rhythm-game-in-c-language">Rhythm Game in C Language&lt;/h1>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/flk778sG75g"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;hr>
+&lt;h1 id="introduction">Introduction&lt;/h1>
+&lt;p>While creating the rhythm game itself didn&amp;rsquo;t take too long, I remember struggling to sync everything properly.&lt;/p>
+&lt;hr>
+&lt;h1 id="how-to-play">How to Play&lt;/h1>
+&lt;p>Use the keys D, F, J, and K to input notes.&lt;/p>
+&lt;p>If you input the notes accurately, you&amp;rsquo;ll receive an &amp;ldquo;Excellent&amp;rdquo; judgment. If you input them a bit slowly, you&amp;rsquo;ll get a &amp;ldquo;Good&amp;rdquo; judgment.&lt;/p>
+&lt;p>Inputting notes continuously will stack combos.&lt;/p>
+&lt;p>Your score accumulates based on your combos and judgments. The score calculation formula is as follows:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="n">score&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">combo&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="mi">10&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="mi">50&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In the settings menu, you can enable or disable two options:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Turning on &amp;ldquo;Note Recording Mode&amp;rdquo; activates the editor mode. The song will play, but notes won&amp;rsquo;t descend. Instead, when you input notes to match the song, they get saved in the &amp;rsquo;note.txt&amp;rsquo; file.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Enabling &amp;ldquo;Debugging Mode&amp;rdquo; activates debugging. You can check the screen refresh delay.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h1 id="explanation">Explanation&lt;/h1>
+&lt;ul>
+&lt;li>
+&lt;p>The simple text animation at the beginning is implemented using a for loop. I stored the text in a two-dimensional char array and repeated the process of printing and erasing one line at a time.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>When you choose a song, the notes are received from the text file where they&amp;rsquo;re stored as a char array buffer. 0 indicates no note, and 1 indicates a note.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The songs are played using the &lt;code>PlaySound&lt;/code> function.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The notes change the text color and are implemented to appear like rhythm game notes by outputting spaces. The &lt;code>SetConsoleTextAttribute&lt;/code> function is used to change the text&amp;rsquo;s color.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The delay for each screen is adjusted according to the song&amp;rsquo;s BPM. To ensure that notes are displayed quickly, there&amp;rsquo;s inevitably some deviation in the delay. I measured time at the beginning and end of the loop and adjusted the delay uniformly.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Double buffering is applied, where only the part where the front buffer and back buffer switch is cleared with spaces before outputting.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Key input is received using the &lt;code>GetAsyncKeyState&lt;/code> function. For multithreading, the &lt;code>_beginthreadex&lt;/code> function is used, allowing multiple keys to be input simultaneously.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>When a note enters the judgment line, it distinguishes note input judgments by comparing the screen buffer and key input status. It also differentiates between long notes and short notes by comparing the front and back buffer states. If you press the note correctly, it&amp;rsquo;s &amp;ldquo;Excellent&amp;rdquo;; if you press it quickly, it&amp;rsquo;s &amp;ldquo;Good&amp;rdquo;; if you miss it, it&amp;rsquo;s &amp;ldquo;Miss.&amp;rdquo; The &lt;code>key_state&lt;/code> variable is created to prevent repeatedly holding down keys to gain points.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>The game keeps track of Excellent, Good, and Miss judgments during gameplay. Based on the ratio of these judgments, it assigns a rank. When the game ends, it displays the judgments and draws a graph to show your performance visually.&lt;/p>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>

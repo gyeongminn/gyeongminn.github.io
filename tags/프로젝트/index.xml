@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>프로젝트 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link><description>Recent content in 프로젝트 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Wed, 15 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>C언어로 만드는 리듬게임</title><link>https://gyeongmin.kr/p/rhythm-game-in-c/</link><pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/rhythm-game-in-c/</guid><description>&lt;img src="https://gyeongmin.kr/p/rhythm-game-in-c/image.png" alt="Featured image of post C언어로 만드는 리듬게임" />&lt;h1 id="c언어로-만드는-리듬게임">C언어로 만드는 리듬게임&lt;/h1>
+&lt;blockquote>
+&lt;p>1학년 텀프로젝트 과제로 만들었던 리듬게임입니다.&lt;/p>
+&lt;/blockquote>
+&lt;p>리듬게임 자체를 만드는건 오래 걸리지 않았던 것 같은데, 노트들의 싱크를 맞춘다고 정말 고생했던 기억이 납니다.&lt;/p>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/flk778sG75g"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="사용법">사용법&lt;/h2>
+&lt;p>D, F, J, K 키를 사용하여 노트를 입력합니다.&lt;/p>
+&lt;p>정확하게 노트를 입력하면 Excellent, 조금 느리게 입력하면 Good 판정이 됩니다.&lt;/p>
+&lt;p>연속으로 노트를 입력하게 되면 콤보가 쌓입니다.&lt;/p>
+&lt;p>콤보와 판정을 통해 점수가 쌓입니다. 점수 계산 식은 다음과 같습니다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="n">score&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">combo&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="mi">10&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="mi">50&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>설정 메뉴에서 두가지 옵션을 켜고 끌 수 있습니다.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&amp;lsquo;노트 찍기 모드&amp;rsquo;를 켜면 에디터 모드가 활성화 됩니다.
+노래는 나오지만 노트는 내려오지 않습니다. 이 때, 노래에 맞춰 키보드를 입력하면 노트가 &amp;rsquo;note.txt&amp;rsquo; 파일에 저장되게 됩니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&amp;lsquo;디버깅 모드&amp;rsquo;를 켜면 디버깅 모드가 활성화 됩니다.
+화면이 새로고침 되는 딜레이를 확인할 수 있습니다.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="설명">설명&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>시작 부분의 간단한 텍스트 애니메이션은 for문을 통해 구현하였습니다.
+이차원 char 배열로 텍스트를 저장해둔 뒤, 한 줄씩 출력/지우기를 반복하는 방식입니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>노래를 선택하게 되면 노트가 저장된 텍스트 파일에서 char 배열로 버퍼를 받습니다.
+0이면 노트가 없는 것이고, 1이면 노트가 있는 것으로 판단합니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>노래는 &lt;code>PlaySound&lt;/code> 함수를 사용하여 재생하였습니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>노트는 텍스트 색상을 바꾼 뒤, 공백을 출력하여 리듬게임의 노트인 것처럼 구현하였습니다.
+&lt;code>SetConsoleTextAttribute&lt;/code> 함수를 통해 텍스트의 색상을 바꾸어 주었습니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>한 화면의 딜레이는 노래의 BPM에 맞춰주었습니다.
+노트가 빠르게 출력되어야 하기에 필연적으로 딜레이에 편차가 생기게 됩니다.
+반복문의 시작과 끝에 시간을 측정하여, 딜레이를 균일하게 보정해 주었습니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>더블 버퍼링을 응용하여 프론트 버퍼와 백 버퍼가 바뀌는 부분만 공백으로 지운 후, 출력하는 방식으로 구현하였습니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>키 입력을 받는 것은 &lt;code>GetAsyncKeyState&lt;/code> 함수를 사용하였습니다.
+멀티 쓰레드를 위해 &lt;code>_beginthreadex&lt;/code> 함수를 사용하였습니다. 여러 키를 동시에 입력받을 수 있게 해 줍니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>판정선에 노트가 들어왔을 때, 화면 버퍼와 키 입력 상태를 비교하여 노트 입력 판정을 구분합니다.
+프론트 버퍼와 백 버퍼의 상태를 비교하여 롱 노트와 숏 노트를 구분합니다.
+노트를 정확하게 눌렀다면 Excellent, 빠르게 눌렀다면 Good, 놓쳤다면 Miss로 구분합니다.
+&lt;code>key_state&lt;/code> 변수를 만들어 키를 꾹 눌러 점수를 얻는 것을 방지하였습니다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>게임 중 Excellent, Good, Miss 판정을 기록합니다.
+기록된 판정의 비율에 따라 랭크가 부여됩니다.
+게임이 끝나게 되면 판정들을 보여주고, 비율에 따라 그래프를 그려 성취도를 직관적으로 보여줍니다.&lt;/p>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>

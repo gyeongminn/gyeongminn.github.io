@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>논문리뷰 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/</link><description>Recent content in 논문리뷰 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Sat, 27 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>[논문리뷰] Visual Attention and Background Subtraction With Adaptive Weight for Hyperspectral Anomaly Detection</title><link>https://gyeongmin.kr/p/paper-review-visual-attention-ad/</link><pubDate>Sat, 27 Jul 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/paper-review-visual-attention-ad/</guid><description>&lt;img src="https://gyeongmin.kr/images/paper-review.png" alt="Featured image of post [논문리뷰] Visual Attention and Background Subtraction With Adaptive Weight for Hyperspectral Anomaly Detection" />&lt;h1 id="visual-attention-and-background-subtraction-with-adaptive-weight-for-hyperspectral-anomaly-detection">Visual Attention and Background Subtraction With Adaptive Weight for Hyperspectral Anomaly Detection&lt;/h1>
+&lt;blockquote>
+&lt;p>&lt;a class="link" href="https://ieeexplore.ieee.org/document/9329032" target="_blank" rel="noopener"
+>논문 링크&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="abstract">Abstract&lt;/h2>
+&lt;p>하이퍼스펙트럴 타겟 탐지에서 이상 탐지(AD)는 지상 물체 스펙트럼에 대한 사전 지식이 필요하지 않기 때문에 특히 중요하다. 그러나 하이퍼스펙트럴 이상 탐지에서는 하이퍼스펙트럴 이미지(HSI)의 중요한 특징을 활용하고 노이즈의 영향을 줄이는 것이 어려워 탐지 성능이 크게 제한된다. 본 논문에서는 시각적 주의 모델과 적응 가중치를 사용한 배경 제거를 통해 하이퍼스펙트럴 이상 탐지를 구현하는 전략을 제안한다. 밴드 선택 방법을 통해 가장 판별력이 높은 밴드를 선택하여 이후 처리의 입력 이미지로 사용한다. 그런 다음, 하이퍼스펙트럴 이상 탐지에 하이퍼스펙트럴 시각적 주의 모델을 최초로 도입하여 입력 이미지의 중요한 특징 맵을 추출한다. 더 나아가, 곡률 필터를 통해 중요한 특징 맵에서 배경과 노이즈를 줄일 수 있는 배경 제거 과정을 개발하여 초기 이상 영역 맵을 얻는다. 마지막으로, 스펙트럼 정보를 결합하여 적응 가중치 맵을 초기 이상 영역 맵에 적용하여 배경을 더욱 억제한다. 실험에서는 제안된 방법을 합성 및 실제 HSI에서의 최신 7가지 방법과 비교하였다. 가장 중요한 점은 실험 결과 제안된 방법이 효과적이며 대체 방법보다 더 나은 성능을 보인다는 것이다. 우리는 이 방법이 하이퍼스펙트럴 이상 탐지에 시각적 처리 방법의 새로운 길을 열 수 있을 것이라고 믿는다.&lt;/p>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>이 논문은 3차원 Hyperspectral Image(HSI)를 활용한 anomaly detection(AD) 방법에 대해 설명하고 있다. HSI는 공간적 및 spectral 정보를 포함하고 있어 다양한 분야에서 널리 사용된다. 이 논문에서는 주로 unsupervised anomaly detection 방법을 다루고 있으며, 특히 Reed-Xiaoli (RX) 방법의 한계와 이를 개선하기 위한 여러 변형 기법을 논의하고 있다. RX 방법은 global 정보를 사용하기 때문에 anomaly와 noise에 취약하다는 문제가 있다.&lt;/p>
+&lt;p>이를 해결하기 위해, 지역적 정보, sparse representation, low-rank matrix decomposition 등을 활용한 다양한 방법들이 제안되었다. 이러한 방법들은 noise와 anomaly의 영향을 줄이고, detection의 정확도를 높이기 위해 고안되었다.&lt;/p>
+&lt;p>이 논문에서는 인간의 시각적 모델을 기반으로 한 새로운 HSI anomaly detection 방법을 제안하고 있다. 이 방법은 visual attention mechanism과 background subtraction을 결합하여 anomaly detection을 수행한다. 이 과정에서 선택된 spectral bands에 대해 visual attention mechanism을 적용하여 salient feature map을 추출하고, background subtraction과 adaptive weight map을 통해 최종 anomaly detection 결과를 도출한다.&lt;/p>
+&lt;p>이 논문은 기존 방법들보다 뛰어난 성능을 보여주며, 특히 Visual Attention Mechanism(HVAM)을 anomaly detection에 도입하여 그 효과를 입증하고 있다. 주요 기여로는 HVAM의 도입, curvature filter를 이용한 background subtraction 방법, 그리고 spectral 정보를 활용한 adaptive weight의 적용이 있다.&lt;/p>
+&lt;h2 id="proposed-method">Proposed Method&lt;/h2>
+&lt;p>이 논문에서는 Hyperspectral Image(HSI)에서 anomaly detection(AD)을 위한 새로운 방법을 제안하고 있다. 이 방법은 Visual Attention Model(VAM)과 Background Subtraction을 결합하고, Adaptive Weight을 사용하는 접근법을 채택하고 있다.&lt;/p>
+&lt;p>차원 축소: Optimal Clustering Framework(OCF) band selection 방법을 사용하여 HSI의 차원을 축소하고, 가장 대표적인 밴드를 후속 처리의 입력 이미지로 사용한다.&lt;/p>
+&lt;p>Salient Feature Map 추출: HSI에서 anomaly target 영역을 포함하는 salient feature map을 추출하기 위해 HVAM(Hyperspectral Visual Attention Model)을 처음으로 도입하였다.&lt;/p>
+&lt;p>Background Subtraction: TVCF(Total Variation Curvature Filter)를 이용하여 Salient Feature Map에서 초기 anomaly 영역 지도를 추출하고, 동시에 background와 noise를 억제한다.&lt;/p>
+&lt;p>Adaptive Weight Map: 원래 HSI의 spectral angular distance를 활용하여 adaptive weight map을 계산한 후, 이를 초기 anomaly 영역 지도와 결합하여 최종 anomaly detection 결과를 도출한다.&lt;/p>
+&lt;p>이 방법은 기존의 여러 첨단 방법들과 비교했을 때 뛰어난 성능을 보였으며, 특히 background 억제와 noise 제거에 효과적이다.&lt;/p>
+&lt;h2 id="experiments-results">Experiments Results&lt;/h2>
+&lt;p>이 논문에서는 제안된 Visual Attention and Background Subtraction with Adaptive Weight (VABS) 방법의 성능을 검증하기 위해 다양한 실험을 수행하였다. 실험에는 합성 데이터셋과 두 개의 실제 Hyperspectral Image(HSI) 데이터셋이 사용되었으며, 제안된 방법을 기존의 7가지 최신 anomaly detection(AD) 방법과 비교하였다.&lt;/p>
+&lt;p>합성 데이터셋: RX, LRX, CBAD 등의 방법은 타겟 탐지에 실패하거나 일부만 탐지했다. 반면에 VABS 방법은 배경을 억제하고 타겟을 성공적으로 탐지했다. 제안된 방법은 다른 방법들보다 높은 ROC 곡선과 최대 AUC 값을 기록하며 우수한 성능을 보였다.&lt;/p>
+&lt;p>San Diego 데이터셋: 두 개의 실험 장면에서 VABS 방법은 배경을 잘 억제하고 타겟을 성공적으로 분리했다. 특히, San Diego scene-1과 San Diego scene-2에서 AUC 값이 다른 방법들보다 높았다.&lt;/p>
+&lt;p>Airport 데이터셋: RX와 CBAD 방법은 타겟을 명확히 탐지하지 못했으며, 다른 방법들은 배경에 영향을 받았다. 반면에 VABS 방법은 타겟을 더 명확히 탐지하였으며, 다른 방법들보다 높은 AUC 값을 기록했다.&lt;/p>
+&lt;p>또한, VABS 방법은 Gaussian noise, salt and pepper noise, 그리고 Poisson noise와 같은 노이즈 억제 능력을 검증하기 위해 추가 실험을 수행했으며, 노이즈 추가 후에도 여전히 만족스러운 탐지 성능을 보였다. 마지막으로, initial anomaly area map과 weight map의 결합을 통해 최종 탐지 결과의 성능이 향상됨을 확인하였다.&lt;/p>
+&lt;p>이 결과들은 제안된 VABS 방법이 기존 방법들에 비해 우수한 성능을 보임을 입증하며, 특히 배경 억제와 노이즈 억제 측면에서 뛰어난 성능을 나타낸다.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>이 논문에서는 새로운 hyperspectral anomaly detection(AD) 방법을 제안하고 있다. 제안된 방법은 OCF band selection을 통해 차원 축소를 수행하고, HVAM을 도입해 anomaly 영역을 포함한 salient feature map을 추출한다. 이후 TVCF를 활용한 background subtraction을 통해 초기 anomaly 영역을 식별하고, spectral angular distance를 이용해 adaptive weight map을 계산하여 최종 anomaly detection 결과를 얻는다. 실험 결과, 제안된 방법은 기존의 방법들에 비해 우수한 성능을 보였다. 다만, anomaly pixels이 subpixels인 경우는 고려되지 않았으며, 향후 연구에서 이 문제와 adaptive 파라미터 설정을 다룰 예정이다.&lt;/p></description></item><item><title>[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction</title><link>https://gyeongmin.kr/p/paper-review-hyperspectral-ad/</link><pubDate>Wed, 17 Jul 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/paper-review-hyperspectral-ad/</guid><description>&lt;img src="https://gyeongmin.kr/images/paper-review.png" alt="Featured image of post [논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction" />&lt;h1 id="hyperspectral-anomaly-detection-via-background-and-potential-anomaly-dictionaries-construction">Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction&lt;/h1>
+&lt;blockquote>
+&lt;p>&lt;a class="link" href="https://ieeexplore.ieee.org/abstract/document/8519775" target="_blank" rel="noopener"
+>논문 링크&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="abstract">Abstract&lt;/h2>
+&lt;p>이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안한다. 이상치를 효과적으로 탐지하고 노이즈의 영향을 제거하기 위해, 원본 이미지를 배경, 이상치, 노이즈의 세 가지 구성 요소로 분해한다. 이와 같이, 이상 탐지 작업을 행렬 분해 문제로 간주한다. 배경의 동질성과 이상치의 희소성을 고려하여, 저랭크 및 희소 제약을 모델에 적용한다. 그런 다음, 배경 사전과 잠재적 이상치 사전은 배경 및 이상치의 사전 지식을 사용하여 구성한다. 배경 사전의 경우, 과완비 사전에서 자주 사용되는 원자가 배경이 될 가능성이 높다고 가정하여, 공동 희소 표현(Joint Sparse Representation, JSR) 기반의 사전 선택 전략을 제안한다. 장면에 숨겨진 이상치의 사전 정보를 최대한 활용하기 위해 잠재적 이상치 사전을 구성한다. JSR 모델 내의 지역 영역에서 계산된 잔차를 사용하여 픽셀의 이상 수준이라는 기준을 정의한다. 그런 다음, 노이즈와 배경의 영향을 완화하기 위해 가중치 항과 결합한다. 실험 결과, 잠재적 이상치 및 배경 사전 구축에 기반한 제안된 이상 탐지 방법이 최신 방법들과 비교하여 우수한 성능을 달성할 수 있음을 보여준다.&lt;/p>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>초분광영상(Hyperspectral image, HSI)은 넓은 범위와 높은 해상도의 스펙트럼을 가지고 있는 이미지이다. HSI 기반의 Anomaly Detection은 다양한 분야에서 연구되어 왔다.&lt;/p>
+&lt;p>Supervised 기반의 물체 검출과 달리 Anomaly Detection은 목표물에 대한 사전 정보를 알지 못한 상태에서 이루어지기 때문에, 기존 방법들은 배경 정보를 최대한 활용하려고 노력했다. local region의 중심에 있는 배경 픽셀은 다른 픽셀들의 조합으로 표현될 수 있지만 anomalous한 픽셀은 그렇지 않다는 가정을 바탕으로 JSR (Joint Sparse Representation)의 특성을 활용하는 AD 방법이 제안되었다.&lt;/p>
+&lt;p>HSI는 일반적으로 유사한 스펙트럼 특성을 균질하게 가지고 있기 때문에, 이 구조는 subspace로 표현될 수 있다. 일반적으로 PCS나 RPCA가 사용되고, 더 나은 multisubspace 학습을 위해 LRR(Low-Rank Representation) 방법이 제안되었다. HSI 데이터의 경우, LRR 기법은 분류와 Denoising에 사용되었으며, 최근에는 Anomaly Detection Problem을 모델링하는 데에도 활용되었다. background는 low-rank를 가지고 있고, anomaly는 sparse한 속성을 가지고 있다고 가정하여 RPCA 모델을 확장하여 데이터를 background, anomaly, noise로 분해했고 mahalanobis 거리를 이용하여 AD를 진행했다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/paper-review-hyperspectral-ad/image.png"
+width="1847"
+height="795"
+srcset="https://gyeongmin.kr/p/paper-review-hyperspectral-ad/image_hu78a6f5733d58b1ee28393f06e5b5a05d_445139_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-hyperspectral-ad/image_hu78a6f5733d58b1ee28393f06e5b5a05d_445139_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Schematic of our dictionary construction method for hyperspectral anomaly detection"
+class="gallery-image"
+data-flex-grow="232"
+data-flex-basis="557px"
+>&lt;/p>
+&lt;p>본 논문에서는 background와 anomaly information을 잘 모델링하기 위해, LRSR(Low-Rank and Sparse Representation)을 활용한 새로운 HSI Anomaly Detection을 제안한다. HSI의 homogeneity 때문에 background는 low-rank 속성을 가지고, anomaly는 sparsity한 속성을 가지도록 제약된다. JSR 모델은 clutter와 anomaly의 영향을 받지 않는 순수한 배경을 묘사하는 데에 사용된다.&lt;/p>
+&lt;h2 id="proposed-method">Proposed Method&lt;/h2>
+&lt;h3 id="background-anomaly-and-noise-decomposition-model">Background, Anomaly, and Noise Decomposition Model&lt;/h3>
+&lt;p>Background를 $BZ$, Anomaly를 $A$, Noise를 $E$라고 했을 때, HSI 이미지 $X$는 아래와 같이 나타낼 수 있다.&lt;/p>
+&lt;p>$$
+X = BZ + A + E
+$$&lt;/p>
+&lt;p>HSI에서 local region은 대부분 homogeneity하기 때문에 배경은 low-rank의 성질을 가진다. Anomaly는 sparse한 속성을 부여하여 모델링한다. Noise는 Sparse한 Noise와 Gaussian Random Noise 두 종류가 존재하는데, 이를 표현하기 위해 Noise를 모델링하는 데에 $l_{2,1}$ norm을 사용한다.&lt;/p>
+&lt;p>최적화 문제는 다음과 같이 정의된다. $\beta$와 $\lambda$는 각 성분 간의 균형을 맞추기 위한 계수이다.&lt;/p>
+&lt;p>$$
+min_{Z,A,E} \text{rank}(Z) + \beta{\Vert A \Vert_l} + \lambda{\Vert E \Vert _{2,1}} \quad \text{s.t} \ X = BZ + A + E
+$$&lt;/p>
+&lt;h3 id="background-dictionary-construction">Background Dictionary Construction&lt;/h3>
+&lt;p>local region 내의 픽셀들은 공통된 구조를 공유할 수 있으므로, &lt;strong>공동 희소 표현(JSR)&lt;/strong> 모델을 사용하여 지역 내의 픽셀들을 몇 가지 공통된 원자의 선형 결합으로 표현한다.&lt;/p>
+&lt;p>region을 클러스터링하여 비슷한 구조를 가진 픽셀 그룹으로 나누고, 각 클러스터에서 자주 사용되는 원자를 선택하여 Background Dictionary를 구축한다. $U$는 지역 내의 픽셀 행렬, $V$는 Overcomplete Dictoinary, $\psi$는 표현 계수, $R$은 잔차(residual)다.&lt;/p>
+&lt;p>$$
+\min |\psi|_{\text{row},0} \quad \text{s.t} \ U = V\psi + R
+$$&lt;/p>
+&lt;p>Background Dictionary의 원자는 JSR 모델에서 자주 사용되는 원자들로 선택되며, 선택 빈도는 정규화된 계수의 합으로 정의된다.&lt;/p>
+&lt;p>$$
+P_c = \frac{1}{\gamma} \sum_{i=1}^{n_c} \sum_{j=1}^{L} |\psi_{i,j}|
+$$&lt;/p>
+&lt;h3 id="potential-anomaly-dictionary-construction">Potential Anomaly Dictionary Construction&lt;/h3>
+&lt;p>Potential Anomaly Dictionary는 JSR 모델을 사용하여 큰 잔차를 가지는 픽셀들을 선택하여 구성한다. 이 잔차가 큰 픽셀들은 이상일 가능성이 높다고 간주된다.&lt;/p>
+&lt;p>각 픽셀의 AL (Anomalous Level)은 지역 기반의 잔차 평균을 계산하여 결정됩니다.&lt;/p>
+&lt;p>$$
+AL = \frac{1}{\chi} \left[ R^1_{\text{mean}}, R^2_{\text{mean}}, \dots, R^K_{\text{mean}} \right]
+$$&lt;/p>
+&lt;p>Anomaly Weight는 이러한 이상 수준과 선택 빈도, 계수의 절대값을 고려하여 선택되며, 이는 다음과 같은 수식으로 표현된다. $F_c$는 선택된 원소의 빈도수를 반영한다.&lt;/p>
+&lt;p>$$
+AW_c = \frac{P_c}{F_c}
+$$&lt;/p>
+&lt;h2 id="experiments-results">Experiments Results&lt;/h2>
+&lt;p>제안된 PAB-DC 방법의 성능을 평가하기 위해 5개의 실제 hyperspectral 이미지 데이터 세트를 사용하여 실험을 수행하였다. 이 데이터 세트들은 각기 다른 특성을 가지며, 항공 이미지로 구성되어 있다. PAB-DC 방법은 Global-RX, Local-RX, CRD, LRSR 등 최신 방법들과 성능을 비교하였다. 실험 결과, PAB-DC 방법은 대부분의 데이터 세트에서 다른 방법들에 비해 우수한 성능을 보였으며, 이는 ROC 곡선과 AUC 값을 통해 정량적으로 입증되었다.&lt;/p>
+&lt;p>또한, potential anomaly dictionary의 효과를 검증하기 위해 이 dictionary를 사용한 경우와 그렇지 않은 경우를 비교하였다. 그 결과, potential anomaly dictionary를 활용한 PAB-DC 방법이 더 높은 탐지 성능을 보였으며, 이는 이 dictionary가 이상 탐지에 중요한 역할을 한다는 것을 시사한다. 마지막으로, 매개변수 분석을 통해 윈도우 크기, 클러스터 수, $\beta$와 $\lambda$ 값, 배경 사전과 potential anomaly dictionary의 원자 수 등의 매개변수들이 탐지 성능에 미치는 영향을 평가하였다. 이러한 분석 결과, 제안된 PAB-DC 방법은 비교적 안정적인 성능을 보였으며, 다양한 매개변수 설정에서도 우수한 탐지 성능을 유지함을 확인하였다. 종합적으로, PAB-DC 방법이 기존의 방법들보다 hyperspectral 이미지에서의 이상 탐지 성능이 뛰어남을 실험을 통해 입증하였다.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>이 논문에서는 LRSR 전략을 활용한 Background 및 potential anomaly dictionary 기반의 새로운 HSI 이상 탐지 방법(PAB-DC)을 제시하였다. PAB-DC 방법이 hyperspectral 이미지에서 anomaly detection을 효과적으로 수행할 수 있음을 강조하였다. 이 방법은 low-rank와 sparse representation(LRSR) 전략을 사용하여 데이터를 배경, anomaly, 그리고 noise로 분해하며, 배경 사전과 potential anomaly dictionary를 활용하여 성능을 크게 향상시켰다. 기존의 방법들이 주로 배경 정보에만 의존한 것과 달리, PAB-DC는 anomaly 정보를 적극적으로 활용하여 다른 최신 방법들보다 뛰어난 성능을 보였다. 이를 통해 PAB-DC가 hyperspectral 이미지 anomaly detection에서 강력한 도구임을 입증하였다.&lt;/p></description></item><item><title>[논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation</title><link>https://gyeongmin.kr/p/paper-review-panda/</link><pubDate>Wed, 27 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/paper-review-panda/</guid><description>&lt;img src="https://gyeongmin.kr/images/paper-review.png" alt="Featured image of post [논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation" />&lt;h1 id="panda-adapting-pretrained-features-for-anomaly-detection-and-segmentation">PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation&lt;/h1>
+&lt;blockquote>
+&lt;p>&lt;a class="link" href="https://openaccess.thecvf.com/content/CVPR2021/papers/Reiss_PANDA_Adapting_Pretrained_Features_for_Anomaly_Detection_and_Segmentation_CVPR_2021_paper.pdf" target="_blank" rel="noopener"
+>논문 PDF&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;h3 id="anomaly-detection">Anomaly Detection&lt;/h3>
+&lt;p>&lt;strong>Anomaly&lt;/strong>는 정상의 범주에서 벗어나 있는 모든 것들을 의미한다.&lt;/p>
+&lt;p>주어진 데이터셋에서 Anomaly들을 탐지하는 것을 &lt;strong>Anomaly Detection&lt;/strong> (이상치 탐지)라 한다. 주로 정상 데이터셋만으로 학습을 진행하며, 주어진 이미지를 Normal / Anomaly로 구분해야 하기에 One-Class Classification (OCC) 라고도 부른다.&lt;/p>
+&lt;p>본 논문에서는 Anomaly를 검출하는 세 분야를 다음과 같이 정의한다.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Anomaly Detection&lt;/strong>: 훈련 과정에서 오직 정상 이미지만 사용하는 경우&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Anomaly Segmentation&lt;/strong>: 정상 이미지가 주어진 상태에서 Anomaly가 포함된 모든 픽셀을 탐지하는 경우&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Outlier Exposure&lt;/strong>: 이상 현상을 시뮬레이션하는 데에 외부 데이터셋 사용이 가능한 경우&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>최근 대부분의 이상 탐지 방법들은 제한된 정상 훈련 데이터셋을 사용하여 데이터의 feature를 학습하며, 이것에 의존하고 있다.&lt;/p>
+&lt;h3 id="catastrophic-collapse">Catastrophic Collapse&lt;/h3>
+&lt;p>특히 Multi-Class Calssifiaction보다 One-Class Classification 분야에서 전이 학습에 대한 연구가 부족한 상황이다. 이미지 전이 학습 분야에서는 &lt;strong>Catastrophic Collapse&lt;/strong>가 잘 발생하기 때문이다. Catastrophic Collapse는 Normal과 Anomaly 데이터가 잘 구분되지 않고, feature 공간에서 동일한 지점에 매핑되는 현상을 말한다. 이 현상은 데이터의 패턴을 학습하지 못하거나 학습 과정에서 Overfitting에 빠지는 것에 기인하기 때문에, Early Stopping을 위해 Epoch를 잘 조절한다면 이를 방지할 수 있다.&lt;/p>
+&lt;p>본 논문에서는 Catastrophic Collapse를 방지하기 위해 Epoch 수에 의존적이지 않은 &lt;strong>early stopping variant&lt;/strong> 방법과 continual learning에서 영감을 받은 &lt;strong>Elastic Regularization&lt;/strong> 기법을 제안하는데, 이는 뒤에서 자세히 설명하겠다.&lt;/p>
+&lt;h2 id="background">Background&lt;/h2>
+&lt;h3 id="3-stage-framework">3-Stage Framework&lt;/h3>
+&lt;p>일반적인 프레임워크는 세 단계로 구성된다. 정상 훈련 데이터셋 $D_{train} = \{ x_1, x_2, \dots, x_N \} $이 주어졌다고 가정하자.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>Initial feature extractor&lt;/strong>&lt;/p>
+&lt;p>Initial feature extractor인 $\psi_0$는 pre-train을 통해 얻을 수 있으며, 손실 함수는 $L_{pretrain}$이다. auxiliary task (보조 작업)은 외부 데이터셋을 통한 pre-train이나 self-supervised learning일 수 있다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Feature Adaptation&lt;/strong>&lt;/p>
+&lt;p>auxiliary task나 데이터셋을 통해 학습된 feature는 anomaly score를 매기기 전에 적응이 필요할 수 있다. 이는 훈련 데이터셋을 통한 fine-tuning으로, 적응된 feature extractor는 $\psi$로 표기한다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Anomaly Scoring&lt;/strong>&lt;/p>
+&lt;p>Feature를 적응시킨 후, 훈련 데이터셋 샘플들의 특성 $\psi(x_1), \psi(x_2), \dots, \psi(x_N)$ 을 추출한다. 그 다음, Anomaly score를 구하는 함수를 학습하는 과정을 진행한다. 일반적으로 scoring function은 테스트 샘플 $\psi(x)$ 주변의 정상 데이터 밀도를 측정하며 밀도가 낮은 지역에 높은 anomaly score를 할당한다.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="deep-nearest-neighbours-dn2">Deep Nearest Neighbours (DN2)&lt;/h3>
+&lt;p>&lt;a class="link" href="https://arxiv.org/pdf/2002.10445.pdf" target="_blank" rel="noopener"
+>&amp;ldquo;Deep Nearest Neighbor Anomaly Detection&amp;rdquo;&lt;/a>에서 제안된 방법으로, &lt;strong>DN2&lt;/strong>에서는 ImageNet 데이터셋에서 pre-trained된 &lt;strong>ResNet&lt;/strong>을 사용해 feature를 추출하고, &lt;strong>kNN&lt;/strong>을 적용해 Normal과 Anomaly를 구분한다. (Normal과 Anomaly 이미지 간의 평균 거리를 Anomaly Score로 사용한다)&lt;/p>
+&lt;h3 id="semantic-pyramid-anomaly-detection-spade">Semantic Pyramid Anomaly Detection (SPADE)&lt;/h3>
+&lt;p>&lt;a class="link" href="https://arxiv.org/pdf/2005.02357.pdf" target="_blank" rel="noopener"
+>&amp;ldquo;Sub-Image Anomaly Detection with Deep Pyramid Correspondences&amp;rdquo;&lt;/a>에서 제안된 방법으로, ImageNet으로 사전 훈련된 ResNet을 사용하여 모든 이미지에 대한 픽셀별 특성을 추출한다. 또한 Feature Pyramid를 이용하여 다양한 수준의 feature를 동시에 추출하고 concat해 사용한다. DN2와는 달리 SPADE에서는 Anomaly Segmentation도 가능하다.&lt;/p>
+&lt;h3 id="deep-support-vector-data-description-deepsvdd">Deep Support Vector Data Description (DeepSVDD)&lt;/h3>
+&lt;p>&lt;a class="link" href="https://proceedings.mlr.press/v80/ruff18a/ruff18a.pdf" target="_blank" rel="noopener"
+>&amp;ldquo;Deep One-Class Classification&amp;rdquo;&lt;/a>에서 제안된 방법으로, 데이터의 정상적인 패턴을 학습하여 정상 범주에서 크게 벗어난 데이터 포인트를 Anomaly로 식별하는 것이다. CNN을 사용해 이미지 데이터를 저차원의 feature 공간으로 매핑하고, 데이터 포인트가 중심에서 얼마나 떨어져 있는지를 측정하여 Anomaly 여부를 판단한다.&lt;/p>
+&lt;h3 id="joint-optimization-jo">Joint Optimization (JO)&lt;/h3>
+&lt;p>&lt;a class="link" href="https://arxiv.org/pdf/1801.05365.pdf" target="_blank" rel="noopener"
+>&amp;ldquo;Learning Deep Features for One-Class Classification&amp;rdquo;&lt;/a>에서 제안된 방법으로, ImageNet 데이터셋에서 객체 분류를 위해 Pretrained된 Feature Extractor를 사용한다. 오분류에 대한 패널티가 없는 경우 trivial한 솔루션을 학습할 수 있기에, compactness loss와 classification loss를 동시에 최적화한다. 이 방법은 메모리를 많이 요구하며, 두 작업을 함께 훈련하는 경우 Anomaly Detection 작업의 정확도가 떨어질 수 있다는 한계점을 가진다.&lt;/p>
+&lt;h2 id="method">Method&lt;/h2>
+&lt;p>SVDD와 JO와 유사하게 compactness loss를 사용하여 pre-trained된 feature의 분포를 anomaly detection 작업에 적응시킨다. 하지만 구조를 제한하거나 외부 데이터를 사용하지 않고, 직접적으로 Catastrophic Collapse를 다룬다.&lt;/p>
+&lt;p>compactness loss의 최적 솔루션이 Collapse로 이어질 수 있다. Collapse가 일어나면 모든 입력을 같은 지점으로 매핑하게 되어, 더이상 구분이 불가능해진다.&lt;/p>
+&lt;p>본 논문에서는 Catastrophic Collapse를 방지하기 위해 아래 3가지 방법을 제시하였다.&lt;/p>
+&lt;h3 id="simple-early-stopping-panda-early">Simple Early Stopping (PANDA-Early)&lt;/h3>
+&lt;p>collapse가 일어나기 전에, &lt;strong>특정 Epoch마다 Early Stopping&lt;/strong>을 진행하는 방법이다. 가장 단순하며 강력한 방법이지만, Hyperparameter의 설정이 필요하다는 단점이 있다. 예를 들어, 15 Epoch마다 early stopping을 진행하는 것이다.&lt;/p>
+&lt;h3 id="sample-wise-early-stopping-panda-ses">Sample-Wise Early Stopping (PANDA-SES)&lt;/h3>
+&lt;p>&lt;strong>sample 단위로 early stopping&lt;/strong>여부를 결정하는 방법이다. Anomaly 샘플과 중심 간의 거리가 멀고, 정상 샘플과 중심 간의 거리가 짧을 때 anomaly detection의 정확도가 상관관계가 있다. 이를 위해 훈련 과정 중 특정 Epoch마다 (예를 들어 5 Epoch 마다) 평균 거리를 저장하고, 정규화를 거치고 평균 거리의 최대 비율을 anomaly detection score로 사용한다.&lt;/p>
+&lt;h3 id="elastic-regularization-panda-ewc">Elastic Regularization (PANDA-EWC)&lt;/h3>
+&lt;p>Continual Learning은 adaptive regularization을 이용하는 방법이다.&lt;/p>
+&lt;p>continual learning에서 영감을 받아 Elastic Weight Consolidation(EWC)을 사용한 방법이다. Continual Learning이란 이전에 학습한 것을 까먹지 않고 새로운 것을 학습하는 것이다. 여기서 보조 작업에 대해 사전 훈련을 진행하기 위해 100개의 미니배치를 사용한다. 이 과정에서 신경망의 모든 가중치 파라미터에 대한 Fisher 정보 행렬 $F$의 대각선을 계산한다. 이는 사전 훈련 단계가 끝난 후 한 번만 수행한다. 각 가중치 파라미터의 Fisher 행렬 값은 사전 훈련 데이터셋을 통해 주어진 식으로 계산된다.&lt;/p>
+&lt;p>연구팀은 Fisher 정보 행렬의 대각선 요소를 사용하여 네트워크의 각 가중치가 사전 훈련된 상태($\psi_0$)에서 미세 조정된 상태($\psi^*$)로 변화하는 거리의 제곱을 가중치로 삼는다. 이는 가중치 함수의 손실 풍경 곡률을 측정하는 방법으로 볼 수 있으며, 값이 크면 곡률이 높고 가중치가 비탄력적임을 의미한다.&lt;/p>
+&lt;p>이러한 정규화 방법은 $\lambda$라는 하이퍼파라미터로 가중치가 부여된 compactness loss와 함께 사용된다. 본 연구에서는 $\lambda = 10^4$를 사용했다. 이를 통해 최종적인 손실 함수를 정의하고, 이는 사전 훈련된 가중치와 미세 조정된 가중치 간의 차이를 기반으로 한다. 이 접근법은 네트워크가 새로운 작업을 학습하면서도 이전에 학습한 작업에 대한 정보를 유지할 수 있도록 돕는다.&lt;/p>
+&lt;h3 id="anomaly-scoring">Anomaly Scoring&lt;/h3>
+&lt;p>전통적인 Anomaly Detection와 같이, Anomaly Score는 밀도 추정을 통해 구할 수 있다. 따라서 본 연구에서도 kNN을 사용해 구현한다.&lt;/p>
+&lt;h3 id="outlier-exposure">Outlier Exposure&lt;/h3>
+&lt;p>Outlier Exposure는 이미지 이상 탐지 작업을 확장한 것으로, Normal 데이터보다 Anomaly에 더 유사한 Auxiliary 데이터셋 $D_{OE}$가 있다고 가정하고, 데이터셋을 Normal과 Abnormal로 분류한다. 이는 Linear Classification Layer $w$와 Feature $\psi$를 이용해 Logistic Regression Loss를 계산하는 방식으로 이루어진다.&lt;/p>
+&lt;h2 id="expreiments">Expreiments&lt;/h2>
+&lt;h3 id="dataset">Dataset&lt;/h3>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/paper-review-panda/image-1.png"
+width="828"
+height="383"
+srcset="https://gyeongmin.kr/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-1_hu8fe9d0bb7d2841f520322010f3770529_538886_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="왼쪽부터 시계 방향으로 CIFAR10, CIFAR100, Fashion MNIST, DogsVsCats, WBC, DIOR, Oxford Flowers, MVTec"
+class="gallery-image"
+data-flex-grow="216"
+data-flex-basis="518px"
+>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Dataset&lt;/th>
+&lt;th>$N_{classes}$&lt;/th>
+&lt;th>$N_{train}$&lt;/th>
+&lt;th>$N_{test}$&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>CIFAR10&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>5,000&lt;/td>
+&lt;td>10,000&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Fashion MNIST&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>6,000&lt;/td>
+&lt;td>10,000&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>CIFAR100&lt;/td>
+&lt;td>20&lt;/td>
+&lt;td>2,500&lt;/td>
+&lt;td>10,000&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Flowers&lt;/td>
+&lt;td>102&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>7,169&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Birds&lt;/td>
+&lt;td>200&lt;/td>
+&lt;td>30&lt;/td>
+&lt;td>5,794&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>CatsVsDogs&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>10,000&lt;/td>
+&lt;td>5,000&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>MVTec&lt;/td>
+&lt;td>15&lt;/td>
+&lt;td>242&lt;/td>
+&lt;td>1,725&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>WBC&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>59&lt;/td>
+&lt;td>62&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>DIOR&lt;/td>
+&lt;td>19&lt;/td>
+&lt;td>649&lt;/td>
+&lt;td>9,243&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>여기서 MVTec을 제외한 데이터셋은 정상 데이터를 한 개의 클래스로 구성하고, 나머지 클래스는 비정상으로 구성한다. 예를 들어, 고양이 이미지는 정상이고 강아지나 토끼 등 다른 이미지는 전부 비정상으로 구성된다.&lt;/p>
+&lt;p>MVTec 데이터셋은 Anomaly Detection을 위해 제작된 데이터셋으로, 클래스마다 정상과 비정상 이미지가 라벨링되어 있다.&lt;/p>
+&lt;h2 id="results">Results&lt;/h2>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/paper-review-panda/image-2.png"
+width="1664"
+height="435"
+srcset="https://gyeongmin.kr/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-2_huf70542624251d7a6a11badc98e4b0885_133792_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Anomaly detection performance (Average ROC AUC %)"
+class="gallery-image"
+data-flex-grow="382"
+data-flex-basis="918px"
+>&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/paper-review-panda/image-3.png"
+width="1042"
+height="385"
+srcset="https://gyeongmin.kr/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-3_huc19b42b9821d23f121b64dda0f10e1cd_84052_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Pretrained feature performance on various small datasets (Average ROC AUC %)"
+class="gallery-image"
+data-flex-grow="270"
+data-flex-basis="649px"
+>&lt;/p>
+&lt;p>위 두 결과를 보았을 때, Self-Supervised 방법보다 DN2와 PANDA 방법이 훨씬 높은 성능을 보이는 것을 확인할 수 있다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/paper-review-panda/image-4.png"
+width="1085"
+height="111"
+srcset="https://gyeongmin.kr/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-4_hu4ce90baf9558792fb2b91e9a4c4c6d70_30823_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Comparison of anomaly segmentation methods (pixel-level ROCAUC and PRO %)"
+class="gallery-image"
+data-flex-grow="977"
+data-flex-basis="2345px"
+>&lt;/p>
+&lt;p>기존의 Anomaly Segmentation 방법들보다 SPADE 방법이 매우 높은 성능을 보이는 것을 확인할 수 있다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/paper-review-panda/image-5.png"
+width="492"
+height="228"
+srcset="https://gyeongmin.kr/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/paper-review-panda/image-5_hud409dcc8912bd9d9524595ad3a9d5b84_40928_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="A comparison of different feature adaptation methods (Avg. ROC AUC %)"
+class="gallery-image"
+data-flex-grow="215"
+data-flex-basis="517px"
+>&lt;/p>
+&lt;p>위 표를 보면, 모든 데이터셋에서 PANDA 방법들이 JO 방법보다 높은 성능을 보이는 것을 확인할 수 있다.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>본 논문에서는 Anomaly Detection과 Anomaly Aegmentation을 위한 간단한 baseline을 제안하였으며, 이 방법은 현재 SOTA 방법들을 능가하며, 한계점을 해결했다. 또한 pre-trained된 Feature을 적응시키고 Catastrophic Collapse를 완화하는 방법을 제안하였다.&lt;/p>
+&lt;p>하지만 이 연구의 주요 한계점은 pre-trained된 강력한 Feature Extractor가 필요하다는 것이다.&lt;/p></description></item></channel></rss>

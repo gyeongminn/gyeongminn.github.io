@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/page/</link><description>Recent content in Pages on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Tue, 24 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/page/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://gyeongmin.kr/about/</link><pubDate>Tue, 24 Sep 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/about/</guid><description>&lt;h1 id="안녕하세요-이경민입니다">안녕하세요, 이경민입니다.&lt;/h1>
+&lt;p class="icon-container" align="left">
+&lt;a class="custom-icon" href="mailto:gyeongmin@hansung.ac.kr" target="_blank">
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Mail"/>
+&lt;/a>
+&amp;nbsp;
+&lt;a class="custom-icon" href="https://instagram.com/gyeongminx" target="_blank">
+&lt;img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Instagram"/>
+&lt;/a>
+&amp;nbsp;
+&lt;a class="custom-icon" href="https://www.linkedin.com/in/gyeongmin-lee-865448256/" target="_blank">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" alt="Linkedin"/>
+&lt;/a>
+&amp;nbsp;
+&lt;a class="custom-icon" href="https://gyeongminn.github.io/cv.pdf" target="_blank">
+&lt;img id="cvIcon" src="https://gyeongminn.github.io/logo.ico/cv-light.svg" alt="CV"/>
+&lt;/a>
+&amp;nbsp;
+&lt;a class="custom-icon" href="https://github.com/gyeongminn" target="_blank">
+&lt;img id="githubIcon" src="https://gyeongminn.github.io/logo.ico/github-light.svg" alt="GitHub"/>
+&lt;/a>
+&amp;nbsp;
+&lt;a class="custom-icon" href="https://gyeongminn.github.io" target="_blank">
+&lt;img id="blogIcon" src="https://gyeongminn.github.io/logo.ico/blog-light.svg" alt="DevBlog"/>
+&lt;/a>
+&lt;/p>
+&lt;p>안녕하세요, 한성대학교 컴퓨터공학부 21학번 이경민입니다.&lt;/p>
+&lt;p>저는 한기준 교수님의 지도 아래 AML 연구실에서 학석사 연계 과정을 진행하고 있으며, 연구실이 스타트업으로 전환되어 현재 스타트업에서 근무하고 있습니다.&lt;/p>
+&lt;p>스타트업에서 반도체 비전 검사 프로그램 개발 프로젝트에 참여하며, 주로 비전 검사 알고리즘 개발 파트를 담당하고 있습니다.&lt;/p>
+&lt;p>이 과정에서 다양한 실무 경험을 쌓고 있으며, 컴퓨터 비전 분야의 딥러닝 연구를 병행하여 논문도 작성하고 있습니다.&lt;/p>
+&lt;h2 align="left">Tech Stack&lt;/h2>
+&lt;p class="icon-container" align="left">
+&lt;a class="custom-icon" href="https://www.cprogramming.com/" target="_blank" rel="noreferrer">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c"/>
+&lt;/a>
+&lt;a class="custom-icon" href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus"/>
+&lt;/a>
+&lt;a class="custom-icon" href="https://www.w3schools.com/cs/" target="_blank" rel="noreferrer">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="csharp"/>
+&lt;/a>
+&lt;a class="custom-icon" href="https://www.python.org" target="_blank" rel="noreferrer">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python"/>
+&lt;/a>
+&lt;a class="custom-icon" href="https://www.java.com" target="_blank" rel="noreferrer">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java"/>
+&lt;/a>
+&lt;a class="custom-icon" href="https://www.mvtec.com/products/halcon" target="_blank" rel="noreferrer">
+&lt;img src="https://user-images.githubusercontent.com/97784561/224551155-ef0d5041-8e60-4f72-817a-3a6bd1d03c93.png" alt="Halcon"/>
+&lt;/a>
+&lt;a class="custom-icon" href="https://www.tensorflow.org" target="_blank" rel="noreferrer">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"/>
+&lt;/a>
+&lt;a class="custom-icon" href="https://pytorch.org/" target="_blank" rel="noreferrer">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg" alt="PyTorch"/>
+&lt;/a>
+&lt;/p>
+&lt;h2 align="left">Education&lt;/h2>
+&lt;div class="research">
+&lt;div class="container">
+&lt;p class="title">한성대학교 컴퓨터공학부&lt;/p>
+&lt;p class="text">• 공과대학 학생회 홍보국장&lt;span class="date">(2023)&lt;/span>&lt;/p>
+&lt;p class="text">• 학술소모임 BUG 부회장&lt;span class="date">(2022)&lt;/span>&lt;/p>
+&lt;p class="text">• 컴퓨터공학부 전공튜터링 튜터 3회 참여&lt;span class="date">
+&lt;p class="text">• 교내 알고리즘 대회 최초 개설 및 총괄, 출제자 4회 참여 &lt;span class="date">(2023-2024)&lt;/span>&lt;/p>
+&lt;p class="text">&lt;a class="detail" href="https://github.com/HSU-CSE/hsupc-2023-2" target="_blank">&amp;nbsp;&amp;nbsp; See the details >&lt;/a>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 align="left">Experience&lt;/h2>
+&lt;div class="research">
+&lt;div class="container">
+&lt;p class="title">DeepSeers&lt;br>Vision Software Engineer&lt;/p>
+&lt;p class="text">• 연구실 내 스타트업으로 전환하여 창업멤버로서 기존과 동일한 프로젝트 진행중&lt;span class="date">
+&lt;p class="text">• QFN, BGA. LGA 패키지 아랫면 검사 알고리즘 34종 개발
+&lt;p class="text">• 맵핑 비전 멀티샷 검사 및 멀티샷 티칭 알고리즘 개발
+&lt;p class="text">• ±5µm 이내의 정확한 자재 사이즈 측정을 위한 패키지 외곽 검출 로직 개발
+&lt;p class="text">• Calibration Plate를 활용한 Pixel Pitch 계산 알고리즘 개발
+&lt;p class="text">• Motor Calibration을 위한 비전 알고리즘 개발
+&lt;p class="text">• Morphology를 이용한 ROI 및 Threshold Recommendation 알고리즘 개발
+&lt;p class="text">• 딥러닝을 이용한 ROI Recommendation 알고리즘 개발 및 특허 출원
+&lt;p class="text">• Camera Link 및 GigE 카메라 인터페이스 연동 및 통합 조명 시리얼 코드 개발
+&lt;p class="text">• 핸들러-비전 소켓 통신 프로토콜 연동 및 개발
+&lt;p class="text">• Strip DataCode 검사 개발 및 인식률 향상
+&lt;p class="text">• EMI Ring Map 알고리즘 개발
+&lt;p class="text">• 다중 카메라 라이브에서의 프레임 동기화 및 속도 향상
+&lt;p class="text">• 티칭 시퀀스 간소화 및 WPF를 활용한 티칭 UI 개발
+&lt;p class="text">• 검사 결과 시각화를 위한 UI 개발 및 렌더링 성능 최적화
+&lt;p class="text">• Block을 고려한 Vision Table 내 자재 위치 계산 로직 개발
+&lt;p class="text">• 각종 장비 하드웨어 트러블 슈팅 및 해외 고객사 비전 셋업
+&lt;p class="text">&lt;span class="date">Feb 2024 - Present&lt;/span>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;div class="research">
+&lt;div class="container">
+&lt;p class="title">Hansung University AML Lab.&lt;br>Undergraduate Researcher&lt;/p>
+&lt;p class="text">• 반도체 패키지 비전 검사 장비 소프트웨어 개발 &lt;span class="date">(2023-2024)&lt;/span>&lt;/p>
+&lt;p class="text">• 반도체 패키징 공정에서의 Anomaly Detection 연구 &lt;span class="date">(2023-2024)&lt;/span>&lt;/p>
+&lt;p class="text">• 국제 학회 및 국내 학회 발표&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 align="left">Research&lt;/h2>
+&lt;div class="research">
+&lt;p class="first-type">Interest&lt;/p>
+&lt;div class="container">
+&lt;p class="text">Computer Vision, Anomaly Detection, Algorithm&lt;/p>
+&lt;/div>
+&lt;p class="type">Project&lt;/p>
+&lt;div class="container">
+&lt;p class="title">반도체 소자 생산을 위한 인공지능 기반 스마트 제조 공정 장비 및 관련 기술 개발&lt;/p>
+&lt;p class="text">산업통상자원부(Ministry of Trade, Industry and Energy)&lt;/p>
+&lt;p class="date">Jun 2023 - Dec 2024&lt;/p>
+&lt;/div>
+&lt;p class="type">Conference&lt;/p>
+&lt;div class="container">
+&lt;p class="title">BGA Anomaly Detection by exploiting Variational AutoEncoders&lt;/p>
+&lt;p class="author">&lt;span class="me">Gyeongmin Lee&lt;/span>, Wonyong Choi, Keejun Han*&lt;/p>
+&lt;p class="text">21st International Symposium on Microelectronics and Packaging (ISMP 2023)&lt;/p>
+&lt;p class="date">October 26, 2023 (Poster Presentation)&lt;/p>
+&lt;p class="text">&lt;a class="detail" href="https://raw.githubusercontent.com/gyeongminn/bga-anomaly-detection-vae/main/docs/ismp_2023_gyeongmin.png" target="_blank">See the poster >&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="container">
+&lt;p class="title">Variational AutoEncoder를 활용한 BGA 결함 탐지&lt;/p>
+&lt;p class="author">&lt;span class="me">Gyeongmin Lee&lt;/span>, Wonyong Choi, Keejun Han*&lt;/p>
+&lt;p class="text">HCI KOREA 2024&lt;/p>
+&lt;p class="date">January 24, 2024 (Poster Presentation)&lt;/p>
+&lt;p class="text">&lt;a class="detail" href="https://conference.hcikorea.org/pds/2024/HCI2024%20Proceedings.pdf#page=1141" target="_blank">See the paper >&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="container">
+&lt;p class="title">실시간 마킹/표면 검사 시스템 개발을 위한 다중 비전 검사 기술의 최적화&lt;/p>
+&lt;p class="author">&lt;span class="me">Gyeongmin Lee&lt;/span>, Daeyoung Roh, Mujin Kim, Keejun Han*&lt;/p>
+&lt;p class="text">Korean Institute of Information Scientists and Engineers (KCC 2024)&lt;/p>
+&lt;p class="date">June 28, 2024 (Poster Presentation)&lt;/p>
+&lt;p class="text">&lt;a class="detail" href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11862284" target="_blank">See the paper >&lt;/a>&lt;/p>
+&lt;/div>
+&lt;div class="container">
+&lt;p class="title">Automatic ROI Recommender for Saw Singulation: Seamless Adaptation for Various Semiconductor Devices&lt;/p>
+&lt;p class="author">&lt;span class="me">Gyeongmin Lee&lt;/span>, Seungtaek Lim, Keejun Han*&lt;/p>
+&lt;p class="text">22nd International Symposium on Microelectronics and Packaging (ISMP-IRSP 2024)&lt;/p>
+&lt;p class="date">November 5, 2024 (Oral Presentation)&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 align="left">Patents&lt;/h2>
+&lt;div class="research">
+&lt;div class="container">
+&lt;p class="title">머신비전을 위한 딥러닝 기반 관심영역 자동생성 시스템 및 방법&lt;/p>
+&lt;p class="text">한기준, 창윤빈, 이경민&lt;/p>
+&lt;p class="text">출원번호: 10-2024-0153587&lt;/p>
+&lt;p class="date">November 1, 2024 - 심사 진행중&lt;/p>
+&lt;/div>
+&lt;div class="container">
+&lt;p class="title">오버킬의 감소를 위한 딥러닝 기반 품질검사 시스템 및 방법&lt;/p>
+&lt;p class="text">한기준, 이경민&lt;/p>
+&lt;p class="text">출원번호: 10-2024-0153586&lt;/p>
+&lt;p class="date">November 1, 2024 - 심사 진행중&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 align="left">Awards &amp; Certification&lt;/h2>
+&lt;div class="research">
+&lt;div class="container">
+&lt;p class="title">제19회 한성공학경진대회 동상&lt;/p>
+&lt;p class="text">발행: 한성대학교 &lt;span class="date">(2023.09)&lt;/span>&lt;/p>
+&lt;p class="text">개인 맞춤형 학습 도우미 어플리케이션 SumNote를 개발했습니다.&lt;/p>
+&lt;p class="text">&lt;a class="detail" href="https://media.licdn.com/dms/image/D562DAQFLy-eSjkcd7g/profile-treasury-image-shrink_1280_1280/0/1699853670366?e=1708318800&amp;v=beta&amp;t=FkLVVVWibS_S1P9h3Jj97907LPakQ4hBXGkvwBvILNU" target="_blank">See the certificate > &lt;/a>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 align="left">Projects&lt;/h2>
+&lt;div class="card-container">
+&lt;div class="card">
+&lt;div class="title">교내 프로그래밍 대회&lt;/div>
+&lt;p>컴퓨터공학부 학과, 학생회, 동아리 등과 협업하여 기존에는 없던 교내 프로그래밍 대회를 총괄 및 주최하고 각종 문제를 출제하였습니다. 4회차에 걸쳐 (23년 3월, 23년 11월, 24년 1월, 24년 11월) 총 11문제 출제하였습니다. 문제지와 해설지는 아래 링크에서 확인하실 수 있습니다.&lt;/p>
+&lt;a href="https://github.com/HSU-CSE/hsupc-2023-2" class="card-button" target="_blank">자세히&lt;/a>
+&lt;/div>
+&lt;div class="card">
+&lt;div class="title">중고거래 플랫폼 가지마켓&lt;/div>
+&lt;p>고급 모바일 프로그래밍 과목에서 텀프로젝트로 만들었던 중고거래 어플리케이션입니다. 로그인, 글 등록, 상세조회, 수정, 삭제, 글 목록 필터, 채팅 기능이 가능합니다.&lt;/p>
+&lt;a href="https://github.com/Gazi-Market/gazi-market" class="card-button" target="_blank">자세히&lt;/a>
+&lt;/div>
+&lt;div class="card">
+&lt;div class="title">내 손 안의 노트, 썸노트&lt;/div>
+&lt;p>Chat GPT를 활용한 개인 맞춤형 학습 도우미 안드로이드 어플리케이션입니다. 카메라로 책을 찍으면 문자를 인식하고, 내용을 요약해 예쁘게 노트로 보여줍니다. 또한 문제를 생성하고 풀어볼 수 있습니다.&lt;/p>
+&lt;a href="https://github.com/SumNote" class="card-button" target="_blank">자세히&lt;/a>
+&lt;/div>
+&lt;div class="card">
+&lt;div class="title">백준 디스코드 봇 '백준봇'&lt;/div>
+&lt;p>코딩 테스트 스터디에 사용하기 좋은 디스코드 봇입니다. 백준 문제와 소스코드를 디스코드 Embed 기능을 사용해 디스코드에 예쁘게 공유할 수 있습니다. solved.ac 비공식 API 를 사용하여 만들었습니다.&lt;/p>
+&lt;a href="https://gyeongminn.github.io/p/baekjoonbot/" class="card-button" target="_blank">자세히&lt;/a>
+&lt;/div>
+&lt;div class="card">
+&lt;div class="title">C언어로 만든 리듬게임&lt;/div>
+&lt;p>한성대학교 1학년 '프로그래밍랩' 과목의 텀프로젝트 과제로 만들었던 리듬게임입니다. C언어를 사용하여 콘솔창에서 리듬게임을 구현했습니다. 박자에 맞춰 키를 입력하고, 점수를 획득하는 게임입니다.&lt;/p>
+&lt;a href="https://gyeongminn.github.io/p/rhythm-game-in-c/" class="card-button" target="_blank">자세히&lt;/a>
+&lt;/div>
+&lt;div class="card">
+&lt;div class="title">롤 자동 로그인 프로그램&lt;/div>
+&lt;p>여러 리그오브레전드 계정을 돌려가며 쓰시는 분들을 위한 프로그램입니다. 아이디를 미리 저장한 후, 간편하게 로그인할 수 있습니다. AutoHotkey와 C# GUI를 이용해 만들었습니다.&lt;/p>
+&lt;a href="https://github.com/gyeongminn/lol-login" class="card-button" target="_blank">자세히&lt;/a>
+&lt;/div>
+&lt;/div>
+&lt;h2 align="left">Solved.ac profile&lt;/h2>
+&lt;div class="solved-card">
+&lt;a href="https://solved.ac/profile/gyeongmin" target="_blank">
+&lt;img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=gyeongmin" loading="lazy" alt="solved.ac Profile">
+&lt;/a>
+&lt;/div>
+&lt;!-- &lt;div class="solved-card-container">
+&lt;div class="solved-card">
+&lt;a href="https://solved.ac/profile/gyeongmin" target="_blank">
+&lt;img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=gyeongmin" loading="lazy" alt="solved.ac Profile">
+&lt;/a>
+&lt;/div>
+&lt;div class="solved-card">
+&lt;a href="https://solved.ac/profile/gyeongmin/arena" target="_blank">
+&lt;img src="https://solvedac.junah.dev/v1/generate_badge?handle=gyeongmin" />
+&lt;/a>
+&lt;/div>
+&lt;/div> -->
+&lt;script>
+function updateIcons() {
+var githubIcon = document.getElementById('githubIcon');
+var blogIcon = document.getElementById('blogIcon');
+var cvIcon = document.getElementById('cvIcon');
+if (document.documentElement.dataset.scheme == 'dark') {
+githubIcon.src = 'https://gyeongminn.github.io/logo.ico/github-light.svg';
+blogIcon.src = 'https://gyeongminn.github.io/logo.ico/blog-light.svg';
+cvIcon.src = 'https://gyeongminn.github.io/logo.ico/cv-light.svg';
+} else {
+githubIcon.src = 'https://gyeongminn.github.io/logo.ico/github-dark.svg';
+blogIcon.src = 'https://gyeongminn.github.io/logo.ico/blog-dark.svg';
+cvIcon.src = 'https://gyeongminn.github.io/logo.ico/cv-dark.svg';
+}
+}
+updateIcons();
+&lt;/script></description></item><item><title>Archives</title><link>https://gyeongmin.kr/archives/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/archives/</guid><description/></item><item><title>Links</title><link>https://gyeongmin.kr/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/links/</guid><description/></item><item><title>Search</title><link>https://gyeongmin.kr/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/search/</guid><description/></item></channel></rss>

@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tools on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/categories/tools/</link><description>Recent content in Tools on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/tools/index.xml" rel="self" type="application/rss+xml"/><item><title>[Util] Bug Report Generator</title><link>https://gyeongmin.kr/p/bug-report/</link><pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/bug-report/</guid><description>&lt;!DOCTYPE html>
+&lt;html lang="en">
+&lt;head>
+&lt;meta charset="UTF-8">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+&lt;title>Bug Report Table&lt;/title>
+&lt;style>
+table, th, td {
+border: 1px solid black;
+border-collapse: collapse;
+padding: 10px;
+vertical-align: middle; /* Set vertical alignment to middle */
+}
+th {
+background-color: none;
+}
+input[type="text"], textarea {
+width: 100%;
+box-sizing: border-box;
+background-color: transparent;
+border: none;
+resize: none; /* Prevent manual resizing */
+}
+input[type="radio"] {
+min-height: 24px;
+width: auto;
+display: block;
+margin: 0 auto;
+}
+.form-actions {
+margin-bottom: 20px;
+display: flex;
+gap: 10px;
+}
+.form-actions button {
+padding: 10px 15px;
+font-size: 14px;
+color: white;
+background-color: #34495e;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+.form-actions button:hover {
+background-color: #2c3e50;
+}
+&lt;/style>
+&lt;/head>
+&lt;body>
+&lt;h2>Bug Report&lt;/h2>
+&lt;div class="form-actions">
+&lt;button onclick="viewExample()">Example&lt;/button>
+&lt;button onclick="previewTable()">Preview&lt;/button>
+&lt;button onclick="resetPage()">Reset&lt;/button>
+&lt;button onclick="fillDateTime()">Fill Current Date/Time&lt;/button>
+&lt;button onclick="copyTableToClipboard()">Copy Table to Clipboard&lt;/button>
+&lt;/div>
+&lt;table id="bugReportTable">
+&lt;thead>
+&lt;tr>&lt;/tr>
+&lt;tr>
+&lt;th>Bug ID&lt;/th>
+&lt;th colspan="7">&lt;input type="text" id="bugId">&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>&lt;/tr>
+&lt;tr>
+&lt;td rowspan="3">Overview&lt;/td>
+&lt;td>Bug Name (Title)&lt;/td>
+&lt;td colspan="6">&lt;input type="text" id="bugName">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Bug Reporter&lt;/td>
+&lt;td colspan="6">&lt;input type="text" id="bugReporter">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Date/Time Submitted&lt;/td>
+&lt;td colspan="6">&lt;input type="text" id="dateTimeSubmitted">&lt;/td>
+&lt;/tr>
+&lt;tr>&lt;/tr>
+&lt;tr>
+&lt;td rowspan="5">Prioritization&lt;/td>
+&lt;td rowspan="2">Bug Severity&lt;/td>
+&lt;td>Blocker&lt;/td>
+&lt;td>Critical&lt;/td>
+&lt;td>Major&lt;/td>
+&lt;td>Normal&lt;/td>
+&lt;td>Minor&lt;/td>
+&lt;td>Trivial&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;input type="radio" name="severity" value="blocker" checked>&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="critical">&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="major">&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="normal">&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="minor">&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="trivial">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td rowspan="2">Bug Priority&lt;/td>
+&lt;td>Top&lt;/td>
+&lt;td>High&lt;/td>
+&lt;td>Medium&lt;/td>
+&lt;td>Low&lt;/td>
+&lt;td>None&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;input type="radio" name="priority" value="top" checked>&lt;/td>
+&lt;td>&lt;input type="radio" name="priority" value="high">&lt;/td>
+&lt;td>&lt;input type="radio" name="priority" value="medium">&lt;/td>
+&lt;td>&lt;input type="radio" name="priority" value="low">&lt;/td>
+&lt;td>&lt;input type="radio" name="priority" value="none">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Assigned to&lt;/td>
+&lt;td colspan="6">&lt;input type="text" id="assignedTo">&lt;/td>
+&lt;/tr>
+&lt;tr>&lt;/tr>
+&lt;tr>
+&lt;td rowspan="4">Details&lt;/td>
+&lt;td>Steps to reproduce&lt;/td>
+&lt;td colspan="6">&lt;textarea id="stepsToReproduce" oninput="autoResize(this)">&lt;/textarea>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Expected Result&lt;/td>
+&lt;td colspan="6">&lt;textarea id="expectedResult" oninput="autoResize(this)">&lt;/textarea>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Observed Result&lt;/td>
+&lt;td colspan="6">&lt;textarea id="observedResult" oninput="autoResize(this)">&lt;/textarea>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>What actions is &lt;br>this bug blocking?&lt;/td>
+&lt;td colspan="6">&lt;textarea id="blockingActions" oninput="autoResize(this)">&lt;/textarea>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td rowspan="4">Environment&lt;/td>
+&lt;td>Platform&lt;/td>
+&lt;td colspan="6">&lt;input type="text" id="platform">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>OS&lt;/td>
+&lt;td colspan="6">&lt;input type="text" id="os">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Branch&lt;/td>
+&lt;td colspan="6">&lt;input type="text" id="branch">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Commit #&lt;/td>
+&lt;td colspan="6">&lt;input type="text" id="commit">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td colspan="2">Note&lt;/td>
+&lt;td colspan="6">&lt;textarea id="note" oninput="autoResize(this)">&lt;/textarea>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;script>
+function autoResize(textarea) {
+textarea.style.height = 'auto';
+textarea.style.height = (textarea.scrollHeight) + 'px';
+}
+function copyTableToClipboard() {
+var table = document.getElementById('bugReportTable');
+var tableClone = table.cloneNode(true);
+// Replace input text values with their contents
+var inputs = tableClone.querySelectorAll('input[type="text"], textarea');
+inputs.forEach(input => {
+var td = input.parentElement;
+td.innerText = input.value;
+});
+// Replace radio buttons with a check mark if selected
+var radioGroups = {};
+tableClone.querySelectorAll('input[type="radio"]').forEach(radio => {
+if (radio.checked) {
+radioGroups[radio.name] = radio;
+}
+});
+for (const group in radioGroups) {
+const selectedRadio = radioGroups[group];
+selectedRadio.parentElement.innerText = '✔️';
+}
+var tableContent = '&lt;table>' + tableClone.innerHTML + '&lt;/table>';
+var tempTextarea = document.createElement("textarea");
+tempTextarea.style.position = "fixed";
+tempTextarea.style.left = "-9999px";
+tempTextarea.value = tableContent;
+document.body.appendChild(tempTextarea);
+tempTextarea.select();
+document.execCommand("copy");
+document.body.removeChild(tempTextarea);
+alert("Table content copied to clipboard!");
+}
+function resetPage() {
+location.reload();
+}
+function previewTable() {
+var table = document.getElementById('bugReportTable');
+var tableClone = table.cloneNode(true);
+// Replace input text values with their contents
+var inputs = tableClone.querySelectorAll('input[type="text"], textarea');
+inputs.forEach(input => {
+var td = input.parentElement;
+td.innerText = input.value;
+});
+// Replace radio buttons with a check mark if selected
+var radioGroups = {};
+tableClone.querySelectorAll('input[type="radio"]').forEach(radio => {
+if (radio.checked) {
+radioGroups[radio.name] = radio;
+}
+});
+for (const group in radioGroups) {
+const selectedRadio = radioGroups[group];
+selectedRadio.parentElement.innerText = '✔️';
+}
+var tableContent = '&lt;table>' + tableClone.innerHTML + '&lt;/table>';
+var newWindow = window.open('preview.html', 'preview', '_blank, width=800, height=900');
+newWindow.document.write('&lt;html>&lt;head>&lt;title>Preview Table&lt;/title>&lt;style>');
+newWindow.document.write('table, th, td {border: 1px solid black; border-collapse:collapse; padding:10px;vertical-align:middle;}');
+newWindow.document.write('&lt;/' + 'style>&lt;/head>&lt;body>');
+newWindow.document.write(tableContent);
+newWindow.document.write('&lt;/body>&lt;/html>');
+newWindow.document.close();
+}
+function fillDateTime() {
+var now = new Date();
+var formattedDateTime = now.toISOString().slice(0, 19).replace("T", " ");
+document.getElementById('dateTimeSubmitted').value = formattedDateTime;
+}
+function viewExample() {
+var newWindow = window.open('preview.html', 'preview', '_blank, width=800, height=900');
+newWindow.document.write('&lt;html>&lt;head>&lt;title>Preview Table&lt;/title>&lt;style>table, th, td {border: 1px solid black; border-collapse:collapse; padding:10px;vertical-align:middle;}');
+newWindow.document.write('&lt;/' + 'style>&lt;/head>&lt;body>&lt;div class="table-wrapper">');
+newWindow.document.write(`&lt;table>
+&lt;thead>
+&lt;tr>&lt;/tr>
+&lt;tr>
+&lt;th>Bug ID&lt;/th>
+&lt;th colspan="7">bug-example&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>&lt;/tr>
+&lt;tr>
+&lt;td rowspan="3">Overview&lt;/td>
+&lt;td>Bug Name (Title)&lt;/td>
+&lt;td colspan="6">example&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Bug Reporter&lt;/td>
+&lt;td colspan="6">@gyeongmin&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Date/Time Submitted&lt;/td>
+&lt;td colspan="6">2024-07-01 07:01:06&lt;/td>
+&lt;/tr>
+&lt;tr>&lt;/tr>
+&lt;tr>
+&lt;td rowspan="5">Prioritization&lt;/td>
+&lt;td rowspan="2">Bug Severity&lt;/td>
+&lt;td>Blocker&lt;/td>
+&lt;td>Critical&lt;/td>
+&lt;td>Major&lt;/td>
+&lt;td>Normal&lt;/td>
+&lt;td>Minor&lt;/td>
+&lt;td>Trivial&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;input type="radio" name="severity" value="blocker" checked="" control-id="ControlID-1">&lt;/td>
+&lt;td>✔️&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="major" control-id="ControlID-2">&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="normal">&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="minor">&lt;/td>
+&lt;td>&lt;input type="radio" name="severity" value="trivial">&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td rowspan="2">Bug Priority&lt;/td>
+&lt;td>Top&lt;/td>
+&lt;td>High&lt;/td>
+&lt;td>Medium&lt;/td>
+&lt;td>Low&lt;/td>
+&lt;td>None&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;input type="radio" name="priority" value="top" checked="" control-id="ControlID-3">&lt;/td>
+&lt;td>&lt;input type="radio" name="priority" value="high" control-id="ControlID-4">&lt;/td>
+&lt;td>✔️&lt;/td>
+&lt;td>&lt;input type="radio" name="priority" value="low">&lt;/td>
+&lt;td>&lt;input type="radio" name="priority" value="none">&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Assigned to&lt;/td>
+&lt;td colspan="6">@gyeongmin&lt;/td>
+&lt;/tr>
+&lt;tr>&lt;/tr>
+&lt;tr>
+&lt;td rowspan="4">Details&lt;/td>
+&lt;td>Steps to reproduce&lt;/td>
+&lt;td colspan="6">Step 1.&lt;br>Step 2.&lt;br>Step 3.&lt;br>Step 4.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Expected Result&lt;/td>
+&lt;td colspan="6">~&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Observed Result&lt;/td>
+&lt;td colspan="6">~&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>What actions is &lt;br>this bug blocking?&lt;/td>
+&lt;td colspan="6">~&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td rowspan="4">Environment&lt;/td>
+&lt;td>Platform&lt;/td>
+&lt;td colspan="6">Vision PC, Songdo&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>OS&lt;/td>
+&lt;td colspan="6">Windows 10&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Branch&lt;/td>
+&lt;td colspan="6">master&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Commit #&lt;/td>
+&lt;td colspan="6">ba91c22da75442e971b1b4d8bc11937d3774b909&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td colspan="2">Note&lt;/td>
+&lt;td colspan="6">This is an example.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>`);
+newWindow.document.close();
+}
+&lt;/script>
+&lt;/body>
+&lt;/html></description></item><item><title>백준 디스코드 봇 '백준봇'</title><link>https://gyeongmin.kr/p/baekjoonbot/</link><pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/baekjoonbot/</guid><description>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-1.png" alt="Featured image of post 백준 디스코드 봇 '백준봇'" />&lt;h1 id="백준-디스코드-봇-백준봇">백준 디스코드 봇 &amp;lsquo;백준봇&amp;rsquo;&lt;/h1>
+&lt;blockquote>
+&lt;p>백준 스터디를 진행할 때 문제를 조금 더 이쁘게 올려 보고 싶어 만들었습니다.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-1.png"
+width="1187"
+height="904"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-1_hu3ba0e11ccd78cd419cf9cf4dfafe4b05_113858_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="131"
+data-flex-basis="315px"
+>&lt;/p>
+&lt;hr>
+&lt;p>&lt;a class="link" href="https://solvedac.github.io/unofficial-documentation/#/" target="_blank" rel="noopener"
+>solved.ac 비공식 API&lt;/a> 를 사용하여 만들었습니다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-2.png"
+width="1500"
+height="500"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-2_hua3f398f3dc87c7c8d5a4fd5322b217a0_123732_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="300"
+data-flex-basis="720px"
+>&lt;/p>
+&lt;hr>
+&lt;h2 id="사용-방법">사용 방법&lt;/h2>
+&lt;h3 id="문제-올리기">문제 올리기&lt;/h3>
+&lt;p>&lt;code>/백준 문제번호&lt;/code> 로 문제를 올릴 수 있습니다.
+&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-6.png"
+width="962"
+height="81"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-6_hu2facb2ba88d2dbba0ca32a6b9c440ab0_3694_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="1187"
+data-flex-basis="2850px"
+>&lt;/p>
+&lt;p>또는 &lt;code>/백준 문제링크&lt;/code> 로 문제를 올릴 수 있습니다.
+&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-7.png"
+width="1121"
+height="97"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-7_hu0f6723ab47112f2b9c890bf47ad2c7cd_7752_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="1155"
+data-flex-basis="2773px"
+>&lt;/p>
+&lt;h3 id="문제와-소스코드를-함께-올리기">문제와 소스코드를 함께 올리기&lt;/h3>
+&lt;p>&lt;code>/백준 문제번호&lt;/code> 또는 &lt;code>/백준 문제링크&lt;/code> 하단에 소스코드를 같이 입력하면, 문제와 소스코드를 함께 올릴 수 있습니다.&lt;/p>
+&lt;p>줄바꿈은 &lt;code>Shift&lt;/code> + &lt;code>Enter&lt;/code> 키를 눌러주시면 됩니다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-4.png"
+width="964"
+height="517"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-4_hu95272da1a80a9eb9e31f98224bb7d4be_32035_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="186"
+data-flex-basis="447px"
+>&lt;/p>
+&lt;p>위 사진과 같이 디스코드의 코드 블럭을 이용하시면, 하이라이팅된 코드를 업로드 할 수 있습니다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-3.png"
+width="970"
+height="587"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-3_hu42b54d877be7b417125bc335b2754ff6_54257_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="165"
+data-flex-basis="396px"
+>&lt;/p>
+&lt;h4 id="소스-코드가-길-때">소스 코드가 길 때&lt;/h4>
+&lt;p>디스코드의 Embed의 내용은 4096자 제한이 있습니다.
+따라서 Embed의 범위를 벗어나면 아래 사진과 같이 출력합니다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-8.png"
+width="959"
+height="590"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-8_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="162"
+data-flex-basis="390px"
+>&lt;/p>
+&lt;p>명령어 입력이 잘못된 경우,
+&amp;ldquo;잘못된 입력입니다.&amp;rdquo; 라는 메세지를 출력합니다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-5.png"
+width="959"
+height="590"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-5_hu2df989813509d31de0633370673ec202_51433_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="162"
+data-flex-basis="390px"
+>&lt;/p>
+&lt;p>Embed에 실패하여 메세지를 보내지 못한 경우, 또는 solved.ac 서버가 불안정하여 데이터를 가져오지 못한 경우
+&amp;ldquo;메세지 전송이 실패했습니다.&amp;rdquo; 라는 메세지를 출력합니다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/baekjoonbot/image-9.png"
+width="960"
+height="69"
+srcset="https://gyeongmin.kr/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/baekjoonbot/image-9_hu48de6d47a3ff341ae85709b5d734bb5b_10853_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+class="gallery-image"
+data-flex-grow="1391"
+data-flex-basis="3339px"
+>&lt;/p>
+&lt;hr>
+&lt;h2 id="백준봇-초대하기">백준봇 초대하기&lt;/h2>
+&lt;blockquote>
+&lt;p>&lt;a class="link" href="https://discord.com/api/oauth2/authorize?client_id=1055791861572325417&amp;amp;permissions=17179879424&amp;amp;scope=bot" target="_blank" rel="noopener"
+>초대 링크&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>현재 너무 바빠 업데이트를 못 하고 있는데, 추후 다양한 기능을 업데이트할 예정입니다.&lt;/p>
+&lt;hr></description></item><item><title>윈도우 패키지 매니저 Chocolatey</title><link>https://gyeongmin.kr/p/chocolatey/</link><pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/chocolatey/</guid><description>&lt;img src="https://gyeongmin.kr/p/chocolatey/image.png" alt="Featured image of post 윈도우 패키지 매니저 Chocolatey" />&lt;h1 id="윈도우-패키지-매니저-chocolatey">윈도우 패키지 매니저 Chocolatey&lt;/h1>
+&lt;p>컴퓨터를 포맷한 후 초기 설정할 때 유용하게 사용중인 프로그램이다.&lt;/p>
+&lt;p>여태 프로그램을 설치하기 위해선 프로그램을 검색한 후, 사이트에 들어가서 설치 파일을 다운받은 후, 설치 파일을 실행시켜 일일히 Next를 눌러 가며 설치해야 했다.&lt;/p>
+&lt;p>Chocolatey를 사용하면 이 과정을 &lt;code>choco install python -y&lt;/code> 와 같이 명령어 한 줄로 설치할 수 있다.&lt;/p>
+&lt;p>미리 설치 명령어가 담긴 배치 파일을 만들어 둔다면, 포맷 후 한번에 모든 프로그램을 설치할 수 있다.&lt;/p>
+&lt;p>&lt;code>choco upgrade all&lt;/code> 명령어를 사용하면 모든 프로그램을 업데이트할 수 있다.&lt;/p>
+&lt;h2 id="설치-방법">설치 방법&lt;/h2>
+&lt;p>&lt;a class="link" href="https://chocolatey.org/install" target="_blank" rel="noopener"
+>공식 홈페이지&lt;/a>에서 설치 커맨드를 복사한다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/chocolatey/image-1.png"
+width="1772"
+height="678"
+srcset="https://gyeongmin.kr/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-1_hu3b64eb10026f65a1f76b5e540c3d663e_137488_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="설치 방법"
+class="gallery-image"
+data-flex-grow="261"
+data-flex-basis="627px"
+>&lt;/p>
+&lt;p>&lt;code>윈도우 + X&lt;/code> 키 를 눌러 Windows 터미널(Windows PowerShell)을 관리자 모드로 열어준 후, 복사한 커맨드를 붙여넣기한 후 엔터를 눌러주면 설치가 진행된다.&lt;/p>
+&lt;h2 id="사용-방법">사용 방법&lt;/h2>
+&lt;p>&lt;a class="link" href="https://community.chocolatey.org/packages" target="_blank" rel="noopener"
+>여기서&lt;/a> 설치하고 싶은 패키지를 검색한다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/chocolatey/image-2.png"
+width="1733"
+height="763"
+srcset="https://gyeongmin.kr/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-2_hu0455a5c697b6ff904ec957e5e7e3ce90_135565_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="패키지 찾기"
+class="gallery-image"
+data-flex-grow="227"
+data-flex-basis="545px"
+>&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/chocolatey/image-3.png"
+width="1643"
+height="148"
+srcset="https://gyeongmin.kr/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-3_hu145ebc9ef3833caf75be95bbc2fa7fab_32233_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="패키지 설치 명령어 복사"
+class="gallery-image"
+data-flex-grow="1110"
+data-flex-basis="2664px"
+>&lt;/p>
+&lt;p>커맨드를 복사한 후, Windows PowerShell에서 커맨드를 실행한다. 조금만 기다리면 패키지가 설치된다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/chocolatey/image-4.png"
+width="1222"
+height="625"
+srcset="https://gyeongmin.kr/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/chocolatey/image-4_hub1fb30119f2e70b2d6225bc4e4461698_78100_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="패키지 설치 예시"
+class="gallery-image"
+data-flex-grow="195"
+data-flex-basis="469px"
+>&lt;/p>
+&lt;h2 id="커맨드">커맨드&lt;/h2>
+&lt;blockquote>
+&lt;p>패키지 검색
+&lt;code>choco search 패키지명&lt;/code>&lt;/p>
+&lt;p>패키지 설치
+&lt;code>choco install 패키지명&lt;/code>&lt;/p>
+&lt;p>패키지 설치 (프롬프트/버전 포함)
+&lt;code>choco install -y 패키지명 --version 버전&lt;/code>&lt;/p>
+&lt;p>설치된 패키지 버전 업그레이드
+&lt;code>choco upgrade 패키지명&lt;/code>&lt;/p>
+&lt;p>패키지 상세 정보
+&lt;code>choco info 패키지명&lt;/code>&lt;/p>
+&lt;p>설치된 패키지 확인
+&lt;code>choco list -l&lt;/code>&lt;/p>
+&lt;p>설치된 패키지 삭제
+&lt;code>choco uninstall 패키지명&lt;/code>&lt;/p>
+&lt;p>chocolatey 버전 업그레이드
+&lt;code>choco upgrade chocolatey &lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="chocolatey와-패키지를-한번에-설치하는-스크립트">Chocolatey와 패키지를 한번에 설치하는 스크립트&lt;/h2>
+&lt;p>아래 소스 코드는 본 작성자가 사용하고 있는 스크립트인데, 아래 주석 부분을 수정해서 사용하면 된다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;span class="lnt">68
+&lt;/span>&lt;span class="lnt">69
+&lt;/span>&lt;span class="lnt">70
+&lt;/span>&lt;span class="lnt">71
+&lt;/span>&lt;span class="lnt">72
+&lt;/span>&lt;span class="lnt">73
+&lt;/span>&lt;span class="lnt">74
+&lt;/span>&lt;span class="lnt">75
+&lt;/span>&lt;span class="lnt">76
+&lt;/span>&lt;span class="lnt">77
+&lt;/span>&lt;span class="lnt">78
+&lt;/span>&lt;span class="lnt">79
+&lt;/span>&lt;span class="lnt">80
+&lt;/span>&lt;span class="lnt">81
+&lt;/span>&lt;span class="lnt">82
+&lt;/span>&lt;span class="lnt">83
+&lt;/span>&lt;span class="lnt">84
+&lt;/span>&lt;span class="lnt">85
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bat" data-lang="bat">&lt;span class="line">&lt;span class="cl">&lt;span class="p">@&lt;/span>&lt;span class="k">echo&lt;/span> off
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">CLS&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> **************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> * Start Chocolatey Batch
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> **************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">NET FILE &lt;span class="mi">1&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>NUL &lt;span class="mi">2&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>NUL
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &amp;#39;&lt;span class="nv">%errorlevel%&lt;/span>&amp;#39; &lt;span class="o">==&lt;/span> &amp;#39;0&amp;#39; &lt;span class="p">(&lt;/span> &lt;span class="k">goto&lt;/span> &lt;span class="nl">gotPrivileges&lt;/span>&lt;span class="c1"> &lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">(&lt;/span> &lt;span class="k">goto&lt;/span> &lt;span class="nl">getPrivileges&lt;/span>&lt;span class="c1"> &lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="nl">getPrivileges&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &amp;#39;&lt;span class="nv">%1&lt;/span>&amp;#39;&lt;span class="o">==&lt;/span>&amp;#39;ELEV&amp;#39; &lt;span class="p">(&lt;/span>&lt;span class="k">shift&lt;/span> &lt;span class="p">&amp;amp;&lt;/span> &lt;span class="k">goto&lt;/span> &lt;span class="nl">gotPrivileges&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span>.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> **************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> * Use UAC, switch to admin
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> **************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">setlocal&lt;/span> DisableDelayedExpansion
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">set&lt;/span> &lt;span class="s2">&amp;#34;batchPath=&lt;/span>&lt;span class="nv">%~0&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">setlocal&lt;/span> EnableDelayedExpansion
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> Set UAC = CreateObject&lt;span class="se">^(&lt;/span>&lt;span class="s2">&amp;#34;Shell.Application&amp;#34;&lt;/span>&lt;span class="se">^)&lt;/span> &lt;span class="p">&amp;gt;&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">%temp%&lt;/span>&lt;span class="s2">\OEgetPrivileges.vbs&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> UAC.ShellExecute &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">!batchPath!&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;ELEV&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>, &lt;span class="s2">&amp;#34;runas&amp;#34;&lt;/span>, 1 &lt;span class="p">&amp;gt;&amp;gt;&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">%temp%&lt;/span>&lt;span class="s2">\OEgetPrivileges.vbs&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">%temp%&lt;/span>&lt;span class="s2">\OEgetPrivileges.vbs&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">exit&lt;/span> /B
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="nl">gotPrivileges&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">setlocal&lt;/span> &lt;span class="p">&amp;amp;&lt;/span> &lt;span class="k">pushd&lt;/span> .
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">WHERE choco &lt;span class="mi">1&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>NUL &lt;span class="mi">2&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>NUL
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &amp;#39;&lt;span class="nv">%errorlevel%&lt;/span>&amp;#39; &lt;span class="o">==&lt;/span> &amp;#39;0&amp;#39; &lt;span class="p">(&lt;/span> &lt;span class="k">goto&lt;/span> &lt;span class="nl">chocoInstalled&lt;/span>&lt;span class="c1"> &lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">(&lt;/span> &lt;span class="k">goto&lt;/span> &lt;span class="nl">chocoMissing&lt;/span>&lt;span class="c1"> &lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="nl">chocoMissing&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span>.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">choice /M &lt;span class="s2">&amp;#34;Chocolatey not found. Install now?&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">IF&lt;/span> &amp;#39;&lt;span class="nv">%errorlevel%&lt;/span>&amp;#39; &lt;span class="o">==&lt;/span> &amp;#39;2&amp;#39; &lt;span class="k">exit&lt;/span> /B
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span>.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> **************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> * Chocolatey install
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> **************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">@&lt;/span>powershell -NoProfile -ExecutionPolicy Bypass -Command &lt;span class="s2">&amp;#34;iex ((new-object net.webclient).DownloadString(&amp;#39;https://chocolatey.org/install.ps1&amp;#39;))&amp;#34;&lt;/span> &lt;span class="p">&amp;amp;&amp;amp;&lt;/span> &lt;span class="k">SET&lt;/span> &lt;span class="nv">PATH&lt;/span>&lt;span class="p">=&lt;/span>&lt;span class="nv">%PATH%&lt;/span>;&lt;span class="nv">%ALLUSERSPROFILE%&lt;/span>\chocolatey\bin
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="nl">chocoInstalled&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span>.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> **************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> * Packages install
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">ECHO&lt;/span> **************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">@&lt;/span>&lt;span class="k">echo&lt;/span> on
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">choco feature enable --name=allowGlobalConfirmation
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">choco upgrade all -y
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">::::::::::::::::::::::: 이 부분을 변경하세요 ::::::::::::::::::::::::&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">: 설치할 어플리케이션 목록&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">set&lt;/span> &lt;span class="nv">choco_install&lt;/span>&lt;span class="p">=&lt;/span>choco install -fy
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> bandizip
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> potplayer
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> everything
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> discord
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> leagueoflegends
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> steam
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> notion
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> zoom
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> webex
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> github-desktop
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> jetbrainstoolbox
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> vscode
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> visualstudio2022community
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> qbittorrent
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> obs-studio
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">: chocolatey에 없는 프로그램들 다운로드 링크 링크 열기&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://creativecloud.adobe.com/apps/download/creative-cloud?locale=ko#
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://app-pc.kakaocdn.net/talk/win32/KakaoTalk_Setup.exe
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://www.onstove.com/download
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">choco feature disable --name=allowGlobalConfirmation
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">RefreshEnv.cmd
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">pause&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
