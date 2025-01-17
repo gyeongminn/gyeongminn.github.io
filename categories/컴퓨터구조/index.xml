@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>컴퓨터구조 on Gyeongmin의 개발 블로그</title>
+        <link>https://gyeongmin.kr/categories/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/</link>
+        <description>Recent content in 컴퓨터구조 on Gyeongmin의 개발 블로그</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ko</language>
+        <copyright>Gyeongmin Lee</copyright>
+        <lastBuildDate>Wed, 20 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EC%BB%B4%ED%93%A8%ED%84%B0%EA%B5%AC%EC%A1%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>고정 소수점과 부동 소수점 표현</title>
+        <link>https://gyeongmin.kr/p/fixed-point-and-floating-point/</link>
+        <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/fixed-point-and-floating-point/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 고정 소수점과 부동 소수점 표현" /&gt;&lt;h2 id=&#34;고정-소수점-표현&#34;&gt;고정 소수점 표현&lt;/h2&gt;
+&lt;p&gt;고정 소수점 방식에서는 정수 부분과 소수 부분을 이진수로 변환한 후 각각 고정된 위치에 표현한다.
+아래 그림과 같이 첫번째 비트는 부호를, 그 다음 16비트는 정수를, 우측 15비트는 소수를 나타낸다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/fixed-point-and-floating-point/image-1.png&#34;
+	width=&#34;995&#34;
+	height=&#34;291&#34;
+	srcset=&#34;https://gyeongmin.kr/p/fixed-point-and-floating-point/image-1_hu9a5a13c4fb56aedbefd94a9fc224620b_19438_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/fixed-point-and-floating-point/image-1_hu9a5a13c4fb56aedbefd94a9fc224620b_19438_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;고정 소수점 표현&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;341&#34;
+		data-flex-basis=&#34;820px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;십진 실수를 고정 소수점으로 표현하는 과정은 다음과 같다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;부호(sign)에 양수면 0, 음수면 1을 넣는다.&lt;/li&gt;
+&lt;li&gt;정수부를 이진화하여, 정수부에 넣는다. 남는 부분은 0으로 채운다.&lt;/li&gt;
+&lt;li&gt;소수부의 근사치를 이진화하여 소수부에 넣는다. 뒷 부분은 잘라내거나, 남는 부분은 0으로 채운다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;고정 소수점은 부동소수점에 비해 빠르고 간단하다는 장점이 있지만, 정수부로 사용 가능한 비트 수는 정해져 있기 때문에 큰 실수를 표현할 수 없다는 단점이 있다.&lt;/p&gt;
+&lt;h2 id=&#34;부동-소수점-표현&#34;&gt;부동 소수점 표현&lt;/h2&gt;
+&lt;p&gt;부동소수점 수는 가수(mantissa)와 지수(exponent)로 나누어 표현한다.
+아래 그림과 같이 첫번째 비트는 부호를, 그 다음 8비트는 지수를, 우측 23비트는 가수를 나타낸다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/fixed-point-and-floating-point/image.png&#34;
+	width=&#34;1016&#34;
+	height=&#34;287&#34;
+	srcset=&#34;https://gyeongmin.kr/p/fixed-point-and-floating-point/image_hu8bfd104357f64d35172f20f6f2a20922_19327_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/fixed-point-and-floating-point/image_hu8bfd104357f64d35172f20f6f2a20922_19327_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;부동 소수점 예시&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;354&#34;
+		data-flex-basis=&#34;849px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;십진 실수를 부동 소수점으로 표현하는 과정은 다음과 같다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;부호(sign)에 양수면 0, 음수면 1을 넣는다.&lt;/li&gt;
+&lt;li&gt;$1.m \times 2^{n}$ 형태로 수를 정규화한다. $m$은 가수, $n$은 지수이다.&lt;/li&gt;
+&lt;li&gt;정규화된 수의 소수부를 이진화하여 가수에 넣는다. 뒷 부분은 잘라내거나, 0으로 채운다.&lt;/li&gt;
+&lt;li&gt;지수에 편항(bias) 127을 더해 지수 부분에 담는다. 남는 부분은 0으로 채운다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;부동 소수점은 고정 소수점에 비해 더 큰 실수를 표현할 수 있기에 대부분 부동 소수점을 기본적으로 채택한다.&lt;/p&gt;
+&lt;h3 id=&#34;정규화&#34;&gt;정규화&lt;/h3&gt;
+&lt;p&gt;부동소수점은 $1.m \times 2^{e-\text{bias}}$ 꼴로 표현되는데, 여기서 정규화란 가수를 $1.m$ 형태로 맞추는 과정이다. 정규화를 통해 동일한 크기의 비트로 더 넓은 범위의 실수를 다룰 수 있다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;실수의 가장 왼쪽에 위치한 1이 가수의 첫 부분에 오도록 위치를 조정한다.&lt;/li&gt;
+&lt;li&gt;지수 $e$는 가수를 정규화한 결과에 맞게 증가하거나 감소한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;예를 들어, 10진수 12.75를 부동 소수점으로 변환한다면, 아래와 같다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;12.75를 이진수로 변환하면 $1100.11_2$이다.&lt;/li&gt;
+&lt;li&gt;정규화하면 $1.10011_2 \times 2^3$이 된다.&lt;/li&gt;
+&lt;li&gt;여기서 $1.10011_2$는 가수, $3$은 지수가 된다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;정규화를 진행하면 항상 정수부가 1이기 때문에, 1은 굳이 저장하지 않고 소수부만 저장한다.&lt;/p&gt;
+&lt;h3 id=&#34;편향-bias&#34;&gt;편향 (Bias)&lt;/h3&gt;
+&lt;p&gt;부호 없는 정수 형태로 지수를 표현하기 위해, 실제 지수 값에 특정 값(편향)을 더해 저장한다. 일반적으로 IEEE 754 표준에서는 편향 값으로 $2^{n-1} - 1$을 사용한다. 32비트 단정밀도는 지수 비트수가 8이므로 편향 값은 $127$이다. 계산할 땐 다시 편향 값을 더해 복구한다.&lt;/p&gt;
+&lt;p&gt;양수와 음수 지수를 모두 다룰 수 있고, 하드웨어 구현이 더 간단해지기 때문에 편향을 이용하여 표현한다.
+또한, 0을 정확히 표현할 수 있고, &lt;code&gt;infinity&lt;/code&gt;와 &lt;code&gt;NaN&lt;/code&gt;을 표현할 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;부동소수점-오차&#34;&gt;부동소수점 오차&lt;/h3&gt;
+&lt;p&gt;부동소수점의 가장 큰 한계 중 하나는 바로 오차이다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;근사 오차 (Rounding Error)&lt;br&gt;
+부동소수점은 유한한 비트로 실수를 표현하기 때문에, 일부 값은 근사치로 표현될 수밖에 없다. 예를 들어, 10진수 0.1은 2진수로 정확히 표현할 수 없기 때문에 근사치로 저장된다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;연산 오차 (Arithmetic Error)&lt;br&gt;
+두 개 이상의 부동소수점 수를 연산할 때, 소수점 아래 비트가 잘리거나 반올림되면서 오차가 발생한다. 특히, 값의 크기 차이가 클수록 오차가 커질 수 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;특히, 부동소수점을 &lt;code&gt;==&lt;/code&gt; 비교하는 것은 자제하는 것이 옳다.&lt;/p&gt;
+&lt;h2 id=&#34;실수를-더-정확하게-연산하는-방법&#34;&gt;실수를 더 정확하게 연산하는 방법&lt;/h2&gt;
+&lt;h3 id=&#34;정수-연산-치환&#34;&gt;정수 연산 치환&lt;/h3&gt;
+&lt;p&gt;항상 소수부가 2자리라면, 100을 곱해 정수로 치환한 뒤, 계산한 후 다시 소수로 변환하는 방법이 있다.&lt;/p&gt;
+&lt;h3 id=&#34;보다-큰-자료형-선택&#34;&gt;보다 큰 자료형 선택&lt;/h3&gt;
+&lt;p&gt;더 많은 비트를 사용하여, 더욱 정밀도를 높일 수 있다. &lt;code&gt;double&lt;/code&gt; 대신 &lt;code&gt;long double&lt;/code&gt;, &lt;code&gt;__int128&lt;/code&gt;을 사용하면 된다.&lt;/p&gt;
+&lt;h3 id=&#34;분수-클래스-사용&#34;&gt;분수 클래스 사용&lt;/h3&gt;
+&lt;p&gt;파이썬의 &lt;code&gt;Fraction&lt;/code&gt;과 같이, 모든 수를 분수 형태로 표현하여 연산한다면 정확한 실수 연산이 가능하다.&lt;/p&gt;
+&lt;h3 id=&#34;고정-소수점-사용&#34;&gt;고정 소수점 사용&lt;/h3&gt;
+&lt;p&gt;부동소수점 대신 고정 소수점을 사용하면 일부 환경에서는 오차를 줄일 수 있다. 특히, 값의 범위가 작고 정밀도가 중요한 경우에 적합하다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>진법과 보수</title>
+        <link>https://gyeongmin.kr/p/notation-and-complement/</link>
+        <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/notation-and-complement/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 진법과 보수" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;진법&#34;&gt;진법&lt;/h2&gt;
+&lt;p&gt;N진법은 수를 셀 때 자릿수가 올라가는 단위를 기준으로 하는 셈법으로, 위치적 기수법이라고도 한다.&lt;/p&gt;
+&lt;p&gt;우리가 일반적으로 수를 셀 때는 10진법을 사용한다. 시계에서 시간은 12진법을, 분은 60진법을 사용한다.
+진법은 분명히 표시하기 위해 다음과 같이 첨자를 붙이기도 한다.&lt;/p&gt;
+&lt;p&gt;$$
+(101101)&lt;em&gt;2 = (45)&lt;/em&gt;{10}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;2진법-binary&#34;&gt;2진법 (Binary)&lt;/h3&gt;
+&lt;p&gt;2진법은 0과 1이라는 두개의 숫자만을 사용하여 수를 나타내는 것이다. 2가 되는 순간 자리올림이 발생한다.&lt;/p&gt;
+&lt;p&gt;$$
+(1011)_2=\mathtt{0b1011}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;10진법-decimal&#34;&gt;10진법 (Decimal)&lt;/h3&gt;
+&lt;p&gt;우리가 가장 일반적으로 사용하고 있는 기수법으로, 한 자리에 0~9의 숫자로 나타낸다. 9를 넘어서면 자리올림이 발생한다.&lt;/p&gt;
+&lt;p&gt;$$
+724.5 = 7 \times 10^2 + 2 \times 10^1 + 4 \times 10^0 + 5 \times 1010^{-1}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;16진법-hexadecimal&#34;&gt;16진법 (Hexadecimal)&lt;/h3&gt;
+&lt;p&gt;0~F까지 사용한다. 컴퓨터 분야에서 1바이트의 크기를 쉽게 표현할 수 있어 많이 사용된다.&lt;/p&gt;
+&lt;p&gt;$$
+(5A)_{16}=\mathtt{0x5A}
+$$&lt;/p&gt;
+&lt;p&gt;컴퓨터는 십진수를 &lt;a class=&#34;link&#34; href=&#34;https://ko.wikipedia.org/wiki/%EC%9D%B4%EC%A7%84%ED%99%94_%EC%8B%AD%EC%A7%84%EB%B2%95&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;이진화 집진법(BCD)&lt;/a&gt;의 형태로 저장하고 표현한다.&lt;/p&gt;
+&lt;h2 id=&#34;진법의-변환&#34;&gt;진법의 변환&lt;/h2&gt;
+&lt;h3 id=&#34;10진수---n진수&#34;&gt;10진수 -&amp;gt; N진수&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;10진수를 N으로 나누고, 나머지를 기록한다.&lt;/li&gt;
+&lt;li&gt;나머지를 기록한다. (뒤에서 앞으로)&lt;/li&gt;
+&lt;li&gt;나눈 몫이 N보다 작으면 멈춘다.&lt;/li&gt;
+&lt;li&gt;마지막 몫을 기록한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;n진수---10진수&#34;&gt;N진수 -&amp;gt; 10진수&lt;/h3&gt;
+&lt;p&gt;1의 자리수부터 N의 0승, N의 1승, &amp;hellip; 이렇게 차례대로 곱하여 더해주면 된다.&lt;/p&gt;
+&lt;p&gt;$$
+(1011)_2 = 1 \times 2^3 + 0 \times 2^2 + 1 \times 2^1 + 1 \times 2^0 = 11
+$$&lt;/p&gt;
+&lt;p&gt;이를 수식으로 일반화하면 아래와 같다.&lt;/p&gt;
+&lt;p&gt;$$
+(a_k a_{k-1} \cdots a_1 a_0)&lt;em&gt;N = \sum&lt;/em&gt;{i=0}^{k} a_i \times N^i = (x)_{10}
+$$&lt;/p&gt;
+&lt;h3 id=&#34;진법-변환-c-구현&#34;&gt;진법 변환 C++ 구현&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;charToInt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;&amp;#39;9&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;sc&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;intToChar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sc&#34;&gt;&amp;#39;0&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sc&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;convertToDecimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;decimal&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;decimal&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;charToInt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;decimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;convertFromDecimal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;intToChar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;base&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;reverse&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;보수&#34;&gt;보수&lt;/h2&gt;
+&lt;p&gt;보수(compleement)는 디지털 컴퓨터에서 뺄셈 연산과 논리 계산에 사용된다. $r$진법에는 $r$의 보수와 $(r-1)$의 보수가 있다.&lt;/p&gt;
+&lt;h3 id=&#34;r-1의-보수&#34;&gt;(r-1)의 보수&lt;/h3&gt;
+&lt;p&gt;일반적으로 $r$진법의 $n$자리수의 수 $N$에 대하여, $(r-1)$의 보수는 $(r^n-1)-N$으로 정의된다. 예를 들어 10진수 $546700$에 대한 9의 보수는 $999999 - 546700 = 453299$이다. 이진수에서 1의 보수는 각 자리 수를 뒤집는 것이다.&lt;/p&gt;
+&lt;h3 id=&#34;r의-보수&#34;&gt;r의 보수&lt;/h3&gt;
+&lt;p&gt;일반적으로 $r$진법의 $n$자리수의 수 $N$에 대하여, $r$의 보수는 $N \neq 0$일 때 $r^n-N$이고, $N=0$일 때는 0으로 정의된다. $r$의 보수는 $(r-1)$의 보수에 1을 더한 것과 같다.&lt;/p&gt;
+&lt;h3 id=&#34;보수의-대칭&#34;&gt;보수의 대칭&lt;/h3&gt;
+&lt;p&gt;어떤 수에 대한 보수를 다시 보수화하면 원래 수가 된다.&lt;/p&gt;
+&lt;p&gt;$r^n-(r^n-N)=N$이고, $(r^n-1)-((r^n-1)-N)=N$ 이므로, 보수의 대칭성을 만족하는 것을 확인할 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;부호-없는-숫자의-뺄셈&#34;&gt;부호 없는 숫자의 뺄셈&lt;/h3&gt;
+&lt;p&gt;$r$진수 부호 없는 두 $n$자리수 사이의 뺼셈 $M-N(N \neq 0)$은 다음과 같이 계산된다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;피감수 $M$에 감수 $N$에 대한 $r$의 보수를 더한다. $M+(r^n-N)=M-N+r^n$&lt;/li&gt;
+&lt;li&gt;$M \geq N$이라면, 위의 값은 end캐리 $r^n$을 만들어내고, 이를 무시하면 $M-N$을 얻을 수 있다.&lt;/li&gt;
+&lt;li&gt;$M &amp;lt; N$이라면, 위의 값은 end캐리를 만들어내지 않고 그 값은 $r^n-(N-M)$이다. 이것은 $(N-M)$에 대한 $r$보수이므로, 이것에 대한 $r$의 보수를 취하고 앞에 뺄셈 기호를 붙여 뺼셈을 할 수 있다.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>레지스터</title>
+        <link>https://gyeongmin.kr/p/register/</link>
+        <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/register/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 레지스터" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;레지스터&#34;&gt;레지스터&lt;/h2&gt;
+&lt;p&gt;$n$비트의 레지스터는 $n$비트의 이진 정보를 저장하기 위한 $n$개의 플립플롭과 데이터 처리를 위한 조합 회로로 구성되어 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-3.png&#34;
+	width=&#34;827&#34;
+	height=&#34;771&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-3_hu013b62c223be7cbb769b9e6f6875b662_85846_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-3_hu013b62c223be7cbb769b9e6f6875b662_85846_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;4비트 레지스터&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;107&#34;
+		data-flex-basis=&#34;257px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 레지스터는 아무런 외부 게이트를 가지지 않고 플립플롭으로만 구성된 가장 단순한 형태의 레지스터이다.
+클리어 입력은 그 값이 0이 될 경우, 클럭 동작과 관계 없이 레지스터의 모든 플립플롭 출력을 0으로 만든다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-4.png&#34;
+	width=&#34;970&#34;
+	height=&#34;918&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-4_hu57b1fa2b31a3f17cdfe4ae725228d952_184972_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-4_hu57b1fa2b31a3f17cdfe4ae725228d952_184972_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;병렬 로드를 가진 4비트 레지스터&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;105&#34;
+		data-flex-basis=&#34;253px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;대부분의 디지털 시스템은 지속적으로 클럭 펄스를 제공하는 주 클럭 발생기를 가지고 있다. 따라서 특정 레지스터에 지정된 클럭 펄스만이 영향을 줄 수 있도록 하는 제어 신호가 필요하다.
+위 4비트 레지스터는 로드 제어 입력을 가지고 있어 클럭 펄스의 작용 여부를 결정할 수 있다.&lt;/p&gt;
+&lt;p&gt;로드 입력이 0인 경우는 입력이 차단되고 플립플롭의 D 입력은 자신의 출력에 연결된다. 이와 같은 피드백 연결로 레지스터의 내용은 불변하게 된다.&lt;/p&gt;
+&lt;p&gt;버퍼 게이트는 클럭 발생기로부터의 전력 소모를 줄이는 역할을 한다.&lt;/p&gt;
+&lt;h2 id=&#34;시프트-레지스터&#34;&gt;시프트 레지스터&lt;/h2&gt;
+&lt;p&gt;레지스터에 저장되어 있는 이진 정보를 단방향 혹은 양방향으로 이동시킬 수 있는 것이 시프트 레지스터이다. 시프트 레지스터의 각 플립플롭들은 각각의 입력과 출력이 연쇄적으로 연결되어 있고, 공통의 클럭 펄스가 다음 상태로의 이동을 제어한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-5.png&#34;
+	width=&#34;858&#34;
+	height=&#34;203&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-5_hu64015c35d4c7ec58687900c18d70aca1_82680_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-5_hu64015c35d4c7ec58687900c18d70aca1_82680_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;4비트 시프트 레지스터&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;422&#34;
+		data-flex-basis=&#34;1014px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 그림에서 serial input은 시프트 될 경우 가장 왼쪽 플립플롭에 들어갈 값을 결정하며, serial output은 가장 오른쪽 플립플롭의 출력이다.&lt;/p&gt;
+&lt;p&gt;시프트 레지스터에서 원하지 않는 클럭을 제한함으로써 특정 클럭 펄스에만 시프트가 일어나도록 제어할 수 있다. 위 그림에서는 클럭을 AND게이트의 한 입력에 연결하고, 다른 입력에는 제어 신호를 연결함으로써 구현하였다. 또한 D 입력을 제어하는 추가 회로를 이용하여 구현할 수도 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-6.png&#34;
+	width=&#34;835&#34;
+	height=&#34;1075&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-6_hube48a1e274ae620365c7b2b41147ac3a_344378_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-6_hube48a1e274ae620365c7b2b41147ac3a_344378_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;병렬 로드를 가진 4비트 양방향 시프트 레지스터&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;77&#34;
+		data-flex-basis=&#34;186px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-7.png&#34;
+	width=&#34;793&#34;
+	height=&#34;268&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-7_hud329363e26be7004051e6195132deab6_93584_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-7_hud329363e26be7004051e6195132deab6_93584_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;병렬 로드를 가진 4비트 양방향 시프트 레지스터의 함수표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;295&#34;
+		data-flex-basis=&#34;710px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;시프트 레지스터는 주로 원격지 시스템 사이에 데이터를 전송하고자 할 때 사용한다. 즉 원거리의 두 지점 간에 $n$비트의 전송이 필요할 때 $n$개의 라인을 이용하여 병렬적으로 전송하는 것보다 하나의 라인을 통해 한 비트씩 보내는 것이 더 경제적이다. 송신 측에서는 병렬에서 직렬로 변환을 하여 전송하고, 수신 측에서는 받은 데이터를 다시 병렬로 변환하는 것이다.&lt;/p&gt;
+&lt;h2 id=&#34;이진-카운터&#34;&gt;이진 카운터&lt;/h2&gt;
+&lt;p&gt;입력 펄스에 따라 미리 정해진 순서대로 상태 변이가 진행되는 레지스터를 카운터라고 한다. 입력 펄스가 클럭 펄스를 사용하거나 외부로부터 얻을 수도 있다. 입력 펄스의 시간 간격은 일정할수도 있고 랜덤할수도 있다.&lt;/p&gt;
+&lt;p&gt;카운터는 어떤 사건의 발생 횟수를 세거나, 동작 순서를 제어하는 타이밍 신호를 만드는 데 사용된다.
+이진수의 순서를 따르는 카운터를 이진 카운터라고 한다. $n$개의 플립플롭을 가진 $n$비트 이진 카운터는 0에서 $(2^n-1)$까지 카운트한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-8.png&#34;
+	width=&#34;907&#34;
+	height=&#34;1125&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-8_hu491bfaff988f4b1bbbf1fd567f9483f7_171592_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-8_hu491bfaff988f4b1bbbf1fd567f9483f7_171592_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;4비트 동기 이진 카운터&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;80&#34;
+		data-flex-basis=&#34;193px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;카운터 회로는 보통 보수화 기능을 가지고 있는 T 플립플롭이나 JK 플립플롭을 이용한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-9.png&#34;
+	width=&#34;764&#34;
+	height=&#34;889&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-9_hube09b85bef2588e7c5a4b030fd6d4e47_216442_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-9_hube09b85bef2588e7c5a4b030fd6d4e47_216442_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;병렬 로드와 동기 클리어를 가진 4비트 이진 카운터&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;85&#34;
+		data-flex-basis=&#34;206px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-10.png&#34;
+	width=&#34;837&#34;
+	height=&#34;212&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-10_huf66103903e9971be669a1d917247df3e_71114_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-10_huf66103903e9971be669a1d917247df3e_71114_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;병렬 로드와 동기 클리어를 가진 4비트 이진 카운터에 대한 함수표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;394&#34;
+		data-flex-basis=&#34;947px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;카운터의 초기값 설정을 위해 병렬 로드 기능을 가진 카운터가 필요하다. 클리어 입력이 1일 대, 모든 플립플롭의 K 입력이 1로 설정되기 때문에 다음 클럭 변이에서 모든 플립플롭 출력이 0으로 클리어된다.&lt;/p&gt;
+&lt;p&gt;클리어 입력과 로드 입력이 모두 0이고, increment 입력이 1일 때, 정상적인 동작을 수행한다.&lt;/p&gt;
+&lt;h2 id=&#34;메모리-장치&#34;&gt;메모리 장치&lt;/h2&gt;
+&lt;p&gt;메모리 장치는 정보의 입출력 기능을 가지고 있는 저장요소들의 집합으로서, 입출력에서 하나의 단위로 취급되는 비트의 그룹인 word로 정보를 저장한다. 즉 메모리 워드는 1과 0의 비트 그룹으로 숫자, 명령어, 문자 등의 이진화된 정보를 저장한다.&lt;/p&gt;
+&lt;p&gt;특히 8비트로 이루어진 비트 그룹을 바이트(byte)라고 하며, 대부분의 컴퓨터 메모리는 8배수 크기의 워드를 채택한다.&lt;/p&gt;
+&lt;p&gt;메모리 내부 구조는 한 워드를 구성하는 비트 수나 전체 워드 수에 의해 규정된다. 메모리의 각 워드는 0에서부터 $2^k-1$까지의 주소를 가지고 있어 주소 입력(k개의 입력 라인)의 값에 따라 특정 워드가 선택된다. 내부의 디코더가 이런 선택 동작을 수행한다. 따라서 컴퓨터의 메모리가 $2^n$개의 워드인 경우에는 $n$비트의 주소가 필요하다. 보통&lt;/p&gt;
+&lt;h3 id=&#34;ram&#34;&gt;RAM&lt;/h3&gt;
+&lt;p&gt;RAM(Random Access Memory)에서는 워드의 물리적인 위치에 관계없이 접근 절차나 접근 시간이 동일하다. 메모리와 외부 세계와의 통신은 데이터 입출력 라인, 주소 라인, 제어 라인을 통해 이루어진다.
+RAM은 데이터 입력을 위한 쓰기 동작과 데이터 출력을 위한 읽기 동작을 제공하며, 제어 신호에 의해 선택된다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image.png&#34;
+	width=&#34;871&#34;
+	height=&#34;688&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image_hubfa941b0dc2b87d5706071ad823cc7cf_107705_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image_hubfa941b0dc2b87d5706071ad823cc7cf_107705_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;RAM에 대한 블럭도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;126&#34;
+		data-flex-basis=&#34;303px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 블럭도에 나타난 RAM은 $n$개의 입력과 출력을 가지고 있고, $k$개의 주소 라인으로 메모리 내의 $2^k$개의 워드 중에서 하나를 선택할 수 있다. 두 개의 제어 입력은 데이터의 전송 방향을 지정한다.&lt;/p&gt;
+&lt;p&gt;하나의 새로운 워드가 전송되어 메모리에 저장될 때엔 다음과 같은 과정이 필요하다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;원하는 워드의 이진 주소값을 주소 입력에 넣는다.&lt;/li&gt;
+&lt;li&gt;메모리에 저장될 데이터 비트들을 데이터 입력에 넣는다.&lt;/li&gt;
+&lt;li&gt;쓰기 입력을 활성화한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;메모리에 저장된 한 워드를 꺼내오는 데엔 다음과 같은 과정이 필요하다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;원하는 워드의 이진 주소값을 주소 입력에 넣는다.&lt;/li&gt;
+&lt;li&gt;읽기 입력을 활성화한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;rom&#34;&gt;ROM&lt;/h3&gt;
+&lt;p&gt;읽기전용 메모리(Read-Only Memory, ROM)는 데이터가 한 번 저장되면 하드웨어의 수명이 다할 때까지 내용이 변경되지 않는다. ROM은 쓰기 동작이 허용되지 않으며, 한 번 저장된 데이터는 영구적으로 유지된다.&lt;/p&gt;
+&lt;p&gt;반면, RAM과 같은 다른 메모리는 회로가 동작하는 동안 데이터를 자유롭게 읽고 쓰는 기능이 있지만, 전원이 차단되면 데이터가 사라진다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/register/image-1.png&#34;
+	width=&#34;570&#34;
+	height=&#34;708&#34;
+	srcset=&#34;https://gyeongmin.kr/p/register/image-1_hu171a10b1ba41e1b8fd01cb21812d26d9_71065_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/register/image-1_hu171a10b1ba41e1b8fd01cb21812d26d9_71065_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;ROM에 대한 블럭도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;80&#34;
+		data-flex-basis=&#34;193px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;ROM은 내부에 특정 전자적 구조를 통해 데이터를 저장한다. 데이터를 저장하기 위해 ROM 내부에는 프로그램 가능한 전자적 퓨즈(fuse)가 존재한다. 이러한 퓨즈는 특정 패턴을 형성하며, 이를 통해 전원이 끊어지더라도 데이터가 안정적으로 유지된다. ROM은 저장된 데이터를 직접 읽어내는 방식으로 작동하며, 데이터의 주소를 입력받아 고정된 출력값을 제공한다. 따라서 읽기 제어 입력이 필요하지 않아 구조적으로 간단하면서도 신뢰성이 높은 특징을 가진다.&lt;/p&gt;
+&lt;p&gt;ROM의 저장 방식은 매우 효율적이며, 제어 회로와 디코더의 결합을 통해 작동한다. ROM에 저장된 데이터는 주소 입력값에 따라 즉시 출력값이 결정되기 때문에 빠른 응답 속도를 제공한다. RAM과 달리, ROM은 데이터를 읽는 용도로만 사용되며 추가적인 저장 기능은 필요하지 않다. 이는 ROM이 데이터의 저장뿐 아니라 제어 회로의 설계에도 적합한 이유이다.&lt;/p&gt;
+&lt;p&gt;컴퓨터 시스템에서 ROM은 주로 고정된 프로그램 저장 용도로 사용된다. 이는 운영체제의 초기 부팅 과정이나 하드웨어와의 상호작용을 위한 기초 제어 코드를 포함한다. 또한, ROM은 제어 회로에서 내부 변수의 상태 변화를 기록하거나 변경되지 않는 상수를 저장하는 데 활용된다. 예를 들어, 전자 기기의 기본 동작을 정의하는 펌웨어는 ROM에 저장되어 장치의 동작을 안정적으로 지원한다.&lt;/p&gt;
+&lt;h4 id=&#34;rom의-종류&#34;&gt;ROM의 종류&lt;/h4&gt;
+&lt;p&gt;ROM은 정보 저장 방식에 따라 다양한 종류로 나뉜다. 가장 기본적인 형태는 제조 공정 단계에서 데이터를 미리 프로그래밍하는 고정된 프로그램 ROM(Mask ROM)이다. 이 방식은 고객이 요청한 데이터를 기반으로 제조 과정에서 ROM에 고정 데이터를 삽입한다. 대량 생산 시 경제적 효율성을 제공하지만, 동일한 ROM을 소량 주문할 경우 높은 비용이 발생하는 단점이 있다.&lt;/p&gt;
+&lt;p&gt;프로그래밍 가능한 ROM(PROM)은 초기 상태에서 모든 출력이 1로 설정된 상태에서 시작한다. 사용자는 PROM 프로그래머라는 장비를 이용해 특정 비트를 끊어 데이터를 설정할 수 있다. PROM은 한 번 데이터가 기록되면 수정이 불가능하기 때문에 실험용 데이터 저장에 주로 사용된다.&lt;/p&gt;
+&lt;p&gt;지울 수 있는 PROM(EPROM)은 한 단계 더 진화한 기술이다. EPROM은 자외선 노출을 통해 데이터를 초기 상태로 복구할 수 있으며, 이를 통해 데이터를 재프로그래밍하는 기능을 제공한다. 이 기술은 제한된 수정 가능성을 제공하지만, 여전히 물리적 절차를 요구한다.&lt;/p&gt;
+&lt;p&gt;전기적 소거가 가능한 PROM(EEPROM)은 ROM 기술의 최종 진화 형태로, 전기적 신호를 통해 데이터를 수정하거나 삭제할 수 있다. EEPROM은 높은 유연성을 제공하며, 현대의 컴퓨터와 전자 장치에서 자주 사용된다. 이는 소규모 데이터를 반복적으로 갱신해야 하는 환경에서 매우 유용하다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>집적 회로, 디코더, 인코더, 멀티플렉서</title>
+        <link>https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/</link>
+        <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 집적 회로, 디코더, 인코더, 멀티플렉서" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;집적-회로&#34;&gt;집적 회로&lt;/h2&gt;
+&lt;p&gt;집적 회로(IC)는 디지털 게이트를 구성하는 전자 부품들을 포함하는 실리콘 반도체(chip)이다.
+기술이 발전함에 따라 칩 안에 담을 수 있는 게이트의 개수가 급격히 증가하였고, 집적된 정도에 따라 아래와 같이 소규모, 중규모, 대규모 집적 장치로 분류한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;소규모 집적 장치(SSI)는 10개 이하의 독립적인 게이트가 하나의 칩에 들어가 있고, 게이트의 입출력이 바로 외부 핀으로 연결된다.&lt;/li&gt;
+&lt;li&gt;중규모 집적 장치(MSI)는 10개에서 200개의 게이트가 들어가 있고, 디코더나 가산기, 레지스터와 같은 디지털 장치를 구현한다.&lt;/li&gt;
+&lt;li&gt;대규모 집적 장치(LSI)는 200에서 1000개의 게이트를 집적하고 프로세서나 메모리 칩과 같은 디지털 시스템을 형성한다.&lt;/li&gt;
+&lt;li&gt;초대규모 집적 장치(VLSI)는 수천 개의 게이트를 하나의 칩에 집적하여 대형 메모리나 복잡한 마이크로 컴퓨터 칩을 형성한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;디지털 회로는 구현하는 데 적용된 기술에 따라 디지털 논리군으로 분류된다. 대표적으로 아래와 같은 것들이 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TTL: 트랜지스터-트랜지스터 논리&lt;/li&gt;
+&lt;li&gt;ECL: 에미터-결합 논리&lt;/li&gt;
+&lt;li&gt;MOS: 금속-산화물 반도체&lt;/li&gt;
+&lt;li&gt;CMOS: 상보 금속-산화물 반도체&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TTL은 가장 많이 사용되고 있는 논리군이고, ECL은 고속도가 요구되는 시스템에 사용되며, MOS는 부품의 밀도가 높은 집적 회로에, CMOS는 적은 전력 소비가 요구되는 시스템에 많이 사용된다.&lt;/p&gt;
+&lt;h2 id=&#34;디코더&#34;&gt;디코더&lt;/h2&gt;
+&lt;p&gt;$n$비트의 이진 코드는 서로 다른 $2^n$개의 원소 정보를 나타낼 수 있다. 디코더는 $n$비트로 코딩된 이진 정보를 최대 $2^n$개의 서로 다른 출력으로 바꾸어 주는 조합 회로이다. $n$개의 입력과 $m(m&amp;lt;2^n)$개의 출력을 가지는 디코더를 $n$대 $m$ 라인 디코더 혹은 $n \times m$ 디코더라고 한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image.png&#34;
+	width=&#34;684&#34;
+	height=&#34;747&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image_hu65b10ef8cb90c6cc557c07e07bb7a70e_200920_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;3X8 디코더의 진리표와 회로도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;91&#34;
+		data-flex-basis=&#34;219px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;E가 0일때 모든 출력은 항상 0이고, E가 1일때만 정상적으로 동작한다. 각 출력은 다른 일곱 개의 입력 조합에 대해서는 0이고, 오직 하나의 조합에 대해서만 1인 출력값을 가진다. 이것이 입력 이진수에 해당한는 8진수 값이라고 할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-1.png&#34;
+	width=&#34;972&#34;
+	height=&#34;413&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-1_huadcdd09f88ffc26b1bd8c3c45fb0d645_114561_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;2X4 NAND 게이트 디코더&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;235&#34;
+		data-flex-basis=&#34;564px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;보수화된 형태로 출력을 만드는 것이 더 경제적이기 때문에, NAND 게이트로 디코드를 형성하기도 한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-2.png&#34;
+	width=&#34;731&#34;
+	height=&#34;540&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-2_hua1d5171524807b662f78c69edb7a342c_97000_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-2_hua1d5171524807b662f78c69edb7a342c_97000_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;두 개의 2X4 디코더로 만든 3X8 디코더&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;두 개 이상의 디코더를 동일한 인에이블 입력에 연결해 하나의 커다란 디코더를 구성할 수 있다.
+즉 $4 \times 16$ 디코더 네 개로 $16 \times 64$ 디코더를 만들 수 있다.&lt;/p&gt;
+&lt;h2 id=&#34;인코더&#34;&gt;인코더&lt;/h2&gt;
+&lt;p&gt;인코더는 디코더와 반대되는 동작을 수행하는 디지털 회로로서 $2^n$개 입력값에 대해 $n$개의 이진 코드를 출력한다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-3.png&#34;
+	width=&#34;660&#34;
+	height=&#34;264&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image-3_hu23f218bedbcf696e77c31ef2ab503697_92035_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;8진 대 이진 인코더에 대한 진리표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;250&#34;
+		data-flex-basis=&#34;600px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;이 인코더는 진리표에 따라 세 개의 $\text{OR}$ 게이트들로 구현할 수 있으며, 각 출력에 대한 부울식은 다음과 같다.&lt;/p&gt;
+&lt;p&gt;$$
+A_0 = D_1 + D_3 + D_5 + D_7 \
+A_1 = D_2 + D_3 + D_6 + D_7 \
+A_2 = D_4 + D_5 + D_6 + D_7
+$$&lt;/p&gt;
+&lt;h2 id=&#34;멀티플렉서&#34;&gt;멀티플렉서&lt;/h2&gt;
+&lt;p&gt;멀티플렉서는 $n$개의 선택 입력에 따라 $2^n$개의 출력을 하나의 출력에 선택적으로 연결시켜 주는 조합 회로이다.
+멀티플렉서는 흔히 데이터 선택기(data selector)라고도 하며, 줄여서 MUX라고 쓴다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1.png&#34;
+	width=&#34;920&#34;
+	height=&#34;565&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1_hu038882f24ea1dd95b3bea07487f1f548_93413_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1_hu038882f24ea1dd95b3bea07487f1f548_93413_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;4X1 멀티플렉서&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;162&#34;
+		data-flex-basis=&#34;390px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;디코더에 $2^n$개의 입력 라인을 더하게 되면 $2^n$대 1 멀티플렉서를 구현할 수 있다. 디코더처럼 멀티플렉서도 동작을 제어하거나 확장을 위해 인에이블 입력을 가질 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-1.png&#34;
+	width=&#34;679&#34;
+	height=&#34;384&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-1_hu2989effcc0d85358fe3d749e80fd3fb7_118765_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-1_hu2989effcc0d85358fe3d749e80fd3fb7_118765_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;4X1 멀티플렉서에 대한 함수표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;176&#34;
+		data-flex-basis=&#34;424px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 멀티플렉서는 여섯 개의 입력을 가지기 때문에, $2^6=64$줄의 진리표가 필요하다. 하지만 위와 같이 함수표를 이용하면 간단하게 나타낼 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-2.png&#34;
+	width=&#34;869&#34;
+	height=&#34;529&#34;
+	srcset=&#34;https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-2_hu22efaea6e62fac6e30b6d3477db7bbdf_52211_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/ic-and-decoder-and-encoder-and-mux/image1-2_hu22efaea6e62fac6e30b6d3477db7bbdf_52211_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Quadruple 2X1 멀티플렉서&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;394px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;보통 하나의 IC칩에는 여러 개의 멀티플렉서가 포함된다. 이 회로는 함수표와 같이 두 개의 4비트 데이터를 선택적으로 출력해주는 멀티플렉서로 동작한다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>순차 회로</title>
+        <link>https://gyeongmin.kr/p/boolean-algebrad/</link>
+        <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/boolean-algebrad/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 순차 회로" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;순차-회로&#34;&gt;순차 회로&lt;/h2&gt;
+&lt;p&gt;순차 회로 (Sequential Circuit)란, 입력 및 현재 상태에 따라 출력 및 다음 상태가 결정되는 논리회로이다. 결국 현재의 입력과 과거의 출력 상태에 의해 출력값이 결정된다.&lt;/p&gt;
+&lt;p&gt;게이트로만 이루어진 회로는 조합회로이고, 플립플롭과 게이트로 이루어진 회로는 순차 회로이다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image.png&#34;
+	width=&#34;705&#34;
+	height=&#34;259&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image_hue087f1c4af1e3ec344b6922e7de60bbc_35572_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image_hue087f1c4af1e3ec344b6922e7de60bbc_35572_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;클럭 동기형 순차 회로의 블럭도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;272&#34;
+		data-flex-basis=&#34;653px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;동기-순차회로와-비동기-순차회로&#34;&gt;동기 순차회로와 비동기 순차회로&lt;/h3&gt;
+&lt;p&gt;동기 순차회로는 모두 같은 하나의 클럭을 서로 공유하고, 플립플롭들이 같은 시간에 동작한다.&lt;/p&gt;
+&lt;p&gt;비동기 순차회로는 클럭을 서로 공유하지 않고, 플립플롭들이 각자 동작한다.&lt;/p&gt;
+&lt;p&gt;비동기 순차회로는 각자 제어하거나 타이밍 신호를 해석하는 것이 복잡하므로, 컴퓨터 시스템과 같은 디지털 시스템은 대부분이 동기 순차회로이다.&lt;/p&gt;
+&lt;h3 id=&#34;무어-머신과-밀리-머신&#34;&gt;무어 머신과 밀리 머신&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-1.png&#34;
+	width=&#34;544&#34;
+	height=&#34;420&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-1_hu56dca9f896e9006a5ee00bd4504ec564_24207_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image-1_hu56dca9f896e9006a5ee00bd4504ec564_24207_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;무어 머신과 밀리 머신&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;310px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;무어 머신 (Moore Machine)은 출력이 현재 상태에 의해서 만 결정된다. 즉, 플립플롭 출력들(현재 상태들)의 조합에 의해서 만 결정된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\text{출력} = f(\text{상태})$&lt;/li&gt;
+&lt;li&gt;$\text{다음상태} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;밀리 머신 (Mealy Machine)은  출력이 현재 상태와 입력 모두에 의해서 결정된다. 즉, 같은 상태라도 입력에 따라서 달라질 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\text{출력} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
+&lt;li&gt;$\text{다음상태} = f(\text{입력}, \ \text{현재상태})$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;밀리 머신과는 달리, 무어 머신은 상태가 변할 때만 출력이 변하여 더 간단한 구조이다. 무어 머신이 제어하기에 더 간단하며, 대부분의 디지털 시스템은 무어 머신이다.&lt;/p&gt;
+&lt;h2 id=&#34;순차-회로의-설계&#34;&gt;순차 회로의 설계&lt;/h2&gt;
+&lt;p&gt;순차 회로를 설계할 때는 좌측에서 우측으로, 순차 회로를 분석할 때는 우측에서 좌측 단계로 진행된다.&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;flowchart LR
+    기능정의[기능 정의&lt;br&gt;기능 설명] &lt;--&gt; 상태도[상태도&lt;br&gt;State Diagram]
+    상태도 &lt;--&gt; 상태표[상태표&lt;br&gt;State Table]
+    상태표 &lt;--&gt; 입력논리식[입력 논리식&lt;br&gt;출력 논리식]
+    입력논리식 &lt;--&gt; 논리회로도[논리회로도&lt;br&gt;Logic Diagram]
+  &lt;/pre&gt;
+  &lt;p&gt;순차 회로의 특성은 입력, 출력, 플립플롭의 상태로 만들어진다. 출력과 다음 상태는 입력과 현재 상태에 대한 함수인데, 이 사이의 관계를 상태표라고 한다.&lt;/p&gt;
+&lt;h3 id=&#34;상태도&#34;&gt;상태도&lt;/h3&gt;
+&lt;p&gt;상태는 원으로 표시하고, 상태 사이의 전이는 원 사이를 연결하는 직선으로 표시한다. 일반적으로 원 안에는 플립플롭의 상태를 적고, 간선에는 입력/출력값을 적는다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-2.png&#34;
+	width=&#34;615&#34;
+	height=&#34;489&#34;
+	srcset=&#34;https://gyeongmin.kr/p/boolean-algebrad/image-2_hua2c703da86596f7241436757bb87a7df_56810_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/boolean-algebrad/image-2_hua2c703da86596f7241436757bb87a7df_56810_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;상태도의 예시&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;125&#34;
+		data-flex-basis=&#34;301px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;상태표&#34;&gt;상태표&lt;/h3&gt;
+&lt;p&gt;$m$개의 플립플롭, $n$개의 입력 변수, $p$개의 출력 변수를 가지고 있는 순차 회로는 현상태에 $m$개의 열, 입력에 $n$개의 열, 출력에 $p$개의 행을 갖는 상태표가 된다. 또한 행에는 $2^{m+n}$개의 조합이 나오게 된다. 다음 상태와 출력열은 입력 변수의 함수이고 회로로부터 직접 구해진다.&lt;/p&gt;
+&lt;p&gt;위 상태도 예시를 상태표로 바꾸면 다음과 같다.&lt;/p&gt;
+&lt;div style=&#34;display: flex; justify-content: center;&#34;&gt;
+  &lt;table style=&#34;width: 50%; border-collapse: collapse; text-align: center;&#34;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th style=&#34;text-align: center;&#34;&gt;현재 상태&lt;/th&gt;
+        &lt;th style=&#34;text-align: center;&#34;&gt;입력&lt;/th&gt;
+        &lt;th style=&#34;text-align: center;&#34;&gt;다음 상태&lt;/th&gt;
+        &lt;th style=&#34;text-align: center;&#34;&gt;출력&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;01&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;10&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;11&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;00&lt;/td&gt;
+        &lt;td style=&#34;text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;위와 같이 상태도를 가지고 상태표를 만들 수 있고, 상태표를 가지고 상태도를 만들 수 있다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>플립플롭</title>
+        <link>https://gyeongmin.kr/p/flip-flop/</link>
+        <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/flip-flop/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 플립플롭" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;플립플롭&#34;&gt;플립플롭&lt;/h2&gt;
+&lt;p&gt;플립플롭(flip-flop)은 한 비트의 정보를 저장하는 이진 셀(cell)로서, 정상 출력과 보수화된 출력을 가지고 있다. 플립플롭은 입력 펄스가 상태 변환을 일으키기 전까지 이진 상태를 계속 유지한다. 전기 신호가 지속적으로 공급 되어야만 정보를 유지할 수 있는 휘발성 메모리이다.&lt;/p&gt;
+&lt;p&gt;입력의 수와 입력이 이진 상태에 영향을 미치는 방식에 따라 여러 종류로 분류할 수 있다.&lt;/p&gt;
+&lt;h2 id=&#34;sr-플립플롭&#34;&gt;SR 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image.png&#34;
+	width=&#34;595&#34;
+	height=&#34;179&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image_hu624faeb2878cf3061016813497a51f7c_49249_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;SR 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;332&#34;
+		data-flex-basis=&#34;797px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;$S$(set), $R$(reset), $C$(clock)로 이루어진 세 개의 입력과 하나의 출력 $Q$ 를 가지고 있으며, 경우에 따라 작은 원을 기호로 하는 보수화된 출력을 갖기도 한다. $C$에 있는 화살표는 동적 입력(dynamic input)을 나타내는 것으로, 플립플롭이 입력 클럭 신호의 상승 변이에서 동작함을 의미한다.&lt;/p&gt;
+&lt;p&gt;$S=1, R=0$이면 $Q=1$이 되고, $S=0,R=1$이면 $Q=0$이 된다. $S=R=0$이면 $Q$는 이전 상태를 유지하고, $S=R=1$이면 $Q$값은 랜덤하다.&lt;/p&gt;
+&lt;h2 id=&#34;d-플립플롭&#34;&gt;D 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-1.png&#34;
+	width=&#34;481&#34;
+	height=&#34;164&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-1_hu202bad5edf341d30eac02fb900ff1688_30562_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;D 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;293&#34;
+		data-flex-basis=&#34;703px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;D(data) 플립플롭은 SR 플립플롭의 S와 R 입력을 인버터로 연결하고 D라는 기호를 붙인 것이다. $D$ 값이 그대로 저장된다.&lt;/p&gt;
+&lt;p&gt;D 플립플롭은 불변조건 $[Q(t+1)=Q(t)]$가 없기 때문에, 불변 조건을 만들기 위해서는 클럭을 끊거나 출력을 입력으로 되돌려 주어야 한다.&lt;/p&gt;
+&lt;h2 id=&#34;jk-플립플롭&#34;&gt;JK 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-2.png&#34;
+	width=&#34;552&#34;
+	height=&#34;164&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-2_hudff694f1e5dfae8acb477d02d4a61aa7_43773_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;JK 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;336&#34;
+		data-flex-basis=&#34;807px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;SR 플립플롭에서 $S=R=1$ 일 때 $Q$ 값이 랜덤하다는 단점을 보완한 것이 JK 플립플롭이다. $J=K=1$일 때 클럭 펄스는 플립플롭의 출력을 보수로 만든다. 이를 수식으로 표현하면 $Q(t+1)=Q^\prime (t)$ 이다.&lt;/p&gt;
+&lt;h2 id=&#34;t-플립플롭&#34;&gt;T 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-3.png&#34;
+	width=&#34;557&#34;
+	height=&#34;159&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-3_hu280ba44afcf818ac1066e257827a250e_33663_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;T 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;350&#34;
+		data-flex-basis=&#34;840px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;T(toggle) 플립플롭은 JK 플립플롭에서 입력 J와 K를 T 하나로 묶은 것이다. $T=0$인 경우 상태의 변화가 없고, $T=0$인 경우 상태는 보수가 된다. 회로도를 보면서 이해하면 편하다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-5.png&#34;
+	width=&#34;1188&#34;
+	height=&#34;792&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-5_hu12b8df15d471715250efc2c10b5d78dc_49079_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;각 플립플롭별 회로도&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;150&#34;
+		data-flex-basis=&#34;360px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;edge-triggered-플립플롭&#34;&gt;Edge-Triggered 플립플롭&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/flip-flop/image-4.png&#34;
+	width=&#34;619&#34;
+	height=&#34;372&#34;
+	srcset=&#34;https://gyeongmin.kr/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/flip-flop/image-4_hu7cf1a6312628d16025f2958a2db7a4e2_73822_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Edge-Triggered 플립플롭&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;166&#34;
+		data-flex-basis=&#34;399px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;상태 변경을 클럭 펄스의 변이 동안 동기화하는 것을 모서리-변이형 플립플롭이라고 한다. 입력 펄스가 일정한 임계값을 넘어설 때 입력값을 고정시켜 클럭 펄스가 0이 되거나 다음 펄스가 올 때까지 값을 유지한다. 클럭 펄스가 상승할 때 (Positive-edge-triggered) 반응하거나, 하강할 때 (Negative-edge-triggered) 변이한다. 입력 $D$의 변이가 효과를 미치기 위해서는 입력 $D$의 값이 일정하게 유지되어야 하는 최소 시간인 set up time과 클럭 변이 후 $D$의 값이 변화하지 않아야 하는 hold time을 필요로 한다. 전파 지연 시간보다 짧게 클럭 펄스가 High를 유지한다면, Race 현상을 방지할 수 있다.&lt;/p&gt;
+&lt;p&gt;또 다른 형태로, master-slave 플립플롭이 있다. 이것은 클럭이 1일 때 반응하는 master 플립플롭과 클럭이 0일 때 반응하는 slave 플립플롭으로 구성된다. 클럭이 1에서 0으로 변할 때 입력이 출력으로 전달되는 효과를 가져 Race 현상을 방지할 수 있다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>반가산기와 전가산기</title>
+        <link>https://gyeongmin.kr/p/half-adder-and-full-adder/</link>
+        <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/half-adder-and-full-adder/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 반가산기와 전가산기" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;조합-회로&#34;&gt;조합 회로&lt;/h2&gt;
+&lt;p&gt;조합 회로는 입력과 출력을 가진 논리 게이트의 집합으로 출력의 값은 0과 1들의 조합의 함수이다. 조합 회로와 상반되는 순차 회로는 게이트와 플립플롭 등이 있다.&lt;/p&gt;
+&lt;p&gt;조합 회로를 설계 절차는 다음과 같다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;문제가 제시된다.&lt;/li&gt;
+&lt;li&gt;입력과 출력 변수에 문자 기호를 붙인다.&lt;/li&gt;
+&lt;li&gt;입력과 출력 사이의 관계를 정의하는 진리표를 유도한다.&lt;/li&gt;
+&lt;li&gt;각 출력에 대한 간소화된 부울 함수를 얻는다.&lt;/li&gt;
+&lt;li&gt;논리도를 그린다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;반가산기&#34;&gt;반가산기&lt;/h2&gt;
+&lt;p&gt;반가산기는 비트 두 개를 서로 산술적으로 가산하는 조합 회로이다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image.png&#34;
+	width=&#34;1011&#34;
+	height=&#34;541&#34;
+	srcset=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image_hu3ff95a68c5b0e41d6ab8cc1e1ee58ecf_49337_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/half-adder-and-full-adder/image_hu3ff95a68c5b0e41d6ab8cc1e1ee58ecf_49337_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;반가산기의 회로도와 진리표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;186&#34;
+		data-flex-basis=&#34;448px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;위 그림에서 C는 Carry(캐리, 자리올림)이고, S는 Sum이다.&lt;/p&gt;
+&lt;p&gt;$A=0, B=1$ 이면 $0+1$ 이므로 $S=1, C=0$이다.&lt;/p&gt;
+&lt;p&gt;$A=1, B=1$ 이면 $1+1$ 이므로 $S=1, C=1$이다.&lt;/p&gt;
+&lt;p&gt;A, B 모두 1일 때만 C가 1이 된다. 따라서 C는 $\text{AND}$ 게이트로 구현할 수 있다.&lt;/p&gt;
+&lt;p&gt;A, B가 서로 다르면 S가 1이 된다. 따라서 S는 $\text{XOR}$ 게이트로 구현할 수 있다.&lt;/p&gt;
+&lt;p&gt;따라서 반가산기의 논리 표현식은 아래와 같다.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+S &amp;amp;= x{^\prime}y+xy{^\prime} = x⊕y \
+C &amp;amp;= xy
+\end{aligned}
+$$&lt;/p&gt;
+&lt;h2 id=&#34;전가산기&#34;&gt;전가산기&lt;/h2&gt;
+&lt;p&gt;전가산기는 비트 두개와 밑의 자리에서 올라오는 캐리까지 고려하여 비트 세 개를 가산하는 조합 회로이다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1.png&#34;
+	width=&#34;987&#34;
+	height=&#34;602&#34;
+	srcset=&#34;https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu890d852f8f65522d7c96d7e53ebb4d67_56069_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/half-adder-and-full-adder/image-1_hu890d852f8f65522d7c96d7e53ebb4d67_56069_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;전가산기의 회로도와 진리표&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;163&#34;
+		data-flex-basis=&#34;393px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;A, B, X에서 1의 개수가 1개 혹은 3개이면 S가 1이 된다.&lt;/p&gt;
+&lt;p&gt;A, B, X에서 1의 개수가 2개 혹은 3개이면 C가 1이 된다.&lt;/p&gt;
+&lt;p&gt;전가산기의 논리 표현식은 아래와 같다. 전가산기는 반가산기 두 개와 $\text{OR}$ 게이트로 구현할 수 있다.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+S &amp;amp;= x⊕y⊕z \
+C &amp;amp;= xy+(x⊕y)z
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;전가산기를 4개 이어붙이면 4비트 덧셈기가 되고, 32개를 이어붙이면 32비트 덧셈기가 된다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>카르노 맵과 부울 식의 간소화</title>
+        <link>https://gyeongmin.kr/p/karnaugh-map/</link>
+        <pubDate>Thu, 03 Feb 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/karnaugh-map/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 카르노 맵과 부울 식의 간소화" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;맵과-민텀&#34;&gt;맵과 민텀&lt;/h2&gt;
+&lt;p&gt;논리표현식은 부울 대수를 사용해서 간단히 만들 수 있으나 여러 가지 규칙이 있다. 맵 방법은 karnaugh 맵과 Veitch 다이어그램이 있다.&lt;/p&gt;
+&lt;p&gt;진리표에서 각 변수의 각 조합을 민텀(minterm)이라고 한다. n개의 변수가 있으면 $2^n$개의 민텀이 있다.&lt;/p&gt;
+&lt;table style=&#34;width: 50%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
+    &lt;tr&gt;
+        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;A&lt;/th&gt;
+        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;B&lt;/th&gt;
+        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;C&lt;/th&gt;
+        &lt;th style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;F&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+        &lt;td style=&#34;border: 1px padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;Truth Table 1&amp;gt;
+&lt;/p&gt;
+&lt;p&gt;위 진리표를 민텀으로 표현하면 아래와 같다.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+F(x,y,z) &amp;amp;= \sum (1,4,5,6,7) \
+&amp;amp;= x{^\prime}y{^\prime}z+xy{^\prime}z{^\prime}+xy{^\prime}z+xyz{^\prime}+xyz
+\end{aligned}
+$$&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;맵은 여러 개의 사각형으로 이루어지고, 각 사각형의 구역은 각각의 민텀을 표시한다. 함수가 1이 될 때 해당 구역에 1을 넣고, 0일 땐 0을 넣거나 빈 칸으로 둔다.&lt;/p&gt;
+&lt;p&gt;맵은 두 변수일 땐 $2 \times 2$, 세 변수일 땐 $2 \times 4$, 네 변수일 땐 $4 \times 4$ 크기로 그린다. 그 이상은 맵 방식으로 하면 복잡하여 다른 방법을 사용한다. 아래는 그 예시이다.&lt;/p&gt;
+&lt;style&gt;
+.diagonal {
+  background-image: linear-gradient(
+    to left bottom, 
+    transparent calc(50% - 0.4px), 
+    var(--card-text-color-main), 
+    transparent calc(50% + 0.4px)
+  );
+  background-size: 120% 120%;
+  background-position: center;
+}
+&lt;/style&gt;
+&lt;table style=&#34;width: 50%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center; &#34;&gt;
+        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;B&lt;/div&gt;
+        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;A&lt;/div&gt;
+      &lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;A&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;O&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;X&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;2&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;O&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;X&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;2 변수 맵 예제&amp;gt;
+&lt;table style=&#34;width: 80%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center;&#34;&gt;
+        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;BC&lt;/div&gt;
+        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;A&lt;/div&gt;
+      &lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;3 변수 맵 예제&amp;gt;
+&lt;table style=&#34;width: 80%; margin: 0 auto; border-collapse: collapse;&#34;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th class=&#34;diagonal&#34; style=&#34;position: relative; text-align: center;&#34;&gt;
+        &lt;div style=&#34;transform: translate(-10%, 10%); text-align: right;&#34;&gt;CD&lt;/div&gt;
+        &lt;div style=&#34;transform: translate(10%, -10%); text-align: left;&#34;&gt;AB&lt;/div&gt;
+      &lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;00&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;01&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;11&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th style=&#34; padding: 8px; text-align: center;&#34;&gt;10&lt;/th&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;0&lt;/td&gt;
+      &lt;td style=&#34; padding: 8px; text-align: center;&#34;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p style=&#34;text-align: center;&#34;&gt;&amp;lt;4 변수 맵 예제&amp;gt;
+&lt;h2 id=&#34;맵을-이용한-간소화&#34;&gt;맵을 이용한 간소화&lt;/h2&gt;
+&lt;p&gt;카르노 맵을 이용한 간소화는 텍스트로 설명하면 이해하기 어렵다. 그 대신, 카르노 맵을 이용한 간소화를 매우 쉽게 설명한 &amp;lsquo;전기는빠지직(송건웅)&amp;lsquo;님의 유튜브 영상을 첨부한다.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://youtu.be/IsMRUf_3m6U?si=ocTJN__kqXcgR3ko&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://youtu.be/IsMRUf_3m6U?si=ocTJN__kqXcgR3ko&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>부울 대수</title>
+        <link>https://gyeongmin.kr/p/boolean-algebra/</link>
+        <pubDate>Wed, 26 Jan 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/boolean-algebra/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 부울 대수" /&gt;&lt;blockquote&gt;
+&lt;p&gt;본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;2진법과-논리-게이트&#34;&gt;2진법과 논리 게이트&lt;/h2&gt;
+&lt;p&gt;2진법은 0과 1이라는 두개의 숫자만을 사용하여 수를 나타내는 것이다.&lt;/p&gt;
+&lt;p&gt;디지털 컴퓨터는 0과 1 두개의 숫자만을 사용하는데, 하나의 이진 숫자를 bit라고 부른다. 컴퓨터는 전압 신호를 이용하여 0과 1로 표현한다.&lt;/p&gt;
+&lt;p&gt;이전 정보의 처리는 게이트라 불리는 논리 회로에서 이루어진다. 아래 표는 각 게이트의 이름, 대수 표현식, 진리표를 나타낸 것이다.&lt;/p&gt;
+&lt;table style=&#34;max-width: 800px;&#34;&gt;
+  &lt;tr&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Name&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Algebraic function&lt;/th&gt;
+    &lt;th style=&#34;text-align: center; vertical-align: middle;&#34;&gt;Truth table&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px&#34;&gt;$\text{AND}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A \cdot B$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{OR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A + B$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{Inverter}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A^\prime$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{Buffer}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{NAND}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A · B)^\prime$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{NOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A + B)^\prime$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{XOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = A ⊕ B$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 22px;&#34;&gt;$\text{XNOR}$&lt;/td&gt;
+    &lt;td style=&#34;text-align: center; vertical-align: middle; font-size: 20px;&#34;&gt;$x = (A ⊕ B)^\prime$&lt;/td&gt;
+    &lt;td&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;A&lt;/th&gt;&lt;th&gt;B&lt;/th&gt;&lt;th&gt;x&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;부울-대수&#34;&gt;부울 대수&lt;/h2&gt;
+&lt;p&gt;부울 대수는 19세기 중반 조지 불이 만든 대수 체계로, 디지털 회로의 해석과 설계를 쉽게 하는 것이 목적이다.&lt;/p&gt;
+&lt;p&gt;부울 대수의 기본 관계는 아래와 같다. 각각은 모두 진리표로 증명할 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;부울-대수의-기본-관계&#34;&gt;부울 대수의 기본 관계&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;$x + 0 = x$&lt;/li&gt;
+&lt;li&gt;$x \cdot 0 = 0$&lt;/li&gt;
+&lt;li&gt;$x + 1 = 1$&lt;/li&gt;
+&lt;li&gt;$x \cdot 1 = x$&lt;/li&gt;
+&lt;li&gt;$x + x = x$&lt;/li&gt;
+&lt;li&gt;$x \cdot x = x$&lt;/li&gt;
+&lt;li&gt;$x + x^\prime= 1$&lt;/li&gt;
+&lt;li&gt;$x \cdot x^\prime 0$&lt;/li&gt;
+&lt;li&gt;$x + y = y + x$&lt;/li&gt;
+&lt;li&gt;$x \cdot y = y \cdot x$&lt;/li&gt;
+&lt;li&gt;$x + (y + z) = (x + y) + z$&lt;/li&gt;
+&lt;li&gt;$x \cdot (y \cdot z) = (x \cdot y) \cdot z$&lt;/li&gt;
+&lt;li&gt;$x (y + z) = xy + xz$&lt;/li&gt;
+&lt;li&gt;$x + yz = (x + y)(x + z)$&lt;/li&gt;
+&lt;li&gt;$(x + y)^\prime= x^\prime \cdot y^\prime $&lt;/li&gt;
+&lt;li&gt;$(x \cdot y)^\prime = x^\prime + y^\prime $&lt;/li&gt;
+&lt;li&gt;$(x^\prime)^\prime = x$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;위 식은 부울 대수의 기본적인 관계를 나타낸다. 부울대수는 교환 법칙과 결합 법칙이 성립한다. 또한 식 15번과 16번은 드 모르간의 정리이다.&lt;/p&gt;
+&lt;h3 id=&#34;수식의-보수&#34;&gt;수식의 보수&lt;/h3&gt;
+&lt;p&gt;드 모르간의 정리는 모든 $\text{OR}$ 연산은 $\text{AND}$ 로, 모든 $\text{AND}$ 연산은 $\text{OR}$ 로 바꾸어 주고, 각 변수를 보수화하면 간단히 적용할 수 있다.&lt;/p&gt;
+&lt;p&gt;예들들어 다음과 같이 수식의 보수를 만들 수 있다.&lt;/p&gt;
+&lt;p&gt;$$
+F=AB+C^\prime D^\prime +B^\prime D
+$$
+$$
+F^\prime =(A^\prime +B^\prime )(C+D)(B+D^\prime )
+$$&lt;/p&gt;
+&lt;h3 id=&#34;부울-대수의-활용&#34;&gt;부울 대수의 활용&lt;/h3&gt;
+&lt;p&gt;부울 대수를 통해 디지털 회로를 간단히 하는 데 사용할 수 있다. 아래와 같은 회로 $F$가 있다고 가정해 보자.&lt;/p&gt;
+&lt;p&gt;$$
+F=ABC+ABC^\prime +A^\prime C
+$$&lt;/p&gt;
+&lt;p&gt;부울 대수를 적용하면, $(C+C)^\prime =1$이고, $AB \cdot 1=AB$ 이므로,&lt;/p&gt;
+&lt;p&gt;$$
+F=ABC+ABC^\prime  +A^\prime  C=AB(C+C^\prime  )+A^\prime  C=AB+A^\prime  C
+$$&lt;/p&gt;
+&lt;p&gt;이다. 따라서 4개의 게이트만 사용하여 효율적인 회로를 설계할 수 있는 것이다.&lt;/p&gt;
+&lt;h3 id=&#34;부울-대수-문제&#34;&gt;부울 대수 문제&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$A \cdot (A + B) = A$ 임을 보여라.&lt;/p&gt;
+ &lt;details&gt;
+ &lt;summary&gt;풀이&lt;/summary&gt;
+ &lt;div markdown=&#34;1&#34;&gt;
+     $$
+     \begin{aligned}
+         AA + AB &amp;= A + AB \\
+         &amp;= A (1 + B) \\
+         &amp;= A \cdot 1 \\
+         &amp;= A
+     \end{aligned}
+     $$
+ &lt;/div&gt;
+ &lt;/details&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$ (A + B) \cdot (A + B^\prime ) = A $ 임을 보여라.&lt;/p&gt;
+ &lt;details&gt;
+ &lt;summary&gt;풀이&lt;/summary&gt;
+ &lt;div markdown=&#34;1&#34;&gt;
+     $$
+     \begin{aligned}
+         AA + AB{^\prime} + AB + BB{^\prime} &amp;= AA + AB{^\prime} + AB + BB{^\prime} \\
+         &amp;= A + A(B{^\prime} + B) \\
+         &amp;= A + A \cdot 1 \\
+         &amp;= A
+     \end{aligned}
+     $$
+ &lt;/div&gt;
+ &lt;/details&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

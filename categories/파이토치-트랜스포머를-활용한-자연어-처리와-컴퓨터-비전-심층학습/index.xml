@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>파이토치 트랜스포머를 활용한 자연어 처리와 컴퓨터 비전 심층학습 on Gyeongmin의 개발 블로그</title>
+        <link>https://gyeongmin.kr/categories/%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9E%90%EC%97%B0%EC%96%B4-%EC%B2%98%EB%A6%AC%EC%99%80-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%B9%84%EC%A0%84-%EC%8B%AC%EC%B8%B5%ED%95%99%EC%8A%B5/</link>
+        <description>Recent content in 파이토치 트랜스포머를 활용한 자연어 처리와 컴퓨터 비전 심층학습 on Gyeongmin의 개발 블로그</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ko</language>
+        <copyright>Gyeongmin Lee</copyright>
+        <lastBuildDate>Sun, 10 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9E%90%EC%97%B0%EC%96%B4-%EC%B2%98%EB%A6%AC%EC%99%80-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%B9%84%EC%A0%84-%EC%8B%AC%EC%B8%B5%ED%95%99%EC%8A%B5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Pre-trained 모델</title>
+        <link>https://gyeongmin.kr/p/pre-trained-model/</link>
+        <pubDate>Sun, 10 Mar 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/pre-trained-model/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post Pre-trained 모델" /&gt;&lt;h2 id=&#34;pre-trained-model&#34;&gt;Pre-trained Model&lt;/h2&gt;
+&lt;p&gt;사전 학습된 모델(Pre-trained Model)이란 대규모 데이터세트로 학습된 딥러닝 모델로, 이미 학습이 완료된 모델을 의미한다. 모델 자체를 현재 시스템에 적용하거나 사전 학습된 임베딩 벡터를 이용해 모델을 구성할 수 있다. Pre-trained 모델을 사용하면 처음부터 훈련시키는 게 아니므로 학습에 필요한 시간이 대폭 감소하며, 이미 다양한 작업에서 검증된 모델이기 때문에 안정적이고 우수한 성능을 기대할 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;backbone&#34;&gt;Backbone&lt;/h3&gt;
+&lt;p&gt;백본(Backbone)이란 입력 데이터에서 특징을 추출해 최종 분류기에 전달하는 딥러닝 모델이나 그 일부를 의미한다. 백본 네트워크는 입력 데이터에서 특징을 추출하므로 노이즈와 불필요한 특성을 제거하고 가장 중요한 특징을 추출할 수 있다. 이렇게 추출된 특징을 활용해 새로운 모델이나 기능의 입력으로 사용한다.&lt;/p&gt;
+&lt;p&gt;포즈 추정 모델이나 이미지 분할 모델을 만들 땐, 객체를 검출하는 컨볼루젼 신경망의 특징값을 가져와 최종 레이어를 바꾸는 등의 방식으로 적용할 수 있다.&lt;/p&gt;
+&lt;p&gt;백본을 쓴다고 성능이 급격하게 좋아지지는 않으며, 사전 학습된 백본은 쉽게 오버피팅될 수 있다. 미세 조정이나 전이 학습을 적용해 오버피팅을 피해야 한다.&lt;/p&gt;
+&lt;h3 id=&#34;transfer-learning&#34;&gt;Transfer Learning&lt;/h3&gt;
+&lt;p&gt;전이 학습(Transfer Learning)이란 어떤 작업을 수행하기 위해 이미 사전 학습된 모델을 재사용해 새로운 작업이나 관련 도메인의 성능을 향상시킬 수 있는 기술을 의미한다. 전이 학습은 대규모 데이터세트에서 사전 학습된 모델을 다른 작은 데이터세트로 미세 조정해 활용한다.&lt;/p&gt;
+&lt;p&gt;소스 도메인에서 학습한 지식을 재사용함으로써 전이 학습된 모델이 더 적은 데이터와 학습 시간으로 더 높은 성능을 낼 수 있다. 또한 대규모 데이터세트에서 사전 학습된 모델을 활용하므로 과대적합 문제를 최소화할 수 있다.&lt;/p&gt;
+&lt;h4 id=&#34;upstream과-downstream&#34;&gt;Upstream과 Downstream&lt;/h4&gt;
+&lt;p&gt;전이 학습의 구조는 업스트림(Upstream) 모델과 다운스트림(Downstream) 모델로 나뉜다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;업스트림 모델: 대규모 특정 도메인의 데이터세트에서 학습한 모델이다. 이 모델은 기본적인 특징을 학습하며, 새로운 작업에 필요한 지식을 제공한다.&lt;/li&gt;
+&lt;li&gt;다운스트림 모델: 업스트림 모델에서 학습한 지식을 활용하여 새로운 작업이나 도메인의 데이터세트에서 학습하는 모델이다. 다운스트림 모델은 소규모 데이터세트에서 모델의 성능을 높이기 위해 미세 조정된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;inductive-transfer-learning&#34;&gt;Inductive Transfer Learning&lt;/h4&gt;
+&lt;p&gt;귀납적 전이 학습(Inductive Transfer Learning)은 기존의 모델이 학습한 지식을 새로운 작업에 적용하여 성능을 개선하는 방법이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;자기주도적 학습: 레이블이 없는 대규모 데이터에서 특징을 학습하고, 소량의 레이블 데이터를 이용해 미세 조정을 진행한다.&lt;/li&gt;
+&lt;li&gt;다중 작업 학습: 소스 도메인과 타깃 도메인의 데이터를 기반으로 여러 작업을 동시에 학습하는 방법이다. 이 방식은 작업 간 상호작용을 통해 모델의 일반화를 돕는다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;transductive-transfer-learning&#34;&gt;Transductive Transfer Learning&lt;/h4&gt;
+&lt;p&gt;변환적 전이 학습(Transductive Transfer Learning)은 소스 도메인과 타깃 도메인이 유사하지만 완전히 동일하지 않은 경우에 사용된다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;도메인 적응: 두 도메인의 특징 분포 차이를 줄이는 방식으로 모델을 학습한다.&lt;/li&gt;
+&lt;li&gt;표본 선택 편향/공변량 이동: 소스와 타깃 도메인의 데이터 분포 차이를 조정하여 전이를 진행한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;unsupervised-transfer-learning&#34;&gt;Unsupervised Transfer Learning&lt;/h3&gt;
+&lt;p&gt;비지도 전이 학습(Unsupervised Transfer Learning)은 소스와 타깃 도메인 모두에서 레이블이 없는 데이터를 사용하는 방법이다. GAN이나 군집화(Clustering) 기법을 통해 타깃 도메인에서의 성능을 개선한다.&lt;/p&gt;
+&lt;h4 id=&#34;zero-shot-transfer-learning&#34;&gt;Zero-shot Transfer Learning&lt;/h4&gt;
+&lt;p&gt;제로-샷 전이 학습은 사전 학습된 모델을 새로운 도메인에서도 바로 사용할 수 있도록 설계하는 방법이다. 학습하지 않은 데이터에도 일반화된 성능을 발휘하며, 데이터가 부족한 상황에서 유용하다.&lt;/p&gt;
+&lt;h4 id=&#34;one-shot-transfer-learning&#34;&gt;One-shot Transfer Learning&lt;/h4&gt;
+&lt;p&gt;원-샷 전이 학습은 클래스당 하나의 샘플만으로 모델을 학습하여 새로운 데이터를 분류하는 기법이다. 서포트 셋(Support Set)과 쿼리 셋(Query Set)을 활용해 분류를 진행하며, 적은 데이터로 높은 정확도를 달성할 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;feature-extraction&#34;&gt;Feature Extraction&lt;/h3&gt;
+&lt;p&gt;특징 추출(Feature Extraction)은 전이 학습에서 사전 학습된 모델의 계층을 활용하여 타깃 도메인의 데이터를 처리하는 방식이다. 이 방법은 소스 도메인과 타깃 도메인이 유사한 경우에 주로 사용된다.&lt;/p&gt;
+&lt;p&gt;특징 추출 과정에서 사전 학습된 모델의 합성곱 계층(Convolutional Layers)과 같은 주요 계층은 동결(Freeze) 하여 학습하지 않는다. 대신, 이 계층에서 추출한 특징들을 기반으로 분류기(Classifier)만 재구성하고 학습한다.&lt;/p&gt;
+&lt;h3 id=&#34;fine-tuning&#34;&gt;Fine-tuning&lt;/h3&gt;
+&lt;p&gt;미세 조정은 사전 학습된 모델의 일부 계층 또는 전체 계층을 타깃 도메인의 데이터에 맞게 학습시키는 방식이다. 이 방법은 소스 도메인과 타깃 도메인이 유사하지 않거나, 타깃 도메인의 데이터세트가 충분히 크지 않은 경우에 사용된다.&lt;/p&gt;
+&lt;p&gt;미세 조정에서는 특정 계층을 선택적으로 동결하거나, 동결을 해제하여 학습을 진행한다. 예를 들어, 하위 계층은 일반적으로 저수준 특징(예: 선, 모서리)을 학습하므로 그대로 사용하고, 상위 계층만 재학습하는 경우가 많다. 반면, 소스와 타깃 도메인의 차이가 크다면 전체 계층을 학습시키는 경우도 있다.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>데이터 증강 및 변환</title>
+        <link>https://gyeongmin.kr/p/data-augmentation/</link>
+        <pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/data-augmentation/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 데이터 증강 및 변환" /&gt;&lt;h2 id=&#34;데이터-증강&#34;&gt;데이터 증강&lt;/h2&gt;
+&lt;p&gt;데이터 증강(Data Augmentation)이란 데이터가 가진 고유한 특징을 유지한 채 변형하거나 노이즈를 추가해 데이터세트의 크기를 늘리는 방법이다. 데이터 증강은 모델의 과대적합을 줄이고 일반화 능력을 향상시킬 수 있다.&lt;/p&gt;
+&lt;p&gt;너무 많은 변형이나 노이즈를 추가한다면 기존 데이터가 가진 특징이 파괴될 수 있으므로 주의해야 한다.&lt;/p&gt;
+&lt;h2 id=&#34;텍스트-데이터&#34;&gt;텍스트 데이터&lt;/h2&gt;
+&lt;h3 id=&#34;삽입-및-삭제&#34;&gt;삽입 및 삭제&lt;/h3&gt;
+&lt;p&gt;삽입은 의미 없는 문자나 단어, 또는 문장 의미에 영향을 끼치지 않는 수식어 등을 추가하는 방법이다. 임의의 단어나 문자를 기존 텍스트에 덧붙여 사용한다. 삭제는 삽입과 반대로 임의의 단어나 문자를 삭 제해 데이터의 특징을 유지하는 방법이다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ContextualWordEmbsAug&lt;/code&gt; 클래스는 BERT 모델을 활용해 단어를 삽입하는 기능을 제공한다. &lt;code&gt;action&lt;/code&gt;으로는 &lt;code&gt;insert&lt;/code&gt;, &lt;code&gt;substitute&lt;/code&gt;, &lt;code&gt;swap&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;가 가능하다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;nlpaug.augmenter.word&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;naw&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;Those who can imagine anything, can create the impossible.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;We can only see a short distance ahead, but we can see plenty there that needs to be done.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;If a machine is expected to be infallible, it cannot also be intelligent.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;aug&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;naw&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ContextualWordEmbsAug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model_path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;bert-base-uncased&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;action&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;insert&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;augmented_texts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;aug&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;augment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;augmented&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;zip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;augmented_texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;src : &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;dst : &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;augmented&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;------------------&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src: Those who can imagine anything, can create the impossible.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst: those scientists who can simply imagine seemingly anything, can create precisely the impossible.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src : We can only see a short distance ahead, but we can see plenty there that needs to be done.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst : we probably can still only see a short distance ahead, but we can nonetheless see about plenty from there that just needs to be properly done.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src : If a machine is expected to be infallible, it cannot also be intelligent.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst : if a logic machine is expected either to necessarily be infallible, subsequently it cannot also be highly intelligent.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;교체-및-대체&#34;&gt;교체 및 대체&lt;/h3&gt;
+&lt;p&gt;교체는 단어나 문자의 위치를 교환하는 방법이다. ‘문제점을 찾지 말고 해결책을 찾으라’라는 문장에서 교체를 적용한다면 &amp;lsquo;해결책을 찾으라 문제점을 찾지 말고&amp;rsquo;로 변경될 수 있다.
+교체는 무의미하거나 의미상 잘못된 문장을 생성할 수 있으므로 데이터의 특성에 따라 주의해 사용해야 한다.&lt;/p&gt;
+&lt;p&gt;대체는 단어나 문자를 임의의 단어나 문자로 바꾸거나 동의어로 변경하는 방법을 의미한다. ‘사과’라는 단어를 ‘바나나’와 같이 유사한 단어로 변경하거나 ‘해’를 ‘태양으로 바꿔 뜻이 같은 말로 바꾸는 작업이
+다. 단어나 문장을 대체하면 다른 증강 방법보다 비교적 데이터의 정합성(Consistency)이 어긋나지 않아 효율적으로 데이터를 증강할 수 있다. 하지만 조사를 바꿔주진 않는다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;RandomWordAug&lt;/code&gt; 클래스를 통해 무작위로 단어를 교체할 수 있다. &lt;code&gt;action&lt;/code&gt;으로는 &lt;code&gt;insert&lt;/code&gt;, &lt;code&gt;substitute&lt;/code&gt;, &lt;code&gt;swap&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;, &lt;code&gt;crop&lt;/code&gt;이 가능하다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;nlpaug.augmenter.word&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;naw&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;Those who can imagine anything, can create the impossible.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;We can only see a short distance ahead, but we can see plenty there that needs to be done.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;If a machine is expected to be infallible, it cannot also be intelligent.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;aug&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;naw&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RandomWordAug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;action&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;swap&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;augmented_texts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;aug&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;augment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;augmented&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;zip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;augmented_texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;src : &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;dst : &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;augmented&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;------------------&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src : Those who can imagine anything, can create the impossible.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst : Those who can imagine can anything create, the. impossible
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src : We can only see a short distance ahead, but we can see plenty there that needs to be done.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst : We see can only a short distance but ahead, can we see plenty that there needs to done be.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src : If a machine is expected to be infallible, it cannot also be intelligent.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst : A if is machine to expected be infallible, cannot also it be intelligent.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;모델을 활용해 대체하는 경우 &lt;code&gt;ContextualWordEmbsAug&lt;/code&gt; 클래스를 사용하거나, &lt;code&gt;SynonymAug&lt;/code&gt; 클래스로 워드넷(WordNet) 데이터베이스나 의역 데이터베이스(The Paraphrase Database, PPDB)를 활용해 단어를 대체해 데이터를 증강할 수도 있다.&lt;/p&gt;
+&lt;p&gt;단어 집합을 미리 선언하고 그 중 하나로 대체하고 싶은 경우, &lt;code&gt;ReservedAug&lt;/code&gt;를 사용할 수도 있다.&lt;/p&gt;
+&lt;h3 id=&#34;역번역&#34;&gt;역번역&lt;/h3&gt;
+&lt;p&gt;역번역(Back-translation)이란 입력 텍스트를 특정 언어로 번역한 다음 다시 본래의 언어로 번역하는 방법을 의미한다. 예를 들어 영어를 한국어로 번역한 다음 번역된 텍스트를 다시 영어로 번역하는 과정을 의미한다. 원래의 언어로 번역하는 과정에서 원래 텍스트와 유사한 텍스트가 생성되므로 패러프레이징(Paraphrasing)21 효과를 얻을 수 있다.&lt;/p&gt;
+&lt;p&gt;역번역은 번역 모델의 성능에 크게 좌우되기에, 모델의 성능을 평가하는 데 사용되기도 한다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;nlpaug.augmenter.word&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;naw&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;Those who can imagine anything, can create the impossible.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;We can only see a short distance ahead, but we can see plenty there that needs to be done.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;If a machine is expected to be infallible, it cannot also be intelligent.&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;back_translation&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;naw&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BackTranslationAug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;from_model_name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;facebook/wmt19-en-de&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;to_model_name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;facebook/wmt19-de-en&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;augmented_texts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;back_translation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;augment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;augmented&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;zip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;augmented_texts&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;src : &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;dst : &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;augmented&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;------------------&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src : Those who can imagine anything, can create the impossible.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst : Anyone who can imagine anything can achieve the impossible.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src : We can only see a short distance ahead, but we can see plenty there that needs to be done.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst : We can only look a little ahead, but we can see a lot there that needs to be done.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;------------------
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;src : If a machine is expected to be infallible, it cannot also be intelligent.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dst : If a machine is expected to be infallible, it cannot be intelligent.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;------------------
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;이미지-데이터&#34;&gt;이미지 데이터&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Resize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;512&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;512&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ToTensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;이미지 데이터는 토치비전의 transforms 모듈을 이용하여 증강할 수 있다. 텐서화 클래스(transforms.ToTensor)는 &lt;code&gt;PIL.Image&lt;/code&gt; 형식을 Tensor 형식으로 변환한다. 텐서화 클래스는 [0~255] 범위의 픽셀값을 [0.0~1.0] 사이의 값으로 최대 최소 정규화를 수행한다. 또한 입력 데이터의 형태를 [채널, 높이, 너비] 형태로 변환한다.&lt;/p&gt;
+&lt;h3 id=&#34;회전-및-대칭&#34;&gt;회전 및 대칭&lt;/h3&gt;
+&lt;p&gt;학습 이미지를 회전하거나 대칭한다면 변형된 이미지가 들어오더라도 더 강건한 모델을 구축할 수 있으며 일반화된 성능을 끌어낼 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RandomRotation&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;degrees&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;expand&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;False&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;center&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RandomHorizontalFlip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RandomVerticalFlip&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;위 코드는 이미지를 ±30° 사이로 회전시키면서, 수평 대칭과 수직 대칭을 50% 확률로 적용하는 예제이다. &lt;code&gt;expand=True&lt;/code&gt;이면 확장되어 여백이 생기지 않는다. 중심점을 입력하지 않으면 좌측 상단을 기준으로 회전한다.&lt;/p&gt;
+&lt;h3 id=&#34;자르기-및-패딩&#34;&gt;자르기 및 패딩&lt;/h3&gt;
+&lt;p&gt;OD(Object Detection)과 같은 모델을 구성할 때, 학습 데이터의 크기가 일정하지 않거나 주요한 객체가 일부 영역에만 작게 존재할 수 있다. 이러한 경우 불필요한 부분을 자르거나, 패딩을 주어 크기를 맞출 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RandomCrop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;512&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;512&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Pad&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;padding&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fill&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;127&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;127&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;255&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;padding_mode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;constant&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;padding_mode&lt;/code&gt;가 &lt;code&gt;constant&lt;/code&gt;면 &lt;code&gt;fill=(127, 127, 255)&lt;/code&gt;로 테두리가 생성된다. &lt;code&gt;reflect&lt;/code&gt;나 &lt;code&gt;symmetric&lt;/code&gt;이라면 입력한 RGB는 무시되며, 이미지의 픽셀값을 이용하여 생성한다. &lt;code&gt;RandomCrop&lt;/code&gt;에도  자를 때 발생하는 여백 공간에 대한 패딩을 줄 수 있다.&lt;/p&gt;
+&lt;h3 id=&#34;크기-조정&#34;&gt;크기 조정&lt;/h3&gt;
+&lt;p&gt;이미지 처리 모델 학습을 위해, 학습 데이터에 사용되는 이미지의 크기는 모두 일정해야 한다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Resize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;512&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;512&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;size&lt;/code&gt;를 정수로 입력하는 경우, 높이나 너비 중 더 작은 값에 비율을 맞추어 크기가 수정된다.&lt;/p&gt;
+&lt;h3 id=&#34;변형&#34;&gt;변형&lt;/h3&gt;
+&lt;p&gt;아핀 변환(Affine Transformation)이나 원근(Perspective Transformation) 변환과 같은 기하학적 변환을 사용한다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RandomAffine&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;degrees&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;translate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shear&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;15&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;아핀 변환은 각도(degrees), 이동(translate), 척도(scale), 전단(shear)을 입력해 이미지를 변형한다.&lt;/p&gt;
+&lt;h3 id=&#34;색상-변환&#34;&gt;색상 변환&lt;/h3&gt;
+&lt;p&gt;이미지 데이터의 특징은 픽셀값의 분포나 패턴에 크게 좌우되는데, 앞선 변형들은 색상을 변경하진 않는다. 특정 색상에 편향되지 않도록 정규화하면 모델을 더 일반화시킬 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ColorJitter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;brightness&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;contrast&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;saturation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hue&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ToTensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Normalize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;mean&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.485&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.456&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.406&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.229&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.224&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.225&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ToPILImage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;노이즈&#34;&gt;노이즈&lt;/h3&gt;
+&lt;p&gt;특정 픽셀값에 편향되지 않도록, 임의의 노이즈를 추가하는 것은 좋은 방법이다. 학습에 사용되지 않더라도, 테스트 데이터에 노이즈를 주어 Robustness를 평가하는 데 사용하기도 한다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;IaaTransforms&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__init__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;seq&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;iaa&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Sequential&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;iaa&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SaltAndPepper&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.03&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.07&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;iaa&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Rain&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;speed&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;fm&#34;&gt;__call__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;images&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;images&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;images&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;images&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;images&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dtype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;augmented&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;seq&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;augment_image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;images&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Image&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fromarray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;augmented&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;IaaTransforms&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;컷아웃-및-무작위-지우기&#34;&gt;컷아웃 및 무작위 지우기&lt;/h3&gt;
+&lt;p&gt;컷아웃은 임의의 ROI의 픽셀값을 0으로 채우는 것이고, 무작위 지우기는 랜덤 픽셀값으로 채우는 것이다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transform&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Compose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ToTensor&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RandomErasing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RandomErasing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;random&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;transforms&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ToPILImage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;일부 영역이 누락되거나, 폐색 영역에 대해 모델을 더욱 견고하게 만들어준다.&lt;/p&gt;
+&lt;h3 id=&#34;컷믹스&#34;&gt;컷믹스&lt;/h3&gt;
+&lt;p&gt;컷믹스(CutMix)는 이미지 패치 영역에 다른 이미지를 덮어씌우는 방법이다. 패치 위에 새로운 패치를 덮어씌워 자연스러운 이미지를 구성한다. 패치 영역의 크기와 비율을 고려해 덮어쓴다.&lt;/p&gt;
+&lt;p&gt;Label($y$)은 이미지가 얼마나 기여하였는지($\lambda$)를 이용하여 아래 공식과 같이 계산된다.&lt;/p&gt;
+&lt;p&gt;$$
+\tilde{y}=\lambda y_a + (1-\lambda)y_b
+$$&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>정칙화</title>
+        <link>https://gyeongmin.kr/p/regularization/</link>
+        <pubDate>Mon, 26 Feb 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/regularization/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 정칙화" /&gt;&lt;h2 id=&#34;정칙화regularization&#34;&gt;정칙화(Regularization)&lt;/h2&gt;
+&lt;p&gt;머신러닝과 딥러닝 모델을 학습시킬 때, 오버피팅은 모델이 훈련 데이터에 지나치게 적합되어 새로운 데이터에 대한 예측 성능이 저하되는 오버피팅(overfitting) 문제는 흔히 접해보았을 것이다. 이러한 문제를 해결하기 위해 사용되는 기술이 바로 정칙화(Regularization)이다.&lt;/p&gt;
+&lt;p&gt;정칙화는 모델이 암기(Memorization)가 아니라 일반화(Generalization)할 수 있도록 손실 함수에 규제(Penalty)를 가하는 방식이다.&lt;/p&gt;
+&lt;p&gt;정칙화를 적용하면 학습 데이터들이 갖고 있는 작은 차이점에 대해 덜 민감해져 모델의 분산 값이 낮아진다. 그러므로 정칙화는 모델이 데이터를 학습할 때 의존하는 특징의 수를 줄임으로써 모델의 추론 능
+력을 개선한다.&lt;/p&gt;
+&lt;h2 id=&#34;오버피팅과-일반화&#34;&gt;오버피팅과 일반화&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/regularization/image.png&#34;
+	width=&#34;1400&#34;
+	height=&#34;609&#34;
+	srcset=&#34;https://gyeongmin.kr/p/regularization/image_hu66396dc1fab62456da9622b86cbec07b_591451_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/regularization/image_hu66396dc1fab62456da9622b86cbec07b_591451_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Example of underfitting and overfitting&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;551px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;오버피팅은 모델이 훈련 데이터의 노이즈나 특정 패턴을 학습하여, 실제 데이터의 일반적인 패턴을 파악하지 못할 때 발생한다. 이로 인해 모델은 훈련 데이터에서는 높은 성능을 보이지만, 새로운 데이터에서는 성능이 급격히 떨어진다. 반면, 일반화는 모델이 새로운 데이터에서도 정확한 예측을 수행할 수 있는 능력을 의미한다.&lt;/p&gt;
+&lt;p&gt;즉, 모델이 데이터의 일반적인 패턴을 학습하여 노이즈에 의존하지 않고, 다양한 데이터에 대해 일관된 성능을 유지하는 것이다.&lt;/p&gt;
+&lt;h2 id=&#34;정칙화의-종류&#34;&gt;정칙화의 종류&lt;/h2&gt;
+&lt;h3 id=&#34;l1-정칙화&#34;&gt;L1 정칙화&lt;/h3&gt;
+&lt;p&gt;L1 정칙화는 라쏘 정칙화(Lasso Regularization)라고도 불리며, 가중치의 절댓값 합을 손실 함수에 추가하여 오버피팅을 방지한다.&lt;/p&gt;
+&lt;p&gt;이 방식은 모델이 불필요한 피처의 가중치를 0으로 수렴시키는 특징이 있어, 자동으로 특징 선택(feature selection)의 효과를 제공한다. 그러나 L1 정칙화는 하이퍼파라미터인 규제 강도(lambda)를 적절히 조절해야 하며, 과도한 규제는 정보의 손실을 초래할 수 있다. 주로 선형 회귀 모델에서 활용되며, 계산 복잡도가 다소 높을 수 있다는 단점이 있다.&lt;/p&gt;
+&lt;p&gt;$$
+\text{Loss}&lt;em&gt;\text{L1} = \text{Loss}&lt;/em&gt;{\text{original}} + \lambda \sum_{i=1}^{n} |w_i|
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ \text{Loss}_{L1} $: L1 정칙화가 적용된 전체 손실 함수&lt;/li&gt;
+&lt;li&gt;$ \text{Loss}_{\text{original}} $: 원래의 손실 함수 (ex. 평균 제곱 오차)&lt;/li&gt;
+&lt;li&gt;$ \lambda $: 규제 강도 하이퍼파라미터&lt;/li&gt;
+&lt;li&gt;$ w_i $: 각 가중치 파라미터&lt;/li&gt;
+&lt;li&gt;$ n $: 가중치의 총 개수&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;l2-정칙화&#34;&gt;L2 정칙화&lt;/h3&gt;
+&lt;p&gt;L2 정칙화는 릿지 정칙화(Ridge Regularization)라고도 하며, 가중치 제곱의 합을 손실 함수에 추가하여 오버피팅을 방지한다.&lt;/p&gt;
+&lt;p&gt;L2 정칙화는 가중치를 0에 가깝게 유지하므로, 모델의 가중치가 균일하게 분포되도록 도와준다. 이는 모델의 복잡도를 조정하여 일반화 성능을 향상시키는 데 기여한다. L1 정칙화와 달리, L2 정칙화는 모든 가중치를 조금씩 줄이는 경향이 있어, 희소성을 제공하지 않는다. 주로 심층 신경망 모델에서 많이 사용되며, 하이퍼파라미터 조정이 필요하다.&lt;/p&gt;
+&lt;p&gt;$$
+\text{Loss}&lt;em&gt;\text{L2} = \text{Loss}&lt;/em&gt;{\text{original}} + \lambda \sum_{i=1}^{n} w_i^2
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ \text{Loss}_{L2} $: L2 정칙화가 적용된 전체 손실 함수&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;가중치-감쇠&#34;&gt;가중치 감쇠&lt;/h3&gt;
+&lt;p&gt;가중치 감쇠는 L2 정칙화와 유사하게, 손실 함수에 규제 항을 추가하여 모델의 가중치를 작게 유지하는 기법이다.&lt;/p&gt;
+&lt;p&gt;딥러닝 라이브러리에서는 종종 최적화 함수에 weight_decay 파라미터로 구현되며, L2 정칙화와 동일한 효과를 가진다. 가중치 감쇠는 모델의 일반화 성능을 향상시키기 위해 사용되며, 다른 정칙화 기법과 함께 적용할 때 더욱 효과적일 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;optimizer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;torch&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;optim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SGD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parametersO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weight_decay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;엘라스틱-넷&#34;&gt;엘라스틱 넷&lt;/h3&gt;
+&lt;p&gt;엘라스틱 넷(Elastic-Net)은 L1 정칙화와 L2 정칙화를 결합한 방식으로, 두 정칙화의 장점을 동시에 활용한다.&lt;/p&gt;
+&lt;p&gt;이는 모델이 희소성과 작은 가중치의 균형을 맞추도록 도와주며, 특히 피처의 수가 샘플의 수보다 많을 때 유의미한 성능 향상을 제공한다. 혼합 비율을 조절하여 두 정칙화의 영향을 조절할 수 있으나, 새로운 하이퍼파라미터가 추가되므로 튜닝이 필요하다.&lt;/p&gt;
+&lt;p&gt;$$
+\text{Loss}&lt;em&gt;\text{ElasticNet} = \text{Loss}&lt;/em&gt;{\text{original}} + \lambda_1 \sum_{i=1}^{n} |w_i| + \lambda_2 \sum_{i=1}^{n} w_i^2
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ \lambda_1 $: L1 정칙화의 규제 강도&lt;/li&gt;
+&lt;li&gt;$ \lambda_2 $: L2 정칙화의 규제 강도&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;드롭아웃&#34;&gt;드롭아웃&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/regularization/image-1.png&#34;
+	width=&#34;848&#34;
+	height=&#34;462&#34;
+	srcset=&#34;https://gyeongmin.kr/p/regularization/image-1_hu1d510e10439ac30aa1a3a4f0b21d87ec_84154_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/regularization/image-1_hu1d510e10439ac30aa1a3a4f0b21d87ec_84154_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Dropout before/after&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;183&#34;
+		data-flex-basis=&#34;440px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;드롭아웃(Dropout)은 신경망의 훈련 과정에서 일부 노드를 임의로 제거하거나 0으로 설정하여 오버피팅을 방지하는 기법이다.&lt;/p&gt;
+&lt;p&gt;이는 노드 간의 동조화(co-adaptation)를 억제하여 모델이 특정 노드에 지나치게 의존하지 않도록 한다. 드롭아웃은 모델의 일반화 성능을 향상시키는 동시에 모델 평균화 효과를 제공하지만, 충분한 데이터와 깊은 모델에 적용할 때 더욱 효과적이다. 배치 정규화와 함께 사용할 때는 신중하게 조합해야 한다.&lt;/p&gt;
+&lt;p&gt;$$
+y = \begin{cases}
+0 &amp;amp; \text{with probability } p \
+\frac{y}{1-p} &amp;amp; \text{with probability } 1-p
+\end{cases}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ y $: 뉴런의 출력값&lt;/li&gt;
+&lt;li&gt;$ p $: 뉴런을 제거할 확률 (드롭아웃 비율)&lt;/li&gt;
+&lt;li&gt;$ 1-p $: 뉴런을 유지할 확률&lt;/li&gt;
+&lt;li&gt;출력값을 $ \frac{1}{1-p} $로 스케일링하여 훈련 시와 추론 시의 활성화 분포를 일치&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;그레이디언트-클리핑&#34;&gt;그레이디언트 클리핑&lt;/h3&gt;
+&lt;p&gt;그레이디언트 클리핑(Gradient Clipping)은 모델 학습 시 기울기가 너무 커지는 현상을 방지하기 위해 사용되는 기법이다.&lt;/p&gt;
+&lt;p&gt;이는 기울기의 크기를 특정 임곗값으로 제한하여, 학습 과정에서 발생할 수 있는 기울기 폭주 문제를 해결한다. 주로 순환 신경망(RNN)이나 LSTM 모델에서 활용되며, 학습률을 조절하는 효과와 유사한 역할을 한다. 그레이디언트 클리핑은 하이퍼파라미터인 최대 임곗값을 신중하게 설정해야 하며, 이를 통해 모델의 안정적인 학습을 도모할 수 있다.&lt;/p&gt;
+&lt;p&gt;$$
+\text{if } ||g||_2 &amp;gt; r, \quad g \leftarrow \frac{g}{||g||_2} \times r
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ g $: 기울기 벡터&lt;/li&gt;
+&lt;li&gt;$ ||g||_2 $: 기울기 벡터의 L2 노름&lt;/li&gt;
+&lt;li&gt;$ r $: 설정한 임계값 (threshold)&lt;/li&gt;
+&lt;li&gt;기울기의 방향은 유지하면서 크기를 $ r $로 제한&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>활성화 함수</title>
+        <link>https://gyeongmin.kr/p/activation-functions/</link>
+        <pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/activation-functions/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 활성화 함수" /&gt;&lt;h2 id=&#34;활성화-함수&#34;&gt;활성화 함수&lt;/h2&gt;
+&lt;p&gt;활성화 함수는 인공 신경망에서 뉴런의 출력을 비선형으로 변환하여 은닉층을 활성화하는 역할을 한다. 이를 통해 네트워크는 데이터의 복잡한 패턴을 학습하고 비선형 문제를 해결할 수 있다.&lt;/p&gt;
+&lt;p&gt;각 노드의 전달 보강이 다르므로 입력값에 따라 일부 노드는 활성화(Activate)되고 다른 노드는 비활성화(Deactivate)된다.&lt;/p&gt;
+&lt;p&gt;활성화 함수는 비선형 구조를 가지며 미분 가능해야 학습이 가능하고, 입력값을 정규화(Normalization)하는 효과도 수행한다.&lt;/p&gt;
+&lt;h2 id=&#34;계단-함수-step-function&#34;&gt;계단 함수 (Step Function)&lt;/h2&gt;
+&lt;p&gt;계단 함수는 입력값이 특정 임곗값(보통 0)을 넘으면 1을 출력하고, 그렇지 않으면 0을 출력하는 함수이다.&lt;/p&gt;
+&lt;p&gt;이 함수는 출력이 이산적이므로 단순한 분류 작업에 사용될 수 있지만, 비연속적인 특성으로 인해 기울기(Gradient)가 존재하지 않아 역전파(Backpropagation)를 사용할 수 없다.&lt;/p&gt;
+&lt;p&gt;$$
+f(x) =
+\begin{cases}
+1 &amp;amp; \text{if } x \geq 0 \
+0 &amp;amp; \text{if } x &amp;lt; 0
+\end{cases}
+$$&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Step Function&#34;
+    y-axis 0 --&gt; 1
+    x-axis [-4, -3, -2, -1, 0, 0, 1, 2, 3, 4]
+    line   [ 0,  0,  0,  0, 0, 1, 1, 1, 1, 1]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;임곗값-함수-threshold-function&#34;&gt;임곗값 함수 (Threshold Function)&lt;/h2&gt;
+&lt;p&gt;임곗값 함수는 계단 함수의 변형으로 특정 임계값을 기준으로 값을 출력한다. 입력값이 임계값 이상이면 1을 출력하고, 그 미만이면 특정 값을 출력한다.&lt;/p&gt;
+&lt;p&gt;이 함수는 이진 분류에 사용될 수 있으나, 계단 함수와 마찬가지로 기울기가 없어서 신경망 학습에는 적합하지 않다.&lt;/p&gt;
+&lt;p&gt;$$
+f(x) =
+\begin{cases}
+x &amp;amp; \text{if } x &amp;gt; threshold \
+value &amp;amp; \text{else } \ \ \ otherwise
+\end{cases}
+$$&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Threshold Function (value = -5)&#34;
+    y-axis -5 --&gt; 4
+    x-axis [-4, -3, -2, -1, 0, 0,  1, 2, 3, 4]
+    line   [-5, -5, -5, -5, -5, 0, 1, 2, 3, 4]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;시그모이드-함수-sigmoid-function&#34;&gt;시그모이드 함수 (Sigmoid Function)&lt;/h2&gt;
+&lt;p&gt;시그모이드 함수는 입력값을 0과 1 사이의 연속적인 값으로 변환하는 함수로, 출력값을 확률로 해석할 수 있어 이진 분류 문제에서 사용된다.&lt;/p&gt;
+&lt;p&gt;함수의 출력이 부드럽게 변하므로 미분이 가능하지만, 큰 입력값에서는 기울기가 0에 가까워지는 &lt;strong&gt;Vanishing Gradient&lt;/strong&gt; 문제가 발생할 수 있어 깊은 신경망에서는 성능이 저하될 수 있다.&lt;/p&gt;
+&lt;p&gt;$$
+f(x) = \frac{1}{1 + e^{-x}}
+$$&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Sigmoid Function&#34;
+    y-axis 0 --&gt; 1
+    x-axis [-5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+    line [0.0067, 0.011, 0.018, 0.029, 0.047, 0.076, 0.119, 0.182, 0.269, 0.378, 0.5, 0.622, 0.731, 0.818, 0.881, 0.924, 0.953, 0.971, 0.982, 0.989, 0.993]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;하이퍼볼릭-탄젠트-함수-tanh-function&#34;&gt;하이퍼볼릭 탄젠트 함수 (Tanh Function)&lt;/h2&gt;
+&lt;p&gt;하이퍼볼릭탄젠트 함수는 시그모이드 함수의 확장판으로, 출력 범위가 -1에서 1 사이로 설정되어 있다.&lt;/p&gt;
+&lt;p&gt;이 함수는 평균이 0에 가까워져 학습이 비교적 안정적이며, 시그모이드 함수보다 빠르게 수렴할 수 있다. 그러나 여전히 큰 입력값에서는 기울기가 0에 가까워지는 문제를 완전히 해결하지는 못한다.&lt;/p&gt;
+&lt;p&gt;$$
+f(x) = \tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+$$&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Tanh Function&#34;
+    y-axis -1 --&gt; 1
+    x-axis [-5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+    line [-1, -0.999, -0.999, -0.998, -0.995, -0.986, -0.964, -0.905, -0.761, -0.462, 0, 0.462, 0.761, 0.905, 0.964, 0.986, 0.995, 0.998, 0.999, 0.999, 1]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;relu-함수-rectified-linear-unit-function&#34;&gt;ReLU 함수 (Rectified Linear Unit Function)&lt;/h2&gt;
+&lt;p&gt;ReLU(Rectified Linear Unit) 함수는 입력값이 0 이하이면 0을 출력하고, 그 이상이면 입력값을 그대로 출력하는 함수이다.&lt;/p&gt;
+&lt;p&gt;간단한 수식과 계산량 덕분에 학습 속도가 빠르고 효율적이지만, 0 이하의 값에서는 기울기가 0이 되어 뉴런이 더 이상 업데이트되지 않는 죽은 뉴런 문제가 발생할 수 있다.&lt;/p&gt;
+&lt;p&gt;$$
+f(x) = \max(0, x)
+$$&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;ReLU Function&#34;
+    y-axis -0.5 --&gt; 3
+    x-axis [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+    line [0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;leaky-relu-함수&#34;&gt;Leaky ReLU 함수&lt;/h2&gt;
+&lt;p&gt;Leaky ReLU 함수는 ReLU 함수의 단점을 개선한 형태로, 입력값이 0 이하일 때도 작은 기울기
+α를 곱한 값을 출력한다. 이로 인해 죽은 뉴런 문제를 완화하며 학습이 계속 이루어질 수 있도록 한다.&lt;/p&gt;
+&lt;p&gt;기울기 α는 보통 0.01과 같은 작은 값으로 설정되며, ReLU의 비선형성과 계산 효율성을 유지한다.&lt;/p&gt;
+&lt;p&gt;$$
+f(x) =
+\begin{cases}
+x &amp;amp; \text{if } x &amp;gt; 0 \
+\alpha x &amp;amp; \text{if } x \leq 0
+\end{cases}
+$$&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;Leaky ReLU Function (α = 0.1)&#34;
+    y-axis -1 --&gt; 5
+    x-axis [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+    line [-0.5, -0.4, -0.3, -0.2, -0.1, 0, 1, 2, 3, 4, 5]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;prelu-함수-parametric-relu-function&#34;&gt;PReLU 함수 (Parametric ReLU Function)&lt;/h2&gt;
+&lt;p&gt;PReLU(Parametric ReLU) 함수는 Leaky ReLU의 확장판으로, 0 이하의 기울기 α를 고정된 값이 아닌 학습 가능한 파라미터로 설정한다.&lt;/p&gt;
+&lt;p&gt;이로 인해 데이터에 따라 기울기를 최적화할 수 있으므로 네트워크의 성능을 더욱 개선할 수 있다. 다만 학습할 파라미터가 늘어나기 때문에 계산 비용이 조금 증가할 수 있다.&lt;/p&gt;
+&lt;h2 id=&#34;elu-함수-exponential-linear-unit-function&#34;&gt;ELU 함수 (Exponential Linear Unit Function)&lt;/h2&gt;
+&lt;p&gt;ELU(Exponential Linear Unit) 함수는 ReLU와 Leaky ReLU의 단점을 보완한 함수로, 입력값이 0 이하일 때 $ e^x - 1 $ 형태의 부드러운 곡선을 갖는다.&lt;/p&gt;
+&lt;p&gt;ELU는 0 이하의 출력이 음수 값을 가지기 때문에 평균 출력이 0에 가깝게 유지되어 학습을 더 안정적으로 만들며, 죽은 뉴런 문제도 해결할 수 있다.&lt;/p&gt;
+&lt;p&gt;$$
+ELU(x) =
+\begin{cases}
+x &amp;amp; \text{if } x &amp;gt; 0 \
+\alpha (e^x - 1) &amp;amp; \text{else } \text{otherwise}
+\end{cases}
+$$&lt;/p&gt;
+&lt;pre class=&#34;mermaid&#34;&gt;xychart-beta
+    title &#34;ELU Function (α = 1)&#34;
+    y-axis -3 --&gt; 5
+    x-axis [-4, -3.6, -3.2, -2.8, -2.4, -2, -1.6, -1.2, -0.8, -0.4, 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4]
+    line [-0.9817, -0.9736, -0.9502, -0.9131, -0.8647, -0.7869, -0.6988, -0.6065, -0.4866, -0.3297, 0, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6, 4]
+  &lt;/pre&gt;
+  &lt;h2 id=&#34;소프트맥스-함수-softmax-function&#34;&gt;소프트맥스 함수 (Softmax Function)&lt;/h2&gt;
+&lt;p&gt;소프트맥스 함수는 다중 클래스 분류에서 사용되는 함수로, 입력값을 확률 분포로 변환한다. 각 클래스의 출력값에 대해 지수 함수로 변환한 후, 전체 클래스의 지수값 합으로 나눈다.&lt;/p&gt;
+&lt;p&gt;이로 인해 출력값의 합이 항상 1이 되며, 이를 통해 각 클래스에 대한 확률로 해석할 수 있다. 소프트맥스 함수는 주로 신경망의 출력층에서 사용된다.&lt;/p&gt;
+&lt;p&gt;$$
+p_k = \frac{e^{z_k}}{\sum_{i=1}^n e^{z_i}}
+$$&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>최적화 함수의 종류와 발전 과정</title>
+        <link>https://gyeongmin.kr/p/optimization-functions/</link>
+        <pubDate>Fri, 09 Feb 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://gyeongmin.kr/p/optimization-functions/</guid>
+        <description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 최적화 함수의 종류와 발전 과정" /&gt;&lt;h2 id=&#34;최적화-함수란&#34;&gt;최적화 함수란?&lt;/h2&gt;
+&lt;p&gt;신경망(neural network)의 학습 목적은 손실 함수(loss function)의 값을 최대한 낮추는 매개변수(parameter)를 찾는 것이다. 이는 곧 매개변수의 최적값을 찾는 문제이며, 이를 최적화 문제(optimization)라고 한다. 최적화 문제를 해결하기 위해 사용하는 도구가 바로 최적화 함수(optimizer)이다.&lt;/p&gt;
+&lt;p&gt;최적화 함수는 손실 함수의 값을 최소화하는 방향으로 모델의 매개변수를 조정한다. 손실 함수는 예측값(predicted value)과 실제값(true value) 간의 차이를 나타내며, 최적화 함수는 손실을 점진적으로 줄여 모델의 예측 성능을 향상시킨다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/optimization-functions/image.png&#34;
+	width=&#34;3193&#34;
+	height=&#34;1536&#34;
+	srcset=&#34;https://gyeongmin.kr/p/optimization-functions/image_hu0eebc20c8c24827b2e90536cf3d5f782_408890_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/optimization-functions/image_hu0eebc20c8c24827b2e90536cf3d5f782_408890_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;saddle point and local minima&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;207&#34;
+		data-flex-basis=&#34;498px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;최적화 함수는 기울기(gradient)를 활용하여 손실 함수의 값을 낮추는 방향으로 매개변수를 조정한다. 기울기는 각 지점에서 함수의 값을 줄이는 방향을 나타내는 지표로, 손실 값을 줄이기 위한 업데이트의 핵심 정보를 제공한다. 그러나 딥러닝에서 사용하는 손실 함수는 고차원적이고 복잡한 지형을 가지기 때문에, 기울기가 항상 최적의 방향을 가리킨다고 보장할 수는 없다. 이는 다음과 같은 문제로 이어질 수 있다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;안장점(Saddle Point)&lt;br&gt;
+안장점은 특정 방향에서는 극대값처럼 보이고, 다른 방향에서는 극솟값처럼 보이는 지점이다. 이 지점에서는 기울기가 0에 가까워져 학습이 정체될 수 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;지역 최적해(Local Minimum)&lt;br&gt;
+지역 최적해는 특정 구역에서 손실 값이 가장 작은 지점이다. 그러나 이는 전역 최솟값(global minimum)과는 거리가 있을 수 있으며, 최적화 과정이 이 지점에 갇히면 더 나은 해를 찾지 못할 위험이 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;평탄한 구간(Flat Regions)&lt;br&gt;
+손실 함수가 일정하거나 기울기가 매우 작은 평탄한 구간에서는 학습이 느려지거나 멈출 수 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이러한 문제를 극복하고 손실 값을 줄이기 위해, 최적화 함수는 기울기의 정보를 활용해 적절한 방향으로 이동한다. 이러한 접근 방식의 시초가 되는 알고리즘이 바로 경사하강법(Gradient Descent)이다.&lt;/p&gt;
+&lt;h2 id=&#34;gradient-descent-gd&#34;&gt;Gradient Descent (GD)&lt;/h2&gt;
+&lt;p&gt;경사하강법은 손실 함수의 기울기를 계산하여 손실 값을 줄이는 방향으로 매개변수를 업데이트하는 알고리즘이다.&lt;/p&gt;
+&lt;p&gt;경사하강법의 기본 수식은 다음과 같다.&lt;/p&gt;
+&lt;p&gt;$$
+\theta_{t+1} = \theta_t - \eta \nabla_{\theta} L(\theta_t)
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ \theta_t $ : 현재 파라미터,&lt;/li&gt;
+&lt;li&gt;$ \eta $ : 학습률(learning rate),&lt;/li&gt;
+&lt;li&gt;$ \nabla_{\theta} L(\theta_t) $ : 손실 함수의 기울기.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 수식에서 기울기는 손실 값을 줄이는 방향을 가리킨다. 이를 반복적으로 수행하면 모델의 매개변수가 점진적으로 최적값에 근접한다.&lt;/p&gt;
+&lt;h2 id=&#34;1950s-stochastic-gradient-descent-sgd&#34;&gt;1950s, Stochastic Gradient Descent (SGD)&lt;/h2&gt;
+&lt;p&gt;SGD는 초기의 Batch Gradient Descent의 비효율성을 해결하기 위해 개발되었다. Batch Gradient Descent는 전체 데이터셋을 사용하여 손실 함수의 기울기를 계산하고 파라미터를 업데이트하기 때문에 데이터셋이 클수록 계산 비용이 급격히 증가한다. 이러한 문제를 해결하기 위해 SGD는 데이터의 일부인 샘플이나 미니배치를 사용하여 손실 함수의 기울기를 계산하고 파라미터를 업데이트한다.&lt;/p&gt;
+&lt;p&gt;SGD의 업데이트 방식은 GD와 거의 같으나, 전체 데이터가 아닌 샘플들을 가지고 gradient 를 구하며 parameter 를 업데이트 해가는 방식이다.&lt;/p&gt;
+&lt;p&gt;SGD는 전체 데이터셋을 처리하지 않고도 학습을 진행할 수 있어 대규모 데이터 학습에서 계산 비용을 대폭 줄일 수 있다. 또한, 실시간 학습이나 스트리밍 데이터 처리와 같은 환경에서도 효과적으로 사용할 수 있다. 그러나 기울기의 노이즈로 인해 최적점 근처에서 진동(oscillation) 현상이 발생하며, 손실 함수의 평탄한 구간(flat regions)에서는 느리게 수렴한다는 한계가 있다.&lt;/p&gt;
+&lt;p&gt;PyTorch에서 SGD는 아래와 같이 구현할 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;torch.optim&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;optim&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;optimizer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;optim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SGD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;1964-momentum&#34;&gt;1964, Momentum&lt;/h2&gt;
+&lt;p&gt;Momentum은 SGD의 진동 문제를 해결하기 위해 제안되었다. SGD는 현재 기울기만을 기반으로 업데이트를 수행하기 때문에 손실 함수의 지형이 비대칭인 경우 진동이 발생하여 최적점에 도달하는 데 오랜 시간이 걸릴 수 있다. Momentum은 과거 기울기의 이동 평균을 반영하여 더욱 안정적이고 효율적인 학습 경로를 제공한다.&lt;/p&gt;
+&lt;p&gt;Momentum의 업데이트 방식은 아래와 같다.
+$$
+v_{t+1} = \beta v_t + (1-\beta) \nabla_{\theta_t} L(\theta_t)
+$$&lt;/p&gt;
+&lt;p&gt;$$
+\theta_{t+1} = \theta_t - \eta_t v_{t+1}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ v_t $ : 이동 평균(모멘텀 변수),&lt;/li&gt;
+&lt;li&gt;$ \beta $ : 모멘텀 계수로, 일반적으로 0.9로 설정된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Momentum은 기울기의 이동 평균을 계산하여 진동을 줄이고, 손실 함수가 좁고 깊은 구간에서도 빠르게 수렴할 수 있도록 한다. 그러나 추가적인 하이퍼파라미터 $ \beta $를 적절히 설정해야 한다는 점에서 복잡성이 증가한다.&lt;/p&gt;
+&lt;p&gt;PyTorch에서 Momentum은 아래와 같이 구현할 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;optimizer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;optim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SGD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;momentum&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;1983-nesterov-accelerated-gradient-nag&#34;&gt;1983, Nesterov Accelerated Gradient (NAG)&lt;/h2&gt;
+&lt;p&gt;NAG는 Momentum의 단점을 보완하기 위해 개발되었다. Momentum 방식은 현재 위치에서 기울기를 계산하므로, 최적점 근처에서 오버슈팅(overshooting)이 발생할 가능성이 있다. NAG는 모멘텀에 의해 예측된 미래의 위치에서 기울기를 계산함으로써 이러한 문제를 해결한다.&lt;/p&gt;
+&lt;p&gt;NAG의 업데이트 방식은 아래와 같다.
+$$
+v_{t+1} = \beta v_t + \nabla_{\theta} L(\theta_t - \eta \beta v_t)
+$$&lt;/p&gt;
+&lt;p&gt;$$
+\theta_{t+1} = \theta_t - \eta v_{t+1}
+$$&lt;/p&gt;
+&lt;p&gt;NAG는 Momentum이 제공하는 이동 방향에 대해 한 단계 더 정교하게 접근하여, 최적점 근처에서의 오버슈팅 문제를 완화한다. 또한, 수렴 속도를 개선하며 최적점 근처에서도 안정적으로 작동한다. 그러나 기울기 계산이 더 복잡해지고 계산 비용이 증가한다는 한계가 있다.&lt;/p&gt;
+&lt;p&gt;NAG는 PyTorch에서 아래와 같이 구현할 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;optimizer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;optim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SGD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;momentum&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;nesterov&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2011-adagrad&#34;&gt;2011, Adagrad&lt;/h2&gt;
+&lt;p&gt;Adagrad는 SGD와 Momentum이 모든 파라미터에 동일한 학습률을 적용한다는 문제를 해결하기 위해 도입되었다. 데이터셋에 드문 특징(sparse feature)이 포함되어 있는 경우, 이러한 방식은 드문 특징을 학습하는 데 비효율적이다. Adagrad는 각 파라미터의 과거 기울기의 제곱합을 기반으로 학습률을 조정하여 이를 해결한다.&lt;/p&gt;
+&lt;p&gt;Adagrad의 업데이트 방식은 아래와 같다.
+$$
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{G_t + \epsilon}} \nabla_{\theta} L(\theta_t)
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ G_t $ : 과거 기울기의 제곱합,&lt;/li&gt;
+&lt;li&gt;$ \epsilon $ : 0으로 나누는 것을 방지하기 위한 작은 값.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Adagrad는 희소 데이터에 대한 학습에서 특히 효과적이며, 각 파라미터에 적응적인 학습률을 적용한다는 점에서 큰 장점이 있다. 그러나 기울기의 제곱합이 점진적으로 증가하면서 학습률이 감소하여 장기 학습에는 적합하지 않다는 한계가 있다.&lt;/p&gt;
+&lt;p&gt;Adagrad는 PyTorch에서 아래와 같이 구현할 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;optimizer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;optim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Adagrad&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2012-rmsprop&#34;&gt;2012, RMSprop&lt;/h2&gt;
+&lt;p&gt;RMSprop은 Adagrad의 단점을 해결하기 위해 제안되었다. Adagrad는 기울기의 제곱합이 점진적으로 증가하여 학습률이 감소하고, 장기 학습에서는 효과가 떨어진다. RMSprop은 기울기의 제곱 이동 평균(Exponentially Weighted Moving Average)을 사용하여 학습률을 조정함으로써 이러한 문제를 해결한다.&lt;/p&gt;
+&lt;p&gt;RMSprop의 업데이트 방식은 아래와 같다.&lt;/p&gt;
+&lt;p&gt;$$
+E[g^2]_t = \rho E[g^2] _{t-1} + (1-\rho)g_t^2
+$$&lt;/p&gt;
+&lt;p&gt;$$
+\theta_{t+1} = \theta _t - \frac{\eta}{\sqrt{E[g^2] _t + \epsilon}} \nabla _{\theta} L(\theta _t)
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ E[g^2]_t $ : 기울기의 제곱 이동 평균,&lt;/li&gt;
+&lt;li&gt;$ \rho $ : 지수 이동 평균의 가중치 계수로, 일반적으로 0.9로 설정된다,&lt;/li&gt;
+&lt;li&gt;$ \epsilon $ : 0으로 나누는 것을 방지하기 위한 작은 값.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;RMSprop은 Adagrad와 달리 이동 평균을 사용하여 학습률 감소 문제를 해결하고, 일정한 학습률을 유지하며 안정적으로 작동한다. 특히 RNN(Recurrent Neural Network)과 같은 모델에서 효과적으로 사용된다.&lt;/p&gt;
+&lt;p&gt;RMSprop은 PyTorch에서 아래와 같이 구현할 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;optimizer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;optim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;RMSprop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2014-adam&#34;&gt;2014, Adam&lt;/h2&gt;
+&lt;p&gt;Adam은 Momentum과 RMSprop의 장점을 결합하여 더욱 효율적이고 안정적인 학습을 제공하기 위해 제안되었다. Adam은 1차 모멘텀(기울기의 이동 평균)과 2차 모멘텀(기울기의 제곱 이동 평균)을 모두 사용하여 학습률을 조정한다.&lt;/p&gt;
+&lt;p&gt;Adam의 업데이트 방식은 아래와 같다.&lt;/p&gt;
+&lt;p&gt;$$
+m_t = \beta_1 m_{t-1} + (1 - \beta_1)g_t
+$$&lt;/p&gt;
+&lt;p&gt;$$
+v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2
+$$&lt;/p&gt;
+&lt;p&gt;$$
+\hat{m}_t = \frac{m_t}{1-\beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1-\beta_2^t}
+$$&lt;/p&gt;
+&lt;p&gt;$$
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ m_t $ : 기울기의 1차 모멘텀(평균),&lt;/li&gt;
+&lt;li&gt;$ v_t $ : 기울기의 2차 모멘텀(분산),&lt;/li&gt;
+&lt;li&gt;$ \hat{m}_t $, $ \hat{v}_t $ : 편향 보정된 모멘텀.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Adam은 빠르고 안정적인 수렴을 제공하며, 대부분의 딥러닝 모델에서 기본 최적화 알고리즘으로 사용된다. 학습률의 조정이 자동으로 이루어져 하이퍼파라미터 설정의 복잡성이 감소하는 장점이 있다. 그러나 과적합 가능성이 높아질 수 있으며, 일반화 성능이 저하될 위험이 있다.&lt;/p&gt;
+&lt;p&gt;Adam은 PyTorch에서 아래와 같이 구현할 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;optimizer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;optim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Adam&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.001&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;2017-adamw&#34;&gt;2017, AdamW&lt;/h2&gt;
+&lt;p&gt;AdamW는 Adam의 일반화 성능 문제를 해결하기 위해 제안되었다. Adam은 L2 정규화를 사용하는 방식이 가중치 감쇠(weight decay)와 동일하지 않다는 문제가 있었고, 이는 과적합 위험을 증가시켰다. AdamW는 가중치 감쇠를 명시적으로 적용하여 이러한 문제를 해결하였다.&lt;/p&gt;
+&lt;p&gt;AdamW의 업데이트 방식은 아래와 같다.
+$$
+\theta_{t+1} = \theta_t - \eta (\hat{m}_t / \sqrt{\hat{v}_t} + \epsilon + \lambda \theta_t)
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$ \lambda $ : 가중치 감쇠(weight decay) 계수.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;AdamW는 과적합을 줄이고 일반화 성능을 향상시키는 데 효과적이다. 특히 딥러닝 연구와 최신 모델 개발에서 기본 최적화 알고리즘으로 널리 사용되고 있다.&lt;/p&gt;
+&lt;p&gt;AdamW는 PyTorch에서 아래와 같이 구현할 수 있다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;optimizer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;optim&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AdamW&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;parameters&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.001&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weight_decay&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.01&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

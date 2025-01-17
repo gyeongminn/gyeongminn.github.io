@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안'>
+<title>[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction</title>
+
+<link rel='canonical' href='https://gyeongmin.kr/p/paper-review-hyperspectral-ad/'>
+
+<link rel="stylesheet" href="/scss/style.min.d685c3bcb9a52773f3243d6fdf1908e58d829957b0f07574044bf2eb968eccd2.css"><meta property='og:title' content='[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction'>
+<meta property='og:description' content='Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안'>
+<meta property='og:url' content='https://gyeongmin.kr/p/paper-review-hyperspectral-ad/'>
+<meta property='og:site_name' content='Gyeongmin의 개발 블로그'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='딥러닝' /><meta property='article:published_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-07-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://gyeongmin.kr/images/paper-review.png' />
+<meta name="twitter:title" content="[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction">
+<meta name="twitter:description" content="Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction 논문 링크 Abstract 이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://gyeongmin.kr/images/paper-review.png' />
+    <link rel="shortcut icon" href="/logo.ico/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBG63ZJRZM"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-RBG63ZJRZM', { 'anonymize_ip': false });
+}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061"
+     crossorigin="anonymous"></script>
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#757575">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/logo.ico/favicon.ico"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2100464285092061" crossorigin="anonymous"></script>
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="메뉴 여닫기">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/profile_hu5d202280e416202dba72f1bb8473638c_1285338_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Gyeongmin의 개발 블로그</a></h1>
+            <h2 class="site-description">Computer Vision Engineer</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/gyeongminn'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="22" height="22" viewBox="1 -2 19 25" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h22v22H0z" stroke="none"/><path d="M8.25 17.416c-3.942 1.284-3.942-2.292-5.5-2.75m11 4.584v-3.208c0-.916.092-1.284-.458-1.834 2.566-.274 5.042-1.284 5.042-5.5a4.216 4.216 0 0 0-1.192-2.934 3.85 3.85 0 0 0-.092-2.934s-1.008-.274-3.208 1.192a11.274 11.274 0 0 0-5.684 0C5.958 2.566 4.95 2.841 4.95 2.841a3.85 3.85 0 0 0-.092 2.934 4.216 4.216 0 0 0-1.192 2.933c0 4.216 2.474 5.226 5.042 5.5-.55.55-.55 1.1-.458 1.834v3.208"/></svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.instagram.com/gyeongminx/'
+                        target="_blank"
+                        title="instagram"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+  <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M16.5 7.5l0 .01" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/gyeongmin-lee-865448256/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+  <path d="M8 11l0 5" />
+  <path d="M8 8l0 .01" />
+  <path d="M12 16l0 -5" />
+  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:gyeongmin@hansung.ac.kr'
+                        target="_blank"
+                        title="mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0h24v24H0z" stroke="none"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="m3 7 9 6 9-6"/></svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://gyeongmin.kr/" selected>한국어</option>
+                        
+                            <option value="https://gyeongmin.kr/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>다크 모드</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">목차</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#proposed-method">Proposed Method</a>
+      <ol>
+        <li><a href="#background-anomaly-and-noise-decomposition-model">Background, Anomaly, and Noise Decomposition Model</a></li>
+        <li><a href="#background-dictionary-construction">Background Dictionary Construction</a></li>
+        <li><a href="#potential-anomaly-dictionary-construction">Potential Anomaly Dictionary Construction</a></li>
+      </ol>
+    </li>
+    <li><a href="#experiments-results">Experiments Results</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/paper-review-hyperspectral-ad/">
+                
+                    <img src="/images/paper-review.png" loading="lazy" alt="Featured image of post [논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/" >
+                논문리뷰
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/paper-review-hyperspectral-ad/">[논문리뷰] Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 17, 2024</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="hyperspectral-anomaly-detection-via-background-and-potential-anomaly-dictionaries-construction">Hyperspectral Anomaly Detection via Background and Potential Anomaly Dictionaries Construction</h1>
+<blockquote>
+<p><a class="link" href="https://ieeexplore.ieee.org/abstract/document/8519775"  target="_blank" rel="noopener"
+    >논문 링크</a></p>
+</blockquote>
+<h2 id="abstract">Abstract</h2>
+<p>이 논문에서는 배경 사전과 잠재적 이상치 사전이라는 두 가지 잘 설계된 사전을 기반으로 한 새로운 초분광 이미지 이상 탐지 방법을 제안한다. 이상치를 효과적으로 탐지하고 노이즈의 영향을 제거하기 위해, 원본 이미지를 배경, 이상치, 노이즈의 세 가지 구성 요소로 분해한다. 이와 같이, 이상 탐지 작업을 행렬 분해 문제로 간주한다. 배경의 동질성과 이상치의 희소성을 고려하여, 저랭크 및 희소 제약을 모델에 적용한다. 그런 다음, 배경 사전과 잠재적 이상치 사전은 배경 및 이상치의 사전 지식을 사용하여 구성한다. 배경 사전의 경우, 과완비 사전에서 자주 사용되는 원자가 배경이 될 가능성이 높다고 가정하여, 공동 희소 표현(Joint Sparse Representation, JSR) 기반의 사전 선택 전략을 제안한다. 장면에 숨겨진 이상치의 사전 정보를 최대한 활용하기 위해 잠재적 이상치 사전을 구성한다. JSR 모델 내의 지역 영역에서 계산된 잔차를 사용하여 픽셀의 이상 수준이라는 기준을 정의한다. 그런 다음, 노이즈와 배경의 영향을 완화하기 위해 가중치 항과 결합한다. 실험 결과, 잠재적 이상치 및 배경 사전 구축에 기반한 제안된 이상 탐지 방법이 최신 방법들과 비교하여 우수한 성능을 달성할 수 있음을 보여준다.</p>
+<h2 id="introduction">Introduction</h2>
+<p>초분광영상(Hyperspectral image, HSI)은 넓은 범위와 높은 해상도의 스펙트럼을 가지고 있는 이미지이다. HSI 기반의 Anomaly Detection은 다양한 분야에서 연구되어 왔다.</p>
+<p>Supervised 기반의 물체 검출과 달리 Anomaly Detection은 목표물에 대한 사전 정보를 알지 못한 상태에서 이루어지기 때문에, 기존 방법들은 배경 정보를 최대한 활용하려고 노력했다. local region의 중심에 있는 배경 픽셀은 다른 픽셀들의 조합으로 표현될 수 있지만 anomalous한 픽셀은 그렇지 않다는 가정을 바탕으로 JSR (Joint Sparse Representation)의 특성을 활용하는 AD 방법이 제안되었다.</p>
+<p>HSI는 일반적으로 유사한 스펙트럼 특성을 균질하게 가지고 있기 때문에, 이 구조는 subspace로 표현될 수 있다. 일반적으로 PCS나 RPCA가 사용되고, 더 나은 multisubspace 학습을 위해 LRR(Low-Rank Representation) 방법이 제안되었다. HSI 데이터의 경우, LRR 기법은 분류와 Denoising에 사용되었으며, 최근에는 Anomaly Detection Problem을 모델링하는 데에도 활용되었다. background는 low-rank를 가지고 있고, anomaly는 sparse한 속성을 가지고 있다고 가정하여 RPCA 모델을 확장하여 데이터를 background, anomaly, noise로 분해했고 mahalanobis 거리를 이용하여 AD를 진행했다.</p>
+<p><img src="/p/paper-review-hyperspectral-ad/image.png"
+	width="1847"
+	height="795"
+	srcset="/p/paper-review-hyperspectral-ad/image_hu78a6f5733d58b1ee28393f06e5b5a05d_445139_480x0_resize_box_3.png 480w, /p/paper-review-hyperspectral-ad/image_hu78a6f5733d58b1ee28393f06e5b5a05d_445139_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Schematic of our dictionary construction method for hyperspectral anomaly detection"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="232"
+		data-flex-basis="557px"
+	
+></p>
+<p>본 논문에서는 background와 anomaly information을 잘 모델링하기 위해, LRSR(Low-Rank and Sparse Representation)을 활용한 새로운 HSI Anomaly Detection을 제안한다. HSI의 homogeneity 때문에 background는 low-rank 속성을 가지고, anomaly는 sparsity한 속성을 가지도록 제약된다. JSR 모델은 clutter와 anomaly의 영향을 받지 않는 순수한 배경을 묘사하는 데에 사용된다.</p>
+<h2 id="proposed-method">Proposed Method</h2>
+<h3 id="background-anomaly-and-noise-decomposition-model">Background, Anomaly, and Noise Decomposition Model</h3>
+<p>Background를 $BZ$, Anomaly를 $A$, Noise를 $E$라고 했을 때, HSI 이미지 $X$는 아래와 같이 나타낼 수 있다.</p>
+<p>$$
+X = BZ + A + E
+$$</p>
+<p>HSI에서 local region은 대부분 homogeneity하기 때문에 배경은 low-rank의 성질을 가진다. Anomaly는 sparse한 속성을 부여하여 모델링한다. Noise는 Sparse한 Noise와 Gaussian Random Noise 두 종류가 존재하는데, 이를 표현하기 위해 Noise를 모델링하는 데에 $l_{2,1}$ norm을 사용한다.</p>
+<p>최적화 문제는 다음과 같이 정의된다. $\beta$와 $\lambda$는 각 성분 간의 균형을 맞추기 위한 계수이다.</p>
+<p>$$
+min_{Z,A,E} \text{rank}(Z) + \beta{\Vert A \Vert_l} + \lambda{\Vert E \Vert _{2,1}} \quad \text{s.t} \ X = BZ + A + E
+$$</p>
+<h3 id="background-dictionary-construction">Background Dictionary Construction</h3>
+<p>local region 내의 픽셀들은 공통된 구조를 공유할 수 있으므로, <strong>공동 희소 표현(JSR)</strong> 모델을 사용하여 지역 내의 픽셀들을 몇 가지 공통된 원자의 선형 결합으로 표현한다.</p>
+<p>region을 클러스터링하여 비슷한 구조를 가진 픽셀 그룹으로 나누고, 각 클러스터에서 자주 사용되는 원자를 선택하여 Background Dictionary를 구축한다. $U$는 지역 내의 픽셀 행렬, $V$는 Overcomplete Dictoinary, $\psi$는 표현 계수, $R$은 잔차(residual)다.</p>
+<p>$$
+\min |\psi|_{\text{row},0} \quad \text{s.t} \ U = V\psi + R
+$$</p>
+<p>Background Dictionary의 원자는 JSR 모델에서 자주 사용되는 원자들로 선택되며, 선택 빈도는 정규화된 계수의 합으로 정의된다.</p>
+<p>$$
+P_c = \frac{1}{\gamma} \sum_{i=1}^{n_c} \sum_{j=1}^{L} |\psi_{i,j}|
+$$</p>
+<h3 id="potential-anomaly-dictionary-construction">Potential Anomaly Dictionary Construction</h3>
+<p>Potential Anomaly Dictionary는 JSR 모델을 사용하여 큰 잔차를 가지는 픽셀들을 선택하여 구성한다. 이 잔차가 큰 픽셀들은 이상일 가능성이 높다고 간주된다.</p>
+<p>각 픽셀의 AL (Anomalous Level)은 지역 기반의 잔차 평균을 계산하여 결정됩니다.</p>
+<p>$$
+AL = \frac{1}{\chi} \left[ R^1_{\text{mean}}, R^2_{\text{mean}}, \dots, R^K_{\text{mean}} \right]
+$$</p>
+<p>Anomaly Weight는 이러한 이상 수준과 선택 빈도, 계수의 절대값을 고려하여 선택되며, 이는 다음과 같은 수식으로 표현된다. $F_c$는 선택된 원소의 빈도수를 반영한다.</p>
+<p>$$
+AW_c = \frac{P_c}{F_c}
+$$</p>
+<h2 id="experiments-results">Experiments Results</h2>
+<p>제안된 PAB-DC 방법의 성능을 평가하기 위해 5개의 실제 hyperspectral 이미지 데이터 세트를 사용하여 실험을 수행하였다. 이 데이터 세트들은 각기 다른 특성을 가지며, 항공 이미지로 구성되어 있다. PAB-DC 방법은 Global-RX, Local-RX, CRD, LRSR 등 최신 방법들과 성능을 비교하였다. 실험 결과, PAB-DC 방법은 대부분의 데이터 세트에서 다른 방법들에 비해 우수한 성능을 보였으며, 이는 ROC 곡선과 AUC 값을 통해 정량적으로 입증되었다.</p>
+<p>또한, potential anomaly dictionary의 효과를 검증하기 위해 이 dictionary를 사용한 경우와 그렇지 않은 경우를 비교하였다. 그 결과, potential anomaly dictionary를 활용한 PAB-DC 방법이 더 높은 탐지 성능을 보였으며, 이는 이 dictionary가 이상 탐지에 중요한 역할을 한다는 것을 시사한다. 마지막으로, 매개변수 분석을 통해 윈도우 크기, 클러스터 수, $\beta$와 $\lambda$ 값, 배경 사전과 potential anomaly dictionary의 원자 수 등의 매개변수들이 탐지 성능에 미치는 영향을 평가하였다. 이러한 분석 결과, 제안된 PAB-DC 방법은 비교적 안정적인 성능을 보였으며, 다양한 매개변수 설정에서도 우수한 탐지 성능을 유지함을 확인하였다. 종합적으로, PAB-DC 방법이 기존의 방법들보다 hyperspectral 이미지에서의 이상 탐지 성능이 뛰어남을 실험을 통해 입증하였다.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>이 논문에서는 LRSR 전략을 활용한 Background 및 potential anomaly dictionary 기반의 새로운 HSI 이상 탐지 방법(PAB-DC)을 제시하였다. PAB-DC 방법이 hyperspectral 이미지에서 anomaly detection을 효과적으로 수행할 수 있음을 강조하였다. 이 방법은 low-rank와 sparse representation(LRSR) 전략을 사용하여 데이터를 배경, anomaly, 그리고 noise로 분해하며, 배경 사전과 potential anomaly dictionary를 활용하여 성능을 크게 향상시켰다. 기존의 방법들이 주로 배경 정보에만 의존한 것과 달리, PAB-DC는 anomaly 정보를 적극적으로 활용하여 다른 최신 방법들보다 뛰어난 성능을 보였다. 이를 통해 PAB-DC가 hyperspectral 이미지 anomaly detection에서 강력한 도구임을 입증하였다.</p>
+
+</section>
+
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/">딥러닝</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const contentElement = document.querySelector('.article-content');
+  
+      if (contentElement) {
+        
+        let content = contentElement.innerHTML;
+  
+        
+        content = content.replace(/(\$\$)([\s\S]+?)(\$\$)/g, (match, left, mathContent, right) => {
+          
+          const cleanedMathContent = mathContent
+            .replace(/<em>/g, '_') 
+            .replace(/<\/em>/g, '_'); 
+  
+          
+          return `<div markdown="katex">\n${left}\n${cleanedMathContent.trim()}\n${right}\n</div>`;
+        });
+  
+        
+        contentElement.innerHTML = content;
+  
+        
+        renderMathInElement(contentElement, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ],
+          ignoredClasses: ["gist"]
+        });
+      }
+    });
+  </script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">관련 글</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/paper-review-visual-attention-ad/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/paper-review.png" loading="lazy" data-key="paper-review-visual-attention-ad" data-hash="/images/paper-review.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[논문리뷰] Visual Attention and Background Subtraction With Adaptive Weight for Hyperspectral Anomaly Detection</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/paper-review-panda/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/paper-review.png" loading="lazy" data-key="paper-review-panda" data-hash="/images/paper-review.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[논문리뷰] PANDA: Adapting Pretrained Features for Anomaly Detection and Segmentation</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="gyeongminn/gyeongminn.github.io"
+    data-repo-id="R_kgDOKsf9nw"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKsf9n84Ca_6Y"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('noborder_gray');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2025 Gyeongmin Lee
+    </section>
+    
+    <section class="powerby">
+         <br />
+        
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css";
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
