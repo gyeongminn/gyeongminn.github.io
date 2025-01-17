@@ -6106,8 +6106,7 @@ $d = y - x$&lt;/p&gt;
         
         <guid>https://gyeongmin.kr/p/fixed-point-and-floating-point/</guid>
         <description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 고정 소수점과 부동 소수점 표현" /&gt;&lt;h2 id=&#34;고정-소수점-표현&#34;&gt;고정 소수점 표현&lt;/h2&gt;
-&lt;p&gt;고정 소수점 방식에서는 정수 부분과 소수 부분을 이진수로 변환한 후 각각 고정된 위치에 표현한다.
-아래 그림과 같이 첫번째 비트는 부호를, 그 다음 16비트는 정수를, 우측 15비트는 소수를 나타낸다.&lt;/p&gt;
+&lt;p&gt;고정 소수점 방식에서는 정수 부분과 소수 부분을 이진수로 변환한 후 각각 고정된 위치에 표현한다. 아래 그림과 같이 첫번째 비트는 부호를, 그 다음 16비트는 정수를, 우측 15비트는 소수를 나타낸다.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://gyeongmin.kr/p/fixed-point-and-floating-point/image-1.png&#34;
 	width=&#34;995&#34;
 	height=&#34;291&#34;
