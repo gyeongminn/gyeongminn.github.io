@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>NLP on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/nlp/</link><description>Recent content in NLP on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Thu, 21 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/nlp/index.xml" rel="self" type="application/rss+xml"/><item><title>언어 모델</title><link>https://gyeongmin.kr/p/language-model/</link><pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/language-model/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 언어 모델" />&lt;h2 id="언어-모델">언어 모델&lt;/h2>
+&lt;p>언어 모델 (Language Model)은 입력된 문장을 기반으로 각 문장이 생성될 확률을 계산하는 모델이다. 문맥을 이해하고, 문장 구조를 예측하는 역할을 한다. 자동 번역, 음성 인식, 텍스트 요약 등에 활용된다.&lt;/p>
+&lt;p>문장 전체를 완벽히 예측하는 것은 어렵기 때문에 조건부 확률을 이용한 방식이 필요하다.&lt;/p>
+&lt;h2 id="자기회귀-언어-모델">자기회귀 언어 모델&lt;/h2>
+&lt;p>자기회귀 언어 모델 (Autoregressive Language Model)은 이전 단어들의 조건부 확률을 이용하여 다음 단어를 예측하는 모델이다. 문장 내의 모든 단어 시퀀스를 고려하여 다음 단어가 등장할 확률을 계산한다.&lt;/p>
+&lt;p>자기회귀 모델에서는 문장의 확률을 다음과 같이 표현할 수 있다.&lt;/p>
+&lt;p>$$
+P(W_1, W_2, &amp;hellip;, W_n) = P(W_1) \ P(W_2 | W_1) \ P(W_3 | W_1, W_2) \ &amp;hellip; \ P(W_n | W_1, &amp;hellip;, W_{n-1})
+$$&lt;/p>
+&lt;p>즉, 전체 문장의 확률은 각 단어의 조건부 확률의 곱으로 나타낼 수 있다. 이는 연쇄법칙(Chain Rule)을 적용한 결과로, 각 단어의 확률을 이전 단어들의 조건부 확률을 이용해 순차적으로 계산하는 방식이다.&lt;/p>
+&lt;h2 id="통계적-언어-모델">통계적 언어 모델&lt;/h2>
+&lt;p>통계적 언어 모델 (Statistical Language Model)은 언어의 통계적 구조를 분석하여 단어 시퀀스를 생성하거나 분석하는 기법이다. 가장 기본적인 방식은 마르코프 체인(Markov Chain)을 활용하여 확률을 예측하는 것이다.&lt;/p>
+&lt;p>문장에서 특정 단어가 등장할 확률을 단어 빈도수를 기반으로 계산할 수 있다.&lt;/p>
+&lt;p>예를 들어, 말뭉치에서 &lt;code>안녕하세요&lt;/code>라는 단어가 1000번 등장했고, 그다음 &lt;code>만나서&lt;/code>가 700번 등장했다면 아래와 같이 계산할 수 있다.&lt;/p>
+&lt;p>$$
+P(만나서 | 안녕하세요) = \frac{P(안녕하세요 만나서)}{P(안녕하세요)} = \frac{700}{1000} = 0.7
+$$&lt;/p>
+&lt;p>하지만, 한 번도 등장한 적이 없는 단어에 대해서는 확률을 정확하게 예측할 수 없는 문제(데이터 희소성, Data Sparsity) 가 발생할 수 있다.&lt;/p>
+&lt;h2 id="n-gram-언어-모델">N-gram 언어 모델&lt;/h2>
+&lt;p>N-gram 모델은 연속된 N개의 단어를 하나의 단위로 취급하여 문장을 분석하는 방식이다. N의 값에 따라 다음과 같이 구분할 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>Unigram (N=1): 단어 하나씩 독립적으로 분석&lt;/li>
+&lt;li>Bigram (N=2): 두 개의 연속된 단어를 분석&lt;/li>
+&lt;li>Trigram (N=3): 세 개의 연속된 단어를 분석&lt;/li>
+&lt;/ul>
+&lt;p>N-gram 모델에서 특정 단어의 확률은 이전 (N-1)개의 단어를 고려하여 계산된다.&lt;/p>
+&lt;p>$$
+P(W_t | W_{t-1}, W_{t-2}, &amp;hellip;, W_{t-N+1})
+$$&lt;/p>
+&lt;p>즉, 이전 N-1개 단어의 조합을 기반으로 다음 단어의 확률을 예측하는 방식이다.&lt;/p>
+&lt;p>&lt;code>nltk&lt;/code>을 사용하여 N-gram을 간단히 사용할 수 있다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">nltk&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">ngrams&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">words&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sentence&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ngrams&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">zip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">words&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">:]&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">range&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span>&lt;span class="p">)])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ngrams&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sentence&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;안녕하세요 만나서 진심으로 반가워요&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">unigram&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ngrams&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">bigram&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ngrams&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">trigram&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ngrams&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">unigram&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bigram&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">trigram&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">unigram&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">nltk&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ngrams&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">bigram&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">nltk&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ngrams&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="mi">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">trigram&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">nltk&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ngrams&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="mi">3&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">unigram&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bigram&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">trigram&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[(&amp;#39;안녕하세요&amp;#39;,), (&amp;#39;만나서&amp;#39;,), (&amp;#39;진심으로&amp;#39;,), (&amp;#39;반가워요&amp;#39;,)]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[(&amp;#39;안녕하세요&amp;#39;, &amp;#39;만나서&amp;#39;), (&amp;#39;만나서&amp;#39;, &amp;#39;진심으로&amp;#39;), (&amp;#39;진심으로&amp;#39;, &amp;#39;반가워요&amp;#39;)]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[(&amp;#39;안녕하세요&amp;#39;, &amp;#39;만나서&amp;#39;, &amp;#39;진심으로&amp;#39;), (&amp;#39;만나서&amp;#39;, &amp;#39;진심으로&amp;#39;, &amp;#39;반가워요&amp;#39;)]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[(&amp;#39;안녕하세요&amp;#39;,), (&amp;#39;만나서&amp;#39;,), (&amp;#39;진심으로&amp;#39;,), (&amp;#39;반가워요&amp;#39;,)]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[(&amp;#39;안녕하세요&amp;#39;, &amp;#39;만나서&amp;#39;), (&amp;#39;만나서&amp;#39;, &amp;#39;진심으로&amp;#39;), (&amp;#39;진심으로&amp;#39;, &amp;#39;반가워요&amp;#39;)]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[(&amp;#39;안녕하세요&amp;#39;, &amp;#39;만나서&amp;#39;, &amp;#39;진심으로&amp;#39;), (&amp;#39;만나서&amp;#39;, &amp;#39;진심으로&amp;#39;, &amp;#39;반가워요&amp;#39;)]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>텍스트 벡터화</title><link>https://gyeongmin.kr/p/text-vectorization/</link><pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/text-vectorization/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 텍스트 벡터화" />&lt;p>컴퓨터는 텍스트를 이해할 수 없다. 따라서 텍스트를 숫자로 변환하는 텍스트 벡터화(Text Vectorization) 과정이 필요하다.&lt;/p>
+&lt;h2 id="원-핫-인코딩">원-핫 인코딩&lt;/h2>
+&lt;p>원-핫 인코딩 (One-Hot Encoding)은 문서에 등장하는 각 단어를 고유한 색인 값(index)으로 매핑한 후, 해당 색인 위치를 1로, 나머지는 0으로 표시하는 방식이다.&lt;/p>
+&lt;p>&lt;code>I like apples&lt;/code>, &lt;code>I like bananas&lt;/code> 라는 두 문장을 토큰화하고 매핑 테이블을 구하면 아래와 같다.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Index&lt;/th>
+&lt;th>0&lt;/th>
+&lt;th>1&lt;/th>
+&lt;th>2&lt;/th>
+&lt;th>3&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Word&lt;/td>
+&lt;td>I&lt;/td>
+&lt;td>like&lt;/td>
+&lt;td>apples&lt;/td>
+&lt;td>bananas&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>이를 바탕으로 원-핫 인코딩을 진행하면 아래와 같다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>I like apples&lt;/code> -&amp;gt; &lt;code>[1, 1, 1, 0]&lt;/code>&lt;/li>
+&lt;li>&lt;code>I like bananas&lt;/code> -&amp;gt; &lt;code>[1, 1, 0, 1]&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>이러한 방법은 단어나 문장을 벡터 형태로 변환하기 쉽고 간단하다는 장점이 있지만, 벡터의 희소성 (Sparsity)이 크다는 단점이 있어 자칫 차원의 저주와 같은 문제에 빠질 수 있다.&lt;/p>
+&lt;h2 id="빈도-벡터화">빈도 벡터화&lt;/h2>
+&lt;p>빈도 벡터화 (Count Vectorization)는 BOW를 만드는 방법이다. 먼저 BOW를 알고 넘어가자.&lt;/p>
+&lt;p>경제 뉴스에서는 경제 관련 단어가, 정치 뉴스에선 정치 관련 단어가 많이 나오듯, 문서의 내용과 연관성이 높은 단어가 자주 등장할 것이다. 이런 가설을 바탕으로 BOW, Bag of Words가 나왔다.&lt;/p>
+&lt;p>BOW는 단어들의 출현 빈도(frequency)에만 집중하는 텍스트 데이터의 수치화 표현 방법이다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/text-vectorization/image.png"
+width="661"
+height="380"
+srcset="https://gyeongmin.kr/p/text-vectorization/image_hu1844c23a2351ad80474ab4abca49cd8c_62162_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/text-vectorization/image_hu1844c23a2351ad80474ab4abca49cd8c_62162_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="BOW(Bag of Words)"
+class="gallery-image"
+data-flex-grow="173"
+data-flex-basis="417px"
+>&lt;/p>
+&lt;p>단어 피처에 값을 부여할 때, 각 문서에서 해당 단어가 나타나는 횟수를 부여하는 경우를 카운트 벡터화 또는 빈도 벡터화라고 한다.&lt;/p>
+&lt;p>&lt;code>I have an apple, do you have a banana?&lt;/code> 라는 문장을 빈도 벡터화 하면 다음과 같다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">sklearn.feature_extraction.text&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">CountVectorizer&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;I have an apple, do you have an banana?&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">vect&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">CountVectorizer&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">vect&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fit_transform&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">toarray&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">vect&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vocabulary_&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[[2 1 1 2 1 1]]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#39;have&amp;#39;: 3, &amp;#39;an&amp;#39;: 0, &amp;#39;apple&amp;#39;: 1, &amp;#39;do&amp;#39;: 2, &amp;#39;you&amp;#39;: 5, &amp;#39;orange&amp;#39;: 4}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>an&lt;/code>는 2번, &lt;code>apple&lt;/code>는 1번, &lt;code>do&lt;/code>은 1번, &lt;code>have&lt;/code>은 2번, &lt;code>orange&lt;/code>는 1번, &lt;code>you&lt;/code>는 1번 나왔다. 2글자 미만인 &lt;code>I&lt;/code>는 제외되었다.&lt;/p>
+&lt;p>이와 같이, 단어의 빈도만 고려하기 때문에 an과 같은 관사가 중요하게 고려되었다. 따라서, &lt;code>CountVectorizer(stop_words=[&amp;quot;the&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;an&amp;quot;, &amp;quot;is&amp;quot;, &amp;quot;not&amp;quot;])&lt;/code> 과 같이 불용어를 제거하고 사용하기도 한다.&lt;/p>
+&lt;p>하지만, 여러 문장에서 자주 사용되는 단어들을 모두 불용어로 지정하는 것은 한계가 있을 것이다.&lt;/p>
+&lt;h2 id="tf-idf">TF-IDF&lt;/h2>
+&lt;p>TF-IDF(Term Frequency-Inverse Document Frequency) 란 텍스트 문서에서 특정 단어의 중요도를 계산하는 방법으로, 문서 내에서 단어의 중요도를 평가하는 데 사용되는 통계적인 가중치를 의미한다.&lt;/p>
+&lt;p>즉, BOW에 가중치를 부여하는 것이다. TF-IDF의 식은 아래와 같다.&lt;/p>
+&lt;p>$$
+\text{TF–IDF} = \text{TF}(t, d) \times \text{IDF}(t, d)
+$$&lt;/p>
+&lt;p>TF-IDF는 위와 같이 TF와 IDF의 곱이다. 먼저 TF에 대해 알아보자.&lt;/p>
+&lt;p>TF는 Term Frequency, 단어 빈도이다. 3개의 문서에서 movie라는 단어가 4번 등장했다면, 값은 4이다.&lt;/p>
+&lt;p>$$
+\text{TF} = \text{count}(t, d)
+$$&lt;/p>
+&lt;p>IDF는 Inverse Document Frequency로, 전체 문서 수를 문서 빈도로 나눈 다음에 로그를 취한 값이다.&lt;/p>
+&lt;p>문서 빈도가 높을수록 해당 단어가 일반적인 단어일 것이다. 따라서 IDF는 문서 내에서 특정 단어가 얼마나 중요한지를 나타낸다.&lt;/p>
+&lt;div markdown="1">
+$$
+\begin{aligned}
+DF(t, D) &amp;= \text{count}(t \in d : d \in D) \\
+IDF(t, D) &amp;= \log \left( \frac{\text{count}(D)}{1 + DF(t, D)} \right)
+\end{aligned}
+$$
+&lt;/div>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">sklearn.feature_extraction.text&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">TfidfVectorizer&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">corpus&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;That movie is famous movie&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;I like that actor&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;I don’t like that actor&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tfidf_vectorizer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">TfidfVectorizer&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tfidf_vectorizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">corpus&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tfidf_matrix&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tfidf_vectorizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">corpus&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">tfidf_matrix&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">toarray&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">tfidf_vectorizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vocabulary_&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[[0. 0. 0.39687454 0.39687454 0. 0.79374908
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.2344005 ]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> [0.61980538 0. 0. 0. 0.61980538 0.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.48133417]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> [0.4804584 0.63174505 0. 0. 0.4804584 0.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.37311881]]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#39;that&amp;#39;: 6, &amp;#39;movie&amp;#39;: 5, &amp;#39;is&amp;#39;: 3, &amp;#39;famous&amp;#39;: 2, &amp;#39;like&amp;#39;: 4, &amp;#39;actor&amp;#39;: 0, &amp;#39;don&amp;#39;: 1}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>이를 통해 문서마다 중요한 단어만 추출할 수 있으며, 벡터값을 활용해 문서 내 핵심 단어를 추출할 수
+있다.&lt;/p>
+&lt;p>빈도 기반 벡터화는 문장의 순서나 문맥을 고려하지 않는다. 그러므로 문장 생성과 같이 순서가 중요한 작업에는 부적합하다. 또한, 벡터가 해당 문서 내의 중요도를 의미할 뿐, 벡터가 단어의 의미를 담고 있지는 않다.&lt;/p></description></item><item><title>토큰화</title><link>https://gyeongmin.kr/p/tokenization/</link><pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/tokenization/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 토큰화" />&lt;h2 id="자연어-처리">자연어 처리&lt;/h2>
+&lt;p>자연어(Natural Language)는 사람들이 일상적으로 쓰는 언어를 말한다.
+자연어 처리(Natural Language Processing)는 컴퓨터가 인간의 언어를 이해하고 해석 및 생성하기 위한 기술을 의미한다.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>모호성(Ambiguity): 인간 언어는 맥락에 따라 다양한 의미를 가질 수 있으며, 이를 명확히 구분&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>가변성(Variability): 인간 언어는 사투리, 억양, 신조어 등 다양한 스타일로 인해 가변적이며, 이를 이해하고 처리해야 언어를 올바르게 사용&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>구조성(Structure): 문장의 구조와 문법적 요소를 이해하고 이를 바탕으로 의미를 추론 및 분석&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="토큰화">토큰화&lt;/h2>
+&lt;p>문제를 이해하고 구분할 수 있는 모델을 만들려면 우선 말뭉치(Corpus)를 일정한 단위인 토큰(Token)으로 나눠야 한다. 토큰화(Tokenization)을 진행해 컴퓨터가 자연어를 이해할 수 있도록 말뭉치를 나누는 것이다.&lt;/p>
+&lt;h3 id="단어-토큰화">단어 토큰화&lt;/h3>
+&lt;p>우리말 띄어쓰기 원칙 제 2항, &amp;ldquo;문장의 각 단어는 띄어 씀을 원칙으로 한다&amp;quot;에 의해, 공백을 기준으로 &lt;code>split()&lt;/code>하면 단어 토큰화를 할 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>입력: &lt;code>'단어 토큰화 예시'&lt;/code>&lt;/li>
+&lt;li>출력: &lt;code>['단어', '토큰화', '예시']&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="글자-토큰화">글자 토큰화&lt;/h3>
+&lt;p>글자 토큰화는 글자 기준으로 문장을 나누는 방식이다. &lt;code>split('')&lt;/code>을 적용해 글자 토큰화를 할 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>입력: &lt;code>'글자 토큰화이다.'&lt;/code>&lt;/li>
+&lt;li>출력: &lt;code>['글', '자', ' ', '토', '큰', '화', '이', '다', '.']&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>영어는 한 칸에 한 글자가 들어가지만, 한글의 경우 초성, 중성, 종성의 조합으로 한 글자가 구성된다. 이를 모두 분해할 수 있는 자모(jamo) 라이브러리도 있다.&lt;/p>
+&lt;ul>
+&lt;li>입력: &lt;code>'자모 토큰화'&lt;/code>&lt;/li>
+&lt;li>출력: &lt;code>['ㅈ', 'ㅏ', 'ㅁ', 'ㅗ', ' ', 'ㅌ', 'ㅗ', 'ㅋ', 'ㅡ', 'ㄴ', 'ㅎ', 'ㅘ']&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="형태소-토큰화">형태소 토큰화&lt;/h3>
+&lt;p>형태소 토큰화(Morpheme Tokenization)란 텍스트를 형태소 단위로 나누는 토큰화 방법이다. 형태소는 의미를 가지는 최소 단위이다.&lt;/p>
+&lt;p>형태소는 명사, 동사, 형용사와 같이 문장 내에서 홀로 쓰일 수 있으며 스스로 의미를 가지는 &lt;strong>자립 형태소&lt;/strong>와, 스스로 의미를 가지지 못하고 조사, 어미, 접두사, 접미사와 같이 다른 형태소와 조합되어 사용되는 &lt;strong>의존 형태소&lt;/strong>로 구분한다.&lt;/p>
+&lt;p>문장 내 단어의 위치에 따라 품사가 결정되는 영어와는 달리, 한국어는 단어와 조사의 결합으로 품사가 결정된다. &amp;ldquo;나는 밥을 먹는다&amp;rdquo; 에서 &amp;ldquo;먹는다 나는 밥을&amp;rdquo; 로 바꾸어도 어색하지만 문장의 의미는 이해할 수 있는 것과 같다.&lt;/p>
+&lt;p>우리말에서 동사를 보면 변화가 굉장히 많다. &amp;lsquo;먹다&amp;rsquo;, &amp;lsquo;먹는다&amp;rsquo;, &amp;lsquo;먹이다&amp;rsquo;, 먹었다&amp;rsquo;, &amp;lsquo;먹어&amp;rsquo; 등 유사한 단어가 무수히 많다. 이는 &amp;lsquo;먹-&amp;lsquo;이라는 어간에 어미 &amp;lsquo;-다&amp;rsquo;, 사동 접미사 &amp;lsquo;-이-&amp;rsquo;, 과거 시제 어미 &amp;lsquo;-었-&amp;rsquo; 등이 붙어 여러 단어의 조합이 된 것이다.&lt;/p>
+&lt;p>이처럼 단어의 변화형을 고려하지 않고 유사한 단어를 모두 다른 단어로 간주한다면, 자칫 차원의 저주에 빠지게 되거나 모델 학습이 어려워질 수 있다. 따라서 의미를 가지는 최소 단위인 형태소로 글자를 분리(토큰화)하여 모델을 학습하는 것이 좋다.&lt;/p>
+&lt;p>토큰화를 할 때는 그 언어의 문법적인 특성을 고려하여 적절한 토크나이저를 사용해야 한다.&lt;/p>
+&lt;h4 id="형태소-분석기">형태소 분석기&lt;/h4>
+&lt;p>Konlpy, NLTK, spaCy와 같은 라이브러리 등이 있다. 아래는 Konlpy 라이브러리에서 꼬꼬마 형태소 분석기를 사용하는 예시이다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">konlpy.tag&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Kkma&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">kkma&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Kkma&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sentence&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;무엇이든 상상할 수 있는 사람은 무엇이든 만들어 낼 수 있다.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">nouns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">kkma&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">nouns&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sentences&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">kkma&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sentences&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">morphs&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">kkma&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">morphs&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">pos&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">kkma&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">pos&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;명사 추출 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">nouns&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;문장 추출 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">sentences&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;형태소 추출 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">morphs&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;품사 태깅 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pos&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">명사 추출: [&amp;#39;무엇&amp;#39;, &amp;#39;상상&amp;#39;, &amp;#39;수&amp;#39;, &amp;#39;사람&amp;#39;, &amp;#39;무엇&amp;#39;]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">구문 추출 : [&amp;#39;무엇이든 상상할 수 있는 사람은 무엇이든 만들어 낼 수 있다.&amp;#39;]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">형태소 추출 : [&amp;#39;무엇&amp;#39;, &amp;#39;이&amp;#39;, &amp;#39;든&amp;#39;, &amp;#39;상상&amp;#39;, &amp;#39;하&amp;#39;, &amp;#39;ᄅ&amp;#39;, &amp;#39;수&amp;#39;, &amp;#39;있&amp;#39;, &amp;#39;는&amp;#39;, &amp;#39;사람&amp;#39;, &amp;#39;은&amp;#39;, &amp;#39;무엇&amp;#39;, &amp;#39;이&amp;#39;, &amp;#39;든&amp;#39;, &amp;#39;만들&amp;#39;, &amp;#39;어&amp;#39;, &amp;#39;내&amp;#39;, &amp;#39;ᄅ&amp;#39;, &amp;#39;수&amp;#39;, &amp;#39;있&amp;#39;, &amp;#39;다&amp;#39;, &amp;#39;.&amp;#39;]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">품사 태깅 : [(&amp;#39;무엇&amp;#39;, &amp;#39;NNG&amp;#39;), (&amp;#39;이&amp;#39;, &amp;#39;VCP&amp;#39;), (&amp;#39;든&amp;#39;, &amp;#39;ECE&amp;#39;), (&amp;#39;상상&amp;#39;, &amp;#39;NNG&amp;#39;), (&amp;#39;하&amp;#39;, &amp;#39;XSV&amp;#39;), (&amp;#39;ᄅ&amp;#39;, &amp;#39;ETD&amp;#39;), (&amp;#39;수&amp;#39;, &amp;#39;NNB&amp;#39;), (&amp;#39;있&amp;#39;, &amp;#39;VV&amp;#39;), (&amp;#39;는&amp;#39;, &amp;#39;ETD&amp;#39;), (&amp;#39;사람&amp;#39;, &amp;#39;NNG&amp;#39;), (&amp;#39;은&amp;#39;, &amp;#39;JX&amp;#39;), (&amp;#39;무엇&amp;#39;, &amp;#39;NP&amp;#39;), (&amp;#39;이&amp;#39;, &amp;#39;VCP&amp;#39;), (&amp;#39;든&amp;#39;, &amp;#39;ECE&amp;#39;), (&amp;#39;만들&amp;#39;, &amp;#39;VV&amp;#39;), (&amp;#39;어&amp;#39;, &amp;#39;ECD&amp;#39;), (&amp;#39;내&amp;#39;, &amp;#39;VX&amp;#39;), (&amp;#39;ᄅ&amp;#39;, &amp;#39;ETD&amp;#39;), (&amp;#39;수&amp;#39;, &amp;#39;NNB&amp;#39;), (&amp;#39;있&amp;#39;, &amp;#39;VV&amp;#39;), (&amp;#39;다&amp;#39;, &amp;#39;EFN&amp;#39;), (&amp;#39;.&amp;#39;, &amp;#39;SF&amp;#39;)]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="형태소-어휘-사전">형태소 어휘 사전&lt;/h4>
+&lt;p>형태소 어휘 사전(Morpheme Vocabulary)는 자연어 처리에서 사용되는 단어 집합인 어휘 사전 중에서도 각 단어의 형태소 정보를 포함하는 사전을 말한다. &amp;ldquo;그녀&amp;rdquo;, &amp;ldquo;그녀는&amp;rdquo;, &amp;ldquo;그녀에게&amp;quot;를 모두 같은 의미 단위인 단어도 쉽게 학습할 수 있다.&lt;/p>
+&lt;p>일반적으로 형태소 어휘 사전에는 각 형태소가 어떤 품사(Part Of Speech, POS)에 속하는지와 그 품사의 뜻에 대한 정보도 같이 제공된다. 품사를 태깅하는 작업은 품사 태깅(POS Tagging)이라고 한다. 이를 통해 문맥을 고려할 수 있어 더욱 정확한 분석이 가능하다.&lt;/p>
+&lt;h3 id="하위-단어-토근화">하위 단어 토근화&lt;/h3>
+&lt;p>언어는 시간이 지남에 따라 변화한다. 신조어나 축약어가 등장하거나 더 이상 쓰이지 않는 표현도 생긴다. 또한 디지털 시대에는 오탈자가 많아 기존 형태소 분석기로 토큰화하기 어려울 수 있다.&lt;/p>
+&lt;p>형태소 분석기는 전문용어나 고유어에 취약하다. 즉, 형태소 분석기는 모르는 단어를 적절한 단어로 나누는 것에 취약하며, 이는 잠재적으로 어휘 사전의 크기를 크게 만들고 OOV(Out of Vocabulary)에 대응하기 어렵다.&lt;/p>
+&lt;p>이를 해결하기 위한 방법 중 하나로 하위 단어 토큰화(Subword Tokenization)가 있다. 하위 단어 토큰화란 하나의 단어가 빈번하게 사용되는 하위 단어(Subword)의 조합으로 나누어 토큰화 하는 방법이다. 예를 들어 &amp;lsquo;Reinforcement&amp;rsquo;라는 단어는 길이가 비교적 길어 처리가 어려울 수 있다. 하위 단어 토큰화를 적용한다면 &amp;lsquo;Rein&amp;rsquo;, &amp;lsquo;force&amp;rsquo;, &amp;lsquo;ment&amp;rsquo; 등으로 나눠 처리할 수 있다.&lt;/p>
+&lt;h4 id="바이트-페어-인코딩">바이트 페어 인코딩&lt;/h4>
+&lt;p>바이트 페어 인코딩(Byte Pair Encoding, BPE)이란 다이그램 코딩(Digram Coding)이라고도 하며 하위 단어 토큰화의 한 종류다. 초기에는 데이터 압축을 위해 개발됐으나, 자연어 처리 분야에서 하위 단어 토큰화를 위한 방법으로 사용된다.&lt;/p>
+&lt;p>빈도 사전 내 모든 단어를 글자 단위로 나누고, 가장 많이 등장한 글자 쌍을 병합하고 어휘 사전에 추가하는 과정 반복하여 사전을 구축한다.&lt;/p>
+&lt;h4 id="센텐스피스">센텐스피스&lt;/h4>
+&lt;p>구글에서 개발한 오픈소스 하위 단어 토크나이저 라이브러리로, 바이트 페어 인코딩과 유사한 알고리즘을 사용하였다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">sentencepiece&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">SentencePieceProcessor&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tokenizer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">SentencePieceProcessor&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tokenizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;../models/petition_bpe.model&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sentence&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;안녕하세요, 토크나이저가 잘 학습되었군요!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sentences&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;이렇게 입력값을 리스트로 받아서&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;쉽게 토크나이저를 사용할 수 있답니다&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tokenized_sentence&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tokenizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">encode_as_pieces&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tokenized_sentences&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tokenizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">encode_as_pieces&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentences&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;단일 문장 토큰화 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">tokenized_sentence&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;여러 문장 토큰화 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">tokenized_sentences&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">encoded_sentence&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tokenizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">encode_as_ids&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentence&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">encoded_sentences&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tokenizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">encode_as_ids&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sentences&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;단일 문장 정수 인코딩 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoded_sentence&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;여러 문장 정수 인코딩 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoded_sentences&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">decode_ids&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tokenizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode_ids&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">encoded_sentences&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">decode_pieces&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tokenizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode_pieces&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">encoded_sentences&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;정수 인코딩에서 문장 변환 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">decode_ids&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;하위 단어 토큰에서 문장 변환 :&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">decode_pieces&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">단일 문장 토큰화 : [&amp;#39;안녕하세요&amp;#39;, &amp;#39;,&amp;#39;, &amp;#39;토&amp;#39;, &amp;#39;크&amp;#39;, &amp;#39;나&amp;#39;, &amp;#39;이&amp;#39;, &amp;#39;저&amp;#39;, &amp;#39;가&amp;#39;, &amp;#39;잘&amp;#39;, &amp;#39;학&amp;#39;, &amp;#39;습&amp;#39;, &amp;#39;되었&amp;#39;, &amp;#39;군요&amp;#39;, &amp;#39;!&amp;#39;]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">여러 문장 토큰화 : [[&amp;#39;_이렇게&amp;#39;, &amp;#39;_입&amp;#39;, &amp;#39;력&amp;#39;, &amp;#39;값을&amp;#39;, &amp;#39;_리&amp;#39;, &amp;#39;_스트&amp;#39;, &amp;#39;로&amp;#39;, &amp;#39;_받아서&amp;#39;], [&amp;#39;_쉽게&amp;#39;, &amp;#39;_토&amp;#39;, &amp;#39;_크&amp;#39;, &amp;#39;_나&amp;#39;, &amp;#39;_이&amp;#39;, &amp;#39;_저&amp;#39;, &amp;#39;_를&amp;#39;, &amp;#39;_사용할&amp;#39;, &amp;#39;_수&amp;#39;, &amp;#39;_있&amp;#39;, &amp;#39;답니다&amp;#39;]]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">단일 문장 정수 인코딩 : [664, 6553, 991, 6880, 6544, 6513, 6590, 6523, 159, 110, 6554, 868, 782, 6648]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">여러 문장 정수 인코딩 : [[370, 180, 6677, 4427, 1768, 1610, 6527, 4157], [1677, 991, 6880, 6544, 6513, 6590, 6536, 5848, 18, 5, 2633]]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">정수 인코딩에서 문장 변환 : [&amp;#39;이렇게 입력값을 리스트로 받아서&amp;#39;, &amp;#39;쉽게 토크나이저를 사용할 수 있습니다&amp;#39;]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">하위 단어 토큰에서 문장 변환 : [&amp;#39;이렇게 입력값을 리스트로 받아서&amp;#39;, &amp;#39;쉽게 토크나이저를 사용할 수 있습니다&amp;#39;]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="워드피스">워드피스&lt;/h4>
+&lt;p>워드피스(Wordpiece) 토크나이저는 확률 기반으로 글자 쌍을 병합한다. 새로운 하위 단어를 생성할 때 이전 하위 단어와 함께 나타날 확률을 계산해 가장 높은 확률을 가진 하위 단어를 선택한다. 각 글자 쌍에 대한 점수는 아래와 같이 계산된다. 여기서 $f$는 빈도(frequency)이다.&lt;/p>
+&lt;p>$$
+\text{score} = \frac{f(x,y)}{f(x), f(y)}
+$$&lt;/p>
+&lt;h4 id="토크나이저스">토크나이저스&lt;/h4>
+&lt;p>토크나이저스 라이브러리는 정규화(Normalization)와 사전 토큰화(Pre-tokenization)를 제공한다.&lt;/p>
+&lt;p>정규화는 일관된 형식으로 텍스트를 표준화하고 모호한 경우를 방지하기 위해 불필요한 공백 제거, 대소문자 변환, 유니코드 정규화, 구두점 처리, 특수 문자 처리 등을 제공한다.&lt;/p>
+&lt;p>사전 토큰화는 입력 문장을 토큰화하기 전에 단어와 같은 작은 단위로 나누는 기능을 제공한다. 공백 혹은 구두점을 기준으로 입력 문장을 나눠 텍스트 데이터를 효율적으로 처리하고 모델의 성능을 향상시킬 수 있다.&lt;/p></description></item><item><title>데이터 증강 및 변환</title><link>https://gyeongmin.kr/p/data-augmentation/</link><pubDate>Sat, 02 Mar 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/data-augmentation/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 데이터 증강 및 변환" />&lt;h2 id="데이터-증강">데이터 증강&lt;/h2>
+&lt;p>데이터 증강(Data Augmentation)이란 데이터가 가진 고유한 특징을 유지한 채 변형하거나 노이즈를 추가해 데이터세트의 크기를 늘리는 방법이다. 데이터 증강은 모델의 과대적합을 줄이고 일반화 능력을 향상시킬 수 있다.&lt;/p>
+&lt;p>너무 많은 변형이나 노이즈를 추가한다면 기존 데이터가 가진 특징이 파괴될 수 있으므로 주의해야 한다.&lt;/p>
+&lt;h2 id="텍스트-데이터">텍스트 데이터&lt;/h2>
+&lt;h3 id="삽입-및-삭제">삽입 및 삭제&lt;/h3>
+&lt;p>삽입은 의미 없는 문자나 단어, 또는 문장 의미에 영향을 끼치지 않는 수식어 등을 추가하는 방법이다. 임의의 단어나 문자를 기존 텍스트에 덧붙여 사용한다. 삭제는 삽입과 반대로 임의의 단어나 문자를 삭 제해 데이터의 특징을 유지하는 방법이다.&lt;/p>
+&lt;p>&lt;code>ContextualWordEmbsAug&lt;/code> 클래스는 BERT 모델을 활용해 단어를 삽입하는 기능을 제공한다. &lt;code>action&lt;/code>으로는 &lt;code>insert&lt;/code>, &lt;code>substitute&lt;/code>, &lt;code>swap&lt;/code>, &lt;code>delete&lt;/code>가 가능하다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">nlpaug.augmenter.word&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">naw&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">texts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;Those who can imagine anything, can create the impossible.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;We can only see a short distance ahead, but we can see plenty there that needs to be done.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;If a machine is expected to be infallible, it cannot also be intelligent.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">aug&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">naw&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ContextualWordEmbsAug&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">model_path&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;bert-base-uncased&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">action&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;insert&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">augmented_texts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">aug&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">augment&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">texts&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">text&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">augmented&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">zip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">texts&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">augmented_texts&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;src : &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;dst : &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">augmented&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;------------------&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">src: Those who can imagine anything, can create the impossible.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst: those scientists who can simply imagine seemingly anything, can create precisely the impossible.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src : We can only see a short distance ahead, but we can see plenty there that needs to be done.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst : we probably can still only see a short distance ahead, but we can nonetheless see about plenty from there that just needs to be properly done.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src : If a machine is expected to be infallible, it cannot also be intelligent.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst : if a logic machine is expected either to necessarily be infallible, subsequently it cannot also be highly intelligent.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="교체-및-대체">교체 및 대체&lt;/h3>
+&lt;p>교체는 단어나 문자의 위치를 교환하는 방법이다. ‘문제점을 찾지 말고 해결책을 찾으라’라는 문장에서 교체를 적용한다면 &amp;lsquo;해결책을 찾으라 문제점을 찾지 말고&amp;rsquo;로 변경될 수 있다.
+교체는 무의미하거나 의미상 잘못된 문장을 생성할 수 있으므로 데이터의 특성에 따라 주의해 사용해야 한다.&lt;/p>
+&lt;p>대체는 단어나 문자를 임의의 단어나 문자로 바꾸거나 동의어로 변경하는 방법을 의미한다. ‘사과’라는 단어를 ‘바나나’와 같이 유사한 단어로 변경하거나 ‘해’를 ‘태양으로 바꿔 뜻이 같은 말로 바꾸는 작업이
+다. 단어나 문장을 대체하면 다른 증강 방법보다 비교적 데이터의 정합성(Consistency)이 어긋나지 않아 효율적으로 데이터를 증강할 수 있다. 하지만 조사를 바꿔주진 않는다.&lt;/p>
+&lt;p>&lt;code>RandomWordAug&lt;/code> 클래스를 통해 무작위로 단어를 교체할 수 있다. &lt;code>action&lt;/code>으로는 &lt;code>insert&lt;/code>, &lt;code>substitute&lt;/code>, &lt;code>swap&lt;/code>, &lt;code>delete&lt;/code>, &lt;code>crop&lt;/code>이 가능하다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">nlpaug.augmenter.word&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">naw&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">texts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;Those who can imagine anything, can create the impossible.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;We can only see a short distance ahead, but we can see plenty there that needs to be done.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;If a machine is expected to be infallible, it cannot also be intelligent.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">aug&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">naw&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">RandomWordAug&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">action&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;swap&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">augmented_texts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">aug&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">augment&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">texts&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">text&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">augmented&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">zip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">texts&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">augmented_texts&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;src : &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;dst : &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">augmented&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;------------------&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">src : Those who can imagine anything, can create the impossible.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst : Those who can imagine can anything create, the. impossible
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src : We can only see a short distance ahead, but we can see plenty there that needs to be done.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst : We see can only a short distance but ahead, can we see plenty that there needs to done be.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src : If a machine is expected to be infallible, it cannot also be intelligent.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst : A if is machine to expected be infallible, cannot also it be intelligent.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------------
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>모델을 활용해 대체하는 경우 &lt;code>ContextualWordEmbsAug&lt;/code> 클래스를 사용하거나, &lt;code>SynonymAug&lt;/code> 클래스로 워드넷(WordNet) 데이터베이스나 의역 데이터베이스(The Paraphrase Database, PPDB)를 활용해 단어를 대체해 데이터를 증강할 수도 있다.&lt;/p>
+&lt;p>단어 집합을 미리 선언하고 그 중 하나로 대체하고 싶은 경우, &lt;code>ReservedAug&lt;/code>를 사용할 수도 있다.&lt;/p>
+&lt;h3 id="역번역">역번역&lt;/h3>
+&lt;p>역번역(Back-translation)이란 입력 텍스트를 특정 언어로 번역한 다음 다시 본래의 언어로 번역하는 방법을 의미한다. 예를 들어 영어를 한국어로 번역한 다음 번역된 텍스트를 다시 영어로 번역하는 과정을 의미한다. 원래의 언어로 번역하는 과정에서 원래 텍스트와 유사한 텍스트가 생성되므로 패러프레이징(Paraphrasing)21 효과를 얻을 수 있다.&lt;/p>
+&lt;p>역번역은 번역 모델의 성능에 크게 좌우되기에, 모델의 성능을 평가하는 데 사용되기도 한다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">nlpaug.augmenter.word&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">naw&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">texts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;Those who can imagine anything, can create the impossible.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;We can only see a short distance ahead, but we can see plenty there that needs to be done.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;If a machine is expected to be infallible, it cannot also be intelligent.&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">back_translation&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">naw&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">BackTranslationAug&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">from_model_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;facebook/wmt19-en-de&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">to_model_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;facebook/wmt19-de-en&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">augmented_texts&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">back_translation&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">augment&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">texts&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">text&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">augmented&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="nb">zip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">texts&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">augmented_texts&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;src : &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;dst : &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">augmented&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;------------------&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">src : Those who can imagine anything, can create the impossible.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst : Anyone who can imagine anything can achieve the impossible.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src : We can only see a short distance ahead, but we can see plenty there that needs to be done.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst : We can only look a little ahead, but we can see a lot there that needs to be done.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src : If a machine is expected to be infallible, it cannot also be intelligent.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">dst : If a machine is expected to be infallible, it cannot be intelligent.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">------------------
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="이미지-데이터">이미지 데이터&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">transform&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compose&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Resize&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">512&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">512&lt;/span>&lt;span class="p">)),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ToTensor&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>이미지 데이터는 토치비전의 transforms 모듈을 이용하여 증강할 수 있다. 텐서화 클래스(transforms.ToTensor)는 &lt;code>PIL.Image&lt;/code> 형식을 Tensor 형식으로 변환한다. 텐서화 클래스는 [0~255] 범위의 픽셀값을 [0.0~1.0] 사이의 값으로 최대 최소 정규화를 수행한다. 또한 입력 데이터의 형태를 [채널, 높이, 너비] 형태로 변환한다.&lt;/p>
+&lt;h3 id="회전-및-대칭">회전 및 대칭&lt;/h3>
+&lt;p>학습 이미지를 회전하거나 대칭한다면 변형된 이미지가 들어오더라도 더 강건한 모델을 구축할 수 있으며 일반화된 성능을 끌어낼 수 있다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">transform&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compose&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">RandomRotation&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">degrees&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">30&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">expand&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">False&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">center&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">None&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">RandomHorizontalFlip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">0.5&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">RandomVerticalFlip&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>위 코드는 이미지를 ±30° 사이로 회전시키면서, 수평 대칭과 수직 대칭을 50% 확률로 적용하는 예제이다. &lt;code>expand=True&lt;/code>이면 확장되어 여백이 생기지 않는다. 중심점을 입력하지 않으면 좌측 상단을 기준으로 회전한다.&lt;/p>
+&lt;h3 id="자르기-및-패딩">자르기 및 패딩&lt;/h3>
+&lt;p>OD(Object Detection)과 같은 모델을 구성할 때, 학습 데이터의 크기가 일정하지 않거나 주요한 객체가 일부 영역에만 작게 존재할 수 있다. 이러한 경우 불필요한 부분을 자르거나, 패딩을 주어 크기를 맞출 수 있다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">transform&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compose&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">RandomCrop&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">512&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">512&lt;/span>&lt;span class="p">)),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Pad&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">padding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">50&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fill&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">127&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">127&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">255&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">padding_mode&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;constant&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>padding_mode&lt;/code>가 &lt;code>constant&lt;/code>면 &lt;code>fill=(127, 127, 255)&lt;/code>로 테두리가 생성된다. &lt;code>reflect&lt;/code>나 &lt;code>symmetric&lt;/code>이라면 입력한 RGB는 무시되며, 이미지의 픽셀값을 이용하여 생성한다. &lt;code>RandomCrop&lt;/code>에도 자를 때 발생하는 여백 공간에 대한 패딩을 줄 수 있다.&lt;/p>
+&lt;h3 id="크기-조정">크기 조정&lt;/h3>
+&lt;p>이미지 처리 모델 학습을 위해, 학습 데이터에 사용되는 이미지의 크기는 모두 일정해야 한다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">transform&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compose&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Resize&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">512&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">512&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>size&lt;/code>를 정수로 입력하는 경우, 높이나 너비 중 더 작은 값에 비율을 맞추어 크기가 수정된다.&lt;/p>
+&lt;h3 id="변형">변형&lt;/h3>
+&lt;p>아핀 변환(Affine Transformation)이나 원근(Perspective Transformation) 변환과 같은 기하학적 변환을 사용한다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">transform&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compose&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">RandomAffine&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">degrees&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">15&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">translate&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mf">0.2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">0.2&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">scale&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mf">0.8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">1.2&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">shear&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">15&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>아핀 변환은 각도(degrees), 이동(translate), 척도(scale), 전단(shear)을 입력해 이미지를 변형한다.&lt;/p>
+&lt;h3 id="색상-변환">색상 변환&lt;/h3>
+&lt;p>이미지 데이터의 특징은 픽셀값의 분포나 패턴에 크게 좌우되는데, 앞선 변형들은 색상을 변경하진 않는다. 특정 색상에 편향되지 않도록 정규화하면 모델을 더 일반화시킬 수 있다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">transform&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compose&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ColorJitter&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">brightness&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">0.3&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">contrast&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">0.3&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">saturation&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">0.3&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">hue&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">0.3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ToTensor&lt;/span>&lt;span class="p">(),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Normalize&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mean&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mf">0.485&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">0.456&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">0.406&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">std&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mf">0.229&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">0.224&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">0.225&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ToPILImage&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="노이즈">노이즈&lt;/h3>
+&lt;p>특정 픽셀값에 편향되지 않도록, 임의의 노이즈를 추가하는 것은 좋은 방법이다. 학습에 사용되지 않더라도, 테스트 데이터에 노이즈를 주어 Robustness를 평가하는 데 사용하기도 한다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">IaaTransforms&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__init__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">seq&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">iaa&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Sequential&lt;/span>&lt;span class="p">([&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iaa&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">SaltAndPepper&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mf">0.03&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">0.07&lt;/span>&lt;span class="p">)),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iaa&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Rain&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">speed&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mf">0.3&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mf">0.7&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">def&lt;/span> &lt;span class="fm">__call__&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">images&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">images&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">array&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">images&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">images&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">shape&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">images&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">dtype&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">augmented&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">seq&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">augment_image&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">images&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">Image&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fromarray&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">augmented&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">transform&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compose&lt;/span>&lt;span class="p">([&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">IaaTransforms&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="컷아웃-및-무작위-지우기">컷아웃 및 무작위 지우기&lt;/h3>
+&lt;p>컷아웃은 임의의 ROI의 픽셀값을 0으로 채우는 것이고, 무작위 지우기는 랜덤 픽셀값으로 채우는 것이다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="n">transform&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compose&lt;/span>&lt;span class="p">([&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ToTensor&lt;/span>&lt;span class="p">(),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">RandomErasing&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">1.0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">RandomErasing&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">1.0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;random&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">transforms&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ToPILImage&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>일부 영역이 누락되거나, 폐색 영역에 대해 모델을 더욱 견고하게 만들어준다.&lt;/p>
+&lt;h3 id="컷믹스">컷믹스&lt;/h3>
+&lt;p>컷믹스(CutMix)는 이미지 패치 영역에 다른 이미지를 덮어씌우는 방법이다. 패치 위에 새로운 패치를 덮어씌워 자연스러운 이미지를 구성한다. 패치 영역의 크기와 비율을 고려해 덮어쓴다.&lt;/p>
+&lt;p>Label($y$)은 이미지가 얼마나 기여하였는지($\lambda$)를 이용하여 아래 공식과 같이 계산된다.&lt;/p>
+&lt;p>$$
+\tilde{y}=\lambda y_a + (1-\lambda)y_b
+$$&lt;/p></description></item></channel></rss>
