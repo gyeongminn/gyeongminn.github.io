@@ -1,4 +1,158 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/python/</link><description>Recent content in Python on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Wed, 20 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>토큰화</title><link>https://gyeongmin.kr/p/tokenization/</link><pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/tokenization/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 토큰화" />&lt;h2 id="자연어-처리">자연어 처리&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/python/</link><description>Recent content in Python on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Thu, 21 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>텍스트 벡터화</title><link>https://gyeongmin.kr/p/text-vectorization/</link><pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/text-vectorization/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 텍스트 벡터화" />&lt;p>컴퓨터는 텍스트를 이해할 수 없다. 따라서 텍스트를 숫자로 변환하는 텍스트 벡터화(Text Vectorization) 과정이 필요하다.&lt;/p>
+&lt;h2 id="원-핫-인코딩">원-핫 인코딩&lt;/h2>
+&lt;p>원-핫 인코딩 (One-Hot Encoding)은 문서에 등장하는 각 단어를 고유한 색인 값(index)으로 매핑한 후, 해당 색인 위치를 1로, 나머지는 0으로 표시하는 방식이다.&lt;/p>
+&lt;p>&lt;code>I like apples&lt;/code>, &lt;code>I like bananas&lt;/code> 라는 두 문장을 토큰화하고 매핑 테이블을 구하면 아래와 같다.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Index&lt;/th>
+&lt;th>0&lt;/th>
+&lt;th>1&lt;/th>
+&lt;th>2&lt;/th>
+&lt;th>3&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Word&lt;/td>
+&lt;td>I&lt;/td>
+&lt;td>like&lt;/td>
+&lt;td>apples&lt;/td>
+&lt;td>bananas&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>이를 바탕으로 원-핫 인코딩을 진행하면 아래와 같다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>I like apples&lt;/code> -&amp;gt; &lt;code>[1, 1, 1, 0]&lt;/code>&lt;/li>
+&lt;li>&lt;code>I like bananas&lt;/code> -&amp;gt; &lt;code>[1, 1, 0, 1]&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>이러한 방법은 단어나 문장을 벡터 형태로 변환하기 쉽고 간단하다는 장점이 있지만, 벡터의 희소성 (Sparsity)이 크다는 단점이 있어 자칫 차원의 저주와 같은 문제에 빠질 수 있다.&lt;/p>
+&lt;h2 id="빈도-벡터화">빈도 벡터화&lt;/h2>
+&lt;p>빈도 벡터화 (Count Vectorization)는 BOW를 만드는 방법이다. 먼저 BOW를 알고 넘어가자.&lt;/p>
+&lt;p>경제 뉴스에서는 경제 관련 단어가, 정치 뉴스에선 정치 관련 단어가 많이 나오듯, 문서의 내용과 연관성이 높은 단어가 자주 등장할 것이다. 이런 가설을 바탕으로 BOW, Bag of Words가 나왔다.&lt;/p>
+&lt;p>BOW는 단어들의 출현 빈도(frequency)에만 집중하는 텍스트 데이터의 수치화 표현 방법이다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/text-vectorization/image.png"
+width="661"
+height="380"
+srcset="https://gyeongmin.kr/p/text-vectorization/image_hu1844c23a2351ad80474ab4abca49cd8c_62162_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/text-vectorization/image_hu1844c23a2351ad80474ab4abca49cd8c_62162_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="BOW(Bag of Words)"
+class="gallery-image"
+data-flex-grow="173"
+data-flex-basis="417px"
+>&lt;/p>
+&lt;p>단어 피처에 값을 부여할 때, 각 문서에서 해당 단어가 나타나는 횟수를 부여하는 경우를 카운트 벡터화 또는 빈도 벡터화라고 한다.&lt;/p>
+&lt;p>&lt;code>I have an apple, do you have a banana?&lt;/code> 라는 문장을 빈도 벡터화 하면 다음과 같다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">sklearn.feature_extraction.text&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">CountVectorizer&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;I have an apple, do you have an banana?&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">vect&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">CountVectorizer&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">vect&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fit_transform&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">toarray&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">vect&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vocabulary_&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[[2 1 1 2 1 1]]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#39;have&amp;#39;: 3, &amp;#39;an&amp;#39;: 0, &amp;#39;apple&amp;#39;: 1, &amp;#39;do&amp;#39;: 2, &amp;#39;you&amp;#39;: 5, &amp;#39;orange&amp;#39;: 4}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>an&lt;/code>는 2번, &lt;code>apple&lt;/code>는 1번, &lt;code>do&lt;/code>은 1번, &lt;code>have&lt;/code>은 2번, &lt;code>orange&lt;/code>는 1번, &lt;code>you&lt;/code>는 1번 나왔다. 2글자 미만인 &lt;code>I&lt;/code>는 제외되었다.&lt;/p>
+&lt;p>이와 같이, 단어의 빈도만 고려하기 때문에 an과 같은 관사가 중요하게 고려되었다. 따라서, &lt;code>CountVectorizer(stop_words=[&amp;quot;the&amp;quot;, &amp;quot;a&amp;quot;, &amp;quot;an&amp;quot;, &amp;quot;is&amp;quot;, &amp;quot;not&amp;quot;])&lt;/code> 과 같이 불용어를 제거하고 사용하기도 한다.&lt;/p>
+&lt;p>하지만, 여러 문장에서 자주 사용되는 단어들을 모두 불용어로 지정하는 것은 한계가 있을 것이다.&lt;/p>
+&lt;h2 id="tf-idf">TF-IDF&lt;/h2>
+&lt;p>TF-IDF(Term Frequency-Inverse Document Frequency) 란 텍스트 문서에서 특정 단어의 중요도를 계산하는 방법으로, 문서 내에서 단어의 중요도를 평가하는 데 사용되는 통계적인 가중치를 의미한다.&lt;/p>
+&lt;p>즉, BOW에 가중치를 부여하는 것이다. TF-IDF의 식은 아래와 같다.&lt;/p>
+&lt;p>$$
+\text{TF–IDF} = \text{TF}(t, d) \times \text{IDF}(t, d)
+$$&lt;/p>
+&lt;p>TF-IDF는 위와 같이 TF와 IDF의 곱이다. 먼저 TF에 대해 알아보자.&lt;/p>
+&lt;p>TF는 Term Frequency, 단어 빈도이다. 3개의 문서에서 movie라는 단어가 4번 등장했다면, 값은 4이다.&lt;/p>
+&lt;p>$$
+\text{TF} = \text{count}(t, d)
+$$&lt;/p>
+&lt;p>IDF는 Inverse Document Frequency로, 전체 문서 수를 문서 빈도로 나눈 다음에 로그를 취한 값이다.&lt;/p>
+&lt;p>문서 빈도가 높을수록 해당 단어가 일반적인 단어일 것이다. 따라서 IDF는 문서 내에서 특정 단어가 얼마나 중요한지를 나타낸다.&lt;/p>
+&lt;div markdown="1">
+$$
+\begin{aligned}
+DF(t, D) &amp;= \text{count}(t \in d : d \in D) \\
+IDF(t, D) &amp;= \log \left( \frac{\text{count}(D)}{1 + DF(t, D)} \right)
+\end{aligned}
+$$
+&lt;/div>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">sklearn.feature_extraction.text&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">TfidfVectorizer&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">corpus&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;That movie is famous movie&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;I like that actor&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;I don’t like that actor&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tfidf_vectorizer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">TfidfVectorizer&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tfidf_vectorizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">fit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">corpus&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">tfidf_matrix&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">tfidf_vectorizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">corpus&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">tfidf_matrix&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">toarray&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">tfidf_vectorizer&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">vocabulary_&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[[0. 0. 0.39687454 0.39687454 0. 0.79374908
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.2344005 ]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> [0.61980538 0. 0. 0. 0.61980538 0.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.48133417]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> [0.4804584 0.63174505 0. 0. 0.4804584 0.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 0.37311881]]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">{&amp;#39;that&amp;#39;: 6, &amp;#39;movie&amp;#39;: 5, &amp;#39;is&amp;#39;: 3, &amp;#39;famous&amp;#39;: 2, &amp;#39;like&amp;#39;: 4, &amp;#39;actor&amp;#39;: 0, &amp;#39;don&amp;#39;: 1}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>이를 통해 문서마다 중요한 단어만 추출할 수 있으며, 벡터값을 활용해 문서 내 핵심 단어를 추출할 수
+있다.&lt;/p>
+&lt;p>빈도 기반 벡터화는 문장의 순서나 문맥을 고려하지 않는다. 그러므로 문장 생성과 같이 순서가 중요한 작업에는 부적합하다. 또한, 벡터가 해당 문서 내의 중요도를 의미할 뿐, 벡터가 단어의 의미를 담고 있지는 않다.&lt;/p></description></item><item><title>토큰화</title><link>https://gyeongmin.kr/p/tokenization/</link><pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/tokenization/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 토큰화" />&lt;h2 id="자연어-처리">자연어 처리&lt;/h2>
 &lt;p>자연어(Natural Language)는 사람들이 일상적으로 쓰는 언어를 말한다.
 자연어 처리(Natural Language Processing)는 컴퓨터가 인간의 언어를 이해하고 해석 및 생성하기 위한 기술을 의미한다.&lt;/p>
 &lt;ul>
