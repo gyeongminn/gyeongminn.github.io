@@ -24,8 +24,8 @@ $$</p><p>TF-IDF는 위와 같이 TF와 IDF의 곱이다. 먼저 TF에 대해 알
 \text{TF} = \text{count}(t, d)
 $$</p><p>IDF는 Inverse Document Frequency로, 전체 문서 수를 문서 빈도로 나눈 다음에 로그를 취한 값이다.</p><p>문서 빈도가 높을수록 해당 단어가 일반적인 단어일 것이다. 따라서 IDF는 문서 내에서 특정 단어가 얼마나 중요한지를 나타낸다.</p><div markdown=1>$$
 \begin{aligned}
-DF(t, D) &= \text{count}(t \in d : d \in D) \\
-IDF(t, D) &= \log \left( \frac{\text{count}(D)}{1 + DF(t, D)} \right)
+\text{DF}(t, D) &= \text{count}(t \in d : d \in D) \\
+\text{IDF}(t, D) &= \log \left( \frac{\text{count}(D)}{1 + \text{DF}(t, D)} \right)
 \end{aligned}
 $$</div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2

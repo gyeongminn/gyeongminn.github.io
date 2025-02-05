@@ -848,8 +848,8 @@ $$&lt;/p>
 &lt;div markdown="1">
 $$
 \begin{aligned}
-DF(t, D) &amp;= \text{count}(t \in d : d \in D) \\
-IDF(t, D) &amp;= \log \left( \frac{\text{count}(D)}{1 + DF(t, D)} \right)
+\text{DF}(t, D) &amp;= \text{count}(t \in d : d \in D) \\
+\text{IDF}(t, D) &amp;= \log \left( \frac{\text{count}(D)}{1 + \text{DF}(t, D)} \right)
 \end{aligned}
 $$
 &lt;/div>
@@ -6144,7 +6144,158 @@ $d = y - x$&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">result&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>레지스터 전송</title><link>https://gyeongmin.kr/p/register-transfer-language/</link><pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/register-transfer-language/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 레지스터 전송" />&lt;h2 id="레지스터-전송-언어">레지스터 전송 언어&lt;/h2>
+&lt;/div></description></item><item><title>마이크로 연산</title><link>https://gyeongmin.kr/p/micro-operation/</link><pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/micro-operation/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 마이크로 연산" />&lt;h2 id="마이크로-연산">마이크로 연산&lt;/h2>
+&lt;p>마이크로 연산은 다음 네 가지로 분류된다.&lt;/p>
+&lt;ol>
+&lt;li>레지스터 전송 마이크로 연산&lt;/li>
+&lt;li>산술 마이크로 연산&lt;/li>
+&lt;li>논리 마이크로 연산&lt;/li>
+&lt;li>시프트 마이크로 연산&lt;/li>
+&lt;/ol>
+&lt;p>예를 들어, $R1$과 $R2$의 합을 $R3$에 담으면 아래와 같이 나타낼 수 있다.&lt;/p>
+&lt;p>$$
+R3 \leftarrow R1 + \overline{R2} + 1
+$$&lt;/p>
+&lt;p>$R1$과 $R2$의 차는 아래와 같이 보수를 이용하여 나타낼 수 있다.&lt;/p>
+&lt;p>$$
+R3 \leftarrow R1 + \overline{R2} + 1
+$$&lt;/p>
+&lt;h3 id="이진-가산기">이진 가산기&lt;/h3>
+&lt;p>이진 가산기는 산술 마이크로 연산의 대표적인 예시이다. $n$비트 이진 가산기는 $n$개의 전가산기를 직렬로 연결하여 이전 것의 캐리 출력이 다음 것의 캐리로 입력되도록 구성한다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/micro-operation/image.png"
+width="1032"
+height="264"
+srcset="https://gyeongmin.kr/p/micro-operation/image_hua5e2295ed40accef6f112cccb6b3f55e_62803_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/micro-operation/image_hua5e2295ed40accef6f112cccb6b3f55e_62803_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="4비트 이진 가산기"
+class="gallery-image"
+data-flex-grow="390"
+data-flex-basis="938px"
+>&lt;/p>
+&lt;h3 id="이진-가감산기">이진 가감산기&lt;/h3>
+&lt;p>이진수의 뺄셈은 2의 보수를 이용하기에, 각 전가산기에 $\text{XOR}$ 게이트를 추가하여 덧셈과 뺄셈을 구현한다. 아래 회로는 $M=0$이면 가산기, $M=1$이면 감산기로 동작한다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/micro-operation/image-1.png"
+width="1037"
+height="418"
+srcset="https://gyeongmin.kr/p/micro-operation/image-1_hu210b830ee9517c81f9b21786b7a63a3d_152711_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/micro-operation/image-1_hu210b830ee9517c81f9b21786b7a63a3d_152711_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="4비트 가감산기"
+class="gallery-image"
+data-flex-grow="248"
+data-flex-basis="595px"
+>&lt;/p>
+&lt;h3 id="이진-인크리멘터">이진 인크리멘터&lt;/h3>
+&lt;p>인크리멘트 마이크로 연산은 레지스터의 값에 1을 더하는 것이다. 카운트 인에이블이 활성화될 때마다 레지스터의 값이 하나씩 증가한다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/micro-operation/image-2.png"
+width="899"
+height="433"
+srcset="https://gyeongmin.kr/p/micro-operation/image-2_huce8140a33f0797725d7caeec4815c966_77196_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/micro-operation/image-2_huce8140a33f0797725d7caeec4815c966_77196_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="이진 인크리멘터"
+class="gallery-image"
+data-flex-grow="207"
+data-flex-basis="498px"
+>&lt;/p>
+&lt;h2 id="논리-마이크로-연산">논리 마이크로 연산&lt;/h2>
+&lt;p>논리 마이크로 연산은 레지스터에 저장된 비트열에 대한 이진 연산으로 각 비트를 독립된 이진 변수로 간주하고 연산을 수행한다. 예를 들면 아래와 같이 $\text{XOR}$ 연산이 있다.&lt;/p>
+&lt;p>$$
+P: R1 \leftarrow R1 \oplus R2
+$$&lt;/p>
+&lt;p>부울 대수의 $\text{OR}$, $\text{AND}$, 보수 연산과 구별하기 위하여 $\text{OR}$을 $\lor$로, $\text{AND}$를 $\land$로, 1의 보수를 문자 위의 bar로 쓴다. 예를 들면 아래와 같다.&lt;/p>
+&lt;p>$$
+P + Q : R1 \leftarrow R2 + R3, \ R4 \leftarrow R5 \lor R6
+$$&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Boolean Function&lt;/th>
+&lt;th>Microoperation&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>$ F_0 = 0 $&lt;/td>
+&lt;td>$ F \leftarrow 0 $&lt;/td>
+&lt;td>Clear&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_1 = xy $&lt;/td>
+&lt;td>$ F \leftarrow A \land B $&lt;/td>
+&lt;td>$\text{AND}$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_2 = xy^\prime $&lt;/td>
+&lt;td>$ F \leftarrow A \land \overline{B} $&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_3 = x $&lt;/td>
+&lt;td>$ F \leftarrow A $&lt;/td>
+&lt;td>Transfer $A$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_4 = x^\prime y $&lt;/td>
+&lt;td>$ F \leftarrow \overline{A} \land B $&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_5 = y $&lt;/td>
+&lt;td>$ F \leftarrow B $&lt;/td>
+&lt;td>Transfer $B$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_6 = x \oplus y $&lt;/td>
+&lt;td>$ F \leftarrow A \oplus B $&lt;/td>
+&lt;td>$\text{Exclusive-OR}$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_7 = x + y $&lt;/td>
+&lt;td>$ F \leftarrow A \lor B $&lt;/td>
+&lt;td>$\text{OR}$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_8 = (x + y)^\prime $&lt;/td>
+&lt;td>$ F \leftarrow \overline{A \lor B} $&lt;/td>
+&lt;td>$\text{NOR}$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_9 = (x \oplus y)^\prime $&lt;/td>
+&lt;td>$ F \leftarrow \overline{A \oplus B} $&lt;/td>
+&lt;td>$\text{Exclusive-NOR}$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_{10} = y^\prime $&lt;/td>
+&lt;td>$ F \leftarrow \overline{B} $&lt;/td>
+&lt;td>Complement of $B$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_{11} = x + y^\prime $&lt;/td>
+&lt;td>$ F \leftarrow A \lor \overline{B} $&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_{12} = x^\prime $&lt;/td>
+&lt;td>$ F \leftarrow \overline{A} $&lt;/td>
+&lt;td>Complement of $A$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_{13} = x^\prime + y $&lt;/td>
+&lt;td>$ F \leftarrow \overline{A} \lor B $&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_{14} = (xy)^\prime $&lt;/td>
+&lt;td>$ F \leftarrow \overline{A \land B} $&lt;/td>
+&lt;td>$\text{NAND}$&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>$ F_{15} = 1 $&lt;/td>
+&lt;td>$ F \leftarrow $ all 1’s&lt;/td>
+&lt;td>Set to all 1’s&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>레지스터 전송</title><link>https://gyeongmin.kr/p/register-transfer-language/</link><pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/register-transfer-language/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 레지스터 전송" />&lt;h2 id="레지스터-전송-언어">레지스터 전송 언어&lt;/h2>
 &lt;p>레지스터에 저장된 데이터를 가지고 실행되는 동작을 마이크로 연산(micro-operation)이라고 한다. 디지털 컴퓨터의 구조를 정의하기 위하여 레지스터의 종류와 기능, 마이크로 연산, 제어 기능 등을 규정해야 하는데, 레지스터 간의 마이크로 연산 전송을 보다 간단하고 명료하게 표시하기 위해 사용하는 기호를 레지스터 전송 언어(register transfer language)라고 한다.&lt;/p>
 &lt;h2 id="레지스터-전송">레지스터 전송&lt;/h2>
 &lt;p>레지스터는 머리글자를 대문자로 표시한다. 메모리 주소 레지스터는 MAR, 프로그램 카운터는 PC, 명령어 레지스터는 IR을 나타낸다.&lt;/p>

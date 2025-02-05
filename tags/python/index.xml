@@ -91,8 +91,8 @@ $$&lt;/p>
 &lt;div markdown="1">
 $$
 \begin{aligned}
-DF(t, D) &amp;= \text{count}(t \in d : d \in D) \\
-IDF(t, D) &amp;= \log \left( \frac{\text{count}(D)}{1 + DF(t, D)} \right)
+\text{DF}(t, D) &amp;= \text{count}(t \in d : d \in D) \\
+\text{IDF}(t, D) &amp;= \log \left( \frac{\text{count}(D)}{1 + \text{DF}(t, D)} \right)
 \end{aligned}
 $$
 &lt;/div>
