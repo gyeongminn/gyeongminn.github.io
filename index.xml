@@ -672,9 +672,15 @@ newWindow.document.close();
 &lt;p>Skip-gram은 CBoW와 비슷하지만, 중심 단어를 입력으로 받아서 주변 단어를 예측하는 모델이다.&lt;/p>
 &lt;p>CBoW는 하나의 윈도우에서 하나의 학습 데이터가 만들어졌지만, Skip-gram은 중심 단어와 주변 단어를 하나의 쌍으로 한 여러 데이터가 만들어진다. 따라서 더욱 많은 학습 데이터세트를 추출할 수 있어 더욱 높은 성능을 보인다. 또한 드물게 등장하는 단어도 더 잘 학습할 수 있고 벡터 공간에서 더 유의미한 거리 관계를 형성할 수 있다.&lt;/p>
 &lt;h2 id="계층적-소프트맥스">계층적 소프트맥스&lt;/h2>
-&lt;p>corpus의 크기가 커지만 단어 사전의 크기도 커져 학습 속도가 느려진다. 이를 해결하기 위해 계층적 소프트맥스를 사용한다.&lt;/p>
+&lt;p>corpus의 크기가 커지면 단어 사전의 크기도 커져 학습 속도가 느려진다. 이를 해결하기 위해 계층적 소프트맥스를 사용한다.&lt;/p>
 &lt;p>출력층을 이진 트리 구조로 표현하고 등장하는 단어일수록 트리의 상위 노드에 배치, 드물게 등장하는 단어는 하위 노드에 배치한다.&lt;/p>
-&lt;p>단어 사전의 크기를 $V$라고 했을 때, $\bigo(V)$의 시간복잡도를 갖지만, 계층적 소프트맥스의 시간 복잡도는 $\bigo(\log_2V)$의 시간복잡도를 갖는다.&lt;/p></description></item><item><title>C++ STL PBDS (Policy based data structures)</title><link>https://gyeongmin.kr/p/pbds/</link><pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/pbds/</guid><description>&lt;img src="https://gyeongmin.kr/images/algorithm.png" alt="Featured image of post C++ STL PBDS (Policy based data structures)" />&lt;h2 id="ordered_set이란">ordered_set이란?&lt;/h2>
+&lt;p>단어 사전의 크기를 $V$라고 했을 때, $\bigo(V)$의 시간복잡도를 갖지만, 계층적 소프트맥스의 시간 복잡도는 $\bigo(\log_2V)$의 시간복잡도를 갖는다.&lt;/p>
+&lt;h2 id="네거티브-샘플링">네거티브 샘플링&lt;/h2>
+&lt;p>네거티브 샘플링은 확률적인 샘플링 기법으로, Word2Vec 모델에서 사용한다. 학습 윈도우 내에 등장하지 않는 단어를 $n$개 추출하여 정답 단어와 함께 소프트맥스 연산을 수행한다. 각 단어가 추출될 확률은 아래와 같다.&lt;/p>
+&lt;p>$$
+P(w_i)=\frac{f(w_i)^{0.75}}{\sum^{V}_{j=0}f(w_i)^{0.75}}
+$$&lt;/p>
+&lt;p>$P(w_i)$는 단어 $w_i$가 네거티브 샘플로 추출될 확률이다. 이때 0.75제곱한 값을 정규화 상수로 사용하는데, 이 값은 실험적으로 얻어낸 값이다.&lt;/p></description></item><item><title>C++ STL PBDS (Policy based data structures)</title><link>https://gyeongmin.kr/p/pbds/</link><pubDate>Wed, 10 Apr 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/pbds/</guid><description>&lt;img src="https://gyeongmin.kr/images/algorithm.png" alt="Featured image of post C++ STL PBDS (Policy based data structures)" />&lt;h2 id="ordered_set이란">ordered_set이란?&lt;/h2>
 &lt;p>g++에서 추가된 자료구조로, std::set과 유사하지만, 아래 두 연산을 $\mathcal{O}(\log N)$만에 수행할 수 있다.&lt;/p>
 &lt;ul>
 &lt;li>
