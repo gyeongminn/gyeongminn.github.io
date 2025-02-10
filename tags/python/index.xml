@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/python/</link><description>Recent content in Python on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Thu, 21 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>텍스트 벡터화</title><link>https://gyeongmin.kr/p/text-vectorization/</link><pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/text-vectorization/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 텍스트 벡터화" />&lt;p>컴퓨터는 텍스트를 이해할 수 없다. 따라서 텍스트를 숫자로 변환하는 텍스트 벡터화(Text Vectorization) 과정이 필요하다.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/python/</link><description>Recent content in Python on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Thu, 11 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>텍스트 임베딩</title><link>https://gyeongmin.kr/p/text-embedding/</link><pubDate>Thu, 11 Apr 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/text-embedding/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 텍스트 임베딩" />&lt;h2 id="word2vec">Word2Vec&lt;/h2>
+&lt;p>Word2Vec은 단어 간의 유사성을 측정하기 위해 분포 가설을 기반으로 개발된 임베딩 모델이다.&lt;/p>
+&lt;p>분포 가설이란, 같은 문맥에서 함께 자주 나타나는 단어들은 서로 유사한 의미를 가질 가능성이 높다는 가정이다. 단어 간의 동시 발생 확률 분포를 이용해 단어 간의 유사성을 측정한다.&lt;/p>
+&lt;p>&amp;ldquo;나는 자전거를 타고 간다&amp;rdquo; 와, &amp;ldquo;나는 자동차를 타고 간다&amp;rdquo; 라는 문장에서 &amp;lsquo;자전거&amp;rsquo;와 &amp;lsquo;자동차&amp;rsquo;는 이동수단이라는 맥락에서 서로 유사한 단어이다. 이런식으로 분포 가설에 의해 주변에 분포한 단어들이 동일하거나 유사하므로 비슷한 의미를 가질 것이라고 모델이 학습한다.&lt;/p>
+&lt;p>이런 가정을 통해 단어의 분산 표현(Distributed Representation)을 학습할 수 있다. 분산 표현이란 단어를 고차원 벡터 공간에 매핑하여 단어의 의미를 담는 것을 의미한다. 유사한 문맥에서 등장하는 단어는 비슷한 벡터 공간상 위치를 갖게 된다.&lt;/p>
+&lt;p>Word2Vec은 단어 임베딩 벡터 기법이다. 이는 밀집 표현이라고도 하는데, 벡터 표편이 sparse 하지 않아 단어를 고정된 크기의 실수 벡터로 표현하기 때문에 단어 사전의 크기가 커지더라도 벡터의 크기가 커지지 않는다.&lt;/p>
+&lt;h2 id="cbow">CBoW&lt;/h2>
+&lt;p>CBoW(Continuous Bag of Wbrds)란 주변에 있는 단어를 가지고 중간에 있는 단어를 예측하는 방법이다. 중심 단어(Center Word)는 예측해야 할 단어를 의미하며, 예측에 사용되는 단어들을 주변 단어(Context Word) 라고 한다.&lt;/p>
+&lt;p>학습할 떈 슬라이딩 윈도우 기법을 적용하여 학습한다. 한 번 학습할 때 중심 단어를 기준으로, 좌우로 윈도우 사이즈 크기만큼의 주변 단어를 함께 학습한다.&lt;/p>
+&lt;p>CBoW는 원-핫 벡터를 입력으로 받아, 입력 문장 내 모든 단어의 임베딩 벡터를 평균내어 중심 단어의 임베딩 벡터를 예측한다.&lt;/p>
+&lt;p>입력 단어는 원-핫 벡터로 표현돼 투사층(Projection Layer)에 입력된다. 투사층이란 원-핫 벡터의 인덱스에 해당하는 임베딩 벡터를 반환하는 룩업 테이블(LUT)이 된다. 투사층을 통과하면 각 단어는 임베딩 벡터로 변환된다. 이 벡터에 소프트맥스 함수를 이용해 중심 단어를 예측한다.&lt;/p>
+&lt;h2 id="skip-gram">Skip-gram&lt;/h2>
+&lt;p>Skip-gram은 CBoW와 비슷하지만, 중심 단어를 입력으로 받아서 주변 단어를 예측하는 모델이다.&lt;/p>
+&lt;p>CBoW는 하나의 윈도우에서 하나의 학습 데이터가 만들어졌지만, Skip-gram은 중심 단어와 주변 단어를 하나의 쌍으로 한 여러 데이터가 만들어진다. 따라서 더욱 많은 학습 데이터세트를 추출할 수 있어 더욱 높은 성능을 보인다. 또한 드물게 등장하는 단어도 더 잘 학습할 수 있고 벡터 공간에서 더 유의미한 거리 관계를 형성할 수 있다.&lt;/p>
+&lt;h2 id="계층적-소프트맥스">계층적 소프트맥스&lt;/h2>
+&lt;p>corpus의 크기가 커지만 단어 사전의 크기도 커져 학습 속도가 느려진다. 이를 해결하기 위해 계층적 소프트맥스를 사용한다.&lt;/p>
+&lt;p>출력층을 이진 트리 구조로 표현하고 등장하는 단어일수록 트리의 상위 노드에 배치, 드물게 등장하는 단어는 하위 노드에 배치한다.&lt;/p>
+&lt;p>단어 사전의 크기를 $V$라고 했을 때, $\bigo(V)$의 시간복잡도를 갖지만, 계층적 소프트맥스의 시간 복잡도는 $\bigo(\log_2V)$의 시간복잡도를 갖는다.&lt;/p></description></item><item><title>텍스트 벡터화</title><link>https://gyeongmin.kr/p/text-vectorization/</link><pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/text-vectorization/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 텍스트 벡터화" />&lt;p>컴퓨터는 텍스트를 이해할 수 없다. 따라서 텍스트를 숫자로 변환하는 텍스트 벡터화(Text Vectorization) 과정이 필요하다.&lt;/p>
 &lt;h2 id="원-핫-인코딩">원-핫 인코딩&lt;/h2>
 &lt;p>원-핫 인코딩 (One-Hot Encoding)은 문서에 등장하는 각 단어를 고유한 색인 값(index)으로 매핑한 후, 해당 색인 위치를 1로, 나머지는 0으로 표시하는 방식이다.&lt;/p>
 &lt;p>&lt;code>I like apples&lt;/code>, &lt;code>I like bananas&lt;/code> 라는 두 문장을 토큰화하고 매핑 테이블을 구하면 아래와 같다.&lt;/p>
@@ -888,7 +905,7 @@ $$&lt;/p>
 &lt;li>$ ||g||_2 $: 기울기 벡터의 L2 노름&lt;/li>
 &lt;li>$ r $: 설정한 임계값 (threshold)&lt;/li>
 &lt;li>기울기의 방향은 유지하면서 크기를 $ r $로 제한&lt;/li>
-&lt;/ul></description></item><item><title>활성화 함수</title><link>https://gyeongmin.kr/p/activation-functions/</link><pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/activation-functions/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 활성화 함수" />&lt;h2 id="활성화-함수">활성화 함수&lt;/h2>
+&lt;/ul></description></item><item><title>활성화 함수</title><link>https://gyeongmin.kr/p/activation-functions/</link><pubDate>Wed, 14 Feb 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/activation-functions/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 활성화 함수" />&lt;h2 id="활성화-함수">활성화 함수&lt;/h2>
 &lt;p>활성화 함수는 인공 신경망에서 뉴런의 출력을 비선형으로 변환하여 은닉층을 활성화하는 역할을 한다. 이를 통해 네트워크는 데이터의 복잡한 패턴을 학습하고 비선형 문제를 해결할 수 있다.&lt;/p>
 &lt;p>각 노드의 전달 보강이 다르므로 입력값에 따라 일부 노드는 활성화(Activate)되고 다른 노드는 비활성화(Deactivate)된다.&lt;/p>
 &lt;p>활성화 함수는 비선형 구조를 가지며 미분 가능해야 학습이 가능하고, 입력값을 정규화(Normalization)하는 효과도 수행한다.&lt;/p>

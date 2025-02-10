@@ -96,7 +96,7 @@ $$&lt;/p>
 &lt;li>$ ||g||_2 $: 기울기 벡터의 L2 노름&lt;/li>
 &lt;li>$ r $: 설정한 임계값 (threshold)&lt;/li>
 &lt;li>기울기의 방향은 유지하면서 크기를 $ r $로 제한&lt;/li>
-&lt;/ul></description></item><item><title>활성화 함수</title><link>https://gyeongmin.kr/p/activation-functions/</link><pubDate>Sat, 24 Feb 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/activation-functions/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 활성화 함수" />&lt;h2 id="활성화-함수">활성화 함수&lt;/h2>
+&lt;/ul></description></item><item><title>활성화 함수</title><link>https://gyeongmin.kr/p/activation-functions/</link><pubDate>Wed, 14 Feb 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/activation-functions/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 활성화 함수" />&lt;h2 id="활성화-함수">활성화 함수&lt;/h2>
 &lt;p>활성화 함수는 인공 신경망에서 뉴런의 출력을 비선형으로 변환하여 은닉층을 활성화하는 역할을 한다. 이를 통해 네트워크는 데이터의 복잡한 패턴을 학습하고 비선형 문제를 해결할 수 있다.&lt;/p>
 &lt;p>각 노드의 전달 보강이 다르므로 입력값에 따라 일부 노드는 활성화(Activate)되고 다른 노드는 비활성화(Deactivate)된다.&lt;/p>
 &lt;p>활성화 함수는 비선형 구조를 가지며 미분 가능해야 학습이 가능하고, 입력값을 정규화(Normalization)하는 효과도 수행한다.&lt;/p>
