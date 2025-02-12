@@ -6395,7 +6395,7 @@ $d = y - x$&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">result&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>컴퓨터 명령어</title><link>https://gyeongmin.kr/p/opcode/</link><pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/opcode/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 컴퓨터 명령어" />&lt;blockquote>
+&lt;/div></description></item><item><title>직접 주소와 간접 주소, 공통 버스, 컴퓨터 명령어</title><link>https://gyeongmin.kr/p/opcode/</link><pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/opcode/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 직접 주소와 간접 주소, 공통 버스, 컴퓨터 명령어" />&lt;blockquote>
 &lt;p>본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="메모리-주소">메모리 주소&lt;/h2>
@@ -6446,7 +6446,10 @@ data-flex-basis="439px"
 &lt;li>레지스터 참조 명령어는 레지스터 내부에서 직접 연산을 수행하는 명령어로, CLA, CMA, INC 등이 있다.&lt;/li>
 &lt;li>입출력 명령어는 외부 장치와 데이터를 주고받는 명령어로, INP, OUT, SKI, SKO 등이 사용된다.&lt;/li>
 &lt;/ul>
-&lt;p>명령어 집합은 하드웨어 설계에 따라 다를 수 있지만, 효율적인 연산을 수행할 수 있도록 최적화되어 있다. 연산, 데이터 이동, 조건 분기 등의 기능을 적절히 조합하면 다양한 프로그램을 실행할 수 있다.&lt;/p></description></item><item><title>마이크로 연산</title><link>https://gyeongmin.kr/p/micro-operation/</link><pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/micro-operation/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 마이크로 연산" />&lt;h2 id="마이크로-연산">마이크로 연산&lt;/h2>
+&lt;p>명령어 집합은 하드웨어 설계에 따라 다를 수 있지만, 효율적인 연산을 수행할 수 있도록 최적화되어 있다. 연산, 데이터 이동, 조건 분기 등의 기능을 적절히 조합하면 다양한 프로그램을 실행할 수 있다.&lt;/p></description></item><item><title>마이크로 연산</title><link>https://gyeongmin.kr/p/micro-operation/</link><pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/micro-operation/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 마이크로 연산" />&lt;blockquote>
+&lt;p>본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="마이크로-연산">마이크로 연산&lt;/h2>
 &lt;p>마이크로 연산은 다음 네 가지로 분류된다.&lt;/p>
 &lt;ol>
 &lt;li>레지스터 전송 마이크로 연산&lt;/li>
@@ -6597,7 +6600,10 @@ $$&lt;/p>
 &lt;td>Set to all 1’s&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>레지스터 전송</title><link>https://gyeongmin.kr/p/register-transfer-language/</link><pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/register-transfer-language/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 레지스터 전송" />&lt;h2 id="레지스터-전송-언어">레지스터 전송 언어&lt;/h2>
+&lt;/table></description></item><item><title>레지스터 전송</title><link>https://gyeongmin.kr/p/register-transfer-language/</link><pubDate>Fri, 29 Apr 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/register-transfer-language/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 레지스터 전송" />&lt;blockquote>
+&lt;p>본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="레지스터-전송-언어">레지스터 전송 언어&lt;/h2>
 &lt;p>레지스터에 저장된 데이터를 가지고 실행되는 동작을 마이크로 연산(micro-operation)이라고 한다. 디지털 컴퓨터의 구조를 정의하기 위하여 레지스터의 종류와 기능, 마이크로 연산, 제어 기능 등을 규정해야 하는데, 레지스터 간의 마이크로 연산 전송을 보다 간단하고 명료하게 표시하기 위해 사용하는 기호를 레지스터 전송 언어(register transfer language)라고 한다.&lt;/p>
 &lt;h2 id="레지스터-전송">레지스터 전송&lt;/h2>
 &lt;p>레지스터는 머리글자를 대문자로 표시한다. 메모리 주소 레지스터는 MAR, 프로그램 카운터는 PC, 명령어 레지스터는 IR을 나타낸다.&lt;/p>
