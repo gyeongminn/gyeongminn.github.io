@@ -6395,52 +6395,7 @@ $d = y - x$&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">result&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>컴퓨터 명령어</title><link>https://gyeongmin.kr/p/opcode/</link><pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/opcode/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 컴퓨터 명령어" />&lt;blockquote>
-&lt;p>본 포스팅은 &amp;lsquo;Mano의 컴퓨터시스템구조&amp;rsquo; 교재를 참고했습니다.&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="메모리-주소">메모리 주소&lt;/h2>
-&lt;p>컴퓨터에서 연산을 수행하려면 필요한 데이터가 어디에 저장되어 있는지 알아야 한다. 이를 위해 메모리 주소를 지정하는 방식이 있으며, 대표적으로 직접 주소 방식과 간접 주소 방식이 있다.&lt;/p>
-&lt;p>보통 한 개의 비트를 사용하여 주소 모드가 직접 주소인지, 간접 주소인지 구분한다.&lt;/p>
-&lt;p>&lt;img src="https://gyeongmin.kr/p/opcode/image.png"
-width="830"
-height="677"
-srcset="https://gyeongmin.kr/p/opcode/image_hue50e5cca64cd4dc11fd0a35f7c9f8994_112931_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/opcode/image_hue50e5cca64cd4dc11fd0a35f7c9f8994_112931_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="직접 주소와 간접 주소"
-class="gallery-image"
-data-flex-grow="122"
-data-flex-basis="294px"
->&lt;/p>
-&lt;h3 id="직접-주소">직접 주소&lt;/h3>
-&lt;p>직접 주소 방식은 명령어가 사용할 데이터의 메모리 주소를 직접 포함한다. 예를 들어 &lt;code>ADD 457&lt;/code>이라는 명령어는 457번지에 저장된 데이터를 누산기에 더하는 역할을 한다. 구조가 단순하고 속도가 빠르지만, 프로그램이 실행 중에 주소가 변경되면 명령어를 다시 작성해야 한다.&lt;/p>
-&lt;h3 id="간접-주소">간접 주소&lt;/h3>
-&lt;p>간접 주소 방식은 명령어의 주소 부분이 데이터를 직접 가리키는 것이 아니라, 데이터가 저장된 주소를 가지고 있는 역할을 한다. 즉, 포인터의 개념과 유사하다. 예를 들어 &lt;code>ADD 300&lt;/code> 이라는 명령어는 300번지를 먼저 읽어 해당 위치에 저장된 주소를 가져오고, 그 주소에서 데이터를 찾아 연산을 수행한다.&lt;/p>
-&lt;h2 id="공통-버스-시스템">공통 버스 시스템&lt;/h2>
-&lt;p>&lt;img src="https://gyeongmin.kr/image-1.png"
-loading="lazy"
-alt="공통 버스에 연결된 기본 컴퓨터의 레지스터"
->&lt;/p>
-&lt;p>컴퓨터 내부에서는 여러 개의 레지스터와 메모리 간에 데이터를 주고받아야 한다. 이때 공통 버스 시스템을 사용하면 하나의 데이터 전송 경로를 여러 장치가 공유할 수 있다.&lt;/p>
-&lt;p>공통 버스는 16비트 크기의 데이터 버스를 사용하며, 선택 신호를 통해 특정 레지스터나 메모리가 버스를 통해 데이터를 송수신할 수 있도록 한다. 이렇게 하면 하드웨어 구성이 단순해지지만, 한 번에 하나의 데이터만 전송할 수 있어 여러 장치가 동시에 데이터를 주고받는 것은 어렵다.&lt;/p>
-&lt;h2 id="컴퓨터-명령어">컴퓨터 명령어&lt;/h2>
-&lt;p>&lt;img src="https://gyeongmin.kr/p/opcode/image1.png"
-width="1224"
-height="668"
-srcset="https://gyeongmin.kr/p/opcode/image1_huf214194cef97437e73b255a6cdb8e2a6_269046_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/opcode/image1_huf214194cef97437e73b255a6cdb8e2a6_269046_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="컴퓨터 명령어 구조"
-class="gallery-image"
-data-flex-grow="183"
-data-flex-basis="439px"
->&lt;/p>
-&lt;p>컴퓨터는 특정 연산을 수행하기 위해 다양한 명령어를 사용한다. 기본적으로 명령어는 연산 코드와 주소 필드로 구성되며, 수행할 연산의 종류와 필요한 데이터의 위치를 지정한다.&lt;/p>
-&lt;p>컴퓨터 명령어는 크게 세 가지로 나뉜다.&lt;/p>
-&lt;ul>
-&lt;li>메모리 참조 명령어는 메모리에 저장된 데이터를 읽거나 쓰는 역할을 한다. 대표적으로 ADD, LDA, STA, BUN 등의 명령어가 있다.&lt;/li>
-&lt;li>레지스터 참조 명령어는 레지스터 내부에서 직접 연산을 수행하는 명령어로, CLA, CMA, INC 등이 있다.&lt;/li>
-&lt;li>입출력 명령어는 외부 장치와 데이터를 주고받는 명령어로, INP, OUT, SKI, SKO 등이 사용된다.&lt;/li>
-&lt;/ul>
-&lt;p>명령어 집합은 하드웨어 설계에 따라 다를 수 있지만, 효율적인 연산을 수행할 수 있도록 최적화되어 있다. 연산, 데이터 이동, 조건 분기 등의 기능을 적절히 조합하면 다양한 프로그램을 실행할 수 있다.&lt;/p></description></item><item><title>마이크로 연산</title><link>https://gyeongmin.kr/p/micro-operation/</link><pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/micro-operation/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 마이크로 연산" />&lt;h2 id="마이크로-연산">마이크로 연산&lt;/h2>
+&lt;/div></description></item><item><title>마이크로 연산</title><link>https://gyeongmin.kr/p/micro-operation/</link><pubDate>Tue, 10 May 2022 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/micro-operation/</guid><description>&lt;img src="https://gyeongmin.kr/images/computer-system-architecture.png" alt="Featured image of post 마이크로 연산" />&lt;h2 id="마이크로-연산">마이크로 연산&lt;/h2>
 &lt;p>마이크로 연산은 다음 네 가지로 분류된다.&lt;/p>
 &lt;ol>
 &lt;li>레지스터 전송 마이크로 연산&lt;/li>
