@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>파이토치 트랜스포머를 활용한 자연어 처리와 컴퓨터 비전 심층학습 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/categories/%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9E%90%EC%97%B0%EC%96%B4-%EC%B2%98%EB%A6%AC%EC%99%80-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%B9%84%EC%A0%84-%EC%8B%AC%EC%B8%B5%ED%95%99%EC%8A%B5/</link><description>Recent content in 파이토치 트랜스포머를 활용한 자연어 처리와 컴퓨터 비전 심층학습 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Tue, 30 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%ED%8C%8C%EC%9D%B4%ED%86%A0%EC%B9%98-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%EB%A8%B8%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%9E%90%EC%97%B0%EC%96%B4-%EC%B2%98%EB%A6%AC%EC%99%80-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%B9%84%EC%A0%84-%EC%8B%AC%EC%B8%B5%ED%95%99%EC%8A%B5/index.xml" rel="self" type="application/rss+xml"/><item><title>순환 신경망(RNN)과 장단기 메모리(LSTM)</title><link>https://gyeongmin.kr/p/rnn-and-lstm/</link><pubDate>Tue, 30 Apr 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/rnn-and-lstm/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 순환 신경망(RNN)과 장단기 메모리(LSTM)" />&lt;h2 id="순환-신경망">순환 신경망&lt;/h2>
-&lt;p>순환 신경망(Recurrent Neural Network, RNN)은 시퀀스(Sequence) 데이터를 처리하기 위해 개발된 인공 신경망이다. 일반적인 신경망은 입력과 출력이 독립적이지만, RNN은 각 시점의 데이터가 이전 시점의 데이터에 영향을 받는 구조를 가지고 있어 자연어 처리(NLP), 시계열 분석, 음성 인식 등에 효과적으로 활용된다.&lt;/p>
-&lt;p>예를 들어, 주가 예측을 하는 모델을 생각해보자. 3월 7일의 주가는 3월 6일의 주가에 영향을 받을 가능성이 높고, 3월 6일의 주가는 3월 5일의 주가에 영향을 받을 가능성이 높다. 이러한 연속성을 반영하는 것이 RNN의 핵심이다.&lt;/p>
+&lt;p>순환 신경망(Recurrent Neural Network, RNN)은 시퀀스(Sequence) 데이터를 처리하기 위해 개발된 인공 신경망이다. 일반적인 신경망은 입력과 출력이 독립적이지만, RNN은 각 시점의 데이터가 이전 시점의 데이터에 영향을 받는 구조를 가지고 있어 자연어 처리(NLP), 시계열 분석, 음성 인식 등에 활용된다.&lt;/p>
 &lt;h3 id="자연어-데이터와-rnn">자연어 데이터와 RNN&lt;/h3>
-&lt;p>자연어 데이터 또한 연속적인 데이터의 일종이다. 문장에서 단어들은 순서대로 등장하며, 이전 단어들이 현재 단어의 의미 형성에 영향을 준다. 예를 들어, 다음과 같은 문장을 보자.&lt;/p>
-&lt;ul>
-&lt;li>&amp;ldquo;금요일이 지나면 &amp;hellip;&amp;rdquo;&lt;/li>
-&lt;li>&amp;ldquo;수요일이 지나면 목요일이고, 목요일이 지나면 금요일, 금요일이 지나면 &amp;hellip;&amp;rdquo;&lt;/li>
-&lt;/ul>
-&lt;p>첫 번째 문장에서 &amp;lsquo;금요일이 지나면&amp;rsquo; 다음에 올 단어로 &amp;lsquo;주말&amp;rsquo; 또는 &amp;lsquo;토요일&amp;rsquo;이 자연스러울 것이다. 두 번째 문장은 앞선 패턴을 고려했을 때 &amp;lsquo;토요일&amp;rsquo;이 가장 적절한 단어이다. 즉, 자연어는 이전 단어들과의 관계 속에서 문맥을 형성하며, RNN은 이러한 특성을 잘 반영할 수 있도록 설계된 신경망이다.&lt;/p>
+&lt;p>자연어 데이터 또한 연속적인 데이터의 일종이다. 문장에서 단어들은 순서대로 등장하며, 이전 단어들이 현재 단어의 의미 형성에 영향을 준다. 자연어는 이전 단어들과의 관계 속에서 문맥을 형성하며, RNN은 이러한 특성을 잘 반영할 수 있도록 설계된 신경망이다.&lt;/p>
 &lt;h3 id="rnn의-동작-원리">RNN의 동작 원리&lt;/h3>
 &lt;p>RNN의 핵심 개념은 은닉 상태(Hidden State)이다. 현재 입력값과 이전 시점의 은닉 상태를 이용하여 새로운 은닉 상태를 계산하며, 이를 통해 연속적인 정보를 유지한다.&lt;/p>
 &lt;h4 id="은닉-상태의-계산">은닉 상태의 계산&lt;/h4>
@@ -96,37 +90,35 @@ $$&lt;/p>
 &lt;p>LSTM은 RNN과 유사하지만, 셀 상태(Cell State)와 게이트(Gate) 구조를 추가하여 중요한 정보를 선택적으로 저장하거나 삭제할 수 있도록 설계되었다.&lt;/p>
 &lt;h4 id="lstm의-주요-게이트">LSTM의 주요 게이트&lt;/h4>
 &lt;ol>
-&lt;li>
-&lt;p>망각 게이트(Forget Gate): 과거 정보를 얼마나 유지할지 결정.
-$$
+&lt;li>망각 게이트(Forget Gate): 과거 정보를 얼마나 유지할지 결정&lt;/li>
+&lt;/ol>
+&lt;p>$$
 f_t = \sigma(W_f x_t + U_f h_{t-1} + b_f)
 $$&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>입력 게이트(Input Gate): 새로운 정보를 메모리에 얼마나 추가할지 결정.
-$$
+&lt;ol start="2">
+&lt;li>입력 게이트(Input Gate): 새로운 정보를 메모리에 얼마나 추가할지 결정&lt;/li>
+&lt;/ol>
+&lt;p>$$
 i_t = \sigma(W_i x_t + U_i h_{t-1} + b_i)
-$$
-$$
+$$&lt;/p>
+&lt;p>$$
 g_t = \tanh(W_g x_t + U_g h_{t-1} + b_g)
 $$&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>셀 상태 업데이트(Cell State Update):
-$$
+&lt;ol start="3">
+&lt;li>셀 상태 업데이트(Cell State Update)&lt;/li>
+&lt;/ol>
+&lt;p>$$
 C_t = f_t \odot C_{t-1} + i_t \odot g_t
 $$&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>출력 게이트(Output Gate): 어떤 정보를 최종적으로 출력할지 결정.
-$$
+&lt;ol start="4">
+&lt;li>출력 게이트(Output Gate): 어떤 정보를 최종적으로 출력할지 결정&lt;/li>
+&lt;/ol>
+&lt;p>$$
 o_t = \sigma(W_o x_t + U_o h_{t-1} + b_o)
-$$
-$$
+$$&lt;/p>
+&lt;p>$$
 h_t = o_t \odot \tanh(C_t)
 $$&lt;/p>
-&lt;/li>
-&lt;/ol>
 &lt;p>이러한 구조 덕분에 LSTM은 중요한 정보는 오래 기억하면서 불필요한 정보는 쉽게 잊을 수 있어, 장기 의존성 문제를 해결할 수 있다.&lt;/p>
 &lt;h3 id="lstm-구현-예제">LSTM 구현 예제&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">

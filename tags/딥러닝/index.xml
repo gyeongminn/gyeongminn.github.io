@@ -83,15 +83,9 @@ $$&lt;/p>
 &lt;p>또한, potential anomaly dictionary의 효과를 검증하기 위해 이 dictionary를 사용한 경우와 그렇지 않은 경우를 비교하였다. 그 결과, potential anomaly dictionary를 활용한 PAB-DC 방법이 더 높은 탐지 성능을 보였으며, 이는 이 dictionary가 이상 탐지에 중요한 역할을 한다는 것을 시사한다. 마지막으로, 매개변수 분석을 통해 윈도우 크기, 클러스터 수, $\beta$와 $\lambda$ 값, 배경 사전과 potential anomaly dictionary의 원자 수 등의 매개변수들이 탐지 성능에 미치는 영향을 평가하였다. 이러한 분석 결과, 제안된 PAB-DC 방법은 비교적 안정적인 성능을 보였으며, 다양한 매개변수 설정에서도 우수한 탐지 성능을 유지함을 확인하였다. 종합적으로, PAB-DC 방법이 기존의 방법들보다 hyperspectral 이미지에서의 이상 탐지 성능이 뛰어남을 실험을 통해 입증하였다.&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>이 논문에서는 LRSR 전략을 활용한 Background 및 potential anomaly dictionary 기반의 새로운 HSI 이상 탐지 방법(PAB-DC)을 제시하였다. PAB-DC 방법이 hyperspectral 이미지에서 anomaly detection을 효과적으로 수행할 수 있음을 강조하였다. 이 방법은 low-rank와 sparse representation(LRSR) 전략을 사용하여 데이터를 배경, anomaly, 그리고 noise로 분해하며, 배경 사전과 potential anomaly dictionary를 활용하여 성능을 크게 향상시켰다. 기존의 방법들이 주로 배경 정보에만 의존한 것과 달리, PAB-DC는 anomaly 정보를 적극적으로 활용하여 다른 최신 방법들보다 뛰어난 성능을 보였다. 이를 통해 PAB-DC가 hyperspectral 이미지 anomaly detection에서 강력한 도구임을 입증하였다.&lt;/p></description></item><item><title>순환 신경망(RNN)과 장단기 메모리(LSTM)</title><link>https://gyeongmin.kr/p/rnn-and-lstm/</link><pubDate>Tue, 30 Apr 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/rnn-and-lstm/</guid><description>&lt;img src="https://gyeongmin.kr/images/pytorch-transformer-nlp-computer-vision.png" alt="Featured image of post 순환 신경망(RNN)과 장단기 메모리(LSTM)" />&lt;h2 id="순환-신경망">순환 신경망&lt;/h2>
-&lt;p>순환 신경망(Recurrent Neural Network, RNN)은 시퀀스(Sequence) 데이터를 처리하기 위해 개발된 인공 신경망이다. 일반적인 신경망은 입력과 출력이 독립적이지만, RNN은 각 시점의 데이터가 이전 시점의 데이터에 영향을 받는 구조를 가지고 있어 자연어 처리(NLP), 시계열 분석, 음성 인식 등에 효과적으로 활용된다.&lt;/p>
-&lt;p>예를 들어, 주가 예측을 하는 모델을 생각해보자. 3월 7일의 주가는 3월 6일의 주가에 영향을 받을 가능성이 높고, 3월 6일의 주가는 3월 5일의 주가에 영향을 받을 가능성이 높다. 이러한 연속성을 반영하는 것이 RNN의 핵심이다.&lt;/p>
+&lt;p>순환 신경망(Recurrent Neural Network, RNN)은 시퀀스(Sequence) 데이터를 처리하기 위해 개발된 인공 신경망이다. 일반적인 신경망은 입력과 출력이 독립적이지만, RNN은 각 시점의 데이터가 이전 시점의 데이터에 영향을 받는 구조를 가지고 있어 자연어 처리(NLP), 시계열 분석, 음성 인식 등에 활용된다.&lt;/p>
 &lt;h3 id="자연어-데이터와-rnn">자연어 데이터와 RNN&lt;/h3>
-&lt;p>자연어 데이터 또한 연속적인 데이터의 일종이다. 문장에서 단어들은 순서대로 등장하며, 이전 단어들이 현재 단어의 의미 형성에 영향을 준다. 예를 들어, 다음과 같은 문장을 보자.&lt;/p>
-&lt;ul>
-&lt;li>&amp;ldquo;금요일이 지나면 &amp;hellip;&amp;rdquo;&lt;/li>
-&lt;li>&amp;ldquo;수요일이 지나면 목요일이고, 목요일이 지나면 금요일, 금요일이 지나면 &amp;hellip;&amp;rdquo;&lt;/li>
-&lt;/ul>
-&lt;p>첫 번째 문장에서 &amp;lsquo;금요일이 지나면&amp;rsquo; 다음에 올 단어로 &amp;lsquo;주말&amp;rsquo; 또는 &amp;lsquo;토요일&amp;rsquo;이 자연스러울 것이다. 두 번째 문장은 앞선 패턴을 고려했을 때 &amp;lsquo;토요일&amp;rsquo;이 가장 적절한 단어이다. 즉, 자연어는 이전 단어들과의 관계 속에서 문맥을 형성하며, RNN은 이러한 특성을 잘 반영할 수 있도록 설계된 신경망이다.&lt;/p>
+&lt;p>자연어 데이터 또한 연속적인 데이터의 일종이다. 문장에서 단어들은 순서대로 등장하며, 이전 단어들이 현재 단어의 의미 형성에 영향을 준다. 자연어는 이전 단어들과의 관계 속에서 문맥을 형성하며, RNN은 이러한 특성을 잘 반영할 수 있도록 설계된 신경망이다.&lt;/p>
 &lt;h3 id="rnn의-동작-원리">RNN의 동작 원리&lt;/h3>
 &lt;p>RNN의 핵심 개념은 은닉 상태(Hidden State)이다. 현재 입력값과 이전 시점의 은닉 상태를 이용하여 새로운 은닉 상태를 계산하며, 이를 통해 연속적인 정보를 유지한다.&lt;/p>
 &lt;h4 id="은닉-상태의-계산">은닉 상태의 계산&lt;/h4>
@@ -180,37 +174,35 @@ $$&lt;/p>
 &lt;p>LSTM은 RNN과 유사하지만, 셀 상태(Cell State)와 게이트(Gate) 구조를 추가하여 중요한 정보를 선택적으로 저장하거나 삭제할 수 있도록 설계되었다.&lt;/p>
 &lt;h4 id="lstm의-주요-게이트">LSTM의 주요 게이트&lt;/h4>
 &lt;ol>
-&lt;li>
-&lt;p>망각 게이트(Forget Gate): 과거 정보를 얼마나 유지할지 결정.
-$$
+&lt;li>망각 게이트(Forget Gate): 과거 정보를 얼마나 유지할지 결정&lt;/li>
+&lt;/ol>
+&lt;p>$$
 f_t = \sigma(W_f x_t + U_f h_{t-1} + b_f)
 $$&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>입력 게이트(Input Gate): 새로운 정보를 메모리에 얼마나 추가할지 결정.
-$$
+&lt;ol start="2">
+&lt;li>입력 게이트(Input Gate): 새로운 정보를 메모리에 얼마나 추가할지 결정&lt;/li>
+&lt;/ol>
+&lt;p>$$
 i_t = \sigma(W_i x_t + U_i h_{t-1} + b_i)
-$$
-$$
+$$&lt;/p>
+&lt;p>$$
 g_t = \tanh(W_g x_t + U_g h_{t-1} + b_g)
 $$&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>셀 상태 업데이트(Cell State Update):
-$$
+&lt;ol start="3">
+&lt;li>셀 상태 업데이트(Cell State Update)&lt;/li>
+&lt;/ol>
+&lt;p>$$
 C_t = f_t \odot C_{t-1} + i_t \odot g_t
 $$&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>출력 게이트(Output Gate): 어떤 정보를 최종적으로 출력할지 결정.
-$$
+&lt;ol start="4">
+&lt;li>출력 게이트(Output Gate): 어떤 정보를 최종적으로 출력할지 결정&lt;/li>
+&lt;/ol>
+&lt;p>$$
 o_t = \sigma(W_o x_t + U_o h_{t-1} + b_o)
-$$
-$$
+$$&lt;/p>
+&lt;p>$$
 h_t = o_t \odot \tanh(C_t)
 $$&lt;/p>
-&lt;/li>
-&lt;/ol>
 &lt;p>이러한 구조 덕분에 LSTM은 중요한 정보는 오래 기억하면서 불필요한 정보는 쉽게 잊을 수 있어, 장기 의존성 문제를 해결할 수 있다.&lt;/p>
 &lt;h3 id="lstm-구현-예제">LSTM 구현 예제&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">
