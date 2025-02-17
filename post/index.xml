@@ -435,19 +435,16 @@ newWindow.document.close();
 &lt;h3 id="자연어-데이터와-rnn">자연어 데이터와 RNN&lt;/h3>
 &lt;p>자연어 데이터 또한 연속적인 데이터의 일종이다. 문장에서 단어들은 순서대로 등장하며, 이전 단어들이 현재 단어의 의미 형성에 영향을 준다. 예를 들어, 다음과 같은 문장을 보자.&lt;/p>
 &lt;ul>
-&lt;li>&amp;ldquo;금요일이 지나면 _&amp;rdquo;&lt;/li>
-&lt;li>&amp;ldquo;수요일이 지나면 목요일이고, 목요일이 지나면 금요일, 금요일이 지나면 _&amp;rdquo;&lt;/li>
+&lt;li>&amp;ldquo;금요일이 지나면 &amp;hellip;&amp;rdquo;&lt;/li>
+&lt;li>&amp;ldquo;수요일이 지나면 목요일이고, 목요일이 지나면 금요일, 금요일이 지나면 &amp;hellip;&amp;rdquo;&lt;/li>
 &lt;/ul>
-&lt;p>첫 번째 문장에서 ‘금요일이 지나면’ 다음에 올 단어로 ‘주말’ 또는 ‘토요일’이 자연스러울 것이다. 두 번째 문장은 앞선 패턴을 고려했을 때 ‘토요일’이 가장 적절한 단어이다. 즉, 자연어는 이전 단어들과의 관계 속에서 문맥을 형성하며, RNN은 이러한 특성을 잘 반영할 수 있도록 설계된 신경망이다.&lt;/p>
+&lt;p>첫 번째 문장에서 &amp;lsquo;금요일이 지나면&amp;rsquo; 다음에 올 단어로 &amp;lsquo;주말&amp;rsquo; 또는 &amp;lsquo;토요일&amp;rsquo;이 자연스러울 것이다. 두 번째 문장은 앞선 패턴을 고려했을 때 &amp;lsquo;토요일&amp;rsquo;이 가장 적절한 단어이다. 즉, 자연어는 이전 단어들과의 관계 속에서 문맥을 형성하며, RNN은 이러한 특성을 잘 반영할 수 있도록 설계된 신경망이다.&lt;/p>
 &lt;h3 id="rnn의-동작-원리">RNN의 동작 원리&lt;/h3>
 &lt;p>RNN의 핵심 개념은 은닉 상태(Hidden State)이다. 현재 입력값과 이전 시점의 은닉 상태를 이용하여 새로운 은닉 상태를 계산하며, 이를 통해 연속적인 정보를 유지한다.&lt;/p>
 &lt;h4 id="은닉-상태의-계산">은닉 상태의 계산&lt;/h4>
 &lt;p>각 시점 $t$에서 RNN의 은닉 상태는 다음과 같이 계산된다.&lt;/p>
 &lt;p>$$
-\begin{aligned}
-h_t &amp;amp;= \sigma_h(h_{t-1}, x_t) \
-h_t &amp;amp;= \sigma_h(W_{hh} h_{t-1} + W_{xh} x_t + b_h)
-\end{aligned}
+h_t = \sigma_h(W_{hh} h_{t-1} + W_{xh} x_t + b_h)
 $$&lt;/p>
 &lt;ul>
 &lt;li>$\sigma_h$ : 순환 신경망의 은닉 상태를 계산하기 위한 활성화 함수&lt;/li>
@@ -458,10 +455,7 @@ $$&lt;/p>
 &lt;h4 id="출력값의-계산">출력값의 계산&lt;/h4>
 &lt;p>출력값 $ y_t $는 현재 은닉 상태를 이용해 다음과 같이 계산된다.&lt;/p>
 &lt;p>$$
-\begin{aligned}
-y_t &amp;amp;= \sigma_y(h_t) \
-y_t &amp;amp;= \sigma_y(W_{hy} h_t + b_y)
-\end{aligned}
+y_t = \sigma_y(W_{hy} h_t + b_y)
 $$&lt;/p>
 &lt;ul>
 &lt;li>$\sigma_y$ : 출력값을 계산하기 위한 활성화 함수&lt;/li>
