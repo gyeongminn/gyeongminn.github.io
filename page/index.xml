@@ -54,12 +54,14 @@
 &lt;h2 align="left">Education&lt;/h2>
 &lt;div class="research">
 &lt;div class="container">
-&lt;p class="title">한성대학교 컴퓨터공학부&lt;/p>
+&lt;p class="title">Hansung University&lt;br>B.S. in Computer Science and Engineering&lt;/p>
 &lt;p class="text">• 공과대학 학생회 홍보국장&lt;span class="date">(2023)&lt;/span>&lt;/p>
 &lt;p class="text">• 학술소모임 BUG 부회장&lt;span class="date">(2022)&lt;/span>&lt;/p>
-&lt;p class="text">• 컴퓨터공학부 전공튜터링 튜터 3회 참여&lt;span class="date">
-&lt;p class="text">• 교내 알고리즘 대회 최초 개설 및 총괄, 출제자 4회 참여 &lt;span class="date">(2023-2024)&lt;/span>&lt;/p>
-&lt;p class="text">&lt;a class="detail" href="https://github.com/HSU-CSE/hsupc-2023-2" target="_blank">&amp;nbsp;&amp;nbsp; See the details >&lt;/a>&lt;/p>
+&lt;p class="text">&lt;span class="date">Feb 2021 - Feb 2025&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="container">
+&lt;p class="title">Hansung University&lt;br>M.S. in Computer Science and Engineering&lt;/p>
+&lt;p class="text">&lt;span class="date">Feb 2025 - Present&lt;/span>&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;h2 align="left">Experience&lt;/h2>
@@ -92,13 +94,16 @@
 &lt;p class="text">• 반도체 패키지 비전 검사 장비 소프트웨어 개발 &lt;span class="date">(2023-2024)&lt;/span>&lt;/p>
 &lt;p class="text">• 반도체 패키징 공정에서의 Anomaly Detection 연구 &lt;span class="date">(2023-2024)&lt;/span>&lt;/p>
 &lt;p class="text">• 국제 학회 및 국내 학회 발표&lt;/p>
+&lt;p class="text">• 컴퓨터공학부 전공튜터링 튜터 3회 참여&lt;span class="date">
+&lt;p class="text">• 교내 알고리즘 대회 최초 개설 및 총괄, 출제자 4회 참여&lt;a class="detail" href="https://github.com/HSU-CSE/hsupc-2023-2" target="_blank">&amp;nbsp; See the details >&lt;/a>&lt;/p>
+&lt;p class="text">&lt;span class="date">Feb 2021 - Feb 2025&lt;/span>&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;h2 align="left">Research&lt;/h2>
 &lt;div class="research">
 &lt;p class="first-type">Interest&lt;/p>
 &lt;div class="container">
-&lt;p class="text">Computer Vision, Anomaly Detection, Algorithm&lt;/p>
+&lt;p class="title">Computer Vision, Anomaly Detection, Algorithm&lt;/p>
 &lt;/div>
 &lt;p class="type">Project&lt;/p>
 &lt;div class="container">
