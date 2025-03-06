@@ -7870,6 +7870,7 @@ data-flex-basis="469px"
 &lt;/span>&lt;span class="lnt">83
 &lt;/span>&lt;span class="lnt">84
 &lt;/span>&lt;span class="lnt">85
+&lt;/span>&lt;span class="lnt">86
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bat" data-lang="bat">&lt;span class="line">&lt;span class="cl">&lt;span class="p">@&lt;/span>&lt;span class="k">echo&lt;/span> off
@@ -7925,33 +7926,34 @@ data-flex-basis="469px"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">choco upgrade all -y
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">::::::::::::::::::::::: 이 부분을 변경하세요 ::::::::::::::::::::::::&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">::::::::::::::::::::::: 아래 부분을 변경 ::::::::::::::::::::::::&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">: 설치할 어플리케이션 목록&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">set&lt;/span> &lt;span class="nv">choco_install&lt;/span>&lt;span class="p">=&lt;/span>choco install -fy
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> bandizip
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> potplayer
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> everything
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> discord
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> leagueoflegends
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> steam
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> notion
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> zoom
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> webex
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> git
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> github-desktop
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> jetbrainstoolbox
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> vscode
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> visualstudio2022community
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> qbittorrent
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> obs-studio
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> slack
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> raidrive
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">: chocolatey에 없는 프로그램들 다운로드 링크 링크 열기&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://creativecloud.adobe.com/apps/download/creative-cloud?locale=ko#
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://www.jetbrains.com/ko-kr/toolbox-app/download/download-thanks.html?platform=windows
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://app-pc.kakaocdn.net/talk/win32/KakaoTalk_Setup.exe
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://www.onstove.com/download
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://anydesk.com/ko/downloads/thank-you?dv=win_exe
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://visualstudio.microsoft.com/ko/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">choco feature disable --name=allowGlobalConfirmation
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">RefreshEnv.cmd

@@ -95,6 +95,7 @@
 </span><span class=lnt>83
 </span><span class=lnt>84
 </span><span class=lnt>85
+</span><span class=lnt>86
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bat data-lang=bat><span class=line><span class=cl><span class=p>@</span><span class=k>echo</span> off
 </span></span><span class=line><span class=cl><span class=k>CLS</span>
 </span></span><span class=line><span class=cl><span class=k>ECHO</span> **************************************
@@ -148,33 +149,34 @@
 </span></span><span class=line><span class=cl>choco upgrade all -y
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=p>:</span><span class=c1>::::::::::::::::::::::: 이 부분을 변경하세요 ::::::::::::::::::::::::</span>
+</span></span><span class=line><span class=cl><span class=p>:</span><span class=c1>::::::::::::::::::::::: 아래 부분을 변경 ::::::::::::::::::::::::</span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=p>:</span><span class=c1>: 설치할 어플리케이션 목록</span>
 </span></span><span class=line><span class=cl><span class=k>set</span> <span class=nv>choco_install</span><span class=p>=</span>choco install -fy
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> bandizip
-</span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> potplayer
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> everything
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> discord
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> leagueoflegends
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> steam
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> notion
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> zoom
-</span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> webex
+</span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> git
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> github-desktop
-</span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> jetbrainstoolbox
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> vscode
-</span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> visualstudio2022community
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> qbittorrent
 </span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> obs-studio
+</span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> slack
+</span></span><span class=line><span class=cl><span class=nv>%choco_install%</span> raidrive
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=p>:</span><span class=c1>: chocolatey에 없는 프로그램들 다운로드 링크 링크 열기</span>
-</span></span><span class=line><span class=cl><span class=k>start</span> explorer https://creativecloud.adobe.com/apps/download/creative-cloud?locale=ko#
+</span></span><span class=line><span class=cl><span class=k>start</span> explorer https://www.jetbrains.com/ko-kr/toolbox-app/download/download-thanks.html?platform=windows
 </span></span><span class=line><span class=cl><span class=k>start</span> explorer https://app-pc.kakaocdn.net/talk/win32/KakaoTalk_Setup.exe
-</span></span><span class=line><span class=cl><span class=k>start</span> explorer https://www.onstove.com/download
+</span></span><span class=line><span class=cl><span class=k>start</span> explorer https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe
+</span></span><span class=line><span class=cl><span class=k>start</span> explorer https://anydesk.com/ko/downloads/thank-you?dv=win_exe
+</span></span><span class=line><span class=cl><span class=k>start</span> explorer https://visualstudio.microsoft.com/ko/
+</span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=p>:</span><span class=c1>::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span>
-</span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>choco feature disable --name=allowGlobalConfirmation
 </span></span><span class=line><span class=cl>RefreshEnv.cmd
