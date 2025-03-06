@@ -680,18 +680,18 @@ data-flex-basis="469px"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">set&lt;/span> &lt;span class="nv">choco_install&lt;/span>&lt;span class="p">=&lt;/span>choco install -fy
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> bandizip
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> everything
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> raidrive
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> discord
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> leagueoflegends
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> steam
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> notion
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> zoom
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> slack
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> git
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> github-desktop
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> vscode
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> qbittorrent
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> obs-studio
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> slack
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> raidrive
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> steam
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">%choco_install%&lt;/span> leagueoflegends
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">:&lt;/span>&lt;span class="c1">: chocolatey에 없는 프로그램들 다운로드 링크 링크 열기&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">start&lt;/span> explorer https://www.jetbrains.com/ko-kr/toolbox-app/download/download-thanks.html?platform=windows
