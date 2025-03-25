@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>운영체제 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</link><description>Recent content in 운영체제 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Tue, 12 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>인터럽트(interrupt)</title><link>https://gyeongmin.kr/p/interrupt/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/interrupt/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 인터럽트(interrupt)" />&lt;h3 id="인터럽트">인터럽트&lt;/h3>
+&lt;p>인터럽트는 컴퓨터 시스템에서 비동기적 이벤트를 처리하는 중요한 메커니즘이다.&lt;/p>
+&lt;p>하드웨어 장치나 외부 이벤트가 발생할 때, CPU가 현재 작업을 중단하고 새로운 작업을 처리하도록 유도한다.&lt;/p>
+&lt;p>예를 들어, 키보드 입력이나나 디스크 작업 완료 등의 사건이 발생하면 해당 장치 컨트롤러는 인터럽트를 발생시킨다.&lt;/p>
+&lt;h3 id="인터럽트-처리-과정">인터럽트 처리 과정&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>CPU가 인터럽트를 수신하면, 실행 중이던 작업을 중단한다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>인터럽트 번호를 인터럽트 벡터의 인덱스로 사용하여 ISR(인터럽트 서비스 루틴, 인터럽트 핸들러) 주소값을 얻는다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ISR로 점프한다. 이때, PC(Program Counter) 값은 자동으로 대피/저장된다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>진행중인 프로그램의 레지스터도 ?로 대피시킨다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>ISR에서 코드를 실행한다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>작업이 끝나면, 대피시켰던 레지스터를 복원한다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>IRET(Interrupt Return) 명령어를 실행한다. 대피시킨 PC 값이 복원된다.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="인터럽트-종류">인터럽트 종류&lt;/h3>
+&lt;table style="width: 50%; min-width: 24rem; margin: 0 auto; border-collapse: collapse;">
+&lt;thead>
+&lt;tr>
+&lt;th style="border: 1px solid black; padding: 8px;">벡터 번호&lt;/th>
+&lt;th style="border: 1px solid black; padding: 8px;">설명&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">0&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">나눗셈 에러&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">1&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">디버그 예외&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">2&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">Null 인터럽트&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">3&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">중단점(breakpoint)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">4&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">INTO-검출 오버플로&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">5&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">제한 범위 예외&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">6&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">유효하지 않은 opcode&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">7&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">장치 사용하지 않음&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">8&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">더블 폴트&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">9&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">부처리기 세그먼트 침범(예약됨)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">10&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">유효하지 않은 태스크 상태 세그먼트&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">11&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">존재하지 않는 세그먼트&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">12&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">스택 폴트&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">13&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">일반 보호&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">14&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">페이지 폴트&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="border: 1px solid black; padding: 8px;">32-255&lt;/td>
+&lt;td style="border: 1px solid black; padding: 8px;">Maskable 인터럽트&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item></channel></rss>
