@@ -4899,34 +4899,71 @@ $$&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="mi">30&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">80&lt;/span>&lt;span class="p">]])&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>인터럽트(interrupt)</title><link>https://gyeongmin.kr/p/interrupt/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/interrupt/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 인터럽트(interrupt)" />&lt;h3 id="인터럽트">인터럽트&lt;/h3>
+&lt;/div></description></item><item><title>인터럽트 (interrupt)</title><link>https://gyeongmin.kr/p/interrupt/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/interrupt/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 인터럽트 (interrupt)" />&lt;h2 id="인터럽트">인터럽트&lt;/h2>
 &lt;p>인터럽트는 컴퓨터 시스템에서 비동기적 이벤트를 처리하는 중요한 메커니즘이다.&lt;/p>
 &lt;p>하드웨어 장치나 외부 이벤트가 발생할 때, CPU가 현재 작업을 중단하고 새로운 작업을 처리하도록 유도한다.&lt;/p>
-&lt;p>예를 들어, 키보드 입력이나나 디스크 작업 완료 등의 사건이 발생하면 해당 장치 컨트롤러는 인터럽트를 발생시킨다.&lt;/p>
-&lt;h3 id="인터럽트-처리-과정">인터럽트 처리 과정&lt;/h3>
+&lt;p>예를 들어, 키보드 입력이나 디스크 작업 완료 등의 사건이 발생하면 해당 장치 컨트롤러는 인터럽트를 발생시킨다.&lt;/p>
+&lt;h2 id="인터럽트-처리-과정">인터럽트 처리 과정&lt;/h2>
 &lt;ol>
 &lt;li>
-&lt;p>CPU가 인터럽트를 수신하면, 실행 중이던 작업을 중단한다.&lt;/p>
+&lt;p>CPU가 인터럽트를 수신하면 실행 중이던 프로그램의 작업을 즉시 중단한다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>인터럽트 번호를 인터럽트 벡터의 인덱스로 사용하여 ISR(인터럽트 서비스 루틴, 인터럽트 핸들러) 주소값을 얻는다.&lt;/p>
+&lt;p>인터럽트 번호를 인터럽트 벡터의 인덱스로 사용하여 ISR(Interrupt Service Routine)의 시작 주소를 가져온다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>ISR로 점프한다. 이때, PC(Program Counter) 값은 자동으로 대피/저장된다.&lt;/p>
+&lt;p>CPU는 PC(Program Counter) 및 레지스터 상태를 스택에 저장하여 보관하고, ISR 코드가 위치한 주소로 제어를 넘긴다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>진행중인 프로그램의 레지스터도 ?로 대피시킨다.&lt;/p>
+&lt;p>진행 중인 프로그램의 레지스터 값들도 스택 또는 지정된 저장 공간에 대피시킨다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>ISR에서 코드를 실행한다.&lt;/p>
+&lt;p>ISR(인터럽트 서비스 루틴)이 실행되어 요청된 작업을 처리한다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>작업이 끝나면, 대피시켰던 레지스터를 복원한다.&lt;/p>
+&lt;p>ISR 작업이 끝나면, CPU는 스택에서 이전 프로그램의 레지스터 상태와 PC 값을 복원한다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>IRET(Interrupt Return) 명령어를 실행한다. 대피시킨 PC 값이 복원된다.&lt;/p>
+&lt;p>IRET(Interrupt Return) 명령어를 실행하여 원래의 프로그램 수행 위치로 복귀한다.&lt;/p>
 &lt;/li>
 &lt;/ol>
+&lt;h2 id="인터럽트-분류">인터럽트 분류&lt;/h2>
+&lt;p>인터럽트는 크게 세 가지 종류로 나눌 수 있다.&lt;/p>
+&lt;h3 id="내부-인터럽트-internal-interrupt-exception">내부 인터럽트 (Internal Interrupt, Exception)&lt;/h3>
+&lt;p>내부 인터럽트는 CPU가 명령어를 실행하는 도중에 내부적으로 발생하는 인터럽트다.
+크게 트랩(Trap)과 폴트(Fault), 어보트(Abort) 세 가지 유형으로 나뉜다.&lt;/p>
+&lt;h4 id="트랩-trap">트랩 (Trap)&lt;/h4>
+&lt;p>프로그래머가 의도적으로 만든 인터럽트. 주로 디버깅 또는 특정 시스템 콜 호출 시 사용된다.&lt;/p>
+&lt;ul>
+&lt;li>breakpoint(중단점)&lt;/li>
+&lt;/ul>
+&lt;h4 id="폴트-fault">폴트 (Fault)&lt;/h4>
+&lt;p>실행 중인 명령어에서 오류가 발생하여 이를 바로잡기 위해 발생한다. 문제가 해결되면 다시 명령을 재실행할 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>페이지 폴트(Page Fault)&lt;/li>
+&lt;li>일반 보호 예외(General Protection Fault)&lt;/li>
+&lt;/ul>
+&lt;h4 id="어보트-abort">어보트 (Abort)&lt;/h4>
+&lt;p>프로그램의 심각한 오류가 발생해 복구할 수 없을 때 CPU가 강제로 실행을 중단시키기 위한 인터럽트이다. 일반적으로 프로그램 종료로 이어진다.&lt;/p>
+&lt;ul>
+&lt;li>더블 폴트(Double Fault)&lt;/li>
+&lt;/ul>
+&lt;h3 id="외부-인터럽트-external-interrupt-hardware-interrupt">외부 인터럽트 (External Interrupt, Hardware Interrupt)&lt;/h3>
+&lt;p>컴퓨터 시스템 외부의 하드웨어 장치가 발생시키는 인터럽트다.
+예를 들어, 키보드 입력, 마우스 클릭, 타이머 시간 초과, 디스크 입출력 완료 등이 해당된다.&lt;/p>
+&lt;ul>
+&lt;li>타이머 인터럽트: 정기적으로 일정 시간 간격마다 CPU에게 인터럽트를 발생시켜 작업을 전환하게 해준다.&lt;/li>
+&lt;li>입출력 장치 인터럽트: 키보드, 마우스 등 주변 장치 입력 처리&lt;/li>
+&lt;/ul>
+&lt;h3 id="소프트웨어-인터럽트-software-interrupt">소프트웨어 인터럽트 (Software Interrupt)&lt;/h3>
+&lt;p>소프트웨어가 의도적으로 명령어로 인터럽트를 발생시키는 경우다.
+주로 운영체제 서비스 호출이나 시스템 호출(system call)을 요청할 때 사용된다.&lt;/p>
+&lt;ul>
+&lt;li>시스템 콜 인터럽트: 사용자 프로그램이 운영체제의 특정 기능을 사용하고자 인터럽트를 발생시킨다. (예: INT 0x80 리눅스 시스템 콜)&lt;/li>
+&lt;/ul>
+&lt;h3 id="인터럽트의-우선순위-priority">인터럽트의 우선순위 (priority)&lt;/h3>
+&lt;p>인터럽트가 여러 개 동시에 발생하면 CPU는 인터럽트의 우선순위(priority)에 따라 처리 순서를 결정한다. 일반적으로 더 중요하거나 긴급한 인터럽트가 우선 처리된다.&lt;/p>
+&lt;p>예를 들어, 타이머 인터럽트는 낮은 우선순위를 가질 수 있지만, 치명적인 하드웨어 오류를 나타내는 인터럽트(예: 더블 폴트)는 높은 우선순위를 가진다.&lt;/p>
 &lt;h3 id="인터럽트-종류">인터럽트 종류&lt;/h3>
 &lt;table style="width: 50%; min-width: 24rem; margin: 0 auto; border-collapse: collapse;">
 &lt;thead>
