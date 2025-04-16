@@ -4932,6 +4932,16 @@ $$&lt;/p>
 &lt;/ul>
 &lt;p>또한, 메모리가 부족한 상황에서는 프로세스를 디스크로 이동시켜 일시적으로 메모리에서 제거하는 &lt;strong>스와핑&lt;/strong>을 통해 프로세스의 수를 줄이는 중간 스케줄링이 수행되기도 한다.&lt;/p>
 &lt;h2 id="컨텍스트-스위칭">컨텍스트 스위칭&lt;/h2>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/process-scheduling/image.png"
+width="1264"
+height="778"
+srcset="https://gyeongmin.kr/p/process-scheduling/image_hu7ad9ba65f925b46b5a20f00a78b8aded_207105_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/process-scheduling/image_hu7ad9ba65f925b46b5a20f00a78b8aded_207105_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="컨텍스트 스위치 다이어그램"
+class="gallery-image"
+data-flex-grow="162"
+data-flex-basis="389px"
+>&lt;/p>
 &lt;p>컨텍스트 스위칭(Context Switch)이란 CPU가 하나의 프로세스에서 다른 프로세스로 전환될 때, 현재 프로세스의 상태를 저장하고, 새롭게 실행될 프로세스의 상태를 복원하는 작업이다. 컨텍스트 스위칭은 다음과 같은 과정을 포함한다:&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>상태 저장(state save)&lt;/strong>: 현재 실행 중인 프로세스의 CPU 레지스터 값과 상태 정보를 PCB에 저장한다.&lt;/li>
