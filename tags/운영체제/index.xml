@@ -60,7 +60,51 @@ data-flex-basis="264px"
 &lt;li>&lt;strong>메모리 관리 정보&lt;/strong>: 메모리 할당 정보(페이지 테이블 등)&lt;/li>
 &lt;li>&lt;strong>CPU 스케줄링 정보&lt;/strong>: 프로세스의 우선순위 및 스케줄링 정보&lt;/li>
 &lt;li>&lt;strong>입출력 상태 정보&lt;/strong>: 열린 파일 목록 등 프로세스가 사용하는 입출력 자원 정보&lt;/li>
-&lt;/ul></description></item><item><title>인터럽트 (interrupt)</title><link>https://gyeongmin.kr/p/interrupt/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/interrupt/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 인터럽트 (interrupt)" />&lt;h2 id="인터럽트">인터럽트&lt;/h2>
+&lt;/ul></description></item><item><title>프로세스의 개념에 대한 이해</title><link>https://gyeongmin.kr/p/process/</link><pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/process/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 프로세스의 개념에 대한 이해" />&lt;h2 id="프로세스">프로세스&lt;/h2>
+&lt;p>간단하게 말하자면, 프로세스는 &lt;strong>실행 중인&lt;/strong> 프로그램을 의미한다.&lt;/p>
+&lt;p>프로그램 자체는 단지 명령어가 저장된 파일에 불과한 수동적인 존재이지만, 이것이 메모리에 적재되어 실행될 때 프로그램 카운터와 메모리, 레지스터 같은 자원을 가진 능동적인 존재, 프로세스가 된다.&lt;/p>
+&lt;p>프로세스의 현재 활동의 상태는 프로그램 카운터 값과 프로세서 레지스터의 내용으로 나타낸다.&lt;/p>
+&lt;h2 id="프로세스의-메모리-구조">프로세스의 메모리 구조&lt;/h2>
+&lt;p>&lt;img src="https://gyeongmin.kr/image.png"
+loading="lazy"
+alt="프로세스 메모리 배치"
+>&lt;/p>
+&lt;p>프로세스는 메모리에서 다음과 같은 네 가지 주요 섹션으로 나뉜다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>텍스트(Text)&lt;/strong>: 실행할 프로그램 코드가 저장되는 곳으로, 실행 중 크기가 변하지 않는다.&lt;/li>
+&lt;li>&lt;strong>데이터(Data)&lt;/strong>: 전역 변수와 같은 데이터가 저장되는 곳으로, 초기화된 데이터와 초기화되지 않은 데이터로 나뉠 수 있다.&lt;/li>
+&lt;li>&lt;strong>힙(Heap)&lt;/strong>: 프로세스 실행 중 동적으로 할당되는 메모리가 저장되는 공간으로, 크기가 실행 중에 동적으로 변경된다.&lt;/li>
+&lt;li>&lt;strong>스택(Stack)&lt;/strong>: 함수 호출 시 임시 데이터(함수 매개변수, 복귀 주소, 지역 변수 등)를 저장하는 공간으로, 함수 호출 및 복귀에 따라 크기가 변한다.&lt;/li>
+&lt;/ul>
+&lt;p>스택과 힙 영역이 충돌하지 않도록 운영체제가 관리해야 한다.&lt;/p>
+&lt;h2 id="프로세스의-상태-변화">프로세스의 상태 변화&lt;/h2>
+&lt;p>&lt;img src="https://gyeongmin.kr/image-1.png"
+loading="lazy"
+alt="프로세스의 상태 다이어그램"
+>&lt;/p>
+&lt;p>프로세스는 실행되면서 상태가 변한다. 상태의 이름은 운영체제마다 다를 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>New&lt;/strong>: 프로세스가 생성되고 있는 상태.&lt;/li>
+&lt;li>&lt;strong>Running&lt;/strong>: 실제 CPU에서 명령어가 수행되는 상태.&lt;/li>
+&lt;li>&lt;strong>Waiting&lt;/strong>: 입출력 또는 특정 이벤트가 발생할 때까지 기다리는 상태.&lt;/li>
+&lt;li>&lt;strong>Ready&lt;/strong>: 실행될 준비가 되었지만 CPU가 할당되지 않은 상태.&lt;/li>
+&lt;li>&lt;strong>Terminated&lt;/strong>: 프로세스의 실행이 종료된 상태.&lt;/li>
+&lt;/ul>
+&lt;p>운영체제는 이러한 상태를 관리하면서 프로세스가 원활히 수행되도록 한다.&lt;/p>
+&lt;h2 id="프로세스-제어-블록pcb">프로세스 제어 블록(PCB)&lt;/h2>
+&lt;p>&lt;img src="https://gyeongmin.kr/image-2.png"
+loading="lazy"
+alt="Process Control Block"
+>&lt;/p>
+&lt;p>프로세스의 모든 정보는 운영체제 내부에서 &lt;strong>PCB(Process Control Block)&lt;/strong> 에 저장된다. PCB는 프로세스의 신분증과 같은 역할을 하며 다음 정보를 포함한다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>프로세스 상태&lt;/strong>: 현재 상태(New, Running, Waiting, Ready, Terminated 등)&lt;/li>
+&lt;li>&lt;strong>프로그램 카운터(PC)&lt;/strong>: 다음 실행할 명령어의 주소&lt;/li>
+&lt;li>&lt;strong>레지스터 정보&lt;/strong>: CPU 레지스터 상태&lt;/li>
+&lt;li>&lt;strong>메모리 관리 정보&lt;/strong>: 메모리 할당 정보(페이지 테이블 등)&lt;/li>
+&lt;li>&lt;strong>CPU 스케줄링 정보&lt;/strong>: 프로세스의 우선순위 및 스케줄링 정보&lt;/li>
+&lt;li>&lt;strong>입출력 상태 정보&lt;/strong>: 열린 파일 목록 등 프로세스가 사용하는 입출력 자원 정보&lt;/li>
+&lt;/ul></description></item><item><title>인터럽트의 개념과 분류, 처리 과정에 대하여</title><link>https://gyeongmin.kr/p/interrupt/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/interrupt/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 인터럽트의 개념과 분류, 처리 과정에 대하여" />&lt;h2 id="인터럽트">인터럽트&lt;/h2>
 &lt;p>인터럽트는 컴퓨터 시스템에서 비동기적 이벤트를 처리하는 중요한 메커니즘이다.&lt;/p>
 &lt;p>하드웨어 장치나 외부 이벤트가 발생할 때, CPU가 현재 작업을 중단하고 새로운 작업을 처리하도록 유도한다.&lt;/p>
 &lt;p>예를 들어, 키보드 입력이나 디스크 작업 완료 등의 사건이 발생하면 해당 장치 컨트롤러는 인터럽트를 발생시킨다.&lt;/p>
