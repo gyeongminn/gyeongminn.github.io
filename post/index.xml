@@ -4899,7 +4899,79 @@ $$&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">[&lt;/span>&lt;span class="mi">30&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">80&lt;/span>&lt;span class="p">]])&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description></item><item><title>프로세스 스케줄링의 개념</title><link>https://gyeongmin.kr/p/process-scheduling/</link><pubDate>Tue, 17 Oct 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/process-scheduling/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 프로세스 스케줄링의 개념" />&lt;h2 id="프로세스-스케줄링의-필요성">프로세스 스케줄링의 필요성&lt;/h2>
+&lt;/div></description></item><item><title>프로세스 간 통신 (IPC)</title><link>https://gyeongmin.kr/p/interprocess-communication/</link><pubDate>Sat, 04 Nov 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/interprocess-communication/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 프로세스 간 통신 (IPC)" />&lt;h1 id="프로세스-간-통신">프로세스 간 통신&lt;/h1>
+&lt;p>운영체제에서 프로세스란 실행 중인 프로그램을 의미한다.
+이 프로세스는 independent 할 수도 있고 cooperative 할 수도 있다. 이 중 cooperative 프로세스가 서로 데이터를 교환하거나 정보를 주고받는 방식을 프로세스 간 통신(IPC, Interprocess Communication)이라고 한다.
+운영체제는 정보 공유, 계산 속도 향상, 모듈성을 위해 IPC를 지원한다.&lt;/p>
+&lt;p>IPC는 기본적으로 &lt;strong>공유 메모리&lt;/strong>, &lt;strong>메시지 전달&lt;/strong> 방식의 두 모델이 있다.&lt;/p>
+&lt;p>&lt;img src="https://gyeongmin.kr/p/interprocess-communication/image.png"
+width="773"
+height="478"
+srcset="https://gyeongmin.kr/p/interprocess-communication/image_hu0b7c6cc069f5dec8e3dd30b0c309f042_62527_480x0_resize_box_3.png 480w, https://gyeongmin.kr/p/interprocess-communication/image_hu0b7c6cc069f5dec8e3dd30b0c309f042_62527_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="(a)Shared Memory, (b)Message Passing"
+class="gallery-image"
+data-flex-grow="161"
+data-flex-basis="388px"
+>&lt;/p>
+&lt;h2 id="공유-메모리">공유 메모리&lt;/h2>
+&lt;p>공유 메모리(Shared Memory) 방식은 프로세스 간 통신을 위해 메모리의 특정 영역을 공유하는 방식이다. 프로세스들이 공통의 메모리 영역을 읽고 쓰면서 데이터를 교환한다.&lt;/p>
+&lt;ul>
+&lt;li>장점: 시스템 호출(System call)이 거의 필요 없어서 매우 빠르다.&lt;/li>
+&lt;li>단점: 프로세스 간 데이터 접근 충돌 문제가 발생할 수 있어 이를 방지하기 위한 동기화가 필요하다.&lt;/li>
+&lt;/ul>
+&lt;p>공유 메모리는 특히 많은 데이터를 빠르게 교환할 때 효과적이다.&lt;/p>
+&lt;h3 id="공유-메모리-방식의-생산자-소비자-문제">공유 메모리 방식의 생산자-소비자 문제&lt;/h3>
+&lt;p>공유 메모리를 사용하면 생산자-소비자 문제를 고려해야 한다. 생산자는 데이터를 생성해 공유 메모리에 놓고, 소비자는 이 데이터를 꺼내어 처리한다.&lt;/p>
+&lt;p>이때 생산자와 소비자가 동기화되지 않으면 다음과 같은 문제가 발생한다.&lt;/p>
+&lt;ul>
+&lt;li>소비자가 아직 생산되지 않은 데이터를 읽으려 함&lt;/li>
+&lt;li>생산자가 가득 찬 버퍼에 데이터를 넣으려 함&lt;/li>
+&lt;/ul>
+&lt;p>이를 방지하기 위해 세마포어 등 &lt;strong>동기화 메커니즘&lt;/strong>을 사용하여 생산자와 소비자 간 작업이 원활히 진행되도록 관리해야 한다.&lt;/p>
+&lt;hr>
+&lt;h2 id="메시지-전달">메시지 전달&lt;/h2>
+&lt;p>메시지 전달(Message Passing) 방식은 프로세스 간에 데이터를 메시지 형태로 전달하여 통신하는 방식이다.&lt;/p>
+&lt;ul>
+&lt;li>장점: 데이터 접근 충돌 문제가 없어 관리가 쉽고 간단하며, 분산 시스템에서 구현이 용이하다.&lt;/li>
+&lt;li>단점: 메시지를 주고받을 때마다 커널의 시스템 호출이 필요해 오버헤드가 크고, 속도가 느릴 수 있다.&lt;/li>
+&lt;/ul>
+&lt;p>메시지 전달 방식은 소규모 데이터나 명확한 메시지 전달이 필요한 상황에서 적합하다.&lt;/p>
+&lt;h3 id="메시지-전달-시스템의-종류">메시지 전달 시스템의 종류&lt;/h3>
+&lt;p>서로를 가리킬 방법에 따라 직접 혹은 간접으로 나눌 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>직접 통신: 프로세스가 메시지를 주고받을 상대 프로세스를 직접 지정한다.&lt;/li>
+&lt;li>간접 통신: 메시지를 메일박스(또는 포트)를 통해 전달한다. 프로세스들은 공유된 메일박스를 통해 통신한다.&lt;/li>
+&lt;/ul>
+&lt;p>혹은 블락킹 여부로 나눌 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>동기식: 메시지를 보내거나 받을 때 상대 프로세스가 준비될 때까지 대기(Blocking)한다.&lt;/li>
+&lt;li>비동기식: 메시지를 보내거나 받을 때 상대 프로세스가 준비되지 않았더라도 바로 다음 작업을 진행(Non-blocking)한다.&lt;/li>
+&lt;/ul>
+&lt;h2 id="파이프를-통한-ipc">파이프를 통한 IPC&lt;/h2>
+&lt;p>파이프(Pipes)는 메세지 패싱의 한 예시로, 데이터를 한 방향으로 흘려보내는 통로이다.&lt;/p>
+&lt;h3 id="일반-파이프">일반 파이프&lt;/h3>
+&lt;p>일반 파이프(Ordinary Pipe)는 주로 부모와 자식 프로세스 간의 단방향 통신에 사용된다.&lt;/p>
+&lt;ul>
+&lt;li>단방향으로만 데이터를 전달한다. (양방향 통신 시 두 개의 파이프 필요)&lt;/li>
+&lt;li>프로세스 간에 반드시 부모-자식 관계가 있어야 한다.&lt;/li>
+&lt;li>같은 시스템 내부에서만 통신 가능하다.&lt;/li>
+&lt;/ul>
+&lt;p>예를 들어, &lt;code>ls | more&lt;/code> 명령어는 &lt;code>ls&lt;/code>의 출력을 &lt;code>more&lt;/code>의 입력으로 전달하는 파이프를 사용한다.&lt;/p>
+&lt;h3 id="지명-파이프">지명 파이프&lt;/h3>
+&lt;p>지명 파이프(Named Pipe)는 파일 시스템에 이름을 가진 형태로 존재해, 부모-자식 관계 없이 서로 다른 프로세스 간 통신에 사용할 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>파일 시스템에서 이름을 가지고 존재한다.&lt;/li>
+&lt;li>프로세스가 종료되어도 지명 파이프는 계속 유지된다.&lt;/li>
+&lt;li>같은 시스템 내부 또는 네트워크를 통해 서로 다른 시스템 간에도 통신 가능하다.&lt;/li>
+&lt;/ul>
+&lt;h2 id="클라이언트-서버-시스템의-ipc">클라이언트-서버 시스템의 IPC&lt;/h2>
+&lt;p>클라이언트-서버 통신에서는 일반적으로 소켓과 원격 프로시저 호출(Remote Procedure Call, RPC)을 사용한다.&lt;/p>
+&lt;h3 id="소켓">소켓&lt;/h3>
+&lt;p>소켓(Socket)은 네트워크를 통해 서로 다른 시스템의 프로세스들이 통신할 때 사용되는 End Point다. 소켓은 IP 주소와 포트 번호를 이용하여 식별된다. 웹 서버(HTTP), FTP 서버 등의 통신에 널리 사용된다.&lt;/p>
+&lt;h3 id="원격-프로시저-호출">원격 프로시저 호출&lt;/h3>
+&lt;p>RPC는 네트워크상 다른 시스템에 존재하는 프로세스의 함수를 마치 자신의 로컬 함수처럼 호출할 수 있게 한다.&lt;/p>
+&lt;p>RPC는 내부적으로 매개변수를 변환하는 마샬링(Marshalling)을 수행한다. 또한 복잡한 네트워크 통신을 추상화하여 프로그래머에게 편리한 인터페이스를 제공한다. RPC를 사용하는 예시로는 Android의 Binder가 있다.&lt;/p></description></item><item><title>프로세스 스케줄링의 개념</title><link>https://gyeongmin.kr/p/process-scheduling/</link><pubDate>Tue, 17 Oct 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/process-scheduling/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 프로세스 스케줄링의 개념" />&lt;h2 id="프로세스-스케줄링의-필요성">프로세스 스케줄링의 필요성&lt;/h2>
 &lt;p>운영체제는 여러 프로세스를 관리하며 CPU의 효율적인 활용을 위해 프로세스 스케줄링을 수행한다.&lt;/p>
 &lt;p>프로세스 스케줄링은 여러 프로세스가 동시에 메모리에 존재하는 다중 프로그래밍 환경에서 더욱 중요하다. 다중 프로그래밍에선 항상 어떤 프로세스를 실행하도록 하여 CPU이용을 최대화해야 한다. 또한 시분할 시스템에서는 프로세스들 사이에서 CPU 코어를 빈번하게 교체하여 각 사용자에게 빠른 응답을 제공해야 한다. 이러한 목적을 달성하기 위해 &lt;strong>프로세스 스케줄러&lt;/strong>는 코어에서 실행 가능한 여러 프로세스 중에서 하나의 프로세스를 선택한다.&lt;/p>
 &lt;p>다중 코어 시스템에서는 동시에 여러 프로세스를 실행할 수 있지만, 단일 코어 시스템에서는 동시에 하나의 프로세스만 실행할 수 있다.&lt;/p>
