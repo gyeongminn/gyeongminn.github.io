@@ -40,7 +40,7 @@ data-flex-basis="448px"
 &lt;/ul>
 &lt;p>이 법칙에 따르면 $N$이 무한대에 가까워지면 속도는 $\frac{1}{S}$에 수렴한다는 것이다. 순차 작업의 비율이 존재하는 한, 아무리 많은 코어를 추가해도 성능 향상에는 명확한 한계가 있다.&lt;/p>
 &lt;h2 id="병행성과-병렬성">병행성과 병렬성&lt;/h2>
-&lt;p>병행성(concurrency)과 병렬성(parallelism)은 비슷하지만 서로 다른 개념이다.&lt;/p>
+&lt;p>병행성과 병렬성은 비슷하지만 서로 다른 개념이다.&lt;/p>
 &lt;p>&lt;strong>병행성 (concurrency)&lt;/strong> 은 여러 작업이 시간상으로 겹쳐 진행되는 것을 말한다. 하지만 반드시 동시에 수행되는 것은 아니다. 예를 들어, 단일 코어 프로세서에서도 여러 작업을 병행할 수 있는데, CPU가 빠르게 여러 작업을 번갈아 처리하면서 병행성의 효과를 낸다.&lt;/p>
 &lt;p>아래 그림에서는 단일 코어 시스템에서 여러 작업(T₁, T₂, T₃, T₄)이 번갈아 수행되는 병행 실행을 나타낸다.&lt;/p>
 &lt;p>&lt;img src="https://gyeongmin.kr/p/thread-and-concurrency/image-1.png"
