@@ -3304,7 +3304,7 @@ $$&lt;/p>
 &lt;h3 id="통계-기반-vs-추론-기반">통계 기반 vs 추론 기반&lt;/h3>
 &lt;p>통계 기반 기법과 추론 기반 기법인 word2vec은 학습과 갱신 방식에서 차이를 보인다.&lt;/p>
 &lt;p>통계 기반은 새 단어 추가 시 처음부터 다시 계산해야 하지만, word2vec은 기존 가중치를 활용해 효율적으로 갱신할 수 있다. 단어의 유사성과 복잡한 패턴 인코딩에서도 word2vec이 더 복잡한 관계를 파악할 수 있으며, &amp;lsquo;king - man + woman = queen&amp;rsquo; 같은 유추 문제를 풀 수 있다.&lt;/p>
-&lt;p>그러나 실제 유사성 평가에서는 두 기법 간 우열을 가리기 어렵다. 추론 기반과 통계 기반은 서로 관련되어 있으며, 이를 바탕으로 추론 기반과 통계 기반을 융합한 GloVe 기법이 등장하여 두 방법의 장점을 결합했다.&lt;/p></description></item><item><title>CPU 스케줄링과 스케줄링 유형</title><link>https://gyeongmin.kr/p/cpu-scheduling/</link><pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/cpu-scheduling/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post CPU 스케줄링과 스케줄링 유형" />&lt;h2 id="cpu-스케줄링이란">CPU 스케줄링이란?&lt;/h2>
+&lt;p>그러나 실제 유사성 평가에서는 두 기법 간 우열을 가리기 어렵다. 추론 기반과 통계 기반은 서로 관련되어 있으며, 이를 바탕으로 추론 기반과 통계 기반을 융합한 GloVe 기법이 등장하여 두 방법의 장점을 결합했다.&lt;/p></description></item><item><title>CPU 스케줄링과 스케줄링 알고리즘</title><link>https://gyeongmin.kr/p/cpu-scheduling/</link><pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/cpu-scheduling/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post CPU 스케줄링과 스케줄링 알고리즘" />&lt;h2 id="cpu-스케줄링이란">CPU 스케줄링이란?&lt;/h2>
 &lt;p>CPU 스케줄링이란 운영체제가 CPU 자원을 효율적으로 관리하기 위해 프로세스를 선택하여 CPU를 할당하는 과정이다. 다중 프로그래밍 환경에서는 하나의 프로세스가 I/O 작업을 기다리는 동안 CPU가 놀지 않고 다른 프로세스를 실행하여 CPU 이용률을 최대화한다.&lt;/p>
 &lt;h2 id="cpu-io-버스트-사이클">CPU-I/O 버스트 사이클&lt;/h2>
 &lt;p>CPU 스케줄링의 핵심은 프로세스가 CPU 실행과 I/O 대기를 반복하는 특성에 기반한다. 프로세스는 CPU 버스트로 시작하여, 이후 I/O 버스트와 CPU 버스트가 교차하며 진행된다. 일반적으로 CPU 버스트는 짧은 경우가 많고 긴 경우는 드물다. 이는 CPU 스케줄링 알고리즘 설계에 중요한 영향을 미친다.&lt;/p>
