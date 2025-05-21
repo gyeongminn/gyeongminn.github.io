@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>운영체제 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</link><description>Recent content in 운영체제 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Tue, 05 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>CPU 스케줄링</title><link>https://gyeongmin.kr/p/cpu-scheduling/</link><pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/cpu-scheduling/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post CPU 스케줄링" />&lt;h2 id="cpu-스케줄링이란">CPU 스케줄링이란?&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>운영체제 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/tags/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</link><description>Recent content in 운영체제 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Tue, 05 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/tags/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>CPU 스케줄링과 스케줄링 유형</title><link>https://gyeongmin.kr/p/cpu-scheduling/</link><pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/cpu-scheduling/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post CPU 스케줄링과 스케줄링 유형" />&lt;h2 id="cpu-스케줄링이란">CPU 스케줄링이란?&lt;/h2>
 &lt;p>CPU 스케줄링이란 운영체제가 CPU 자원을 효율적으로 관리하기 위해 프로세스를 선택하여 CPU를 할당하는 과정이다. 다중 프로그래밍 환경에서는 하나의 프로세스가 I/O 작업을 기다리는 동안 CPU가 놀지 않고 다른 프로세스를 실행하여 CPU 이용률을 최대화한다.&lt;/p>
 &lt;h2 id="cpu-io-버스트-사이클">CPU-I/O 버스트 사이클&lt;/h2>
 &lt;p>CPU 스케줄링의 핵심은 프로세스가 CPU 실행과 I/O 대기를 반복하는 특성에 기반한다. 프로세스는 CPU 버스트로 시작하여, 이후 I/O 버스트와 CPU 버스트가 교차하며 진행된다. 일반적으로 CPU 버스트는 짧은 경우가 많고 긴 경우는 드물다. 이는 CPU 스케줄링 알고리즘 설계에 중요한 영향을 미친다.&lt;/p>
@@ -11,7 +11,8 @@
 &lt;p>&lt;strong>선입선처리(FCFS)&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>가장 간단한 방법으로, 먼저 도착한 프로세스부터 처리한다.&lt;/li>
-&lt;li>단점: 긴 프로세스 뒤에 짧은 프로세스들이 기다리는 convoy effect가 발생할 수 있다.&lt;/li>
+&lt;li>단점: 긴 프로세스 뒤에 짧은 프로세스들이 기다리는 convoy effect가 발생할 수 있다.
+convoy effect는 호위 효과라고도 하는데, 마트에서 나는 음료수 한 캔만 계산하면 되는데 앞사람들이 카트 가득 물건을 싣고 계산하고 있는 경우와 같다.&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>
@@ -59,7 +60,7 @@
 &lt;li>대기 시간(wating time): 프로세스가 준비 큐에서 대기한 총 시간&lt;/li>
 &lt;li>응답 시간(response time): 사용자의 요청 후 첫 응답이 나타날 때까지 걸리는 시간&lt;/li>
 &lt;/ul>
-&lt;p>이러한 기준들을 통해 적절한 스케줄링 알고리즘을 선택하고 시스템 성능을 최적화할 수 있다.&lt;/p></description></item><item><title>스레드와 동시성 (Thread and Concurrency)</title><link>https://gyeongmin.kr/p/thread-and-concurrency/</link><pubDate>Sat, 18 Nov 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/thread-and-concurrency/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 스레드와 동시성 (Thread and Concurrency)" />&lt;h2 id="스레드란">스레드란&lt;/h2>
+&lt;p>이러한 기준들을 통해 상황에 맞는 적절한 스케줄링 알고리즘을 선택하는 것이 바람직하다.&lt;/p></description></item><item><title>스레드와 동시성 (Thread and Concurrency)</title><link>https://gyeongmin.kr/p/thread-and-concurrency/</link><pubDate>Sat, 18 Nov 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/thread-and-concurrency/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 스레드와 동시성 (Thread and Concurrency)" />&lt;h2 id="스레드란">스레드란&lt;/h2>
 &lt;p>스레드(Thread)는 CPU가 작업을 수행하는 가장 기본적인 단위이다. 하나의 스레드는 스레드 ID, 프로그램 카운터(PC), 레지스터, 스택으로 구성된다. 여러 개의 스레드는 하나의 프로세스 안에서 생성되어 동작할 수 있는데, 이들은 같은 프로세스에 속해 있기 때문에 코드와 데이터, 파일 및 자원 등을 공유한다.&lt;/p>
 &lt;p>&lt;img src="https://gyeongmin.kr/p/thread-and-concurrency/image.png"
 width="840"
