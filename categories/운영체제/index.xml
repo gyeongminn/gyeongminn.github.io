@@ -51,13 +51,13 @@
 &lt;/li>
 &lt;/ol>
 &lt;h2 id="스케줄링-성능-평가-기준">스케줄링 성능 평가 기준&lt;/h2>
-&lt;p>스케줄링 알고리즘의 성능을 평가할 때 다음의 기준을 사용한다:&lt;/p>
+&lt;p>스케줄링 알고리즘의 성능을 평가할 때 기준은 여러 가지가 있다.&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>CPU 이용률:&lt;/strong> CPU를 최대한 효율적으로 사용하는 비율&lt;/li>
-&lt;li>&lt;strong>처리량:&lt;/strong> 단위 시간당 처리되는 프로세스 수&lt;/li>
-&lt;li>&lt;strong>총처리 시간:&lt;/strong> 프로세스가 시스템에 들어와서 완전히 끝날 때까지의 총 시간&lt;/li>
-&lt;li>&lt;strong>대기 시간:&lt;/strong> 프로세스가 준비 큐에서 대기한 총 시간&lt;/li>
-&lt;li>&lt;strong>응답 시간:&lt;/strong> 사용자의 요청 후 첫 응답이 나타날 때까지 걸리는 시간&lt;/li>
+&lt;li>CPU 이용률(utilization): CPU를 최대한 효율적으로 사용하는 비율&lt;/li>
+&lt;li>처리량(throughput): 단위 시간당 처리되는 프로세스 수&lt;/li>
+&lt;li>총처리 시간(turnaround time): 프로세스가 시스템에 들어와서 완전히 끝날 때까지의 총 시간&lt;/li>
+&lt;li>대기 시간(wating time): 프로세스가 준비 큐에서 대기한 총 시간&lt;/li>
+&lt;li>응답 시간(response time): 사용자의 요청 후 첫 응답이 나타날 때까지 걸리는 시간&lt;/li>
 &lt;/ul>
 &lt;p>이러한 기준들을 통해 적절한 스케줄링 알고리즘을 선택하고 시스템 성능을 최적화할 수 있다.&lt;/p></description></item><item><title>스레드와 동시성 (Thread and Concurrency)</title><link>https://gyeongmin.kr/p/thread-and-concurrency/</link><pubDate>Sat, 18 Nov 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/thread-and-concurrency/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 스레드와 동시성 (Thread and Concurrency)" />&lt;h2 id="스레드란">스레드란&lt;/h2>
 &lt;p>스레드(Thread)는 CPU가 작업을 수행하는 가장 기본적인 단위이다. 하나의 스레드는 스레드 ID, 프로그램 카운터(PC), 레지스터, 스택으로 구성된다. 여러 개의 스레드는 하나의 프로세스 안에서 생성되어 동작할 수 있는데, 이들은 같은 프로세스에 속해 있기 때문에 코드와 데이터, 파일 및 자원 등을 공유한다.&lt;/p>
