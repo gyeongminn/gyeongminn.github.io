@@ -2765,7 +2765,7 @@ data-flex-basis="517px"
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>본 논문에서는 Anomaly Detection과 Anomaly Aegmentation을 위한 간단한 baseline을 제안하였으며, 이 방법은 현재 SOTA 방법들을 능가하며, 한계점을 해결했다. 또한 pre-trained된 Feature을 적응시키고 Catastrophic Collapse를 완화하는 방법을 제안하였다.&lt;/p>
 &lt;p>하지만 이 연구의 주요 한계점은 pre-trained된 강력한 Feature Extractor가 필요하다는 것이다.&lt;/p></description></item><item><title>스레드 스케줄링과 멀티코어</title><link>https://gyeongmin.kr/p/thread-scheduling-and-multicore/</link><pubDate>Thu, 21 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/thread-scheduling-and-multicore/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 스레드 스케줄링과 멀티코어" />&lt;h1 id="스레드-스케줄링과-멀티코어">스레드 스케줄링과 멀티코어&lt;/h1>
-&lt;p>운영체제가 여러 작업을 효율적으로 처리할 수 있도록 지원하기 위해, 스레드의 실행 순서를 결정하는 작업을 스레드 스케줄링이라고 부른다. 특히 멀티코어 환경에서 스레드 스케줄링은 더욱 복잡하고 중요해진다.&lt;/p>
+&lt;p>운영체제가 여러 작업을 효율적으로 처리할 수 있도록 지원하기 위해, 스레드의 실행 순서를 결정하는 작업을 스레드 스케줄링이라고 부른다. 특히 멀티코어 환경에서 스레드 스케줄링은 더욱 중요하다.&lt;/p>
 &lt;h2 id="경쟁-범위-pcs와-scs">경쟁 범위: PCS와 SCS&lt;/h2>
 &lt;p>스레드 스케줄링의 개념을 제대로 이해하려면, 먼저 경쟁 범위(contention scope)를 이해해야 한다. 이는 CPU의 실행 권한을 얻기 위한 경쟁이 벌어지는 범위를 뜻한다.&lt;/p>
 &lt;ul>
