@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>운영체제 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/categories/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</link><description>Recent content in 운영체제 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Tue, 05 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>CPU 스케줄링과 스케줄링 알고리즘</title><link>https://gyeongmin.kr/p/cpu-scheduling/</link><pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/cpu-scheduling/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post CPU 스케줄링과 스케줄링 알고리즘" />&lt;h2 id="cpu-스케줄링이란">CPU 스케줄링이란?&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>운영체제 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/categories/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</link><description>Recent content in 운영체제 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Thu, 21 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>스레드 스케줄링과 멀티코어</title><link>https://gyeongmin.kr/p/thread-scheduling-and-multicore/</link><pubDate>Thu, 21 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/thread-scheduling-and-multicore/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 스레드 스케줄링과 멀티코어" />&lt;h1 id="스레드-스케줄링과-멀티코어">스레드 스케줄링과 멀티코어&lt;/h1>
+&lt;p>운영체제가 여러 작업을 효율적으로 처리할 수 있도록 지원하기 위해, 스레드의 실행 순서를 결정하는 작업을 스레드 스케줄링이라고 부른다. 특히 멀티코어 환경에서 스레드 스케줄링은 더욱 복잡하고 중요해진다.&lt;/p>
+&lt;h2 id="경쟁-범위-pcs와-scs">경쟁 범위: PCS와 SCS&lt;/h2>
+&lt;p>스레드 스케줄링의 개념을 제대로 이해하려면, 먼저 경쟁 범위(contention scope)를 이해해야 한다. 이는 CPU의 실행 권한을 얻기 위한 경쟁이 벌어지는 범위를 뜻한다.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>PCS(Process-Contention Scope)&lt;/strong>
+이는 같은 프로세스 내부의 사용자 수준 스레드 간 경쟁이다. PCS는 스레드 라이브러리가 직접 관리하며, 가장 우선순위가 높은 사용자 스레드가 먼저 실행된다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>SCS(System-Contention Scope)&lt;/strong>
+시스템 전역에서 모든 스레드가 경쟁하는 방식으로, 운영체제가 직접 관리한다. 커널 스레드를 직접 물리적 CPU 코어에 배치한다. Windows와 Linux는 보통 SCS만을 사용한다.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>Pthreads에서는 다음 두 가지로 이를 명시적으로 지정할 수 있다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>PTHREAD_SCOPE_PROCESS&lt;/code> (PCS)&lt;/li>
+&lt;li>&lt;code>PTHREAD_SCOPE_SYSTEM&lt;/code> (SCS)&lt;/li>
+&lt;/ul>
+&lt;h2 id="다중-처리기-스케줄링">다중 처리기 스케줄링&lt;/h2>
+&lt;p>멀티코어 CPU의 등장으로, 운영체제는 여러 코어 간에 스레드를 효과적으로 배분해야 하는 과제를 안게 되었다. 멀티코어 환경에서는 다음과 같은 주요 스케줄링 이슈가 발생한다.&lt;/p>
+&lt;h3 id="부하-균등화">부하 균등화&lt;/h3>
+&lt;p>부하 균등화(Load Balancing)는 멀티코어 시스템에서 매우 중요하다. 프로세서 간 작업 부하를 균등하게 나누지 않으면, 일부 코어는 유휴 상태가 되고, 다른 코어는 과부하 상태가 된다.&lt;/p>
+&lt;p>일반적으로 아래 두 가지의 부하 균등화를 위한 방법이 있다. 이 두 방법은 동시에 사용될 수도 있다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Push Migration&lt;/strong>: 과부하인 프로세서에서 덜 바쁜 프로세서로 스레드를 이동한다.&lt;/li>
+&lt;li>&lt;strong>Pull Migration&lt;/strong>: 한가한 프로세서가 바쁜 프로세서에서 스레드를 가져온다.&lt;/li>
+&lt;/ul>
+&lt;h3 id="처리기-선호도">처리기 선호도&lt;/h3>
+&lt;p>스레드는 특정 프로세서에서 실행되던 메모리 데이터를 캐시에 저장한다. 만약 스레드가 다른 프로세서로 이동하면 캐시 데이터를 다시 불러오는 작업이 필요해 성능이 저하된다. 이를 방지하기 위해 운영체제는 가능한 한 스레드를 동일 프로세서에서 실행시키려 하는데, 이것을 처리기 선호도(Processor Affinity) 라고 한다.&lt;/p>
+&lt;p>처리기 선호도는 soft와 hard로 나뉜다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>약한 선호도(soft affinity)&lt;/strong>: 같은 프로세서에서 수행되도록 노력하지만, 이주도 허용된다.&lt;/li>
+&lt;li>&lt;strong>강한 선호도(hard affinity)&lt;/strong>: 특정 프로세서에서만 실행되도록 제한한다.&lt;/li>
+&lt;/ul>
+&lt;h2 id="numa와-멀티코어">NUMA와 멀티코어&lt;/h2>
+&lt;p>최근 멀티코어 시스템은 NUMA(non-uniform memory access) 구조를 활용한다. 이는 각 CPU가 가까운 메모리에 빠르게 접근할 수 있지만, 멀리 떨어진 메모리는 느리게 접근할 수 있다는 구조다. 따라서, 스케줄러가 NUMA를 잘 활용하면 프로세서와 메모리 간 접근 속도를 최적화할 수 있다.&lt;/p>
+&lt;p>하지만 부하 균등화와 처리기 선호도는 종종 상충 관계를 갖는다. 즉, 선호도를 유지하면 캐시 효율은 좋아지지만 부하 균등화가 힘들어지고, 반대로 부하를 균등하게 맞추려 하면 캐시 효율이 떨어지는 문제가 생긴다.&lt;/p>
+&lt;h2 id="최신-운영체제의-멀티코어-스케줄링-사례">최신 운영체제의 멀티코어 스케줄링 사례&lt;/h2>
+&lt;h3 id="linux의-cfs-스케줄러">Linux의 CFS 스케줄러&lt;/h3>
+&lt;p>Linux는 CFS(Completely Fair Scheduler)를 사용하여 스레드 간 CPU 시간 분배를 공정하게 유지한다. CFS는 스레드마다 가상 실행 시간(vruntime)을 관리하여 가장 작은 vruntime을 가진 스레드를 우선 실행한다. 또한 NUMA를 고려하여 메모리 접근 시간과 캐시 효율을 균형 있게 맞춘다.&lt;/p>
+&lt;h3 id="windows의-우선순위-스케줄링">Windows의 우선순위 스케줄링&lt;/h3>
+&lt;p>Windows는 우선순위 기반의 선점형 스케줄링을 사용한다. 32단계의 우선순위를 가지며, 스레드는 우선순위에 따라 실행 순서가 정해진다. 또한 멀티코어 환경에서는 각 스레드가 가능한 한 동일 코어에서 실행되도록 노력하며, SMT(동시 멀티스레딩)를 지원하는 하드웨어에서는 같은 물리적 코어 내 하드웨어 스레드를 활용하여 성능을 최적화한다.&lt;/p></description></item><item><title>CPU 스케줄링과 스케줄링 알고리즘</title><link>https://gyeongmin.kr/p/cpu-scheduling/</link><pubDate>Tue, 05 Dec 2023 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/cpu-scheduling/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post CPU 스케줄링과 스케줄링 알고리즘" />&lt;h2 id="cpu-스케줄링이란">CPU 스케줄링이란?&lt;/h2>
 &lt;p>CPU 스케줄링이란 운영체제가 CPU 자원을 효율적으로 관리하기 위해 프로세스를 선택하여 CPU를 할당하는 과정이다. 다중 프로그래밍 환경에서는 하나의 프로세스가 I/O 작업을 기다리는 동안 CPU가 놀지 않고 다른 프로세스를 실행하여 CPU 이용률을 최대화한다.&lt;/p>
 &lt;h2 id="cpu-io-버스트-사이클">CPU-I/O 버스트 사이클&lt;/h2>
 &lt;p>CPU 스케줄링의 핵심은 프로세스가 CPU 실행과 I/O 대기를 반복하는 특성에 기반한다. 프로세스는 CPU 버스트로 시작하여, 이후 I/O 버스트와 CPU 버스트가 교차하며 진행된다. 일반적으로 CPU 버스트는 짧은 경우가 많고 긴 경우는 드물다. 이는 CPU 스케줄링 알고리즘 설계에 중요한 영향을 미친다.&lt;/p>
