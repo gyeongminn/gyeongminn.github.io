@@ -2290,6 +2290,109 @@ $$&lt;/p>
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">optimizer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">optim&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">AdamW&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">model&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">parameters&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="n">lr&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">0.001&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">weight_decay&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mf">0.01&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
+&lt;/div></description></item><item><title>프로세스의 동기화와 임계구역 문제 해결 방법</title><link>https://gyeongmin.kr/p/synchronization-tools/</link><pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/synchronization-tools/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 프로세스의 동기화와 임계구역 문제 해결 방법" />&lt;p>여러 프로세스나 스레드가 동시에 실행되는 시스템에서는, 하나의 데이터를 여러 프로세스가 동시에 접근할 때 문제가 발생할 수 있다. 이런 현상을 **경쟁 조건(race condition)**이라 부른다. 이 경쟁 조건을 방지하기 위해 프로세스의 실행을 조정하는 메커니즘이 필요하며, 이를 **프로세스 동기화(process synchronization)**라고 한다.&lt;/p>
+&lt;h2 id="임계구역critical-section이란">임계구역(Critical Section)이란?&lt;/h2>
+&lt;p>임계구역이란 하나 이상의 프로세스나 스레드가 공유된 자원을 접근하거나 수정하는 코드 부분을 말한다. 여러 프로세스가 동시에 임계구역에 진입하면 데이터 일관성이 깨질 수 있기 때문에, 임계구역에서는 반드시 한 프로세스만 실행될 수 있도록 해야 한다. 이를 보장하기 위한 조건으로는 다음의 세 가지가 있다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>상호 배제(mutual exclusion)&lt;/strong>: 특정 프로세스가 임계구역을 실행 중이라면 다른 프로세스는 진입할 수 없다.&lt;/li>
+&lt;li>&lt;strong>진행(progress)&lt;/strong>: 아무 프로세스도 임계구역에서 실행되지 않을 때, 임계구역에 진입하려는 프로세스가 있다면, 어느 프로세스라도 진입할 수 있는 결정은 반드시 이루어져야 한다.&lt;/li>
+&lt;li>&lt;strong>한정된 대기(bounded waiting)&lt;/strong>: 임계구역 진입을 요청한 프로세스가 무한정 대기하지 않고, 제한된 횟수 내에 진입할 수 있어야 한다.&lt;/li>
+&lt;/ul>
+&lt;h2 id="하드웨어를-통한-동기화-방법">하드웨어를 통한 동기화 방법&lt;/h2>
+&lt;p>프로세스 동기화를 소프트웨어만으로 해결하는 방법도 있지만, 현대 시스템은 하드웨어적인 지원을 통해 동기화를 더욱 효율적이고 안정적으로 구현한다. 다음은 대표적인 하드웨어 동기화 방법들이다.&lt;/p>
+&lt;h3 id="메모리-장벽memory-barriers">메모리 장벽(Memory Barriers)&lt;/h3>
+&lt;p>메모리 장벽은 CPU가 명령어를 재정렬하여 실행하는 것을 방지하는 하드웨어 명령이다. 최신 프로세서는 성능 향상을 위해 연산의 순서를 바꿀 수 있지만, 동기화 작업에서는 명령의 순서가 중요하기 때문에 이를 제어하는 메모리 장벽이 필수적이다. 메모리 장벽은 한 프로세서에서 변경된 메모리 내용이 모든 프로세서에 즉시 반영되도록 보장하여, 프로세서 간 데이터 일관성을 유지한다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="n">X&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">100&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">memory_barrier&lt;/span>&lt;span class="p">();&lt;/span> &lt;span class="c1">// 메모리 장벽
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">flag&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>위 코드에서는 메모리 장벽이 있으므로 &lt;code>X&lt;/code>의 값이 &lt;code>flag&lt;/code> 값 설정 이전에 확실히 저장된다.&lt;/p>
+&lt;h3 id="test-and-set과-compare-and-swap-연산">Test-and-Set과 Compare-and-Swap 연산&lt;/h3>
+&lt;p>현대 프로세서는 원자적 연산(Atomic Operation)을 지원하여 프로세스 동기화를 보다 간단히 해결한다. 원자적 연산이란 프로세스가 중단되거나 인터럽트 없이 단일 명령어로 완벽하게 수행되는 연산이다.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Test-and-Set 명령어&lt;/strong>는 원자적으로 특정 변수를 검사하고 값을 설정하는 명령이다. 일반적으로 락(lock)을 구현할 때 사용된다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="n">boolean&lt;/span> &lt;span class="nf">test_and_set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">boolean&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">target&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">boolean&lt;/span> &lt;span class="n">rv&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">target&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">*&lt;/span>&lt;span class="n">target&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">rv&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>프로세스는 이 명령어를 통해 락을 얻거나 풀 수 있으며, 한 프로세스가 락을 얻는 동안 다른 프로세스는 이를 기다리게 된다.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Compare-and-Swap (CAS)&lt;/strong> 명령어는 세 개의 파라미터를 받아서 특정 메모리의 값을 기대값(expected value)과 비교한 후, 일치할 때에만 새로운 값으로 변경한다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="nf">compare_and_swap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">expected&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">new_value&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">temp&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">expected&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">*&lt;/span>&lt;span class="n">value&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">new_value&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">temp&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>CAS를 통해 임계구역 진입 여부를 제어하여 동기화를 수행한다.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="원자적-변수atomic-variables">원자적 변수(Atomic Variables)&lt;/h3>
+&lt;p>원자적 변수는 프로세스 간에 공유되는 변수를 안전하게 갱신할 수 있도록 지원한다. 예를 들어, 원자적 정수형 변수에 대해 증가(increment) 연산을 수행하면, 이 연산은 원자적으로 처리되어 경쟁 조건을 방지한다.&lt;/p>
+&lt;p>하지만 원자적 변수만으로는 조건부 대기 문제(예를 들어 버퍼가 비어있을 때 소비자 프로세스가 기다리는 상황 등)는 해결할 수 없기 때문에, 더욱 복잡한 동기화 도구가 필요할 수 있다.&lt;/p>
+&lt;h2 id="mutex-locks-뮤텍스-락">Mutex Locks (뮤텍스 락)&lt;/h2>
+&lt;p>뮤텍스(mutex)는 &amp;ldquo;Mutual Exclusion&amp;quot;의 줄임말로, 프로세스 간 상호 배제를 간단하게 구현하는 방법이다. 뮤텍스 락은 다음의 두 가지 기본 연산을 제공한다.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>acquire()&lt;/strong>: 락을 얻는다. 만약 락이 이미 획득된 상태라면 대기(busy waiting)하거나 프로세스를 블록시킨다.&lt;/li>
+&lt;li>&lt;strong>release()&lt;/strong>: 락을 반환하여 다른 프로세스가 사용할 수 있게 한다.&lt;/li>
+&lt;/ul>
+&lt;p>뮤텍스 락은 임계구역을 보호하는 간편한 소프트웨어 도구로서 프로그래머가 쉽게 사용할 수 있으며, 운영체제 수준에서도 널리 활용된다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">acquire&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">available&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="c1">// 락이 풀릴 때까지 대기
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="n">available&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">release&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">available&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">true&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 락을 반환
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
 &lt;/div></description></item><item><title>Word2Vec의 최적화</title><link>https://gyeongmin.kr/p/word2vec-2/</link><pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/word2vec-2/</guid><description>&lt;img src="https://gyeongmin.kr/images/deep-learning-from-scratch.jpeg" alt="Featured image of post Word2Vec의 최적화" />&lt;h1 id="word2vec의-최적화">Word2Vec의 최적화&lt;/h1>
 &lt;p>&lt;img src="https://gyeongmin.kr/p/word2vec-2/image-3.png"
 width="1569"
