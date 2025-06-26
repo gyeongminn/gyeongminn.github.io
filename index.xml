@@ -2362,8 +2362,19 @@ $$&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;h3 id="원자적-변수atomic-variables">원자적 변수(Atomic Variables)&lt;/h3>
-&lt;p>원자적 변수는 프로세스 간에 공유되는 변수를 안전하게 갱신할 수 있도록 지원한다. 예를 들어, 원자적 정수형 변수에 대해 증가(increment) 연산을 수행하면, 이 연산은 원자적으로 처리되어 경쟁 조건을 방지한다.&lt;/p>
-&lt;p>하지만 원자적 변수만으로는 조건부 대기 문제(예를 들어 버퍼가 비어있을 때 소비자 프로세스가 기다리는 상황 등)는 해결할 수 없기 때문에, 더욱 복잡한 동기화 도구가 필요할 수 있다.&lt;/p>
+&lt;p>원자적 변수는 프로세스 간에 공유되는 변수를 안전하게 갱신할 수 있도록 지원한다. 예를 들어, 원자적 정수형 변수에 대해 증가(increment) 연산을 수행하면, 이 연산은 원자적으로 처리되어 경쟁 조건을 방지한다.
+C#에서는 아래와 같이 사용할 수 있다.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-csharp" data-lang="csharp">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">counter&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Interlocked&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Increment&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">ref&lt;/span> &lt;span class="n">counter&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>하지만 원자적 변수만으로는 조건부 대기 문제(예를 들어 버퍼가 비어있을 때 소비자 프로세스가 기다리는 상황 등)는 해결할 수 없기 때문에, 더욱 복잡한 동기화 도구가 필요할 수 있다.&lt;/p>
 &lt;h2 id="mutex-locks-뮤텍스-락">Mutex Locks (뮤텍스 락)&lt;/h2>
 &lt;p>뮤텍스(mutex)는 &amp;ldquo;Mutual Exclusion&amp;quot;의 줄임말로, 프로세스 간 상호 배제를 간단하게 구현하는 방법이다. 뮤텍스 락은 다음의 두 가지 기본 연산을 제공한다.&lt;/p>
 &lt;ul>
