@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>운영체제 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/categories/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</link><description>Recent content in 운영체제 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>운영체제의 동기화 도구: 경쟁 조건의 이해와 뮤텍스와 세마포, 모니터</title><link>https://gyeongmin.kr/p/synchronization-tools/</link><pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/synchronization-tools/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 운영체제의 동기화 도구: 경쟁 조건의 이해와 뮤텍스와 세마포, 모니터" />&lt;h2 id="경쟁-조건race-condition이란">경쟁 조건(Race Condition)이란?&lt;/h2>
-&lt;p>운영체제는 동시에 여러 프로세스나 스레드를 실행시킨다. 그런데 이 프로세스들이 &lt;strong>공유 데이터(shared data)&lt;/strong> 를 제어 없이 마구 접근하게 된다면 어떤 일이 벌어질까?&lt;/p>
-&lt;p>대표적인 예가 &lt;strong>생산자-소비자 문제&lt;/strong> 이다. 버퍼에 데이터를 넣고 빼는 과정에서 데이터의 일관성이 깨질 수 있는데, 이를 &lt;strong>경쟁 조건(race condition)&lt;/strong> 이라고 한다.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>운영체제 on Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/categories/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/</link><description>Recent content in 운영체제 on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/categories/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/index.xml" rel="self" type="application/rss+xml"/><item><title>운영체제의 동기화 도구: 경쟁 조건의 이해와 뮤텍스와 세마포, 모니터</title><link>https://gyeongmin.kr/p/synchronization-tools/</link><pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/synchronization-tools/</guid><description>&lt;img src="https://gyeongmin.kr/images/operating-system.png" alt="Featured image of post 운영체제의 동기화 도구: 경쟁 조건의 이해와 뮤텍스와 세마포, 모니터" />&lt;h2 id="경쟁-조건이란">경쟁 조건이란?&lt;/h2>
+&lt;p>운영체제는 동시에 여러 프로세스나 스레드를 실행시킨다. 그런데 이 프로세스들이 공유 데이터(shared data) 를 동시에 접근하게 된다면 문제가 발생할 수 있다.
+대표적인 예가 &lt;strong>생산자-소비자 문제&lt;/strong> 이다. 버퍼에 데이터를 넣고 빼는 과정에서 데이터의 일관성이 깨질 수 있는데, 이를 &lt;strong>경쟁 조건(race condition)&lt;/strong> 이라고 한다.&lt;/p>
 &lt;p>다음 코드가 대표적인 경쟁 조건의 예시이다.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -38,17 +38,17 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>위 코드에서 &lt;code>count++&lt;/code>와 &lt;code>count--&lt;/code> 명령이 병행으로 실행되면, 예상치 못한 결과가 발생한다. 바로 이 현상이 &lt;strong>경쟁 조건&lt;/strong>이다.&lt;/p>
-&lt;h2 id="경쟁-조건-해결하기-임계구역critical-section">경쟁 조건 해결하기: 임계구역(Critical Section)&lt;/h2>
-&lt;p>경쟁 조건을 방지하기 위해 프로세스들이 &lt;strong>순서 있게 공유 데이터에 접근&lt;/strong>하도록 제어해야 한다. 이때 공유 데이터를 다루는 영역을 &lt;strong>임계구역(critical section)&lt;/strong> 이라고 한다.&lt;/p>
+&lt;/div>&lt;p>위 코드에서 &lt;code>count++&lt;/code>와 &lt;code>count--&lt;/code> 명령이 병행으로 실행되면, 예상치 못한 결과값이 발생한다.&lt;/p>
+&lt;h2 id="임계구역-설정">임계구역 설정&lt;/h2>
+&lt;p>경쟁 조건을 방지하기 위해 프로세스들이 동시에 공유 데이터에 접근하지 못하도록 제어해야 한다. 이때 공유 데이터의 영역을 &lt;strong>임계구역(critical section)&lt;/strong> 이라고 한다.&lt;/p>
 &lt;p>임계구역 문제를 올바르게 해결하려면 반드시 다음 세 가지 조건이 필요하다.&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>상호 배제(Mutual Exclusion)&lt;/strong>: 임계구역에는 한 번에 하나의 프로세스만 진입할 수 있어야 한다.&lt;/li>
 &lt;li>&lt;strong>진행(Progress)&lt;/strong>: 임계구역에 들어가려는 프로세스가 있다면 유한한 시간 내에 반드시 진입해야 한다.&lt;/li>
 &lt;li>&lt;strong>한정된 대기(Bounded Waiting)&lt;/strong>: 프로세스가 임계구역 진입을 무한정 기다리지 않도록 보장해야 한다.&lt;/li>
 &lt;/ul>
-&lt;h2 id="peterson의-해결안-고전적인-소프트웨어-해결법">Peterson의 해결안: 고전적인 소프트웨어 해결법&lt;/h2>
-&lt;p>고전적인 소프트웨어 기반 임계구역 문제 해결법으로 유명한 것이 바로 &lt;strong>Peterson의 해결안&lt;/strong>이다. 이 해결안은 두 개의 프로세스만을 대상으로 한다.&lt;/p>
+&lt;h2 id="peterson의-해결책">Peterson의 해결책&lt;/h2>
+&lt;p>고전적인 소프트웨어 기반 임계구역 문제 해결법으로 유명한 것이 바로 Peterson의 방법이다. 이 해결안은 두 개의 프로세스만을 대상으로 한다.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -73,11 +73,11 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">flag&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">false&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 퇴출구역(exit section)
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>하지만 Peterson의 해결안은 현대 컴퓨터에서 명령어가 재정렬될 수 있어서, 정확한 실행을 보장하지 못한다.&lt;/p>
+&lt;/div>&lt;p>하지만 현대 컴퓨터 구조의 &lt;code>load&lt;/code>와 &lt;code>store&lt;/code> 같은 기본적인 기계어를 수행하는 방식 때문에 Peterson의 해결안이 이러한 구조에서 올바르게 실행된다고 보장할 수는 없다.&lt;/p>
 &lt;h2 id="하드웨어적-지원을-통한-동기화">하드웨어적 지원을 통한 동기화&lt;/h2>
 &lt;p>현대 운영체제는 경쟁 조건 해결을 위해 하드웨어의 도움을 받는다. 대표적인 기법들이 다음과 같다.&lt;/p>
-&lt;h3 id="메모리-장벽memory-barrier">메모리 장벽(Memory Barrier)&lt;/h3>
-&lt;p>메모리 장벽은 컴파일러나 프로세서가 명령어의 순서를 바꾸는 것을 막아준다. 이를 통해 데이터 일관성을 지킬 수 있다.&lt;/p>
+&lt;h3 id="메모리-장벽">메모리 장벽&lt;/h3>
+&lt;p>메모리 장벽(Memory Barrier)은 컴파일러나 프로세서가 명령어의 순서를 바꾸는 것을 막아준다. 이를 통해 데이터 일관성을 지킬 수 있다.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -93,7 +93,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>위 코드에서 메모리 장벽은 &lt;code>flag = true&lt;/code>가 반드시 &lt;code>X = 100&lt;/code>보다 늦게 실행됨을 보장한다.&lt;/p>
-&lt;h3 id="특수-명령어-test_and_set과-compare_and_swap">특수 명령어: Test_and_Set과 Compare_and_Swap&lt;/h3>
+&lt;h3 id="test_and_set과-compare_and_swap">Test_and_Set과 Compare_and_Swap&lt;/h3>
 &lt;p>두 가지 대표적인 원자적 연산(atomic operation)이 있다.&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Test_and_Set&lt;/strong>: 값을 검사하고 즉시 설정한다.&lt;/li>
@@ -135,7 +135,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>이 명령어들은 원자적으로 실행되므로 동기화에 매우 효과적이다.&lt;/p>
+&lt;/div>&lt;p>이 명령어들은 원자적으로 실행되므로, 프로세스 동기화에 매우 효과적이다.&lt;/p>
 &lt;h2 id="세마포semaphores-다양한-동기화-문제를-해결하는-도구">세마포(Semaphores): 다양한 동기화 문제를 해결하는 도구&lt;/h2>
 &lt;p>세마포는 mutex 락보다 더 범용적이며 강력한 동기화 도구다. 세마포는 두 가지 연산만으로 제어된다.&lt;/p>
 &lt;ul>
@@ -177,8 +177,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>세마포는 한정된 자원의 사용 제어, 생산자-소비자 문제 등 여러 상황에서 유용하게 사용된다.&lt;/p>
-&lt;h2 id="모니터monitors-세련된-고급-동기화-구조체">모니터(Monitors): 세련된 고급 동기화 구조체&lt;/h2>
-&lt;p>모니터는 더 간편하게 동기화를 다룰 수 있도록 고급 언어 차원에서 제공되는 동기화 구조체이다. &lt;strong>오직 하나의 프로세스만이 모니터 내부에서 활동할 수 있게 보장&lt;/strong>한다.&lt;/p>
+&lt;h2 id="모니터">모니터&lt;/h2>
+&lt;p>모니터(Monitors)는 더 간편하게 동기화를 다룰 수 있도록 고급 언어 차원에서 제공되는 동기화 구조체이다. &lt;strong>오직 하나의 프로세스만이 모니터 내부에서 활동할 수 있게 보장&lt;/strong>한다.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -216,7 +216,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>모니터는 조건변수(condition variable)를 통해 프로세스를 효율적으로 대기시킬 수 있다.&lt;/p>
-&lt;h2 id="라이브니스-문제-교착-상태와-우선순위-역전">라이브니스 문제: 교착 상태와 우선순위 역전&lt;/h2>
+&lt;h2 id="라이브니스-문제">라이브니스 문제&lt;/h2>
 &lt;p>동기화 과정에서 피해야 하는 라이브니스 문제 중 대표적인 두 가지는 다음과 같다.&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>교착 상태(Deadlock)&lt;/strong>: 서로의 자원을 무한정 기다리는 상태.&lt;/li>
