@@ -2428,8 +2428,8 @@ $$&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>이 명령어들은 원자적으로 실행되므로, 프로세스 동기화에 매우 효과적이다.&lt;/p>
-&lt;h2 id="세마포semaphores-다양한-동기화-문제를-해결하는-도구">세마포(Semaphores): 다양한 동기화 문제를 해결하는 도구&lt;/h2>
-&lt;p>세마포는 mutex 락보다 더 범용적이며 강력한 동기화 도구다. 세마포는 두 가지 연산만으로 제어된다.&lt;/p>
+&lt;h2 id="세마포">세마포&lt;/h2>
+&lt;p>세마포(Semaphore)는 mutex 락보다 더 범용적이며 강력한 동기화 도구다. 세마포는 두 가지 연산만으로 제어된다.&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>wait()&lt;/strong> (P 연산): 세마포 값이 0 이상이면 감소시키고, 아니면 대기&lt;/li>
 &lt;li>&lt;strong>signal()&lt;/strong> (V 연산): 세마포 값을 증가시키고 대기 중인 프로세스를 깨운다.&lt;/li>
@@ -2470,7 +2470,7 @@ $$&lt;/p>
 &lt;/div>
 &lt;/div>&lt;p>세마포는 한정된 자원의 사용 제어, 생산자-소비자 문제 등 여러 상황에서 유용하게 사용된다.&lt;/p>
 &lt;h2 id="모니터">모니터&lt;/h2>
-&lt;p>모니터(Monitors)는 더 간편하게 동기화를 다룰 수 있도록 고급 언어 차원에서 제공되는 동기화 구조체이다. &lt;strong>오직 하나의 프로세스만이 모니터 내부에서 활동할 수 있게 보장&lt;/strong>한다.&lt;/p>
+&lt;p>모니터(Monitor)는 더 간편하게 동기화를 다룰 수 있도록 고급 언어 차원에서 제공되는 동기화 구조체이다. &lt;strong>오직 하나의 프로세스만이 모니터 내부에서 활동할 수 있게 보장&lt;/strong>한다.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
