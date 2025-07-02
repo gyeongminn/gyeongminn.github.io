@@ -2152,7 +2152,7 @@ $$&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>위 코드에서 메모리 장벽은 &lt;code>flag = true&lt;/code>가 반드시 &lt;code>X = 100&lt;/code>보다 늦게 실행됨을 보장한다.&lt;/p>
-&lt;h3 id="test_and_set과-compare_and_swap">Test_and_Set과 Compare_and_Swap&lt;/h3>
+&lt;h3 id="하드웨어-명령어">하드웨어 명령어&lt;/h3>
 &lt;p>두 가지 대표적인 원자적 연산(atomic operation)이 있다.&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Test_and_Set&lt;/strong>: 값을 검사하고 즉시 설정한다.&lt;/li>
@@ -2198,8 +2198,8 @@ $$&lt;/p>
 &lt;h2 id="세마포">세마포&lt;/h2>
 &lt;p>세마포(Semaphore)는 mutex 락보다 더 범용적이며 강력한 동기화 도구다. 세마포는 두 가지 연산만으로 제어된다.&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>wait()&lt;/strong> (P 연산): 세마포 값이 0 이상이면 감소시키고, 아니면 대기&lt;/li>
-&lt;li>&lt;strong>signal()&lt;/strong> (V 연산): 세마포 값을 증가시키고 대기 중인 프로세스를 깨운다.&lt;/li>
+&lt;li>&lt;code>wait()&lt;/code> (P 연산): 세마포 값이 0 이상이면 감소시키고, 아니면 대기&lt;/li>
+&lt;li>&lt;code>signal()&lt;/code> (V 연산): 세마포 값을 증가시키고 대기 중인 프로세스를 깨운다.&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
