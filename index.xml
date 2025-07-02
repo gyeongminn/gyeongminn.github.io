@@ -2369,7 +2369,7 @@ $$&lt;/p>
 &lt;h2 id="하드웨어적-지원을-통한-동기화">하드웨어적 지원을 통한 동기화&lt;/h2>
 &lt;p>현대 운영체제는 경쟁 조건 해결을 위해 하드웨어의 도움을 받는다. 대표적인 기법들이 다음과 같다.&lt;/p>
 &lt;h3 id="메모리-장벽">메모리 장벽&lt;/h3>
-&lt;p>메모리 장벽(Memory Barrier)은 컴파일러나 프로세서가 명령어의 순서를 바꾸는 것을 막아준다. 이를 통해 데이터 일관성을 지킬 수 있다.&lt;/p>
+&lt;p>메모리 장벽(Memory Barrier)은 컴파일러나 프로세서가 명령어의 순서를 바꾸는 것을 막아준다. 메모리 장벽은 이를 통해 데이터의 일관성을 유지시킨다.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -2510,10 +2510,12 @@ $$&lt;/p>
 &lt;/div>&lt;p>모니터는 조건변수(condition variable)를 통해 프로세스를 효율적으로 대기시킬 수 있다.&lt;/p>
 &lt;h2 id="라이브니스-문제">라이브니스 문제&lt;/h2>
 &lt;p>동기화 과정에서 피해야 하는 라이브니스 문제 중 대표적인 두 가지는 다음과 같다.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>교착 상태(Deadlock)&lt;/strong>: 서로의 자원을 무한정 기다리는 상태.&lt;/li>
-&lt;li>&lt;strong>우선순위 역전(Priority Inversion)&lt;/strong>: 높은 우선순위 프로세스가 낮은 우선순위 프로세스를 기다리는 현상.&lt;/li>
-&lt;/ul>
+&lt;h3 id="교착-상태">교착 상태&lt;/h3>
+&lt;p>교착 상태(Deadlock)는 서로의 자원을 무한정 기다리는 상태이다.&lt;/p>
+&lt;p>프로세스 A가 자원 X를, 프로세스 B가 자원 Y를 점유하고 있을 때, A가 Y를 기다리고 B가 X를 기다리면 둘 다 무한정 기다리게 된다.&lt;/p>
+&lt;h3 id="우선순위-역전">우선순위 역전&lt;/h3>
+&lt;p>우선순위 역전(Priority Inversion)은 높은 우선순위 프로세스가 낮은 우선순위 프로세스를 기다리는 현상이다.&lt;/p>
+&lt;p>낮은 우선순위 프로세스 L이 자원을 점유하고 있을 때, 높은 우선순위 프로세스 H가 자원을 요청하면 H가 L을 기다리게 된다. 그런데 이때 중간 우선순위 프로세스 M이 실행되면, L이 더 지연되어 H가 예상보다 오래 기다리는 현상이 발생한다.&lt;/p>
 &lt;p>이 문제를 해결하는 대표적인 방법으로는 &lt;strong>우선순위 상속(priority inheritance)&lt;/strong> 프로토콜이 있다.&lt;/p></description></item><item><title>Word2Vec의 최적화</title><link>https://gyeongmin.kr/p/word2vec-2/</link><pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/p/word2vec-2/</guid><description>&lt;img src="https://gyeongmin.kr/images/deep-learning-from-scratch.jpeg" alt="Featured image of post Word2Vec의 최적화" />&lt;h1 id="word2vec의-최적화">Word2Vec의 최적화&lt;/h1>
 &lt;p>&lt;img src="https://gyeongmin.kr/p/word2vec-2/image-3.png"
 width="1569"
