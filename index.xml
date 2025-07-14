@@ -2297,19 +2297,19 @@ $$&lt;/p>
 &lt;p>교착 상태가 발생하려면 다음 네 가지 조건이 반드시 동시에 성립해야 한다.&lt;/p>
 &lt;ol>
 &lt;li>
-&lt;p>상호 배제(Mutual Exclusion)
+&lt;p>상호 배제(Mutual Exclusion)&lt;br>
 최소한 하나의 자원이 동시에 여러 스레드에 공유될 수 없어야 한다. 즉, 한번에 한 스레드만 자원을 사용할 수 있다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>점유하며 대기(Hold-and-Wait)
+&lt;p>점유하며 대기(Hold-and-Wait)&lt;br>
 스레드가 최소한 하나의 자원을 확보한 상태에서, 추가로 다른 자원을 기다려야 한다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>비선점(No Preemption)
+&lt;p>비선점(No Preemption)&lt;br>
 한 스레드가 자원을 점유하고 있을 때, 그 자원을 다른 스레드가 강제로 빼앗을 수 없어야 한다. 자원은 자발적으로만 반납된다.&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>순환 대기(Circular Wait)
+&lt;p>순환 대기(Circular Wait)&lt;br>
 여러 스레드가 원형으로 서로 상대방이 가진 자원을 기다리는 구조가 만들어져야 한다.&lt;/p>
 &lt;/li>
 &lt;/ol>
