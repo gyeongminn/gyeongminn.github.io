@@ -42,7 +42,7 @@
 &lt;p>현실적으로 교착 상태를 예방하는 방법 중 가장 유용한 방법은 &lt;strong>순환 대기를 제거하는 것&lt;/strong> 이다. 이는 자원에 전체적인 순서를 부여하고, 그 순서대로 자원을 요청하도록 강제하는 것이다. 이렇게 되면 스레드들이 순환적으로 자원을 기다리는 상황을 막을 수 있다.&lt;/p>
 &lt;p>예를 들어, mutex 락에 대해 다음과 같은 순서를 정했다고 하자.&lt;/p>
 &lt;p>$$
-f(first_mutex) = 1,\quad f(second_mutex) = 5
+f(\text{first_{}mutex}) = 1,\quad f(\text{second_{}mutex}) = 5
 $$&lt;/p>
 &lt;p>스레드는 반드시 first_mutex를 먼저 요청하고 second_mutex를 요청해야 한다.&lt;/p>
 &lt;h2 id="은행원-알고리즘">은행원 알고리즘&lt;/h2>
