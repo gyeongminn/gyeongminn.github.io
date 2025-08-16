@@ -1,11 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/</link><description>Recent content on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Tue, 24 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://gyeongmin.kr/about/</link><pubDate>Tue, 24 Sep 2024 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/about/</guid><description>&lt;h1 id="안녕하세요-이경민입니다">안녕하세요, 이경민입니다.&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gyeongmin의 개발 블로그</title><link>https://gyeongmin.kr/</link><description>Recent content on Gyeongmin의 개발 블로그</description><generator>Hugo -- gohugo.io</generator><language>ko</language><copyright>Gyeongmin Lee</copyright><lastBuildDate>Fri, 15 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://gyeongmin.kr/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://gyeongmin.kr/about/</link><pubDate>Fri, 15 Aug 2025 00:00:00 +0000</pubDate><guid>https://gyeongmin.kr/about/</guid><description>&lt;h1 id="안녕하세요-이경민입니다">안녕하세요, 이경민입니다.&lt;/h1>
 &lt;p class="icon-container" align="left">
-&lt;a class="custom-icon" href="mailto:gyeongmin@hansung.ac.kr" target="_blank">
+&lt;a class="custom-icon" href="mailto:gyeongmin.lee@deepseers.com" target="_blank">
 &lt;img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Mail"/>
-&lt;/a>
-&amp;nbsp;
-&lt;a class="custom-icon" href="https://instagram.com/gyeongminx" target="_blank">
-&lt;img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Instagram"/>
 &lt;/a>
 &amp;nbsp;
 &lt;a class="custom-icon" href="https://www.linkedin.com/in/gyeongmin-lee-865448256/" target="_blank">
@@ -43,6 +39,9 @@
 &lt;/a>
 &lt;a class="custom-icon" href="https://www.mvtec.com/products/halcon" target="_blank" rel="noreferrer">
 &lt;img src="https://user-images.githubusercontent.com/97784561/224551155-ef0d5041-8e60-4f72-817a-3a6bd1d03c93.png" alt="Halcon"/>
+&lt;/a>
+&lt;a class="custom-icon" href="https://www.mvtec.com/products/halcon" target="_blank" rel="noreferrer">
+&lt;img src="https://raw.githubusercontent.com/devicons/devicon/refs/heads/master/icons/opencv/opencv-original-wordmark.svg" alt="OpenCV"/>
 &lt;/a>
 &lt;a class="custom-icon" href="https://www.tensorflow.org" target="_blank" rel="noreferrer">
 &lt;img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"/>
@@ -107,8 +106,11 @@
 &lt;/div>
 &lt;p class="type">Project&lt;/p>
 &lt;div class="container">
+&lt;p class="title">사용자 개입이 최소화된 차세대 반도체 패키지 불량 검출 시스템&lt;/p>
+&lt;p class="text">2420015525 / 창업성장기술개발(R&amp;D) / 중소벤처기업부&lt;/p>
+&lt;p class="date">Oct 2024 - Dec 2025&lt;/p>
 &lt;p class="title">반도체 소자 생산을 위한 인공지능 기반 스마트 제조 공정 장비 및 관련 기술 개발&lt;/p>
-&lt;p class="text">산업통상자원부(Ministry of Trade, Industry and Energy)&lt;/p>
+&lt;p class="text">1415187377 / 우수기업연구소육성사업(ATC+) / 산업통상자원부&lt;/p>
 &lt;p class="date">Jun 2023 - Dec 2024&lt;/p>
 &lt;/div>
 &lt;p class="type">Conference&lt;/p>
