@@ -53,28 +53,26 @@
 &lt;h2 align="left">Education&lt;/h2>
 &lt;div class="research">
 &lt;div class="container">
+&lt;p class="title">Hansung University&lt;br>M.S. in Computer Science and Engineering&lt;/p>
+&lt;p class="text">&lt;span class="date">Feb 2025 - Present&lt;/span>&lt;/p>
+&lt;/div>
+&lt;div class="container">
 &lt;p class="title">Hansung University&lt;br>B.S. in Computer Science and Engineering&lt;/p>
 &lt;p class="text">• 공과대학 학생회 홍보국장&lt;span class="date">(2023)&lt;/span>&lt;/p>
 &lt;p class="text">• 학술소모임 BUG 부회장&lt;span class="date">(2022)&lt;/span>&lt;/p>
 &lt;p class="text">&lt;span class="date">Mar 2021 - Feb 2025&lt;/span>&lt;/p>
-&lt;/div>
-&lt;div class="container">
-&lt;p class="title">Hansung University&lt;br>M.S. in Computer Science and Engineering&lt;/p>
-&lt;p class="text">&lt;span class="date">Feb 2025 - Present&lt;/span>&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;h2 align="left">Experience&lt;/h2>
 &lt;div class="research">
 &lt;div class="container">
 &lt;p class="title">DeepSeers&lt;br>Vision Software Engineer&lt;/p>
-&lt;p class="text">• 스타트업 창업 멤버로서 다양한 반도체 생산 장비에 탑재되는 비전 검사 솔루션 개발&lt;span class="date">
-&lt;p class="text">• QFN, BGA, LGA, SIP 등 각종 패키지 하단면 검사 알고리즘 34종 개발
+&lt;p class="text">• 스타트업 창업 멤버로서 다양한 반도체 후공정 비전 검사 솔루션 개발&lt;span class="date">
+&lt;p class="text">• QFN, BGA, LGA, SIP 등 각종 패키지 하단면 검사 알고리즘 36종 개발 (Ball, Lead, Pad 등)
 &lt;p class="text">• 패키지의 측면 검사를 위한 사이드 비전 검사 알고리즘 개발
-&lt;p class="text">• 딥러닝을 이용한 ROI Recommendation 알고리즘 개발 및 특허 출원
-&lt;p class="text">• Subpixel 정확도의 자재 사이즈 측정을 위한 패키지 외곽 검출 로직 개발
-&lt;p class="text">• Calibration Plate를 활용한 Pixel Pitch 계산 알고리즘 개발
-&lt;p class="text">• Camera Link 및 GigE 카메라 인터페이스 연동과 각종 산업용 카메라 셋업
-&lt;p class="text">• 핸들러-비전 소켓 통신 프로토콜 개발
+&lt;p class="text">• 티칭 프로세스에 Object Detection을 접목하여 ROI Recommendation 개발 및 특허 출원 완료
+&lt;p class="text">• Matching을 이용한 Align 및 Sub-pixel level의 사이즈 측정 기능 개발
+&lt;p class="text">• Camera Link 및 GigE 카메라 인터페이스 연동 및 시리얼 통신을 이용한 조명 컨트롤 개발
 &lt;p class="text">• WPF를 활용한 티칭 UI 및 검사 결과 시각화 UX 개발
 &lt;p class="text">• 각종 장비 하드웨어 트러블 슈팅 및 해외 고객사 비전 셋업과 비전 프로그램 교육 진행
 &lt;p class="text">&lt;span class="date">Feb 2024 - Present&lt;/span>&lt;/p>
@@ -89,6 +87,21 @@
 &lt;p class="text">• 컴퓨터공학부 전공튜터링 튜터 3회 참여&lt;span class="date">
 &lt;p class="text">• 교내 알고리즘 대회 최초 개설 및 총괄, 출제자 4회 참여&lt;a class="detail" href="https://github.com/HSU-CSE/hsupc-2023-2" target="_blank">&amp;nbsp; See the details >&lt;/a>&lt;/p>
 &lt;p class="text">&lt;span class="date">Feb 2021 - Feb 2025&lt;/span>&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;h2 align="left">Patents&lt;/h2>
+&lt;div class="research">
+&lt;div class="container">
+&lt;p class="title">머신비전을 위한 딥러닝 기반 관심영역 자동생성 시스템 및 방법&lt;/p>
+&lt;p class="text">한기준, 창윤빈, 이경민&lt;/p>
+&lt;p class="text">출원번호: 10-2024-0153587&lt;/p>
+&lt;p class="date">November 1, 2024 &lt;a class="특허증" href="./(10-2821336) 특허증.pdf" target="_blank">&lt;/p>
+&lt;/div>
+&lt;div class="container">
+&lt;p class="title">오버킬의 감소를 위한 딥러닝 기반 품질검사 시스템 및 방법&lt;/p>
+&lt;p class="text">한기준, 이경민&lt;/p>
+&lt;p class="text">출원번호: 10-2024-0153586&lt;/p>
+&lt;p class="date">November 1, 2024 - 심사 진행중&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;h2 align="left">Research&lt;/h2>
@@ -133,21 +146,6 @@
 &lt;p class="author">&lt;span class="me">Gyeongmin Lee&lt;/span>, Seungtaek Lim, Keejun Han*&lt;/p>
 &lt;p class="text">22nd International Symposium on Microelectronics and Packaging (ISMP-IRSP 2024)&lt;/p>
 &lt;p class="date">November 5, 2024 (Oral Presentation)&lt;/p>
-&lt;/div>
-&lt;/div>
-&lt;h2 align="left">Patents&lt;/h2>
-&lt;div class="research">
-&lt;div class="container">
-&lt;p class="title">머신비전을 위한 딥러닝 기반 관심영역 자동생성 시스템 및 방법&lt;/p>
-&lt;p class="text">한기준, 창윤빈, 이경민&lt;/p>
-&lt;p class="text">출원번호: 10-2024-0153587&lt;/p>
-&lt;p class="date">November 1, 2024 - 심사 진행중&lt;/p>
-&lt;/div>
-&lt;div class="container">
-&lt;p class="title">오버킬의 감소를 위한 딥러닝 기반 품질검사 시스템 및 방법&lt;/p>
-&lt;p class="text">한기준, 이경민&lt;/p>
-&lt;p class="text">출원번호: 10-2024-0153586&lt;/p>
-&lt;p class="date">November 1, 2024 - 심사 진행중&lt;/p>
 &lt;/div>
 &lt;/div>
 &lt;h2 align="left">Awards &amp; Certification&lt;/h2>
