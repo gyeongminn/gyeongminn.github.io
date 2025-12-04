@@ -77,8 +77,10 @@
 &lt;/div>
 &lt;div class="container">
 &lt;p class="title">Hansung University&lt;br>B.S. in Computer Science and Engineering&lt;/p>
-&lt;p class="text">• 공과대학 학생회 홍보국장&lt;span class="date">(2023)&lt;/span>&lt;/p>
-&lt;p class="text">• 학술소모임 BUG 부회장&lt;span class="date">(2022)&lt;/span>&lt;/p>
+&lt;p class="text">• 교내 알고리즘 대회 최초 개설자, 대회 총괄 및 출제자로 4회 참여&lt;a class="detail" href="https://github.com/HSU-CSE/hsupc-2023-2" target="_blank">&amp;nbsp; See the details >&lt;/a>&lt;/p>
+&lt;p class="text">• 교내 학술소모임 부회장 역임, 학부와 협업하여 알고리즘 대회 개최&lt;span class="date">(2023)&lt;/span>&lt;/p>
+&lt;p class="text">• 제19회 한성공학경진대회 동상&lt;span class="date">(2023)&lt;/span>&lt;/p>
+&lt;p class="text">• 컴퓨터공학부 튜터링 3회 진행&lt;span class="date">(2022-2023)&lt;/span>&lt;/p>
 &lt;p class="text">&lt;span class="date">Mar 2021 - Feb 2025&lt;/span>&lt;/p>
 &lt;/div>
 &lt;/div>
@@ -100,11 +102,9 @@
 &lt;div class="research">
 &lt;div class="container">
 &lt;p class="title">Hansung University AML Lab.&lt;br>Undergraduate Researcher&lt;/p>
+&lt;p class="text">• 학회 포스터 발표 3건 (ISMP 2023, HCI 2024, KCC 2024), 구두 발표 1건 (ISMP-IRSP 2024)&lt;/p>
 &lt;p class="text">• 반도체 패키지 비전 검사 장비 소프트웨어 개발 &lt;span class="date">(2023-2024)&lt;/span>&lt;/p>
 &lt;p class="text">• 반도체 패키징 공정에서의 Anomaly Detection 연구 &lt;span class="date">(2023-2024)&lt;/span>&lt;/p>
-&lt;p class="text">• 국제 학회 및 국내 학회 발표&lt;/p>
-&lt;p class="text">• 컴퓨터공학부 전공튜터링 튜터 3회 참여&lt;span class="date">
-&lt;p class="text">• 교내 알고리즘 대회 최초 개설 및 총괄, 출제자 4회 참여&lt;a class="detail" href="https://github.com/HSU-CSE/hsupc-2023-2" target="_blank">&amp;nbsp; See the details >&lt;/a>&lt;/p>
 &lt;p class="text">&lt;span class="date">Feb 2021 - Feb 2025&lt;/span>&lt;/p>
 &lt;/div>
 &lt;/div>
