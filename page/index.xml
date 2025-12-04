@@ -67,12 +67,12 @@
 &lt;div class="research">
 &lt;div class="container">
 &lt;p class="title">디에스&lt;br>Vision Engineer (창업 멤버)&lt;/p>
-&lt;p class="text">• 스타트업 창업 멤버로서 다양한 반도체 후공정 비전 검사 솔루션 개발 (각종 고객사에 납품 및 검증 완료)&lt;span class="date">
+&lt;p class="text">• 스타트업 창업 멤버로서 다양한 반도체 후공정 비전 검사 솔루션 개발 (각종 고객사에 납품 및 양산 중)&lt;span class="date">
 &lt;p class="text">• QFN, BGA, LGA, SIP 등 각종 패키지 하단면 검사 알고리즘 36종 개발 (Ball, Lead, Pad 등)
-&lt;p class="text">• 패키지의 측면 검사를 위한 사이드 비전 검사 알고리즘 개발
+&lt;p class="text">• 패키지의 측면 (4면) 검사를 위한 사이드 비전 검사 알고리즘 개발
 &lt;p class="text">• 티칭 프로세스에 Object Detection을 접목하여 ROI Recommendation 개발 및 특허 출원 완료
-&lt;p class="text">• Matching을 이용한 Align 및 Sub-pixel level의 사이즈 측정 기능 개발
-&lt;p class="text">• Camera Link 및 GigE 카메라 인터페이스 연동 및 시리얼 통신을 이용한 조명 컨트롤 개발
+&lt;p class="text">• 카메라 캘리브레이션 기술의 연구 개발과 Sub-pixel 수준의 자재 크기와 Offset 측정 기능 개발
+&lt;p class="text">• Camera Link 및 GigE 카메라 인터페이스 (Halcon, SDK) 연동 및 시리얼 통신을 이용한 조명 컨트롤 개발
 &lt;p class="text">• WPF를 활용한 티칭 및 검사 결과 시각화 UI 개발 및 각종 사용자 편의 기능 개발
 &lt;p class="text">• 각종 장비 하드웨어 트러블 슈팅 및 해외 고객사 비전 셋업과 비전 프로그램 교육 진행
 &lt;p class="text">&lt;span class="date">Feb 2024 - Present&lt;/span>&lt;/p>
