@@ -6,7 +6,7 @@ loading="lazy"
 class="gallery-image"
 data-flex-grow="67"
 data-flex-basis="162px"
->{.half-image}&lt;/p>
+>&lt;/p>
 &lt;h1 id="피터-린치의-이기는-투자">피터 린치의 이기는 투자&lt;/h1>
 &lt;h2 id="책을-고른-이유">책을 고른 이유&lt;/h2>
 &lt;p>요즘 미국 주식과 재테크에 관심이 많다. 매일 출근 길마다 미국 주식 방송을 보다 보니, 자연스럽게 주식이 오르내리는 이유에 대해 관심을 갖게 되었다.&lt;/p>
